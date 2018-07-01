@@ -2,18 +2,37 @@
 <html>
 
 <head>
+        <div>
+                <h2>The Current date time is <span id="dateTime"></span> </h2>
+                <h3>You can visited this page <span id="report"></span> number of times!</h3>
+        </div>
         <title>Blockchain Course</title>
         <script>
-        document.write("3+4=",3+4,"<br />")
-        document.write("True && False=",true && false,"<br />")
-        document.write("True || False=",true || false,"<br />")
-        document.write("Math.E=",Math.E,"<br />")
-        document.write("Math.pow(4,3.5)=",Math.pow(4,3.5),"<br />")
         
+        for (let x=0;x<=12;x=x+1){
+                document.write("Number - ",x,"<br />")
+        }
+        var dateTimeField=document.getElementById("dateTime")
+        dateTimeField.innerHTML=new Date()
+
+        var timesVisited=0;
+        if (localStorage.timesVisited){
+                timesVisited=parseInt(localStorage.timesVisited)
+        }
+        timesVisited=timesVisited+1;
+        localStorage.setItem('timesVisited',timesVisited)
+
+        var report=document.getElementById('report')
+        report.innerHTML=timesVisited;
+        if(timesVisited>10){
+                report.style.backgroundColor='red';
+        }
+
         </script>
 </head>
 
     <body>
             <h1>First page of website</h1>
+            
     </body>
 </html>

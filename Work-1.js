@@ -1,1 +1,3 @@
-console.log(true&&false)
+def addNumbers(a,b){
+    return a+b;
+}
