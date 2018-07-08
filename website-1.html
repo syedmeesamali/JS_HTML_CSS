@@ -1,21 +1,33 @@
 
 <html>
-
 <head>
         <div>
                 <h2>The Current date time is <span id="dateTime"></span> </h2>
-                <h3>You can visited this page <span id="report"></span> number of times!</h3>
+                <h3>You have visited this page <span id="report"></span> number of times!</h3>
+                <h4>Date of last visit is <span id="report_last"></span></h4>
         </div>
         <title>Blockchain Course</title>
         <script>
-        
-        for (let x=0;x<=12;x=x+1){
-                document.write("Number - ",x,"<br />")
+        //Practice scripts
+        for (i=1;i<=7;i++){
+                document.write("#".repeat(i),"<br />");
+
         }
+        //From edx course  
+        
+        
         var dateTimeField=document.getElementById("dateTime")
         dateTimeField.innerHTML=new Date()
-
+        
         var timesVisited=0;
+        var lastVisitDate='never';
+        if (localStorage.lastVisit){
+                var lastVisit=JSON.parse(localStorage.lastVisit);
+                timesVisited=lastVisit.numVisits;
+                lastVisitDate=lastVisit.date;
+
+        }
+
         if (localStorage.timesVisited){
                 timesVisited=parseInt(localStorage.timesVisited)
         }
@@ -23,6 +35,14 @@
         localStorage.setItem('timesVisited',timesVisited)
 
         var report=document.getElementById('report')
+        document.getElementById('report_last').innerHTML=lastVisitDate;
+        timesVisited++;
+        document.getElementById('report').innerHTML=timesVisited;
+        var mylastVisit={};
+        mylastVisit.date=new Date();
+        mylastVisit.numVisits=timesVisited;
+        localStorage.lastVisit=JSON.stringify(mylastVisit);
+        
         report.innerHTML=timesVisited;
         if(timesVisited>10){
                 report.style.backgroundColor='red';
