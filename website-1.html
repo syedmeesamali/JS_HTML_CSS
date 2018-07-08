@@ -21,6 +21,8 @@
         
         var timesVisited=0;
         var lastVisitDate='never';
+        
+        //Below part will be false for the first visit and the code will skip as it is false-y value
         if (localStorage.lastVisit){
                 var lastVisit=JSON.parse(localStorage.lastVisit);
                 timesVisited=lastVisit.numVisits;
@@ -42,7 +44,7 @@
         mylastVisit.date=new Date();
         mylastVisit.numVisits=timesVisited;
         localStorage.lastVisit=JSON.stringify(mylastVisit);
-        
+
         report.innerHTML=timesVisited;
         if(timesVisited>10){
                 report.style.backgroundColor='red';
