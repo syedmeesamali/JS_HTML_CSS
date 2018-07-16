@@ -22,7 +22,14 @@ function calculateFoodOrder(numAnimals, avgFood) {
  * @return a string containing the name of the most popular day of the week if there is only one most popular day, and an array of the strings containing the names of the most popular days if there are more than one that are most popular
  */
 function mostPopularDays(week) {
-    // IMPLEMENT THIS FUNCTION!
+    var day1=new Weekday("Sunday",200)
+    var day2=new Weekday("Monday",250)
+    var day3=new Weekday("Tuesday",300)
+    var day4=new Weekday("Wednesday",350)
+    var day5=new Weekday("Thursday",325)
+    var day6=new Weekday("Friday",100)
+    var day7=new Weekday("Saturday",150)
+
 }
 
 
@@ -38,7 +45,7 @@ function mostPopularDays(week) {
  *         empty array if the array's lengths are unequal or zero, or if any array is null.
  */
 function createAnimalObjects(names, types, breeds) {
-    // IMPLEMENT THIS FUNCTION!
+    new Animal 
 }
 
 /////////////////////////////////////////////////////////////////
