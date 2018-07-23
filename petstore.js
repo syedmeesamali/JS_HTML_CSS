@@ -13,23 +13,17 @@ function calculateFoodOrder(numAnimals, avgFood) {
 }
 
 /**
- * Determines which day of the week had the most nnumber of people visiting the
+ * Determines which day of the week had the most number of people visiting the
  * pet store. If more than one day of the week has the same, highest amount of
  * traffic, an array containing the days (in any order) should be returned.
  * (ex. ["Wednesday", "Thursday"]). If the input is null or an empty array, the function
  * should return null.
  * @param week an array of Weekday objects
- * @return a string containing the name of the most popular day of the week if there is only one most popular day, and an array of the strings containing the names of the most popular days if there are more than one that are most popular
+ * @return a string containing the name of the most popular day of the week if there is only one most popular day, and an array of the strings containing the names of the 
+ * most popular days if there are more than one that are most popular
  */
 function mostPopularDays(week) {
-    var day1=new Weekday("Sunday",200)
-    var day2=new Weekday("Monday",250)
-    var day3=new Weekday("Tuesday",300)
-    var day4=new Weekday("Wednesday",350)
-    var day5=new Weekday("Thursday",325)
-    var day6=new Weekday("Friday",100)
-    var day7=new Weekday("Saturday",150)
-
+    var daysOfWeek = ['Monday', 'Tuesday', 'Wednesday', 'Thursday','Friday', 'Saturday', 'Sunday'];
 }
 
 
@@ -46,6 +40,13 @@ function mostPopularDays(week) {
  */
 function createAnimalObjects(names, types, breeds) {
     new Animal 
+}
+
+ali=new Person("ali shah",33);
+console.log("name is"+ali.name+" and age is "+ali.age+"and message is "+ali.message)
+
+function addNums(a,b) {
+    return a+b;
 }
 
 /////////////////////////////////////////////////////////////////
@@ -89,4 +90,3 @@ function Animal (name, type, breed) {
 function helloworld() {
     return 'hello world!';
 }
-
