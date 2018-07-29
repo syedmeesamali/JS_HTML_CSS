@@ -26,3 +26,12 @@ for (i=1;i<=counter;i++){
         if (i%2==0) { console.log(" "+"# ".repeat(counter)); }
         else  { console.log("# ".repeat(counter)); }
 }
+
+//Function programming Exercise-1: Minimum function
+function minimumNum(a,b){
+    if (a<b){
+        return a+" is minimum";
+    } else {
+        return b+" is minimum";
+        }
+    }

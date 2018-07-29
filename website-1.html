@@ -9,44 +9,19 @@
         <title>Blockchain Course</title>
         <script type="text/javascript" src="./Work-1.js"></script>
         <script>
-        
-        //From edx course  
-        
-        
-        var dateTimeField=document.getElementById("dateTime")
-        dateTimeField.innerHTML=new Date()
-        
-        var timesVisited=0;
-        var lastVisitDate='never';
-        
-        //Below part will be false for the first visit and the code will skip as it is false-y value
-        if (localStorage.lastVisit){
-                var lastVisit=JSON.parse(localStorage.lastVisit);
-                timesVisited=lastVisit.numVisits;
-                lastVisitDate=lastVisit.date;
-
+        //function practice to see the concept of abstraction
+        function addition(a,b){
+                return a+b;
         }
-
-        if (localStorage.timesVisited){
-                timesVisited=parseInt(localStorage.timesVisited)
+        function multiplication(a,b){
+                result=0;
+                for(let counter=0;counter<b;counter++){
+                        result+=addition(a,b);
+                }
+                return result;
         }
-        timesVisited=timesVisited+1;
-        localStorage.setItem('timesVisited',timesVisited)
-
-        var report=document.getElementById('report')
-        document.getElementById('report_last').innerHTML=lastVisitDate;
-        timesVisited++;
-        document.getElementById('report').innerHTML=timesVisited;
-        var mylastVisit={};
-        mylastVisit.date=new Date();
-        mylastVisit.numVisits=timesVisited;
-        localStorage.lastVisit=JSON.stringify(mylastVisit);
-
-        report.innerHTML=timesVisited;
-        if(timesVisited>10){
-                report.style.backgroundColor='red';
-        }
-        //Some practice
+        document.write("Addition of 4 and 3 is: "+addition(4,3)+"<br>");
+        document.write("Multiplication of 4 and 3 is: "+multiplication(4,3)+"<br>");
         </script>
 </head>
 
@@ -57,11 +32,23 @@
         function greet(name){
                 document.write("<h1>Hi "+name+" How are you? What are you doing "+name+"? How is life "+name+" </h1></ br>");
         }
-        greet("Ali")
-        greet("Jennoy")
+
+        function myFunction() {
+                //alert("Button is clicked");
+                if ( function() { return x_val=Math.random()*100; } () > 50 )
+                {
+                        alert("Current random number is: "+x_val)
+                        document.body.style.backgroundColor='#00FF00';  }
+                else  
+                { document.body.style.backgroundColor='white';   }
+        return null;
+        }
+
 </script>
     <body>
             <h1>First page of website</h1>
-            
+            <button onclick="myFunction()"> Click me </button>
+            <a href="javascript:void(document.body.style.backgroundColor='#00FF00');"> Click
+here to make the page green </a>
     </body>
 </html>
