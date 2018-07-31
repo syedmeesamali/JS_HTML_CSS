@@ -35,3 +35,15 @@ function minimumNum(a,b){
         return b+" is minimum";
         }
     }
+    
+//function practice to see the concept of abstraction
+        function addition(a,b){
+                return a+b;
+        }
+        function multiplication(a,b){
+                result=0;
+                for(let counter=0;counter<b;counter++){
+                        result+=addition(a,b);
+                }
+                return result;
+        }

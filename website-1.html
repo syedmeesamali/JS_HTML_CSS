@@ -2,53 +2,50 @@
 <html>
 <head>
         <div>
-                <h2>The Current date time is <span id="dateTime"></span> </h2>
-                <h3>You have visited this page <span id="report"></span> number of times!</h3>
-                <h4>Date of last visit is <span id="report_last"></span></h4>
+                <h2>Please enter the value of sales in box below to calculate commission!</h2>
         </div>
-        <title>Blockchain Course</title>
-        <script type="text/javascript" src="./Work-1.js"></script>
+        <title>Commission Calculator</title>
         <script>
-        //function practice to see the concept of abstraction
-        function addition(a,b){
-                return a+b;
-        }
-        function multiplication(a,b){
-                result=0;
-                for(let counter=0;counter<b;counter++){
-                        result+=addition(a,b);
+        //Below script takes care of the calculation being output on the document. 
+        
+        
+        
+        function calculateCommission() {
+                const tier1 = 0.08;
+                const tier2 = 0.12;
+                const tier3 = 0.14;
+                const tier4 = 0.15;
+                salesValue=salesDone;
+                if(salesValue>0 & salesValue<=10000) {
+                        return salesValue*tier1;
+                } else if (salesValue>10000 & salesValue<=18000) {
+                        return salesValue*tier2;
+                } else if (salesValue>=18000 & salesValue<=25000) {
+                        return salesValue*tier3;
+                } else if(salesValue>25000) {
+                        return salesValue*tier4;
+                } else {
+                        return 0;
                 }
-                return result;
+                
         }
-        document.write("Addition of 4 and 3 is: "+addition(4,3)+"<br>");
-        document.write("Multiplication of 4 and 3 is: "+multiplication(4,3)+"<br>");
+        document.write("</ br> The commission for above mentioned sales is: <h1>" + 50 +
+                "</h1></ br>");
         </script>
 </head>
 
-<script>
-        //Function practice from IvanOnTech course
-        //document.write("<h1>Hi Ali how are you? What are you doing Ali? How is life Ali </h1>");
+    <body>    
+            <input type="text" id='salesInput'></input><br>
+            <input type="button" id='salesCommission'> Calculate Commission </button><br><br>
+        <script>
+        var button=document.getElementById('salesCommission');
+        var salesDone=document.getElementById('salesInput').innerHTML;
+        //button.addEventListener('click',calculateCommission(salesDone));
+        button.addEventListener('click',calculateCommission(50));
+        </script>
 
-        function greet(name){
-                document.write("<h1>Hi "+name+" How are you? What are you doing "+name+"? How is life "+name+" </h1></ br>");
-        }
-
-        function myFunction() {
-                //alert("Button is clicked");
-                if ( function() { return x_val=Math.random()*100; } () > 50 )
-                {
-                        alert("Current random number is: "+x_val)
-                        document.body.style.backgroundColor='#00FF00';  }
-                else  
-                { document.body.style.backgroundColor='white';   }
-        return null;
-        }
-
-</script>
-    <body>
-            <h1>First page of website</h1>
-            <button onclick="myFunction()"> Click me </button>
             <a href="javascript:void(document.body.style.backgroundColor='#00FF00');"> Click
-here to make the page green </a>
-    </body>
+here to make the page back-ground green </a>
+            
+</body>
 </html>
