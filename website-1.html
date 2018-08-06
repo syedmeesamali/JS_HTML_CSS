@@ -5,47 +5,32 @@
                 <h2>Please enter the value of sales in box below to calculate commission!</h2>
         </div>
         <title>Commission Calculator</title>
-        <script>
-        //Below script takes care of the calculation being output on the document. 
         
-        
-        
-        function calculateCommission() {
-                const tier1 = 0.08;
-                const tier2 = 0.12;
-                const tier3 = 0.14;
-                const tier4 = 0.15;
-                salesValue=salesDone;
-                if(salesValue>0 & salesValue<=10000) {
-                        return salesValue*tier1;
-                } else if (salesValue>10000 & salesValue<=18000) {
-                        return salesValue*tier2;
-                } else if (salesValue>=18000 & salesValue<=25000) {
-                        return salesValue*tier3;
-                } else if(salesValue>25000) {
-                        return salesValue*tier4;
-                } else {
-                        return 0;
-                }
-                
-        }
-        document.write("</ br> The commission for above mentioned sales is: <h1>" + 50 +
-                "</h1></ br>");
-        </script>
 </head>
 
     <body>    
-            <input type="text" id='salesInput'></input><br>
-            <input type="button" id='salesCommission'> Calculate Commission </button><br><br>
+            <button id="clickMe">Click Me!</button>
+        <p>
+        You've clicked the button <span id="num1"> 0 times</span>.
         <script>
-        var button=document.getElementById('salesCommission');
-        var salesDone=document.getElementById('salesInput').innerHTML;
-        //button.addEventListener('click',calculateCommission(salesDone));
-        button.addEventListener('click',calculateCommission(50));
+        var clicks=0;
+        function clickHandler(){
+                clicks++;
+                var numClicksSpan=document.getElementById('num1');
+                if (clicks==1)
+                        numClicksSpan.innerHTML=' Once';
+                else if (clicks>40) {
+                        numClicksSpan.innerHTML=clicks + ' times! ';
+                        numClicksSpan.innerHTML.bold=true;
+                        alert("Clicks exceeded 40 !!!"); }
+                else {
+                        numClicksSpan.innerHTML=clicks + ' times! '; }
+        }
+        var button=document.getElementById('clickMe');
+        button.addEventListener('click',clickHandler);
         </script>
-
-            <a href="javascript:void(document.body.style.backgroundColor='#00FF00');"> Click
-here to make the page back-ground green </a>
-            
+        <br>
+        <a href="javascript:void(document.body.style.backgroundColor='yellow');"> 
+                Click here to make the page back-ground Yellow. </a>
 </body>
 </html>

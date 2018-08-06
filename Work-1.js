@@ -47,3 +47,26 @@ function minimumNum(a,b){
                 }
                 return result;
         }
+//Below function is used to calculate the amount of commission for a particular value of sales.
+//This is my first attempt to transfer my functions from VBA (Excel) to JavaScript.
+function calculateCommission(salesValue) {
+                const tier1 = 0.08;
+                const tier2 = 0.12;
+                const tier3 = 0.14;
+                const tier4 = 0.15;
+                salesValue=document.getElementById('salesInput').innerHTML;
+                if(salesValue>0 & salesValue<=10000) {
+                        return salesValue*tier1;
+                } else if (salesValue>10000 & salesValue<=18000) {
+                        return salesValue*tier2;
+                } else if (salesValue>=18000 & salesValue<=25000) {
+                        return salesValue*tier3;
+                } else if(salesValue>25000) {
+                        return salesValue*tier4;
+                } else {
+                        return 0;
+                }
+                
+        }
+        document.write("</ br> The commission for above mentioned sales is: <h1>" + calculateCommission(salesValue) +
+                "</h1></ br>");
