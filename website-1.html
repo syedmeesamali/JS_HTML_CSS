@@ -2,9 +2,10 @@
 <html>
 <head>
         <div>
-                <h2>Please enter the value of sales in box below to calculate commission!</h2>
+                <h2>Example with JQuery</h2>
         </div>
-        <title>Commission Calculator</title>
+        <script src="jQuery.js"></script>
+        <title>Jquery example</title>
         
 </head>
 
@@ -16,19 +17,37 @@
         var clicks=0;
         function clickHandler(){
                 clicks++;
-                var numClicksSpan=document.getElementById('num1');
+                var numClicksSpan=$('#num1');
                 if (clicks==1)
-                        numClicksSpan.innerHTML=' Once';
+                        numClicksSpan.html(" Once");
                 else if (clicks>40) {
-                        numClicksSpan.innerHTML=clicks + ' times! ';
-                        numClicksSpan.innerHTML.bold=true;
+                        numClicksSpan.html(clicks + ' times! ');
                         alert("Clicks exceeded 40 !!!"); }
                 else {
-                        numClicksSpan.innerHTML=clicks + ' times! '; }
+                        numClicksSpan.html(clicks + ' times! ');
         }
-        var button=document.getElementById('clickMe');
-        button.addEventListener('click',clickHandler);
+        }
+        var button=$('#clickMe');
+        button.click(clickHandler);
         </script>
+        <p>
+        <input id="itemField"></input>
+        <p>
+        <ul>
+                <span id="list"></span>
+        </ul>
+        <script>
+        function keyPressHandler(e){
+                if(e.keyCode==13){
+                        $('#list').append('<li>' + $('#itemField').val() + '</li>');
+                        $('#itemField').val('');
+                }
+        }
+
+        $('#itemField').keyup(keyPressHandler);
+        
+        </script>
+
         <br>
         <a href="javascript:void(document.body.style.backgroundColor='yellow');"> 
                 Click here to make the page back-ground Yellow. </a>
