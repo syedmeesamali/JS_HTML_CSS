@@ -2,7 +2,7 @@
 <html>
 <head>
         <div>
-                <h2>Example with JQuery</h2>
+                <h2>Examples with JQuery</h2>
         </div>
         <script src="jQuery.js"></script>
         <title>Jquery example</title>
@@ -37,9 +37,11 @@
                 <span id="list"></span>
         </ul>
         <script>
+        count=0
         function keyPressHandler(e){
                 if(e.keyCode==13){
-                        $('#list').append('<li>' + $('#itemField').val() + '</li>');
+                        count++;
+                        $('#list').append('<li> Item # ' + count + " is " + $('#itemField').val() + '</li>');
                         $('#itemField').val('');
                 }
         }
