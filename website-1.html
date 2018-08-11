@@ -5,6 +5,7 @@
                 <h2>Examples with JQuery</h2>
         </div>
         <script src="jQuery.js"></script>
+        <script src="Func-2.js"></script>
         <title>Jquery example</title>
         
 </head>
@@ -31,6 +32,8 @@
         button.click(clickHandler);
         </script>
         <p>
+        <li> Item # 1</li>
+        <li> Item # 2</li>
         <input id="itemField"></input>
         <p>
         <ul>
@@ -45,9 +48,11 @@
                         $('#itemField').val('');
                 }
         }
-
         $('#itemField').keyup(keyPressHandler);
-        
+        $('li').click(function() {
+                $(this).css('font-weight','bold');
+        }
+        );
         </script>
 
         <br>
