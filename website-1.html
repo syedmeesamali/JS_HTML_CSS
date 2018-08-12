@@ -34,6 +34,9 @@
         <p>
         <li> Item # 1</li>
         <li> Item # 2</li>
+        <li> Item # 3</li>
+        <li> Item # 4</li>
+        <li> Item # 5</li>
         <input id="itemField"></input>
         <p>
         <ul>
@@ -49,10 +52,16 @@
                 }
         }
         $('#itemField').keyup(keyPressHandler);
-        $('li').click(function() {
+        $('li').hover(function() {
                 $(this).css('font-weight','bold');
+                $(this).css('color','red');
         }
-        );
+        , (function() {
+                $(this).css('font-weight','normal');
+                $(this).css('color','black');
+        }
+        )
+)
         </script>
 
         <br>

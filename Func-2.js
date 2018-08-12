@@ -35,3 +35,24 @@ function isEven(n){
         return isEven(n-2);
     }
 }
+//Count occurence of some character in a string
+function countB(strA){
+    count=0;
+    for (let i=0;i<=strA.length;i++){
+        if (strA[i]=="B") {
+        count++;
+        }
+    }
+    return count;
+}
+
+//Count occurence of some character in a string
+function countChar(mainStr,charToCount){
+    count=0;
+    for (let i=0;i<=mainStr.length;i++){
+        if (mainStr[i]==charToCount) {
+        count++;
+        }
+    }
+    return count;
+}
