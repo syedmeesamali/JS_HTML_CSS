@@ -2,70 +2,23 @@
 <html>
 <head>
         <div>
-                <h2>Examples with JQuery</h2>
+                <h2>Examples with JQuery & Forms</h2>
         </div>
         <script src="jQuery.js"></script>
-        <script src="Func-2.js"></script>
-        <title>Jquery example</title>
-        
+        <title>Form Examples</title>
+        <script>
+        function greet(){
+                alert('hello '+document.getElementById("name").value);
+        }
+        </script> 
 </head>
 
-    <body>    
-            <button id="clickMe">Click Me!</button>
-        <p>
-        You've clicked the button <span id="num1"> 0 times</span>.
-        <script>
-        var clicks=0;
-        function clickHandler(){
-                clicks++;
-                var numClicksSpan=$('#num1');
-                if (clicks==1)
-                        numClicksSpan.html(" Once");
-                else if (clicks>40) {
-                        numClicksSpan.html(clicks + ' times! ');
-                        alert("Clicks exceeded 40 !!!"); }
-                else {
-                        numClicksSpan.html(clicks + ' times! ');
-        }
-        }
-        var button=$('#clickMe');
-        button.click(clickHandler);
-        </script>
-        <p>
-        <li> Item # 1</li>
-        <li> Item # 2</li>
-        <li> Item # 3</li>
-        <li> Item # 4</li>
-        <li> Item # 5</li>
-        <input id="itemField"></input>
-        <p>
-        <ul>
-                <span id="list"></span>
-        </ul>
-        <script>
-        count=0
-        function keyPressHandler(e){
-                if(e.keyCode==13){
-                        count++;
-                        $('#list').append('<li> Item # ' + count + " is " + $('#itemField').val() + '</li>');
-                        $('#itemField').val('');
-                }
-        }
-        $('#itemField').keyup(keyPressHandler);
-        $('li').hover(function() {
-                $(this).css('font-weight','bold');
-                $(this).css('color','red');
-        }
-        , (function() {
-                $(this).css('font-weight','normal');
-                $(this).css('color','black');
-        }
-        )
-)
-        </script>
-
-        <br>
-        <a href="javascript:void(document.body.style.backgroundColor='yellow');"> 
-                Click here to make the page back-ground Yellow. </a>
+<body>    
+        <form id="demo" onsubmit="greet(); return false;">
+                <input id="name" placeholder="name" type="text"/>
+                <input type="submit"/>
+        </form>
+            
+        
 </body>
 </html>
