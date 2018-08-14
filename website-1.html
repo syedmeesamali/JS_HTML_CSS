@@ -6,7 +6,16 @@
         </div>
         <script src="jQuery.js"></script>
         <title>Form Examples</title>
+
         
+<script>
+        $(document).ready(function(){
+                $('#demo').submit(function(event){
+                        alert("hello "+$('#name').val()+" !");
+                        event.preventDefault();
+                })
+        })
+</script>     
 </head>
 
 <body>    
@@ -14,12 +23,7 @@
                 <input id="name" placeholder="name" type="text"/>
                 <input type="submit"/>
         </form>
-<script>
-        document.getElementById("demo").onsubmit=function()
-        {
-                alert("Hello "+ document.getElementById("name").value);
-        }
-</script>                     
+                
         
 </body>
 </html>
