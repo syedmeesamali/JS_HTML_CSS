@@ -6,19 +6,20 @@
         </div>
         <script src="jQuery.js"></script>
         <title>Form Examples</title>
-        <script>
-        function greet(){
-                alert('hello '+document.getElementById("name").value);
-        }
-        </script> 
+        
 </head>
 
 <body>    
-        <form id="demo" onsubmit="greet(); return false;">
+        <form id="demo">
                 <input id="name" placeholder="name" type="text"/>
                 <input type="submit"/>
         </form>
-            
+<script>
+        document.getElementById("demo").onsubmit=function()
+        {
+                alert("Hello "+ document.getElementById("name").value);
+        }
+</script>                     
         
 </body>
 </html>
