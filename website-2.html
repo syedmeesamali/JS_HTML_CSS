@@ -1,7 +1,7 @@
 <!doctype html>
 <head>
     <title>New Work</title>
-
+    <script src="jQuery.js"></script>
 </head>
 <body>
     <form action="/register" id="registration" method="GET">
@@ -13,25 +13,31 @@
     
     </form>
     <script>
-        var form = document.getElementById("registration");
-        form.onsubmit = function(){
-            if (form.email.value ==''){
+        //JQuery version
+        $(document).ready(function(){
+            $('registration').submit(function(){
+                if ($('#registration input[name=email]').val() == ''){
                 alert("Mising Email!");
                 return false;
-            } else if (form.password.value =='') {
+            } 
+                else if ($('#registration input[name=password]').val() == '') {
                 alert("Mising Password!");
                 return false;
             }
-              else if (form.password.value != form.confirmation.value){
+                else if ($('#registration input[name=password]').val() != $('#registration input[name=password (again)]').val()){
                   alert("Passwords don't match!")
                   return false;
-            } else if (!form.agreement.checked){
+            }   
+             /*   else if ($('#registration input[name=agreement]').checked){
                   alert("Checkbox not checked");
                   return false;
-            } else {
+            } */
+                else {
                 return true;
             }
-        }
+            })
+            
+        })
     
     </script>
 
