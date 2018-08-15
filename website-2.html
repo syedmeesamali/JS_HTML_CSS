@@ -1,0 +1,39 @@
+<!doctype html>
+<head>
+    <title>New Work</title>
+
+</head>
+<body>
+    <form action="/register" id="registration" method="GET">
+        <input name="email" placeholder="Email" type="text">
+        <input name="password" placeholder="password" type="password">
+        <input name="confirmation" placeholder="password (again)" type="password">
+        <input name="agreement" type="checkbox">I Agree 
+        <input type="submit" value="Register">  
+    
+    </form>
+    <script>
+        var form = document.getElementById("registration");
+        form.onsubmit = function(){
+            if (form.email.value ==''){
+                alert("Mising Email!");
+                return false;
+            } else if (form.password.value =='') {
+                alert("Mising Password!");
+                return false;
+            }
+              else if (form.password.value != form.confirmation.value){
+                  alert("Passwords don't match!")
+                  return false;
+            } else if (!form.agreement.checked){
+                  alert("Checkbox not checked");
+                  return false;
+            } else {
+                return true;
+            }
+        }
+    
+    </script>
+
+</body>
+</html>
