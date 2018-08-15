@@ -4,11 +4,34 @@
 <h1>
     Calculate commission based on sales!
 </h1>
+<script src="jQuery.js"></script>
 </head>
 <body>
-<input id="salesVal"> Input Sales value
-
-
+<input id="sales" type="text"> Input Sales value
+<p>Commission value is: <span id="result"></span>
+</p>
+<script>
+$(document).ready(function (){
+    //If enter is pressed then process the below.
+    $("#sales").keyup(function(event){
+        if (event.which == 13) {
+            var salesVal = $("#sales").val();
+            //Commission value for various sales amounts
+            
+            if (salesVal < 15000) {
+                    $("#result").text(salesVal*0.05);
+            } else if (salesVal > 15000 & salesVal < 25000) {
+                    $("#result").text(salesVal*0.1);
+            } else if (salesVal >= 25000 & salesVal <= 35000) {
+                    $("#result").text(salesVal*0.15);
+            } else {
+                    $("#result").text(salesVal*0.2);
+            }
+            
+        }
+    });
+});
+</script>
 
 </body>
 </html>
