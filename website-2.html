@@ -7,7 +7,7 @@
     <form action="/register" id="registration" method="GET">
         <input name="email" placeholder="Email" type="text">
         <input name="password" placeholder="password" type="password">
-        <input name="confirmation" placeholder="password (again)" type="password">
+        <input name="cpassword" placeholder="password (again)" type="password">
         <input name="agreement" type="checkbox">I Agree 
         <input type="submit" value="Register">  
     
@@ -15,26 +15,25 @@
     <script>
         //JQuery version
         $(document).ready(function(){
-            $('registration').submit(function(){
-                if ($('#registration input[name=email]').val() == ''){
-                alert("Mising Email!");
-                return false;
-            } 
-                else if ($('#registration input[name=password]').val() == '') {
-                alert("Mising Password!");
-                return false;
-            }
-                else if ($('#registration input[name=password]').val() != $('#registration input[name=password (again)]').val()){
-                  alert("Passwords don't match!")
-                  return false;
-            }   
+            $('#registration').submit(function(){
+                event.preventDefault();
+                var email = $("#email").val();
+                var password = $("#password").val();
+                var cpassword = $("#cpassword").val();   
+                if (email == '' || password == '' || cpassword == '') {
+                    alert("Please fill all fields...!!!!!!");
+                    } else if ((password.length) < 8) {
+                    alert("Password should atleast 8 character in length...!!!!!!");
+                    } else if (!(password).match(cpassword)) {
+                    alert("Your passwords don't match. Try again?");
+                    } else {
+                    return true;
+                    }
+
              /*   else if ($('#registration input[name=agreement]').checked){
                   alert("Checkbox not checked");
                   return false;
             } */
-                else {
-                return true;
-            }
             })
             
         })

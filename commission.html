@@ -6,9 +6,23 @@
 </h1>
 <script src="jQuery.js"></script>
 </head>
+
 <body>
+<style>
+h2 {
+    color: red;
+    text-decoration: underline;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: yellow;
+    width: 150px;
+    border: 10px solid green;
+    padding: 10px;
+    margin: 10px;
+}
+</style>
+
 <input id="sales" type="text"> Input Sales value
-<p>Commission value is: <span id="result"></span>
+<p>Commission value is: <h2><span id="result"></span></h2>
 </p>
 <script>
 $(document).ready(function (){
@@ -25,7 +39,7 @@ $(document).ready(function (){
             } else if (salesVal >= 25000 & salesVal <= 35000) {
                     $("#result").text(salesVal*0.15);
             } else {
-                    $("#result").text(salesVal*0.2);
+                    $("#result").text("AED "+salesVal*0.2);
             }
             
         }
