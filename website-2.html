@@ -4,24 +4,36 @@
     <script src="jQuery.js"></script>
 </head>
 <body>
-<ul>
+<ul class="highlight">
     <li>Dog</li>
     <li>Cat</li>
     <li>Elephant</li>
     <li>Tiger</li>
 </ul>
+<p>
+<ul>
+    <li>Canary</li>
+    <li>Eagle</li>
+</ul>
 <script>
 //Change CSS of element when the mouse enter event happens
-$('li').mouseenter(function(){
+$("ul.highlight").find("li").on({
+    mouseenter: function(){
     $(this).css('color','red');
     $(this).css('font-size','120%');
-});
+},
 
-//Change CSS of element to normal when the mouse leave
-$('li').mouseleave(function(){
+mouseleave: function(){
     $(this).css('color','black');
     $(this).css('font-size','100%');
+},
+
+click: function(){
+    $(this).css('background-color','yellow');
+}
 });
+
+
 </script>
 
 </body>
