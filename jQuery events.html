@@ -15,8 +15,8 @@
 
 <!--Form to give options to make a selection-->
 <input type="radio" name="species" value="dog">Dog</input>
-<input type="radio" name="species" value="dog">Cat</input>
-<input type="radio" name="species" value="dog">Bird</input>
+<input type="radio" name="species" value="cat">Cat</input>
+<input type="radio" name="species" value="bird">Bird</input>
 
 <p>
 
@@ -33,6 +33,37 @@
 
     $("select[name='choose']").change(function(){
         $("#genderSpan").html($(this).val());
+    });
+
+    $("input:radio[name='species']").change(function(){
+        if ($(this).prop('checked')) {
+            $("#speciesSpan").html($(this).val());
+        }
+        
+    });
+    //For checkbox we need to define an array to save the state of checked elements.
+    var allChecked = [];
+    
+    $("input:checkbox").change(function(){
+        var value=$(this).val();
+        if ($(this).prop('checked')) {
+            allChecked.push(value);
+        } else {
+            var index = allChecked.indexOf(value);
+            if (index!=-1) {
+                allChecked.splice(index,1);
+            }
+        }
+
+        $("#featureSpan").html('');
+        for (var i=0; i<allChecked.length; i++) {
+            $("#featureSpan").append(allChecked[i]);
+            if (i < allChecked.length - 1)
+                $("#featureSpan").append(", ");
+            else
+                $("#featureSpan").append(' ');
+        }
+
     });
 
 </script>
