@@ -47,10 +47,12 @@
     $("input:checkbox").change(function(){
         var value=$(this).val();
         if ($(this).prop('checked')) {
+        //Add to the array if the current box is checked (rotating through all boxes)
             allChecked.push(value);
-        } else {
+        } else {//this element got un-checked
             var index = allChecked.indexOf(value);
             if (index!=-1) {
+                //Remove the elements starting at "index" and then next is the number of elements to remove i.e. 1 in our case
                 allChecked.splice(index,1);
             }
         }
