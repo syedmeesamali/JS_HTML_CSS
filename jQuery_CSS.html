@@ -1,0 +1,37 @@
+<!doctype html>
+<head>
+    <title>jQuery Events</title>
+    <script src="jQuery.js"></script>
+</head>
+<body>
+<header>
+    <h1>
+        Some text inside H1 tag.
+    </h1>
+    <h2>
+        <div>
+            This will change with jQuery as its direct parent-child.
+        </div>
+    </h2>
+
+    <div>
+        <h3>
+            This won't change with jQuery as its not direct parent-child.
+        </h3>
+    </div>
+        
+</header>
+
+<script>
+$(function(){
+    $('header > h1').text("Text from the script for H1. Nor original one");
+    $('header > h2').text("Text from the script for H2. Nor original one");
+    //due to hierarchy below won't change as h3's text is inside div id=demo and not direct child of h3.
+    $('header > h3').text("Text from the script for H3. Won't show");
+})
+
+</script>
+
+
+</body>
+</html>
