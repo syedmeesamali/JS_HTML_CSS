@@ -1,0 +1,35 @@
+<!doctype html>
+<head>
+    <title>Functions Work</title>
+    <script src="jQuery.js"></script>
+</head>
+<body>
+
+<script>
+
+//Below function repeats some function toDo for "numberTimes" specified
+function doSomething(toDo,numberTimes){
+    for (var counter=0;counter<=numberTimes;counter++){
+        toDo();
+    }
+}
+
+//Either we can use below function name of can use anonymous function
+function randomFunction(){
+    document.write("Some Text <br />")
+}
+
+//Here anonymous function is used to do some task
+doSomething(function(){
+    document.write("Some Text <br />")
+},5)
+
+//Below example uses the settimeout function to delay execution of same function
+setTimeout(() => {
+    doSomething(randomFunction,10)
+}, 2000);
+
+</script>
+
+</body>
+</html>
