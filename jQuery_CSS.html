@@ -19,19 +19,49 @@
             This won't change with jQuery as its not direct parent-child.
         </h3>
     </div>
-        
-</header>
 
+<style>
+body {
+    font-size: 32px;
+}
+
+div {
+    margin-top: 0.1em;
+}
+
+.parent{
+    margin-left: .8em;
+}
+
+.child{
+    margin-left: 1.6em;
+}
+
+</style>
+</header>
+<div id="target" style="color: black">
+    Grandparent
+    <div style="color: black" class="parent">
+    -Parent
+    <div style="color: black" class="child">-First Child</div>
+    <div style="color: black" class="child">-Second Child</div>
+    </div>
+</div>
 <script>
 $(function(){
+    
     $('header > h1').text("Text from the script for H1. Nor original one");
     $('header > h2').text("Text from the script for H2. Nor original one");
     //due to hierarchy below won't change as h3's text is inside div id=demo and not direct child of h3.
     $('header > h3').text("Text from the script for H3. Won't show");
+    //below will change the color for element having id of target
+    $("#target").attr('style','color: red');
+    //below will locate all direct children
+    $("#target").children().attr('style','color: red');
+
 })
 
 </script>
-
 
 </body>
 </html>
