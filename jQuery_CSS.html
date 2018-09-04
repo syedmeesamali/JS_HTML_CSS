@@ -44,7 +44,7 @@ div {
     <div style="color: black" class="parent">
     -Parent
     <div style="color: black" class="child">-First Child</div>
-    <div style="color: black" class="child">-Second Child</div>
+    <div style="color: black" class="child" id="demo">-Second Child</div>
     </div>
 </div>
 <script>
@@ -57,8 +57,9 @@ $(function(){
     //below will change the color for element having id of target
     $("#target").attr('style','color: red');
     //below will locate all direct children
-    $("#target").children().attr('style','color: red');
-
+    //$("#target").children().attr('style','color: red');
+    //below will turn the parent of second child (having id=demo) to red
+    $("#demo").parent().attr('style','color: red');
 })
 
 </script>
