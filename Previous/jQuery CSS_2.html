@@ -1,0 +1,41 @@
+<!doctype html>
+<head>
+    <title>jQuery Events</title>
+    <script src="jQuery.js"></script>
+</head>
+<body>
+<div id="container">
+    <div> First </div>
+    <div> Second </div>
+    <div> Third </div>
+    <div id="target"> Fourth (Target) </div>
+    <div> Fifth </div>
+    <div> Sixth </div>
+    <div> Seventh </div>
+</div>
+
+<div id="display"></div>
+
+<script>
+$(function(){
+    //Grab the element first
+    var element = $("#target");
+    //Grab the main container in which we have to do selector based search
+    var container = $("#container");
+    var index = container.children().index(element);
+    //Below will display the index of target i.e. currently 3
+    $('#display').text('index is '+index);
+    //Below will not work as there is not direct attr method for the get (index) 
+    //container.children().get(index).attr('style','color:red');
+
+    //Below will work and will get the element
+    var foundElement = container.children().get(index);
+    //Conver the found element to jQuery form
+    var jQueryObj = $(foundElement);
+    //Now we can use the attributes to this newly formed jQuery object
+    jQueryObj.attr('style','color:red');
+});
+</script>
+
+</body>
+</html>
