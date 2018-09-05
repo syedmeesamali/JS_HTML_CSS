@@ -7,3 +7,5 @@ This repo contains various source code files for homeworks related to edx course
 4. "petstore.js" is for HW-2 of javascript course from edx
 5. "petstore.html" is for hosting the "petstore.js" script file.
 6. This readme is not as regularly updated. Best way to see updates in any repo is by seeing the comment of any latest commits. I try to keep my commits descriptive.
+7. "Previous" folder stores all the files i complete work (mostly tutorials related at the moment (05 Sept 2018).
+8. "Functions" folder is to store various function files as independent .js files or any functional programming related exercises. 
