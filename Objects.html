@@ -1,23 +1,42 @@
 <!doctype html>
 <head>
-    <title>Objects in js</title>
+    <title>Dynamic Update of List based on User Input</title>
     <script src="jQuery.js"></script>
 </head>
 <body>
 An example of Dynamic list and Assignment (IvanOnTech Course)
-<h1> MY favorite Fruit List </h1>
+<br>
+<p>
+<input id="addFruits" type="text"> <br> Please input the fruit to be added in list below and press ENTER key
+
+<h1> MY favorite Fruit List (Updated using jQuery) </h1>
 <ol id="fruitlist">
-    
 </ol>
 
+
+
 <script>
-//Below script will automatically update the fruit-list
-var fruits = ["Apple", "Orange", "Bananas", "Mangoes"];
-var list = $("#fruitlist");
-$.each(fruits,function(index,value){
-    var listItem = $("<li/>").text(value).appendTo(list);
-    //console.log(index,value);
-})
+//Invoke function when the document is ready
+$(document).ready(function(){
+    //Define the initial array of fruits
+    var fruits = ["Apple", "Orange", "Bananas", "Mangoes", "PineApple"];
+    var list = $("#fruitlist");
+            //Below function updates and displays the actual updated fruit list
+            $.each(fruits,function(index,value){
+                $("<li/>").text(value).appendTo(list);
+            });
+    
+    //Below code will check for enter key pressed in text box and will add the fruit to the end of array
+    $("#addFruits").keyup(function(event){
+        if (event.which == 13) {
+            var newFruit = $("#addFruits").val();
+            $("#fruitlist").append("<li>" + newFruit + "</li>");
+            $("#addFruits").val('');
+        }
+    });
+    
+});
+    
 
 </script>
 </body>
