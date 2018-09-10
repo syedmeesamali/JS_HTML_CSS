@@ -1,0 +1,33 @@
+<!doctype html>
+<head>
+    <title>Material Calculation</title>
+    <script src="jQuery.js"></script>
+</head>
+<body>
+<h2>Material Calculation for Various Materials Required</h2>
+<br>
+<p>
+<input id="dia" type="text"> <br> Diameter of bar
+<input id="depth" type="text"> <br> Depth of Anchor (mm)
+<input id="hole_width" type="text"> <br> Width of Drilling
+<input id="drill_nos" type="text"> <br> Number of Anchors
+
+Total amount of material required is: <p id="result">00 ml</p>
+<button id="calculate">Calculate Epoxy</button>
+
+<script>
+//Invoke function when the document is ready
+$(document).ready(function(){
+    $("#dia").keyup(function(event){
+        if (event.which == 13) {
+            var diaVal = $("#dia").val();
+            
+        }
+    });
+    
+});
+    
+
+</script>
+</body>
+</html>
