@@ -2,27 +2,51 @@
 <head>
     <title>Material Calculation</title>
     <script src="jQuery.js"></script>
+
+<style>
+input[type=text] {
+    border: none;
+    border-bottom: 2px solid red;
+}
+
+#result {
+    color: red;
+    text-decoration: underline;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: yellow;
+    width: 250px;
+    border: 1px solid green;
+    padding: 1px;
+    margin: 1px;
+}
+</style>
+
 </head>
 <body>
 <h2>Material Calculation for Various Materials Required</h2>
 <br>
 <p>
-<input id="dia" type="text"> <br> Diameter of bar
-<input id="depth" type="text"> <br> Depth of Anchor (mm)
-<input id="hole_width" type="text"> <br> Width of Drilling
-<input id="drill_nos" type="text"> <br> Number of Anchors
-
-Total amount of material required is: <p id="result">00 ml</p>
-<button id="calculate">Calculate Epoxy</button>
+<h3>1. Calculation for Anchoring Epoxy</h3>
+<input id="dia" type="text"> Diameter of bar: 
+<input id="depth" type="text"> Depth of Anchor (mm):
+<input id="hole_width" type="text">Width of Drilling:
+<input id="drill_nos" type="text">Number of Anchors:
+<p>
+Total amount of material required is: <span id="result">00 ml </span> </p>
+<br><button id="calculate">Calculate Epoxy</button>
 
 <script>
 //Invoke function when the document is ready
 $(document).ready(function(){
-    $("#dia").keyup(function(event){
-        if (event.which == 13) {
-            var diaVal = $("#dia").val();
-            
-        }
+    $("#calculate").click(function(){
+        var dia = $('#dia').val();
+        var depth = $('#depth').val();
+        var hole_width = $('#hole_width').val();
+        var drill_nos = $('#drill_nos').val();
+        var annular = (3.141*((hole_width/2)^2))*depth;
+        var rebar_vol = (3.141*((dia/2)^2))*depth;
+        var result = ((annular-rebar_vol)/(1*10^6))*drill_nos;
+        $('#result').text(result+" sachets only")
     });
     
 });
