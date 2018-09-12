@@ -1,18 +1,30 @@
 <!doctype html>
+<!--This page is property of SYED MEESAM ALI-->
 <head>
     <title>Material Calculation</title>
     <script src="jQuery.js"></script>
 
 <style>
-input[type=text] {
-    border: none;
-    border-bottom: 2px solid red;
+* {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+input[type=text] {
+    border-style: solid;
+    border-bottom: 2px solid red;
+    background-color:yellow;
+}
+label {
+    display: inline-block;
+    width: 210px;
+    text-align: left;
+    background-color:lime;
+}
 #result {
     color: red;
     text-decoration: underline;
     font-family: Arial, Helvetica, sans-serif;
+    
     background-color: yellow;
     width: 250px;
     border: 1px solid green;
@@ -23,14 +35,21 @@ input[type=text] {
 
 </head>
 <body>
-<h2>Material Calculation for Various Materials Required</h2>
+<h2 style="background-color:DodgerBlue;">Material Calculation for Various Materials Required</h2>
 <br>
+<form>
+    <select name="choose">
+        <option value="300ml">300ml Sachet</option>
+        <option value="500ml">500ml Sachet</option>
+    </select>
+</form>
+
 <p>
 <h3>1. Calculation for Anchoring Epoxy</h3>
-<input id="dia" type="text"> Diameter of bar: 
-<input id="depth" type="text"> Depth of Anchor (mm):
-<input id="hole_width" type="text">Width of Drilling:
-<input id="drill_nos" type="text">Number of Anchors:
+<label for="dia">Diameter of bar:</label> <input id="dia" type="text"><br> <br>
+<label for="depth">Depth of Anchor (mm):</label> <input id="depth" type="text">  <br><br>
+<label for="hole_width">Width of Drilling:</label> <input id="hole_width" type="text"> <br><br>
+<label for="drill_nos">Number of Anchors:</label> <input id="drill_nos" type="text"> <br><br>
 <p>
 Total amount of material required is: <span id="result">00 ml </span> </p>
 <br><button id="calculate">Calculate Epoxy</button>
@@ -43,14 +62,33 @@ $(document).ready(function(){
         var depth = $('#depth').val();
         var hole_width = $('#hole_width').val();
         var drill_nos = $('#drill_nos').val();
-        var annular = (3.141*((hole_width/2)^2))*depth;
-        var rebar_vol = (3.141*((dia/2)^2))*depth;
-        var result = ((annular-rebar_vol)/(1*10^6))*drill_nos;
-        $('#result').text(result+" sachets only")
+        var annular = (Math.PI*((hole_width/2)**2))*depth;
+        var rebar_vol = (Math.PI*((dia/2)**2))*depth;
+        var result = ((((annular-rebar_vol)/(Math.pow(10,6)))*drill_nos)/0.3)*1.25;
+        result = result.toFixed(2);
+        $('#result').text(result+" [300ml] sachets only")
     });
     
 });
     
+$("select[name='choose']").change(function(){
+            //Check which sachet type is selected to update the result value
+            //alert($(this).val());
+            var sachet = $(this).val();
+            if (sachet == "500ml") {
+                var dia = $('#dia').val();
+                var depth = $('#depth').val();
+                var hole_width = $('#hole_width').val();
+                var drill_nos = $('#drill_nos').val();
+                var annular = (Math.PI*((hole_width/2)**2))*depth;
+                var rebar_vol = (Math.PI*((dia/2)**2))*depth;
+                var result = ((((annular-rebar_vol)/(Math.pow(10,6)))*drill_nos)/0.5)*1.25;
+                result = result.toFixed(2);
+                $('#result').text(result+" [500ml] sachets only")
+            } 
+
+    });
+
 
 </script>
 </body>
