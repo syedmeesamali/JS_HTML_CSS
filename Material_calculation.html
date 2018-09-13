@@ -52,26 +52,13 @@ label {
 <label for="drill_nos">Number of Anchors:</label> <input id="drill_nos" type="text"> <br><br>
 <p>
 Total amount of material required is: <span id="result">00 ml </span> </p>
-<br><button id="calculate">Calculate Epoxy</button>
+
 
 <script>
 //Invoke function when the document is ready
 $(document).ready(function(){
-    $("#calculate").click(function(){
-        var dia = $('#dia').val();
-        var depth = $('#depth').val();
-        var hole_width = $('#hole_width').val();
-        var drill_nos = $('#drill_nos').val();
-        var annular = (Math.PI*((hole_width/2)**2))*depth;
-        var rebar_vol = (Math.PI*((dia/2)**2))*depth;
-        var result = ((((annular-rebar_vol)/(Math.pow(10,6)))*drill_nos)/0.3)*1.25;
-        result = result.toFixed(2);
-        $('#result').text(result+" [300ml] sachets only")
-    });
     
-});
-    
-$("select[name='choose']").change(function(){
+    $("select[name='choose']").change(function(){
             //Check which sachet type is selected to update the result value
             //alert($(this).val());
             var sachet = $(this).val();
@@ -85,9 +72,22 @@ $("select[name='choose']").change(function(){
                 var result = ((((annular-rebar_vol)/(Math.pow(10,6)))*drill_nos)/0.5)*1.25;
                 result = result.toFixed(2);
                 $('#result').text(result+" [500ml] sachets only")
-            } 
+            } else {
+                var dia = $('#dia').val();
+                var depth = $('#depth').val();
+                var hole_width = $('#hole_width').val();
+                var drill_nos = $('#drill_nos').val();
+                var annular = (Math.PI*((hole_width/2)**2))*depth;
+                var rebar_vol = (Math.PI*((dia/2)**2))*depth;
+                var result = ((((annular-rebar_vol)/(Math.pow(10,6)))*drill_nos)/0.3)*1.25;
+                result = result.toFixed(2);
+                $('#result').text(result+" [300ml] sachets only")
+            }
 
     });
+});
+    
+
 
 
 </script>
