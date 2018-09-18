@@ -15,6 +15,8 @@ $(document).ready(function(){
             if (btn >= '0' && btn <= '9') {
             //Separate Handler functions for numbers and Operators
                 handleNumber(btn);
+            } else if (btn == 'C') {
+                handleClear(btn);
             } else {
                 handleOperator(btn);
             }
@@ -24,38 +26,63 @@ $(document).ready(function(){
 //Number handling function
 function handleNumber(num) {
     displayBtn(num);
-    var numb1 = num;
+    if (num1 === '' && operator ==='') {
+        num1 = num;
+        operator = '';
+
+    } else {
+        num2 = num;
+    }
+}
+
+//Clear the Calculator screen
+function handleClear(num) {
+    $('#display').val('');
 }
 
 //Operator handling function
 function handleOperator(oper) {
-    operator = oper;
+    num1 = $('#display').val();
     displayBtn(oper);
-
+    if (operator ==='') {
+        operator = oper;
+    } else {
+        handleTotal();
+        operator = oper;
+    }
 }
 
 //Display the current button pressed
-function displayBtn(itemTo) {
-    $('#display').val(itemTo);
+function displayBtn(item) {
+    if ($('#display').val() == '') {
+        $('#display').val(item);    
+    } else {
+        $('#display').val($('#display').val() + item);
+    }
+    
 }
+
 
 function handleTotal() {
     switch (operator) {
         case '+':
             total = +num1 + +num2;
-            displayButton(total);
+            displayBtn(total);
             break;
         case '-':
             total = +num1 - +num2;
-            displayButton(total);
+            displayBtn(total);
             break;
         case '&#247':
             total = +num1 / +num2;
-            displayButton(total);
+            displayBtn(total);
             break;
         case '*':
             total = +num1 * +num2;
-            displayButton(total);
+            displayBtn(total);
+            break;
+        case '=':
+            handleTotal();
             break;
     }
     updateVariables();
