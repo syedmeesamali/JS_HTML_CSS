@@ -28,11 +28,10 @@ $(document).ready(function(){
    
 //Number handling function
 function handleNumber(num) {    
-    if ($('#display').val() == 'CLEAR' ||
-        $('#display').val() == '+' || $('#display').val() == '-'
-            || $('#display').val() == '*' || $('#display').val() == '&#247') {
-        
+    if ($('#display').val() == '+' || $('#display').val() == '-'
+            || $('#display').val() == '*' || $('#display').val() == '/') {
     $('#display').val('');
+    $('#display').val($('#display').val() + num);
     } else {
         $('#display').val($('#display').val() + num);
         if (operator !='') {
@@ -50,7 +49,6 @@ function handleOperator(oper) {
     if (num1 =='') {
         num1 = $('#display').val();
         operator = oper;
-        console.log(oper);
         $('#display').val(oper);
     }
     
@@ -77,7 +75,7 @@ function handleTotal() {
             total = +num1 - +num2;
             $('#display').val(total);
             break;
-        case '&#247':
+        case '/':
             total = +num1 / +num2;
             $('#display').val(total);
             break;
