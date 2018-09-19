@@ -12,15 +12,6 @@ $(document).ready(function(){
         $('button').on('click',function(e){
             //Capture the button clicked
             let btn = e.target.innerHTML;
-            //Check if the display area is clear then don't allow operators
-            if ($('#display').val() == '' || $('#display').val() == 'CLEAR' ||
-            $('#display').val() == '+' || $('#display').val() == '-'
-            || $('#display').val() == '*' || $('#display').val() == '&#247') {
-                if (btn >= '0' && btn <= '9') {
-                //Separate Handler functions for numbers and Operators
-                    handleNumber(btn);
-                } else { handleClear(); }
-            } else {
                     if (btn >= '0' && btn <= '9') {
                     //Separate Handler functions for numbers and Operators
                         handleNumber(btn);
@@ -33,42 +24,36 @@ $(document).ready(function(){
                     else {
                         handleOperator(btn);
                     }   
-              }
-   });      
-
+              });
+   
 //Number handling function
-function handleNumber(num) {
-    /*
-    if ($('#display').val() == '+' || $('#display').val() == '-'
-    || $('#display').val() == '*' || $('#display').val() == '&#247') {
-        $('#display').val(item);
+function handleNumber(num) {    
+    if ($('#display').val() == 'CLEAR' ||
+        $('#display').val() == '+' || $('#display').val() == '-'
+            || $('#display').val() == '*' || $('#display').val() == '&#247') {
+        
+    $('#display').val('');
     } else {
-    //Concatenate subsequent presses if NUMERIC
-        $('#display').val($('#display').val() + item);
-    } */
+        $('#display').val($('#display').val() + num);
+        if (operator !='') {
+            num2 = $('#display').val();
+        }
+    }
     
-    displayBtn(num);
-    if (num1 === '' && operator ==='') {
-        num1 = num;
-    } else {
-        num2 = num;
+    if (operator !='') {
+        num2 = $('#display').val();
     }
 }
 
 //Operator handling function
 function handleOperator(oper) {
-    //Save existing shown number as num1
-    num1 = $('#display').val();
-    //Clear the display
-    $('#display').val('');
-    //Show the operator
-    displayBtn(oper);
-    if (operator === '') {
+    if (num1 =='') {
+        num1 = $('#display').val();
         operator = oper;
-    } else {
-        handleTotal();
-        operator = oper;
+        console.log(oper);
+        $('#display').val(oper);
     }
+    
 }
 
 //Clear the Calculator screen
@@ -81,38 +66,24 @@ function handleClear() {
 }
 
 
-//Display the current button pressed
-function displayBtn(item) {
-    //If display is empty or CLEAR or any operators then take that item and show
-    if ($('#display').val() == '' || $('#display').val() == 'CLEAR' ||
-    $('#display').val() == '+' || $('#display').val() == '-'
-    || $('#display').val() == '*' || $('#display').val() == '&#247') {
-        $('#display').val(item);
-    } else {
-    //Concatenate subsequent presses if NUMERIC
-        $('#display').val($('#display').val() + item);
-    }
-    
-}
-
 //Below function calculates the total based on the input buttons and operators
 function handleTotal() {
     switch (operator) {
         case '+':
             total = +num1 + +num2;
-            displayBtn(total);
+            $('#display').val(total);
             break;
         case '-':
             total = +num1 - +num2;
-            displayBtn(total);
+            $('#display').val(total);
             break;
         case '&#247':
             total = +num1 / +num2;
-            displayBtn(total);
+            $('#display').val(total);
             break;
         case '*':
             total = +num1 * +num2;
-            displayBtn(total);
+            $('#display').val(total);
             break;
     }
     updateVariables();
