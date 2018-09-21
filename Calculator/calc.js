@@ -56,7 +56,7 @@ function handleOperator(oper) {
 
 //Clear the Calculator screen
 function handleClear() {
-    $('#display').val('CLEAR');
+    $('#display').val('');
     num1 = '';
     num2 = '';
     operator = '';
