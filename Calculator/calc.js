@@ -50,7 +50,11 @@ function handleOperator(oper) {
         num1 = $('#display').val();
         operator = oper;
         $('#display').val(oper);
+    } else {
+        operator = oper;
+        $('#display').val(oper);
     }
+    
     
 }
 
