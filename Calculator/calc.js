@@ -7,6 +7,7 @@ var num2 = '';
 var operator = '';
 var total = '';
 var opFlag = false;
+var num2Flag = false;
 
 $(document).ready(function(){
 
@@ -19,9 +20,16 @@ $(document).ready(function(){
                     } else if (btn == 'C') {
                         handleClear();
                     } else if (btn == '=') {
-                        num2 = $('#display').val();
-                        $('#display').val('');
-                        handleTotal();
+                    //Should not calculate total if num2 is empty
+                        if (operator != '' && num2Flag == true) {
+                            num2 = $('#display').val();
+                            $('#display').val('');
+                            handleTotal();
+                        } else {
+                            $('#display').val('');
+                            handleTotal();
+                        }
+                        
                     }
                     else {
                         handleOperator(btn);
@@ -30,22 +38,25 @@ $(document).ready(function(){
    
 //Number handling function
 function handleNumber(num) {    
-    //Start with first condition
+    //Start with first condition - Take first number as below
     if (num1 == '' && opFlag == false) {
         $('#display').val($('#display').val() + num);
+    //Take second number below and set flag to false to not continue condition
     } else if (num2 == '' && opFlag == true) {
         $('#display').val('');
         opFlag = false;
         $('#display').val($('#display').val() + num);
         }
+     //Below will let us input the second number similar to first one
      else {
+        num2Flag = true;
         $('#display').val($('#display').val() + num);
     }
 }
 
 //Operator handling function
 function handleOperator(oper) {
-    if (num1 =='') {
+    if (num1 == '') {
         //After operator is pressed, take the shown value as num1
         num1 = $('#display').val();
         operator = oper;
