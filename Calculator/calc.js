@@ -6,6 +6,7 @@ var num1 = '';
 var num2 = '';
 var operator = '';
 var total = '';
+var opFlag = false;
 
 $(document).ready(function(){
 
@@ -18,6 +19,7 @@ $(document).ready(function(){
                     } else if (btn == 'C') {
                         handleClear();
                     } else if (btn == '=') {
+                        num2 = $('#display').val();
                         $('#display').val('');
                         handleTotal();
                     }
@@ -28,34 +30,31 @@ $(document).ready(function(){
    
 //Number handling function
 function handleNumber(num) {    
-    if ($('#display').val() == '+' || $('#display').val() == '-'
-            || $('#display').val() == '*' || $('#display').val() == '/') {
-    $('#display').val('');
-    $('#display').val($('#display').val() + num);
-    } else {
+    //Start with first condition
+    if (num1 == '' && opFlag == false) {
         $('#display').val($('#display').val() + num);
-        if (operator !='') {
-            num2 = $('#display').val();
+    } else if (num2 == '' && opFlag == true) {
+        $('#display').val('');
+        opFlag = false;
+        $('#display').val($('#display').val() + num);
         }
-    }
-    
-    if (operator !='') {
-        num2 = $('#display').val();
+     else {
+        $('#display').val($('#display').val() + num);
     }
 }
 
 //Operator handling function
 function handleOperator(oper) {
     if (num1 =='') {
+        //After operator is pressed, take the shown value as num1
         num1 = $('#display').val();
         operator = oper;
-        $('#display').val(oper);
+        opFlag = true;
     } else {
         operator = oper;
-        $('#display').val(oper);
+        opFlag = true;
+       // $('#display').val(oper);
     }
-    
-    
 }
 
 //Clear the Calculator screen
