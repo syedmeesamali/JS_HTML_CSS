@@ -1,7 +1,7 @@
 /*
  * Implement all your JavaScript in this file!
  */
-
+"use strict";
 var num1 = '';
 var num2 = '';
 var operator = '';
