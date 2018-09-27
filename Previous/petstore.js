@@ -39,11 +39,14 @@ function mostPopularDays(week) {
  *         empty array if the array's lengths are unequal or zero, or if any array is null.
  */
 function createAnimalObjects(names, types, breeds) {
-    new Animal 
+    var Animals = [];
+    var names = ['Dog', 'Cat', 'Tiger', 'Eagle'];
+    var types = ['Local', 'Persian', 'Bengal', 'American'];
+    var breeds = ['gulf', 'jungle', 'forest', 'river'];
+    for (var i=0; i<=names.length; i++) {
+        Animals.push(Animal(names[i], types[i], breeds[i]));
+    }
 }
-
-ali=new Person("ali shah",33);
-console.log("name is"+ali.name+" and age is "+ali.age+"and message is "+ali.message)
 
 function addNums(a,b) {
     return a+b;

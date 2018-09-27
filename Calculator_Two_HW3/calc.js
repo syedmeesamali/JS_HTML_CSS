@@ -7,7 +7,7 @@ $(document).ready(function(){
         let btn = e.target;
         const action = btn.dataset.action;
         if (!action){
-            console.log("Number key pressed")
+            console.log("Some key pressed")
         }
 
     });
