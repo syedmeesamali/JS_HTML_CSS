@@ -38,19 +38,20 @@ function mostPopularDays(week) {
  * @return an array of Animal objects containing the animals' information, or an
  *         empty array if the array's lengths are unequal or zero, or if any array is null.
  */
-function createAnimalObjects(names, types, breeds) {
-    var Animals = [];
-    var names = ['Dog', 'Cat', 'Tiger', 'Eagle'];
-    var types = ['Local', 'Persian', 'Bengal', 'American'];
-    var breeds = ['gulf', 'jungle', 'forest', 'river'];
-    for (var i=0; i<=names.length; i++) {
-        Animals.push(Animal(names[i], types[i], breeds[i]));
-    }
-}
+var Animals = [];
+var names = ['Dog', 'Cat', 'Tiger', 'Eagle'];
+var types = ['Local', 'Persian', 'Bengal', 'American'];
+var breeds = ['gulf', 'jungle', 'forest', 'river'];
 
-function addNums(a,b) {
-    return a+b;
+function createAnimalObjects(names, types, breeds) {
+    for (var i=0; i<names.length; i++) {
+        Animals[i] = new Animal(names[i], types[i], breeds[i]);
+    }
+    return Animals;
 }
+createAnimalObjects(names,types,breeds);
+console.log(Animals);
+
 
 /////////////////////////////////////////////////////////////////
 //
