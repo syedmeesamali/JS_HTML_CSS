@@ -22,32 +22,25 @@ function calculateFoodOrder(numAnimals, avgFood) {
  * @return a string containing the name of the most popular day of the week if there is only one most popular day, and an array of the strings containing the names of the 
  * most popular days if there are more than one that are most popular
  */
-var week = [];
+
 var weekDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday','Friday', 'Saturday', 'Sunday'];
-var trafficData = [35,34,20,34,27,32,26];
+var trafficData = [35,34,20,34,20,32,26];
 
 function mostPopularDays(week) {
-    for (var i=0; i<weekDays.length; i++) {
-        week[i] = new Weekday(weekDays[i], trafficData[i]);
-   }
-    return week;
-}
-
-//Below function is developed to return an array containing count of each animal.
-function compressArray(original) {
     var compressed = [];
-    var copy = original.slice(0);
-    for (var i=0; i<original.length; i++) {
+    var week = trafficData.slice(0);
+    var copy = trafficData.slice(0);
+    for (var i=0; i<week.length; i++) {
         myCount = 0;
         for (var w=0; w<copy.length; w++) {
-            if (original[i] == copy[w]) {
+            if (trafficData[i] == copy[w]) {
                 myCount ++;
                 delete copy[w];
             }
         }
         if (myCount > 0) {
             var a = new Object();
-            a.value = original[i];
+            a.value = weekDays[i];
             a.count = myCount;
             compressed.push(a);
         }
@@ -55,7 +48,7 @@ function compressArray(original) {
     return compressed;
 }
 
-newArray = compressArray(trafficData);
+newArray = mostPopularDays(weekDays);
 console.log(newArray);
 //console.log(week);
 
@@ -82,14 +75,11 @@ function createAnimalObjects(names, types, breeds) {
     return Animals;
 }
 
-
-
 /////////////////////////////////////////////////////////////////
 //
 //  Do not change any code below here!
 //
 /////////////////////////////////////////////////////////////////
-
 
 /**
  * A prototype to create Weekday objects
