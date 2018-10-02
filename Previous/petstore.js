@@ -1,4 +1,3 @@
-
 /**
  * This function should calculate the total amount of pet food that should be
  * ordered for the upcoming week.
@@ -24,34 +23,23 @@ function calculateFoodOrder(numAnimals, avgFood) {
  */
 
 var weekDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday','Friday', 'Saturday', 'Sunday'];
-var trafficData = [35,34,20,34,20,32,26];
+var trafficData = [34,35,37,34,20,35,37];
 
 function mostPopularDays(week) {
-    var compressed = [];
+    var maxArr = [];
     var week = trafficData.slice(0);
-    var copy = trafficData.slice(0);
+    var maxVal = Math.max(...week);
     for (var i=0; i<week.length; i++) {
-        myCount = 0;
-        for (var w=0; w<copy.length; w++) {
-            if (trafficData[i] == copy[w]) {
-                myCount ++;
-                delete copy[w];
-            }
-        }
-        if (myCount > 0) {
+        if (week[i] == maxVal) {
             var a = new Object();
             a.value = weekDays[i];
-            a.count = myCount;
-            compressed.push(a);
+            a.count = maxVal;
+            maxArr.push(a);
         }
     }
-    return compressed;
+    return maxArr;
 }
-
-newArray = mostPopularDays(weekDays);
-console.log(newArray);
-//console.log(week);
-
+console.log(mostPopularDays(trafficData));
 /**
  * Given three arrays of equal length containing information about a list of
  * animals - where names[i], types[i], and breeds[i] all relate to a single
