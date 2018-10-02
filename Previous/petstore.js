@@ -8,7 +8,11 @@
  * 				 week, or -1 if the numAnimals or avgFood are less than 0 or non-numeric
  */
 function calculateFoodOrder(numAnimals, avgFood) {
-    // IMPLEMENT THIS FUNCTION!
+    if (numAnimals < 0 || avgFood < 0 || (isNaN(numAnimals) == true) 
+       || (isNaN(avgFood) == true)) {
+           return -1;
+       }
+    return numAnimals * avgFood * 7;
 }
 
 /**
@@ -24,6 +28,11 @@ function calculateFoodOrder(numAnimals, avgFood) {
 
 var weekDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday','Friday', 'Saturday', 'Sunday'];
 var trafficData = [34,35,37,34,20,35,37];
+weekArray = [];
+for (var j=0; j<weekDays.length; j++) {
+    weekArray[j] = new Weekday(weekDays[j], trafficData[j]);
+}
+//console.log(weekArray);
 
 function mostPopularDays(week) {
     var maxArr = [];
@@ -39,7 +48,7 @@ function mostPopularDays(week) {
     }
     return maxArr;
 }
-console.log(mostPopularDays(trafficData));
+//console.log(mostPopularDays(trafficData));
 /**
  * Given three arrays of equal length containing information about a list of
  * animals - where names[i], types[i], and breeds[i] all relate to a single
