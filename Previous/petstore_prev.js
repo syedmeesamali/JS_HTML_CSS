@@ -27,21 +27,25 @@ function calculateFoodOrder(numAnimals, avgFood) {
  * most popular days if there are more than one that are most popular
  */
 
+var weekDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday','Friday', 'Saturday', 'Sunday'];
+var trafficData = [34,35,36,34,20,35,37];
+var weekArray = [];
+for (var j=0; j<weekDays.length; j++) {
+    weekArray[j] = new Weekday(weekDays[j], trafficData[j]);
+};
 
+console.log(mostPopularDays(weekDays))
 function mostPopularDays(week) {
     var maxArr = [];
-    var week1 = [];
-    for (var k=0; k<week.length; k++) {
-        week1.push(week[k].traffic);
-    }
+    var week = trafficData;
     if (week != null || week != undefined) {
-        var maxVal = Math.max(...week1);
-        for (var i=0; i<week1.length; i++) {
-            if (week1[i] == maxVal) {
-                maxArr.push(week[i].name);
+        var maxVal = Math.max(...week);
+        for (var i=0; i<week.length; i++) {
+            if (week[i] == maxVal) {
+                maxArr.push(weekDays[i]);
             }
-    } 
-    return maxArr;
+    }
+    return maxArr;    
     } else {
     return null;
     }
@@ -58,6 +62,11 @@ function mostPopularDays(week) {
  * @return an array of Animal objects containing the animals' information, or an
  *         empty array if the array's lengths are unequal or zero, or if any array is null.
  */
+
+var Animals = [];
+var names = ['Dog', 'Cat', 'Tiger', 'Eagle'];
+var types = ['Local', 'Persian', 'Bengal', 'American'];
+var breeds = ['gulf', 'jungle', 'forest', 'river'];
 
 function createAnimalObjects(names, types, breeds) {    
     if (names != undefined || types != undefined || breeds != undefined
