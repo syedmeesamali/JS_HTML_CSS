@@ -27,7 +27,6 @@ function calculateFoodOrder(numAnimals, avgFood) {
  * most popular days if there are more than one that are most popular
  */
 
-
 function mostPopularDays(week) {
     var maxArr = [];
     var week1 = [];
