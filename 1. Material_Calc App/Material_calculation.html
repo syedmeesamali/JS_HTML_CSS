@@ -10,22 +10,33 @@
     box-sizing: border-box;
 }
 
-.split {
+html, body, section {
     height: 100%;
-    width: 50%;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    overflow-x: hidden;
-    padding-top: 20px;
+}
+body {
+    text-align: left;
+}
+
+.split {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
 }
 
 .left {
-    left: 0;
+    background: lightgoldenrodyellow;
+    padding: 1 rem;
+    flex: 1;
 }
 
 .right {
-    right: 0;
+    background: lightgoldenrodyellow;
+    padding: 1 rem;
+    flex: 1;
+}
+
+.main_container {
+    display: flex;
 }
 
 input[type=text] {
@@ -42,18 +53,84 @@ label {
 #result, #result_bags{
     color: red;
     text-decoration: underline;
-    font-family: Arial, Helvetica, sans-serif;
-    
+    font-family: Arial, Helvetica, sans-serif; 
     background-color: yellow;
     width: 250px;
     border: 1px solid green;
     padding: 1px;
     margin: 1px;
 }
+
+.container td {
+	  font-weight: normal;
+	  font-size: 1.2em;
+  -webkit-box-shadow: 0 2px 2px -2px #0E1119;
+	   -moz-box-shadow: 0 2px 2px -2px #0E1119;
+	        box-shadow: 0 2px 2px -2px #0E1119;
+}
+
+.container {
+	  text-align: left;
+	  overflow: hidden;
+	  width: 80%;
+	  margin: 0 auto;
+      display: table;
+      padding: 0 0 8em 0;
+}
+
+.container td, .container th {
+	  padding-bottom: 2%;
+	  padding-top: 2%;
+  padding-left:2%;  
+}
+
+/* Background-color of the odd rows */
+.container tr:nth-child(odd) {
+	  background-color: lightgreen;
+}
+
+/* Background-color of the even rows */
+.container tr:nth-child(even) {
+	  background-color:lightgrey;
+}
+
+.container th {
+	  background-color: lightskyblue;
+}
+
+.container td:first-child { color:red; }
+
+.container tr:hover {
+   background-color: #464A52;
+-webkit-box-shadow: 0 6px 6px -6px #0E1119;
+	   -moz-box-shadow: 0 6px 6px -6px #0E1119;
+	        box-shadow: 0 6px 6px -6px #0E1119;
+}
+
+.container td:hover {
+  background-color: #FFF842;
+  color: #403E10;
+  font-weight: bold;
+  
+  box-shadow: #7F7C21 -1px 1px, #7F7C21 -2px 2px, #7F7C21 -3px 3px, #7F7C21 -4px 4px, #7F7C21 -5px 5px, #7F7C21 -6px 6px;
+  transform: translate3d(6px, -6px, 0);
+  
+  transition-delay: 0s;
+	  transition-duration: 0.4s;
+	  transition-property: all;
+  transition-timing-function: line;
+}
+
+@media (max-width: 800px) {
+.container td:nth-child(4),
+.container th:nth-child(4) { display: none; }
+}
+
 </style>
 
 </head>
 <body>
+<section class="main_container">
 <div class="split left">
 <h2 style="background-color:DodgerBlue;">Material Calculation for Various Materials Required</h2>
 <br>
@@ -65,7 +142,7 @@ label {
             <option value="conmix">Conmix</option>
         </select>
 </form>
-<img src="main1.png">
+<img src="main1.png" width="250" height="150">
 <p>
 <label for="dia">Diameter of bar:</label> 
 <input id="dia" type="text" placeholder="Enter dia."><br> <br>
@@ -86,7 +163,7 @@ Total amount of material required is: <span id="result">00 ml </span> </p>
             <option value="50kg">50 Kg Bags</option>
         </select>
 </form> <p>
-<img src="main2.png">
+<img src="main2.png" width="300" height="300">
 <p>
 <label for="slab_a">Area in SQM:</label> 
 <input id="slab_a" type="text" placeholder="Area (sqm)"><br> <br>
@@ -99,19 +176,48 @@ Total amount of bags required is: <span id="result_bags">00 Bags </span> </p>
 <div class="split right">
     <br>
     <p>
-    <input id="addFruits" placeholder="Write fruit" type="text"> 
-    <button id="addFruit">Add fruit to list</button>
-    <br> Please input the fruit to be added in list below and press ENTER key
-    
-    <h1> MY favorite Fruit List (Updated using jQuery) </h1>
-    <ol id="fruitlist">
-    </ol>
-    
-    
-
-
-
-
+            <table class="container">
+                    <thead>
+                        <tr>
+                            <th><h3>Supplier</h3></th>
+                            <th><h3>Material Name</h3></th>
+                            <th><h3>Packaging</h3></th>
+                            <th><h3>General Price</h3></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Conmix</td>
+                            <td>NanoGrout SG</td>
+                            <td>3 Ltr</td>
+                            <td>115</td>
+                        </tr>
+                        <tr>
+                            <td>Conmix</td>
+                            <td>ReCon MC5mm</td>
+                            <td>25 Kg</td>
+                            <td>13.5</td>
+                        </tr>
+                        <tr>
+                            <td>Sika</td>
+                            <td>Anchor Fix-2</td>
+                            <td>12 pc box</td>
+                            <td>415</td>
+                        </tr>
+                    <tr>
+                            <td>Sika</td>
+                            <td>Sikacrete 113-PP</td>
+                            <td>25 Kg</td>
+                            <td>19</td>
+                        </tr>
+                    <tr>
+                            <td>Sika</td>
+                            <td>Sikadur 30-LP</td>
+                            <td>6 Kg</td>
+                            <td>200</td>
+                        </tr>
+                    </tbody>
+                </table>
 </div>
 
 <script>
@@ -164,10 +270,9 @@ $(document).ready(function(){
 
 
 });
-    
-
-
 
 </script>
+</section>
+
 </body>
 </html>
