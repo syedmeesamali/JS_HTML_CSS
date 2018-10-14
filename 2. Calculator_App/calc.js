@@ -64,13 +64,9 @@ function handleOperator(oper) {
         num1 = $('#display').val();
         operator = oper;
         opFlag = true;
-        console.log("Operator 1st if: " + operator);
-        console.log("Total flag is: " + totFlag);
     } else {
         //operator = oper;
         opFlag = true;
-        console.log("Operator second if: " + operator);
-        console.log("Total flag is: " + totFlag);
     }
 }
 
@@ -108,17 +104,12 @@ function handleTotal() {
 function updateVariables() {
     if (num1 != '' && operator != '' && num2 !='') {
         totFlag = true;
-        console.log("total flag is set");
     } else {
         totFlag = false;
-        console.log("total flag CLEAR");
     }
     
     num1 = total;
     num2 = num2;
-    console.log("opflag: " + opFlag);
-    console.log("num1: " + num1);
-    console.log("num2: " + num2);
 }
 
 });
