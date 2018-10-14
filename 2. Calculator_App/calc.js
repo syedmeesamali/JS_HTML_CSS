@@ -8,6 +8,7 @@ var operator = '';
 var total = '';
 var opFlag = false;
 var num2Flag = false;
+var totFlag = false;
 
 $(document).ready(function(){
 
@@ -38,27 +39,38 @@ $(document).ready(function(){
 function handleNumber(num) {    
     if (num1 == '' && opFlag == false) {
             $('#display').val($('#display').val() + num);
-        } else if (opFlag == true) {
-            $('#display').val('');
-            opFlag = false;
-            num2Flag = true;
-            $('#display').val($('#display').val() + num);
-        } else {
-            num2Flag = true;
-            $('#display').val($('#display').val() + num);
+        } else if (opFlag == true && totFlag == false) {
+                $('#display').val('');
+                opFlag = false;
+                num2Flag = true;
+                $('#display').val($('#display').val() + num);
+            } else if (opFlag == false && totFlag == true) {
+                $('#display').val('');
+                num1 = '';
+                opFlag = false;
+                totFlag = false;
+                num2Flag = true;
+                $('#display').val($('#display').val() + num);
+            } else {
+                num2Flag = true;
+                $('#display').val($('#display').val() + num);
         }
         
 }
 
 //Operator handling function
 function handleOperator(oper) {
-    if (num1 == '') {
+    if (num1 == '' && opFlag != true) {
         num1 = $('#display').val();
         operator = oper;
         opFlag = true;
+        console.log("Operator 1st if: " + operator);
+        console.log("Total flag is: " + totFlag);
     } else {
-        operator = oper;
+        //operator = oper;
         opFlag = true;
+        console.log("Operator second if: " + operator);
+        console.log("Total flag is: " + totFlag);
     }
 }
 
@@ -71,6 +83,7 @@ function handleClear() {
     total = '';
     opFlag = false;
     num2Flag = false;
+    totFlag = false;
 }
 
 
@@ -93,8 +106,19 @@ function handleTotal() {
 }
 
 function updateVariables() {
+    if (num1 != '' && operator != '' && num2 !='') {
+        totFlag = true;
+        console.log("total flag is set");
+    } else {
+        totFlag = false;
+        console.log("total flag CLEAR");
+    }
+    
     num1 = total;
     num2 = num2;
+    console.log("opflag: " + opFlag);
+    console.log("num1: " + num1);
+    console.log("num2: " + num2);
 }
 
 });
