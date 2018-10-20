@@ -6,10 +6,18 @@ Returns an array containing all the numbers from start up to and
 
 function range(start,end, step) {
     var myArr = [];
-    for (var k=start; k<=end; k+=step) {
-        myArr.push(k);
+    if (start < end) {
+        for (var k=start; k<=end; k+=step) {
+            myArr.push(k);
+        }
+        return myArr;
+    } else {
+        for (var k=start; k>=end; k+=step) {
+            myArr.push(k);
+        }
+        return myArr;
     }
-    return myArr;
+    
 }
 
 function sumArr(arr) {
@@ -18,4 +26,12 @@ function sumArr(arr) {
         total += arr[i];
     }
     return total;
+}
+
+function reverseArray(arr) {
+    var newArr = [];
+    for (var k=(arr.length); k>=0; k--) {
+        newArr.push(arr[k]);
+    }
+    return newArr;
 }

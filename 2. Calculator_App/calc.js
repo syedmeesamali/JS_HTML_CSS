@@ -60,13 +60,13 @@ function handleNumber(num) {
 
 //Operator handling function
 function handleOperator(oper) {
-    if (num1 == '' && opFlag != true) {
+    if (num1 == '' && opFlag == false) {
         num1 = $('#display').val();
         operator = oper;
         opFlag = true;
     } else {
         //operator = oper;
-        opFlag = true;
+        opFlag = false;
     }
 }
 
