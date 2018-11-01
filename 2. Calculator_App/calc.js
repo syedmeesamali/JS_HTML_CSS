@@ -6,9 +6,10 @@ var num1 = '';
 var num2 = '';
 var operator = '';
 var total = '';
+var opCount = 0;
 var opFlag = false;
 var num2Flag = false;
-var totFlag = false;
+var totCount = 0;
 
 $(document).ready(function(){
 
@@ -20,12 +21,16 @@ $(document).ready(function(){
                     } else if (btn == 'C') {
                         handleClear();
                     } else if (btn == '=') {
-                        if (num2Flag == true) {
+                        totCount ++ ;
+                        if (num2Flag == false) {
+                            console.log("Num2flag: " + num2Flag)
                             num2 = $('#display').val();
                             $('#display').val('');
-                            num2Flag = false;
+                            num2Flag = true;
                             handleTotal();
                         } else {
+                            num2 = $('#display').val();
+                            console.log("Num2flag: " + num2Flag)
                             $('#display').val('');
                             handleTotal();
                         }
@@ -37,36 +42,52 @@ $(document).ready(function(){
    
 //Number handling function
 function handleNumber(num) {    
-    if (num1 == '' && opFlag == false) {
-            $('#display').val($('#display').val() + num);
-        } else if (opFlag == true && totFlag == false) {
-                $('#display').val('');
-                opFlag = false;
-                num2Flag = true;
-                $('#display').val($('#display').val() + num);
-            } else if (opFlag == false && totFlag == true) {
-                $('#display').val('');
-                num1 = '';
-                opFlag = false;
-                totFlag = false;
-                num2Flag = true;
-                $('#display').val($('#display').val() + num);
-            } else {
-                num2Flag = true;
-                $('#display').val($('#display').val() + num);
-        }
-        
+    console.log("Num1 is: "+num1);
+    console.log("OpCount is: "+opCount);
+    if (opCount == 1 && opFlag == true) {
+        $('#display').val('');
+        opFlag = false;
+        $('#display').val($('#display').val() + num);
+    } else if (opCount == 1 && totCount == 1) {
+        $('#display').val('');
+        totCount ++;
+        $('#display').val($('#display').val() + num);
+    } else if (opCount == 2 && totCount == 2) {
+        $('#display').val('');
+        totCount = 1;
+        $('#display').val($('#display').val() + num);
+    } else {
+        $('#display').val($('#display').val() + num);
+    }
 }
 
 //Operator handling function
 function handleOperator(oper) {
-    if (num1 == '' && opFlag == false) {
+    opCount++;
+    opFlag = true;
+    if (opCount == 1) {
         num1 = $('#display').val();
         operator = oper;
-        opFlag = true;
-    } else {
+        console.log("Num1 is: "+num1);
+        console.log("OpCount is: "+opCount);
+        console.log("Oper is: "+operator);
+        console.log("Total Count is: "+totCount);
+    } else if (opCount == 2) {
         //operator = oper;
-        opFlag = false;
+        num1 = $('#display').val();
+        operator = oper;
+        console.log("Num1 is: "+num1);
+        console.log("OpCount is: "+opCount);
+        console.log("Oper is: "+operator);
+        console.log("Total Count is: "+totCount);
+    } else {
+        num1 = $('#display').val();
+        operator = oper;
+        console.log("Num1 is: "+num1);
+        console.log("OpCount is: "+opCount);
+        console.log("Oper is: "+operator);
+        console.log("Total Count is: "+totCount);
+        opCount = 0;
     }
 }
 
@@ -77,9 +98,10 @@ function handleClear() {
     num2 = '';
     operator = '';
     total = '';
-    opFlag = false;
+    opCount = 0;
+    opFlag = false
     num2Flag = false;
-    totFlag = false;
+    totCount = 0;
 }
 
 
@@ -98,17 +120,16 @@ function handleTotal() {
         total = (+num1) / (+num2);
         $('#display').val(total);
    }
-    updateVariables();
+   console.log("Num1: " + num1);
+   console.log("Num2: " + num2);
+   console.log("Oper: " + operator);
+
+   updateVariables();
 }
 
-function updateVariables() {
-    if (num1 != '' && operator != '' && num2 !='') {
-        totFlag = true;
-    } else {
-        totFlag = false;
-    }
-    
-    num1 = total;
+
+function updateVariables() { 
+    num1 = '';
     num2 = num2;
 }
 
