@@ -3,14 +3,15 @@
   <title> React JS Examples </title>
   <script src="react.js"></script>
   <script src="react-dom.js"></script>
+  <script src="https://unpkg.com/babel-standalone@6.15.0/babel.js"></script>
 </head>
 
 <body>
 <div id="container"></div>
 <script type="text/jsx">
-ReactDOM.render(
-  "Hello React World", document.getElementbyId('container'));
 
+  const element = <h1>Hello World</h1>;
+  ReactDOM.render(element, document.getElementById('container'));
 
 </script>
 
