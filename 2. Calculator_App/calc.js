@@ -6,10 +6,10 @@ var num1 = '';
 var num2 = '';
 var operator = '';
 var total = '';
-var opCount = 0;
 var opFlag = false;
 var num2Flag = false;
-var totCount = 0;
+var totFlag = false;
+var nonNumFlag = false;
 
 $(document).ready(function(){
 
@@ -17,44 +17,47 @@ $(document).ready(function(){
             //Capture the button clicked
             let btn = e.target.innerHTML;
                     if (btn >= '0' && btn <= '9') {
+                        nonNumFlag = false;
                         handleNumber(btn);
                     } else if (btn == 'C') {
+                        nonNumFlag = true;
                         handleClear();
                     } else if (btn == '=') {
-                        totCount ++ ;
+                        totFlag = true;
+                        nonNumFlag = true;
+                        /*
                         if (num2Flag == false) {
-                            console.log("Num2flag: " + num2Flag)
                             num2 = $('#display').val();
                             $('#display').val('');
                             num2Flag = true;
                             handleTotal();
                         } else {
                             num2 = $('#display').val();
-                            console.log("Num2flag: " + num2Flag)
                             $('#display').val('');
-                            handleTotal();
-                        }
+                          */  
+                         handleTotal();
+                        
                     }
                     else {
+                        nonNumFlag = true;
                         handleOperator(btn);
                     }   
               });
    
 //Number handling function
 function handleNumber(num) {    
-    console.log("Num1 is: "+num1);
-    console.log("OpCount is: "+opCount);
-    if (opCount == 1 && opFlag == true) {
+    if (num1 != '' && nonNumFlag == true) {
         $('#display').val('');
-        opFlag = false;
+        nonNumFlag = false;
         $('#display').val($('#display').val() + num);
-    } else if (opCount == 1 && totCount == 1) {
+    } else if (num1 == '' && totFlag == true) {
         $('#display').val('');
-        totCount ++;
+        totFlag = false;
         $('#display').val($('#display').val() + num);
-    } else if (opCount == 2 && totCount == 2) {
+        
+    } else if (nonNumFlag == true && totFlag == false && num2Flag == false) {
         $('#display').val('');
-        totCount = 1;
+        nonNumFlag = false;
         $('#display').val($('#display').val() + num);
     } else {
         $('#display').val($('#display').val() + num);
@@ -63,31 +66,34 @@ function handleNumber(num) {
 
 //Operator handling function
 function handleOperator(oper) {
-    opCount++;
-    opFlag = true;
-    if (opCount == 1) {
-        num1 = $('#display').val();
+    console.log("Num1 is: "+num1+" ----- Num2 is:"+num2);
+    console.log("OpFlag is: "+opFlag+" ----- Num2 is:"+num2Flag);
+    console.log("totFlag is: "+ totFlag+" ---- noNumFlg is:"+nonNumFlag);
+    if (opFlag == false && num2Flag == false && totFlag == false
+        && nonNumFlag == false) {
+        operator = oper;   
+        //Set flags together to visualize better
+        opFlag = true;   num2Flag = true;  nonNumFlag = false;
+        num1 = $('#display').val(); //Because num2Flag is false
+    } else if (opFlag == true && num2Flag == true && totFlag == false 
+        && nonNumFlag == true) {
+        console.log("New Loop for handling");
+        num2 = $('#display').val();
+        num2Flag = false;
+        handleTotal();
         operator = oper;
-        console.log("Num1 is: "+num1);
-        console.log("OpCount is: "+opCount);
-        console.log("Oper is: "+operator);
-        console.log("Total Count is: "+totCount);
-    } else if (opCount == 2) {
-        //operator = oper;
-        num1 = $('#display').val();
-        operator = oper;
-        console.log("Num1 is: "+num1);
-        console.log("OpCount is: "+opCount);
-        console.log("Oper is: "+operator);
-        console.log("Total Count is: "+totCount);
+        nonNumFlag = true;
+    } else if (opFlag == true && num2Flag == false && totFlag == false 
+        && nonNumFlag == true) {
+        console.log("New Loop for handling");
+        num2 = $('#display').val();
+        num2Flag = false;
+        handleTotal();
+        nonNumFlag = true;
     } else {
-        num1 = $('#display').val();
+        opFlag = true;
         operator = oper;
-        console.log("Num1 is: "+num1);
-        console.log("OpCount is: "+opCount);
-        console.log("Oper is: "+operator);
-        console.log("Total Count is: "+totCount);
-        opCount = 0;
+        num1 = $('#display').val();
     }
 }
 
@@ -98,10 +104,10 @@ function handleClear() {
     num2 = '';
     operator = '';
     total = '';
-    opCount = 0;
-    opFlag = false
+    opFlag = false;
+    totFlag = false
     num2Flag = false;
-    totCount = 0;
+    nonNumFlag = false;
 }
 
 
@@ -120,11 +126,11 @@ function handleTotal() {
         total = (+num1) / (+num2);
         $('#display').val(total);
    }
-   console.log("Num1: " + num1);
-   console.log("Num2: " + num2);
-   console.log("Oper: " + operator);
 
    updateVariables();
+   console.log("Num1 is: "+num1+" ----- Num2 is:"+num2);
+   console.log("OpFlag is: "+opFlag+" ----- Num2 is:"+num2Flag);
+   console.log("totFlag is: "+ totFlag+" ---- noNumFlg is:"+nonNumFlag);
 }
 
 
