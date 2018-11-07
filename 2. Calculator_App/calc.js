@@ -46,6 +46,10 @@ $(document).ready(function(){
    
 //Number handling function
 function handleNumber(num) {    
+    console.log("num1: %c["+num1+"]%c num2: %c["+num2+"]%c num: %c["+num+"]"
+    ,'color: red;','color: black;','color: red;','color: black;','color: red;');
+    console.log("OpFlg: %c["+opFlag+"]%c noNumFlg : %c["+nonNumFlag+"]",'color: blue;','color: black;','color: blue;');
+    console.log("num2Flg : %c["+num2Flag+"]%c totFlag: %c["+ totFlag+"]",'color: blue;','color: black;','color: blue;');
     if (num1 != '' && nonNumFlag == true) {
         $('#display').val('');
         nonNumFlag = false;
@@ -66,10 +70,7 @@ function handleNumber(num) {
 
 //Operator handling function
 function handleOperator(oper) {
-    console.log("Num1 is: "+num1+" ----- Num2 is:"+num2);
-    console.log("OpFlag is: "+opFlag+" ----- Num2 is:"+num2Flag);
-    console.log("totFlag is: "+ totFlag+" ---- noNumFlg is:"+nonNumFlag);
-    if (opFlag == false && num2Flag == false && totFlag == false
+    if (num1 == '' && opFlag == false && num2Flag == false && totFlag == false
         && nonNumFlag == false) {
         operator = oper;   
         //Set flags together to visualize better
@@ -95,6 +96,11 @@ function handleOperator(oper) {
         operator = oper;
         num1 = $('#display').val();
     }
+
+    console.log("num1: %c["+num1+"]%c num2: %c["+num2+"]%c num: %c["+oper+"]"
+    ,'color: red;','color: black;','color: red;','color: black;','color: red;');
+    console.log("OpFlg: %c["+opFlag+"]%c noNumFlg : %c["+nonNumFlag+"]",'color: blue;','color: black;','color: blue;');
+    console.log("num2Flg : %c["+num2Flag+"]%c totFlag: %c["+ totFlag+"]",'color: blue;','color: black;','color: blue;');
 }
 
 //Clear the Calculator screen
@@ -128,9 +134,10 @@ function handleTotal() {
    }
 
    updateVariables();
-   console.log("Num1 is: "+num1+" ----- Num2 is:"+num2);
-   console.log("OpFlag is: "+opFlag+" ----- Num2 is:"+num2Flag);
-   console.log("totFlag is: "+ totFlag+" ---- noNumFlg is:"+nonNumFlag);
+   console.log("num1: %c["+num1+"]%c num2: %c["+num2+"]%c num: %c["+operator+"]"
+    ,'color: red;','color: black;','color: red;','color: black;','color: red;');
+   console.log("OpFlg: %c["+opFlag+"]%c noNumFlg : %c["+nonNumFlag+"]",'color: blue;','color: black;','color: blue;');
+   console.log("num2Flg : %c["+num2Flag+"]%c totFlag: %c["+ totFlag+"]",'color: blue;','color: black;','color: blue;');
 }
 
 
