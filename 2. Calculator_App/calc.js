@@ -25,18 +25,16 @@ $(document).ready(function(){
                     } else if (btn == '=') {
                         totFlag = true;
                         nonNumFlag = true;
-                        /*
-                        if (num2Flag == false) {
+                        if (num2Flag == true) {
                             num2 = $('#display').val();
                             $('#display').val('');
-                            num2Flag = true;
+                            num2Flag = false;
                             handleTotal();
                         } else {
                             num2 = $('#display').val();
                             $('#display').val('');
-                          */  
                          handleTotal();
-                        
+                        }
                     }
                     else {
                         nonNumFlag = true;
@@ -46,11 +44,7 @@ $(document).ready(function(){
    
 //Number handling function
 function handleNumber(num) {    
-    console.log("num1: %c["+num1+"]%c num2: %c["+num2+"]%c num: %c["+num+"]"
-    ,'color: red;','color: black;','color: red;','color: black;','color: red;');
-    console.log("OpFlg: %c["+opFlag+"]%c noNumFlg : %c["+nonNumFlag+"]",'color: blue;','color: black;','color: blue;');
-    console.log("num2Flg : %c["+num2Flag+"]%c totFlag: %c["+ totFlag+"]",'color: blue;','color: black;','color: blue;');
-    if (num1 != '' && nonNumFlag == true) {
+    if (nonNumFlag == true && opFlag == true) {
         $('#display').val('');
         nonNumFlag = false;
         $('#display').val($('#display').val() + num);
@@ -58,21 +52,29 @@ function handleNumber(num) {
         $('#display').val('');
         totFlag = false;
         $('#display').val($('#display').val() + num);
-        
-    } else if (nonNumFlag == true && totFlag == false && num2Flag == false) {
+    } else if (totFlag == false && num2Flag == false) {
         $('#display').val('');
         nonNumFlag = false;
+        $('#display').val($('#display').val() + num);
+    } else if (num1 !='' && opFlag == true) {
+        $('#display').val('');
+        nonNumFlag = false;
+        opFlag = false;
         $('#display').val($('#display').val() + num);
     } else {
         $('#display').val($('#display').val() + num);
     }
+    console.log("num1: %c["+num1+"]%c num2: %c["+num2+"]%c num: %c["+num+"]"
+    ,'color: red;','color: black;','color: red;','color: black;','color: red;');
+    console.log("OpFlg: %c["+opFlag+"]%c noNumFlg : %c["+nonNumFlag+"]",'color: blue;','color: black;','color: blue;');
+    console.log("num2Flg : %c["+num2Flag+"]%c totFlag: %c["+ totFlag+"]",'color: blue;','color: black;','color: blue;');
 }
 
 //Operator handling function
 function handleOperator(oper) {
     if (num1 == '' && opFlag == false && num2Flag == false && totFlag == false
-        && nonNumFlag == false) {
-        operator = oper;   
+        && nonNumFlag == true) {
+        operator = oper;
         //Set flags together to visualize better
         opFlag = true;   num2Flag = true;  nonNumFlag = false;
         num1 = $('#display').val(); //Because num2Flag is false
@@ -142,8 +144,8 @@ function handleTotal() {
 
 
 function updateVariables() { 
-    num1 = '';
-    num2 = num2;
+    num1 = total;
+    num2 = num1;
 }
 
 });
