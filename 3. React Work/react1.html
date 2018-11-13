@@ -4,16 +4,19 @@
   <title> React JS Examples </title>
   <script src="react.js"></script>
   <script src="react-dom.js"></script>
-  <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+  
 </head>
 
 <body>
-  First container
+  Use Root instead of "Container" for rendering the REACT elements
 <div id='root'></div>
 <script>
-var dish = React.createElement("h1",null,"Baked Salmon");
-ReactDOM.render(dish,document.getElementById('root'));
+var items = ["1 lb Salmon", "1 cup Pine Nuts", "2 cups Butter Lettuce",
+"1 Yellow Squash","1/2 cup Olive Oil","3 cloves of Garlic"]
+const list1 = React.createElement("ul",{ className: "ingredients"}, items.map(ingredient => 
+React.createElement("li",null,ingredient)));
 
+ReactDOM.render(list1,document.getElementById('root'));
 
 </script>
 </body>
