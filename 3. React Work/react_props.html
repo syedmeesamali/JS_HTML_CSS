@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title> React JS Examples </title>
+  <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
+       <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.24.0/babel.js"></script>
+</head>
+
+<body>
+  Use Root instead of "Container" for rendering the REACT elements
+<div id='root'></div>
+<script type="text/babel">
+
+function ShoppingTitle(props) {
+  return (
+    <div>
+    <h1>{props.title}</h1>
+    <h2>Total number of items: {props.numItems}</h2>
+    </div>
+  )
+}
+
+function LineItem(props) {
+  return <li>{props.item}</li>
+}
+
+function ShoppingTitle(props) {
+  return (
+    <div>
+    <h3>{props.header}</h3>
+    <ol>
+      <LineItem item = {props.items[0]}/>
+      <LineItem item = {props.items[1]}/>
+      <LineItem item = {props.items[2]}/>
+    </ol>
+    </div>
+  )
+}
+
+function ShoppingApp(props){
+return (
+    <div>
+        <ShoppingTitle title = "My Shopping List" numItems = "9"/>
+        <ShoppingList header = "Food" items = {[ "Apple","Bread","Cheese"]}/>
+        <ShoppingList header = "Clothes" items = {[ "Shirt","Pants","Hat"]}/>
+        <ShoppingList header = "Supplies" items = {[ "Pen","Paper","Glue"]}/>
+    </div>
+)
+}
+
+
+ReactDOM.render(<ShoppingApp/>, document.getElementById("root")
+    )
+
+</script>
+</body>
+</html>
