@@ -16,8 +16,8 @@
 function ShoppingTitle(props) {
   return (
     <div>
-    <h1>{props.title}</h1>
-    <h2>Total number of items: {props.numItems}</h2>
+      <h1>{props.title}</h1>
+      <h2>Total number of items: {props.numItems}</h2>
     </div>
   )
 }
@@ -26,15 +26,15 @@ function LineItem(props) {
   return <li>{props.item}</li>
 }
 
-function ShoppingTitle(props) {
+function ShoppingList(props) {
   return (
     <div>
     <h3>{props.header}</h3>
-    <ol>
-      <LineItem item = {props.items[0]}/>
-      <LineItem item = {props.items[1]}/>
-      <LineItem item = {props.items[2]}/>
-    </ol>
+      <ol>
+        <LineItem item = {props.items[0]}/>
+        <LineItem item = {props.items[1]}/>
+        <LineItem item = {props.items[2]}/>
+      </ol>
     </div>
   )
 }
@@ -51,8 +51,7 @@ return (
 }
 
 
-ReactDOM.render(<ShoppingApp/>, document.getElementById("root")
-    )
+ReactDOM.render(<ShoppingApp/>, document.getElementById("root"));
 
 </script>
 </body>
