@@ -19,8 +19,18 @@ function updateNum() {
   )
 }
 
-setInterval(updateNum,100);
+setInterval(updateNum,1000);
 
+</script>
+<div id="root2"></div>
+<script type="text/babel">
+
+var element = <h1> Hello {calculateArea(2,15)}</h1>
+function calculateArea(x,y) {
+  return x*y;
+}
+ReactDOM.render(element, document.getElementById('root2')
+  )
 
 </script>
 </body>
