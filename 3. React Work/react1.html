@@ -1,22 +1,26 @@
 <!DOCTYPE html>
+<html>
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   <title> React JS Examples </title>
-  <script src="react.js"></script>
-  <script src="react-dom.js"></script>
-  
+  <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
+       <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.24.0/babel.js"></script>
 </head>
 
 <body>
   Use Root instead of "Container" for rendering the REACT elements
 <div id='root'></div>
-<script>
-var items = ["1 lb Salmon", "1 cup Pine Nuts", "2 cups Butter Lettuce",
-"1 Yellow Squash","1/2 cup Olive Oil","3 cloves of Garlic"]
-const list1 = React.createElement("ul",{ className: "ingredients"}, items.map(ingredient => 
-React.createElement("li",null,ingredient)));
+<script type="text/babel">
+var num = 0;
+function updateNum() {
+  ReactDOM.render(
+    <div>{num++}</div>, document.getElementById('root')
+  )
+}
 
-ReactDOM.render(list1,document.getElementById('root'));
+setInterval(updateNum,100);
+
 
 </script>
 </body>
