@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title> React JS Examples </title>
+  <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
+       <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+       <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.24.0/babel.js"></script>
+</head>
+<body>
+<div id='root'></div>
+
+<script type="text/babel">
+
+function ListItem(props) {
+  return <li>Test String </li>
+}
+
+function ShoppingTitle(props) {
+  return (
+      <div>
+        <h1>Test title </h1>
+        <h2>Test description </h2>
+      </div>
+  )
+}
+
+ReactDOM.render(<ShoppingTitle/>, document.getElementById("root"));
+
+</script>
+</body>
+</html>
