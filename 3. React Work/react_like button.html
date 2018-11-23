@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title> React JS Examples </title>
+  <script src="https://unpkg.com/react@15/dist/react.min.js"></script>
+  <script src="https://unpkg.com/react-dom@15/dist/react-dom.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.24.0/babel.js"></script>
+</head>
+<body>
+<div id='root'></div>
+
+<script type="text/babel">
+class LikeButton extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { liked: false };
+  }
+
+  toggle() {
+    this.setState({ liked: !this.state.liked });
+  }
+
+  render() {
+    var name = this.props.name;
+    var txt = this.state.liked ? "Unlike" : "Like";
+    var myColor = this.state.liked ? "red" : "black";
+    var weight = this.state.liked ? "bold" : "normal";
+    
+    return (
+      <p>
+      <span style = {{color: myColor, fontWeight: weight }}> {name} </span>
+      <span onClick ={this.toggle.bind(this)}>
+      {'\ud83d\udc4d' +  txt}
+      </span></p> 
+      );
+    }
+};
+
+ReactDOM.render(
+  <div>
+  <LikeButton name="Java" />
+  <LikeButton name="Javascript" />
+  </div>, document.getElementById("root"));
+
+</script>
+</body>
+</html>
