@@ -25,10 +25,12 @@ setInterval(updateNum,1000);
 <div id="root2"></div>
 <script type="text/babel">
 
-var element = <h1> Hello {calculateArea(2,15)}</h1>
-function calculateArea(x,y) {
-  return x*y;
+var item = {
+  name: "cheese",
+  price: 5
 }
+
+var element = <h2> Hello {item.name} and {item.price} </h2>
 ReactDOM.render(element, document.getElementById('root2')
   )
 
