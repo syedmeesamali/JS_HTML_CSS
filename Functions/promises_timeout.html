@@ -1,0 +1,27 @@
+<!doctype html>
+<head>
+    <title>Promises in Javascript</title>
+    <script src="..\jQuery.js"></script>
+</head>
+<body>
+<script>
+
+//Simulation of promises in JScript
+var promise = new Promise(function(resolve, reject) {
+    setTimeout(resolve, 2000);
+});
+
+promise.then(function(){
+    console.log("Connecting to Database")
+
+        return new Promise(function(resolve, reject) {
+            setTimeout(resolve, 2000);
+        });
+}).then(function(){
+    console.log("Reading from a Database")
+})
+
+</script>
+
+</body>
+</html>

@@ -10,28 +10,17 @@
 
 <body>
   Use Root instead of "Container" for rendering the REACT elements
-<div id='root'></div>
-<script type="text/babel">
-var num = 0;
-function updateNum() {
-  ReactDOM.render(
-    <div>{num++}</div>, document.getElementById('root')
-  )
-}
-
-setInterval(updateNum,1000);
-
-</script>
-<div id="root2"></div>
+<div id="root"></div>
 <script type="text/babel">
 
 var item = {
   name: "cheese",
-  price: 5
+  price: 5,
+  name2: "alternate name"
 }
 
-var element = <h2> Hello {item.name} and {item.price} </h2>
-ReactDOM.render(element, document.getElementById('root2')
+var element = <h2> Hello {item.name} and {item.price} and alternate name {item.name2} </h2>
+ReactDOM.render(element, document.getElementById('root')
   )
 
 </script>
