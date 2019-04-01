@@ -1,5 +1,15 @@
 {
   "dependencies": {
     "gemini-api": "^2.0.4"
-  }
+  },
+  "name": "trading_bot",
+  "version": "1.0.0",
+  "description": "this is an awesome trading bot",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
 }
