@@ -1,3 +1,4 @@
+global.fetch = require("node-fetch");
 const GeminiAPI = require("gemini-api").default;
 
 const secret = "my_Secret_Key";
