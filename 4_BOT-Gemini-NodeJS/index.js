@@ -10,10 +10,18 @@ const cryptoCompare = require("cryptocompare");
 cryptoCompare.setApiKey(ccAPI_Key);
 
 //Below function will provide data of last 169 hours from cryptocompare
-cryptoCompare.histoHour('BTC', 'USD')
-.then(data => 
-    {
-        console.log(data)
-    }
-    )
+cryptoCompareAPI.coinList()
+.then(coinList => {
+        console.log(coinList)
+    })
 .catch(console.error)
+
+//Below function will provide data of last 169 hours from cryptocompare
+
+/*
+cryptoCompareAPI.histoHour('BTC', 'USD')
+.then(data => {
+        console.log(data)
+    })
+.catch(console.error)
+*/
