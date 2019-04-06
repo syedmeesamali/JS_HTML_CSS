@@ -10,9 +10,16 @@ const cryptoCompare = require("cryptocompare");
 cryptoCompare.setApiKey(ccAPI_Key);
 
 //Below function will provide data of last 169 hours from cryptocompare
+/*
 cryptoCompareAPI.coinList()
 .then(coinList => {
         console.log(coinList)
+    })
+.catch(console.error)
+*/
+cryptoCompareAPI.priceHistorical('BTC', ['USD', 'EUR']), new Date('2017-01-01')
+.then(prices => {
+        console.log(prices)
     })
 .catch(console.error)
 
