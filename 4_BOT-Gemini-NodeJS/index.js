@@ -9,10 +9,11 @@ const restClient = new GeminiAPI({key, secret, sandbox:true});
 const cc = require('cryptocompare')
 cc.setApiKey('ccAPI_Key')
  
-// Basic Usage:
-cc.priceHistorical('BTC', ['USD', 'EUR'], new Date('2018-01-01'))
-.then(prices => {
-  console.log(prices)
-  // -> { BTC: { USD: 997, EUR: 948.17 } }
+// Data for latest last hour 
+cc.histoHour('BTC', 'USD')
+.then(data => {
+    data = data.reverse()
+    console.log(data[0])
+    console.log(data.length)
 })
 .catch(console.error)
