@@ -9,14 +9,28 @@ const restClient = new GeminiAPI({key, secret, sandbox:true});
 const cc = require('cryptocompare')
 cc.setApiKey('ccAPI_Key')
  
-// Data for latest last hour 
-cc.histoHour('BTC', 'USD')
-.then(data => {
-    data = data.reverse()
-    for (i=0; i<100; i++) 
+// 100-hour moving average function
+function movingAverage(cryptoAsset, Fiat, Hours)
+{
+    if (Hours > 169 )
     {
-        console.log(i);
-        console.log(data[i].close)
+        console.log("Only 169 hours allowed !")
+        return
     }
-})
-.catch(console.error)
+
+    cc.histoHour(cryptoAsset, Fiat)
+    .then(data => {
+        data = data.reverse()
+        var sum = 0;
+    
+        for (i=0; i<Hours; i++) 
+        {
+            sum += data[i].close;
+        }
+        var movingAvg = sum / Hours;
+        console.log(movingAvg);
+    })
+    .catch(console.error)
+}
+
+movingAverage('BTC', 'USD', 50)
