@@ -13,7 +13,10 @@ cc.setApiKey('ccAPI_Key')
 cc.histoHour('BTC', 'USD')
 .then(data => {
     data = data.reverse()
-    console.log(data[0])
-    console.log(data.length)
+    for (i=0; i<100; i++) 
+    {
+        console.log(i);
+        console.log(data[i].close)
+    }
 })
 .catch(console.error)
