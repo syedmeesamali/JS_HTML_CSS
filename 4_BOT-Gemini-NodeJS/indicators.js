@@ -1,7 +1,10 @@
+const cc = require('cryptocompare')
+cc.setApiKey('ccAPI_Key')
+
 module.exports = 
 {
 // 100-hour moving average function
-function movingAverage(cryptoAsset, Fiat, Hours)
+movingAverage:function(cryptoAsset, Fiat, Hours)
 {
     if (Hours > 169 )
     {
@@ -23,6 +26,5 @@ function movingAverage(cryptoAsset, Fiat, Hours)
     })
     .catch(console.error)
 }
-movingAverage('BTC', 'USD', 50)
 
 }//End of module exports
