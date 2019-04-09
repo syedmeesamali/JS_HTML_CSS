@@ -8,9 +8,9 @@ const ccAPI_Key = "CryptoCompare_API_Key";
 const restClient = new GeminiAPI({key, secret, sandbox:true});
 
  
-const indicators = require("./movingAvg.js")
+const indicators = require("./indicators.js");
 
-movingAverage('BTC', 'USD', 50, function(result)
+indicators.movingAverage('BTC','USD',50, function(result)
 {
     console.log("MA: ", result)
 })
