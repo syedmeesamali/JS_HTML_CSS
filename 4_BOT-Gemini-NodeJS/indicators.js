@@ -4,7 +4,7 @@ cc.setApiKey('ccAPI_Key')
 module.exports = 
 {
 // 100-hour moving average function
-movingAverage:function(cryptoAsset, Fiat, Hours, callback)
+HourlymovingAverage:function(cryptoAsset, Fiat, Hours, callback)
 {
     if (Hours > 169 )
     {

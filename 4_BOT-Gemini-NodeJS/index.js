@@ -10,7 +10,7 @@ const restClient = new GeminiAPI({key, secret, sandbox:true});
  
 const indicators = require("./indicators.js");
 
-indicators.movingAverage('BTC','USD',50, function(result)
+indicators.HourlymovingAverage('BTC','USD',50, function(result)
 {
     console.log("MA: ", result)
 })
