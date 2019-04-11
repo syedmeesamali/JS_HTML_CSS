@@ -4,13 +4,25 @@ const key = "key";
 const restClient = new GeminiAPI({key, secret, sandbox:true});
 
 module.exports = {
-    marketBuy:function(symbol)
+    //Below function will try to buy bitcoin at current market price (aggressive target price)
+    marketBuyBitcoin:function()
     {
         return restClient.newOrder({amount: 1, 
                 price: 10000,
                 side: "buy", 
-                symbol: symbol,
+                symbol: "btcusd",
+                options: ["immediate-or-cancel"]})
+    }, 
+    
+    //Below function will try to SELL bitcoin at current market price (aggressive target price for selling)
+    marketSellBitcoin:function()
+    {
+        return restClient.newOrder({amount: 1, 
+                price: 500,
+                side: "sell", 
+                symbol: "btcusd",
                 options: ["immediate-or-cancel"]})
     }
     
-}
+    }
+    
