@@ -15,10 +15,3 @@ indicators.HourlymovingAverage('BTC','USD',50, function(result)
     console.log("MA: ", result)
 })
 
-restClient.newOrder({amount: 1, 
-    price: 10000,
-    side: "buy", 
-    symbol: "btcusd",
-options: ["immediate-or-cancel"]})
-.then(res => console.log(res))
-.catch(console.log(console.error));
