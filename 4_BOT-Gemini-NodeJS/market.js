@@ -22,7 +22,12 @@ module.exports = {
                 side: "sell", 
                 symbol: "btcusd",
                 options: ["immediate-or-cancel"]})
+    }, 
+
+    bitcoinPrice:function()
+    {
+        return restClient.getTicker("btcusd")
     }
-    
+
     }
     
