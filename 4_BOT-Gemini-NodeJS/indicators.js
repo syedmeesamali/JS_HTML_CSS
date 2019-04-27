@@ -37,7 +37,7 @@ DailymovingAverage:function(cryptoAsset, Fiat, Days, callback)
 {
     if (Days > 200 )
     {
-        console.error("Only 200 hours allowed !")
+        console.error("Only 200 days allowed !")
         return
     }
 
