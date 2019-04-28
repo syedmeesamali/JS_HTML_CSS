@@ -26,7 +26,7 @@ HourlymovingAverage:function(cryptoAsset, Fiat, Hours, callback)
         {
             sum += data[i].close;
         }
-        var movingAvg = Math.floor(sum / Hours);
+        var HourlymovingAverage = Math.floor(sum / Hours);
         callback(HourlymovingAverage);
     })
     .catch(console.error)
