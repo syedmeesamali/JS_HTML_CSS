@@ -1,19 +1,26 @@
 global.fetch = require("node-fetch");
-const indicator_file = require("./indicators.js");
+const indicators = require("./indicators.js");
 const exchange = require("./market.js");
 
 var strategy = function()
+// If btc < ma ==>> BUY
+// If btc > ma ==>> SELL
 {
-    console.log("            ");
-    console.log("===================");
-    console.log("Executing strategy!");
-    
-    ("BTC", "USD", 100, function(ma)
+    console.log("  ")
+    console.log("==================");
+    console.log("Executing strategy");
+    indicators.hourlyMovingAverage("BTC", "USD", 100, function(ma)
     {
-          console.log("MA: ", ma);
-    });
-        setTimeout(strategy, 1000);
-    }
-}
+        exchange.bitcoinPrice()
+        .then(res => 
+            {
+                var btcprice = res.last;
+                console.log("MA: ", ma);
+                console.log("Price: ", btcprice);
+                setTimeout(strategy, 1500);
+            })
 
-strategy()
+    });
+} 
+    
+strategy();
