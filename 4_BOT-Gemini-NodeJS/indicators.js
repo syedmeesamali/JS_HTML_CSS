@@ -30,7 +30,7 @@ HourlymovingAverage:function(cryptoAsset, Fiat, Hours, callback)
         callback(HourlymovingAverage);
     })
     .catch(console.error)
-} //End of the function for hourly averages
+}, //End of the function for hourly averages
 
 // Daily
 DailymovingAverage:function(cryptoAsset, Fiat, Days, callback)
