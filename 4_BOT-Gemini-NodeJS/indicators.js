@@ -2,7 +2,7 @@ const cc = require('cryptocompare')
 cc.setApiKey('ccAPI_Key')
 
 module.exports = 
-const ccAPI_Key = "41067c4a78f2232322cca0494c3d1f7ea96414c32a75d19ca483f8e0710de13d";
+const ccAPI_Key = "api_key";
 const cc = require('cryptocompare')
 cc.setApiKey('ccAPI_Key')
 
@@ -26,7 +26,7 @@ HourlymovingAverage:function(cryptoAsset, Fiat, Hours, callback)
         {
             sum += data[i].close;
         }
-        var movingAvg = sum / Hours;
+        var movingAvg = Math.floor(sum / Hours);
         callback(HourlymovingAverage);
     })
     .catch(console.error)
