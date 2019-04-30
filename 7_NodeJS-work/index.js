@@ -1,5 +1,7 @@
 const os = require('os');
 const fs = require('fs');
+const newUser = require('./user.js');
+
 const user = os.userInfo();
 const data = new Date();
 
@@ -10,3 +12,5 @@ fs.appendFile("hello.txt", message, (err) => {
         console.log('not able to append')
     }
 })
+
+console.log(newUser.userData);
