@@ -7,10 +7,12 @@ const data = new Date();
 
 let message = "User " + user.username + " started the app at " + data;
 
-fs.appendFile("hello.txt", message, (err) => {
-    if(err){
-        console.log('not able to append')
-    }
-})
+if (newUser.addLog()) 
+{
+    fs.appendFile("hello.txt", message, (err) => {
+        if(err){
+            console.log('not able to append')
+        }
+    })
+}
 
-console.log(newUser.userData);

@@ -1,4 +1,3 @@
-module.exports.userData = {
-    name: 'Meesam Ali',
-    age: 32
+module.exports.addLog = () => {
+    return true;
 }
