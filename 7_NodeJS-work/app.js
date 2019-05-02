@@ -16,3 +16,4 @@ if (newUser.addLog())
     })
 }
 
+console.log("Message to see nodemon")
