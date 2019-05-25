@@ -3,8 +3,8 @@ var fs = require('fs');
 
 var server = http.createServer(function(req, res){
     console.log("Request was: " + req.url);
-    res.writeHead(200, {'content-type': 'text/plain'});
-    var readStream = fs.createReadStream('./hello.txt', 'utf8');
+    res.writeHead(200, {'content-type': 'text/html'});
+    var readStream = fs.createReadStream('./index.html', 'utf8');
     readStream.pipe(res);
 
 });
