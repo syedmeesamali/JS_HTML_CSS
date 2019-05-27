@@ -7,6 +7,10 @@ var server = http.createServer(function(req, res){
     {
         res.writeHead(200, {'content-type': 'text/html'});
         fs.createReadStream('./index.html').pipe(res);
+    } else if (req.url === '/contact') 
+    {
+        res.writeHead(200, {'content-type': 'text/html'});
+        fs.createReadStream('./contact.html').pipe(res);
     }
 });
 
