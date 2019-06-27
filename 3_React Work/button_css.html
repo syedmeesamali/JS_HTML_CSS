@@ -4,16 +4,39 @@
   <meta charset="UTF-8">
   <title> Beautiful Graphic Button </title>
 <style>
-button {
-  border: none;
-  padding: 0;
-  margin: 0;
-  -webkit-appearance: none;
-  -moz-appearance: none;
+
+.button {
+  --color-dark: #333;
+  --color-light: #fff;
+  display: block;
+  position: relative;
+  font-size: 2rem;
+  padding: 1rem 2rem;
+  border-radius: 0.4rem;
+  background: var(--color-light);
+  color: var(--color-dark);
+  border: 0.2rem solid var(--color-dark);
+  box-shadow: 0 0.2rem 0 0 var(--color-dark);
+}
+.button:active {
+  top: 0.2rem;
+  box-shadow: none;
+}
+
+.button:disabled {
+  --color-dark: #999;
+  cursor: not-allowed;
+  color: transparent;
+  text-shadow: 0 0 0 var(--color-dark);
+}
+
+.button:focus {
+  outline: none;
+  box-shadow: 0 0.2rem 0 0 var(--color-dark), 0 2px 5px 3px #f0f;
 }
 
 body {
-  background-color: aquamarine;
+  background-color: pink;
 }
 </style>
 
@@ -21,9 +44,23 @@ body {
 
 <body>
 <p>
+<script>
+  const Button = ({ children }) => {
+    const [activated, setActivated] = React.useState(false);
+    return (
+      <button
+        className={"button" + (activated ? " active" : "")}
+        onMouseDown={() => setActivated(false)}
+        onMouseUp={() => setActivated(true)}
+      >
+        {children}
+      </button>
+    );
+  };
 
+</script>
 <br><br>
-<button type="button">
+<button type="button" className="button">
   <span role="img" aria-label="unicorn">
     🦄
   </span>{" "}
