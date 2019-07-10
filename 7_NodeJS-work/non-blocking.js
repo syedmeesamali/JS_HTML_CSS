@@ -1,20 +1,19 @@
 var http = require('http');
-const fs = require('fs');
+const url = require('url');
+const primes = require('./primes');
+
 
 const server = http.createServer(function(request, response){
-  if(request.url == '\home') {
-      fs.readFile('${ __dirname }/home.html', function(err, content) {
-          if(!err) {
-              response.setHeader('Content-type', 'text/html');
-              response.write(content);
-          } else {
-              response.statusCode = 500;
-              response.write('An error has occurred');
-          }
-          response.end();
-      });
+  const{ pathname, query } = url.parse(request.url, true);
+  
+    if(pathname == '/primes') {
+      const result = primes.nthPrime(query.n || 0);
+      response.setHeader('Content-type', 'application/json');
+      response.write(JSON.stringify(result));
+      response.end();
   } else {
-      response.write('Hello World');
+      response.statusCode = 404;
+      response.write('NOT FOUND');
       response.end();
   }
 });
