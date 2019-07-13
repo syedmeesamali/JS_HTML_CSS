@@ -1,4 +1,4 @@
-const {workerData, parentPort} = require('worker_threads');
+const { workerData, parentPort } = require('worker_threads');
 function isPrime(n) 
 {
     for (let i=2, s = Math.sqrt(n); i<=s; i++)

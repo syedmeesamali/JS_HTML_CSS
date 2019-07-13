@@ -1,7 +1,6 @@
-var http = require('http');
+const http = require('http');
 const url = require('url');
-const { worker } = require('worker_threads');
-const primes = require('./primes');
+const { Worker } = require('worker_threads');
 
 
 const server = http.createServer(function(request, response){
