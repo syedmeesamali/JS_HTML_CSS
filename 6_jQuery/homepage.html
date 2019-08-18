@@ -2,6 +2,7 @@
 <html>
 <head>
   <title> Home Page </title>
+<script type="text/javascript" src = "functions.js"></script>
 <style>
 body {
     font-family: Georgia, ,Times, "serif";
@@ -19,20 +20,21 @@ body {
   <span id="name">friend</span> ! </div>
   <div id="note"> Take a look around...</div>
 </div>
+  Length: <input type="text" id="len"><br>
+  Width: <input type="text" id="wid"><br>
+  Height: <input type="text" id="height"><br>
 
-<form>
-  Length: <input type="text" name="len"><br>
-  Width: <input type="text" name="wid"><br>
-  Height: <input type="text" name="height"><br>
-</form>
 <p> Area is: 
-  <span id="area"> Area </span>
+  <span id="area">00 m2</span>
 </p>
-<p> Volumne is: 
-  <span id="vol"> Volume </span>
+<p> Volume is: 
+  <span id="vol">00 m3</span>
 </p>
-<button type="button" onclick="getSize()">Calculate Now</button>
-
-<script src = "functions.js"></script>
+<button id = "myBtn" onclick="getSize(len, wid, height)">Click Me </button>
+<p> Name is: 
+  <span id="name2"> name here</span>
+</p>
+<button onclick="changeName()">Change Name </button>
+<script type="text/javascript" src = "function1.js"></script>
 </body>
 </html>
