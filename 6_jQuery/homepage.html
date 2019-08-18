@@ -19,6 +19,20 @@ body {
   <span id="name">friend</span> ! </div>
   <div id="note"> Take a look around...</div>
 </div>
-<script src = "string.js"></script>
+
+<form>
+  Length: <input type="text" name="len"><br>
+  Width: <input type="text" name="wid"><br>
+  Height: <input type="text" name="height"><br>
+</form>
+<p> Area is: 
+  <span id="area"> Area </span>
+</p>
+<p> Volumne is: 
+  <span id="vol"> Volume </span>
+</p>
+<button type="button" onclick="getSize()">Calculate Now</button>
+
+<script src = "functions.js"></script>
 </body>
 </html>
