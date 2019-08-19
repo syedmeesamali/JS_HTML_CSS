@@ -1,18 +1,18 @@
 
 function getSize() {
 
-    var width = document.getElementById('wid');
-    var length = document.getElementById('len');
-    var height = document.getElementById('height');
+    var width = document.getElementById("wid").value;
+    var length = document.getElementById("len").value;
+    var height = document.getElementById("height").value;
 
-    var area = document.getElementById('Area');
-    var vol = document.getElementById('Volume');
+    var area = document.getElementById("Area");
+    var vol = document.getElementById("Volume");
 
     var area1 = width * length;
     var vol1 = width * length * height;
 
-    area.textContent = area1.toString();
-    vol.textContent = vol1.toString();
+    area.textContent = area1;
+    vol.textContent = vol1;
 }
 
 function changeName() {
