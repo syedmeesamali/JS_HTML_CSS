@@ -1,25 +1,18 @@
 
-function getSize(width, length, height) {
+function getSize() {
 
+    var width = document.getElementById('wid');
+    var length = document.getElementById('len');
+    var height = document.getElementById('height');
 
-var width = document.getElementById('wid');
-var length = document.getElementById('len');
-var height = document.getElementById('height');
-
-width.textContent = 20;
-
-var area = document.getElementById('Area');
-var vol = document.getElementById('Volume');
+    var area = document.getElementById('Area');
+    var vol = document.getElementById('Volume');
 
     var area1 = width * length;
     var vol1 = width * length * height;
-    var sizes = [area1, vol1];
 
-    var areaOne = sizes(width, length, height)[0]
-    var volOne = sizes(width, length, height)[1] 
-
-    area.textContent = "ali";
-    vol.textContent = "shah";
+    area.textContent = area1.toString();
+    vol.textContent = vol1.toString();
 }
 
 function changeName() {
