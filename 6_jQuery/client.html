@@ -2,6 +2,9 @@
 <html>
 <script>
 let ws = new WebSocket('url');
+console.log(ws);
+ws.onopen = (event) => ws.send("This is message from client");
+ws.onmessage = (message) => console.log(message);
 
 </script>
 <body>
