@@ -14,7 +14,7 @@
     roomRate = document.getElementById('roomRate');
     specialRate = document.getElementById('specialRate');
 
-    hotelName.textContent = hotelName;
+    hotelName.textContent = hotel.name;
     roomRate.textContent = '$' + hotel.roomRate.toFixed(2);
     specialRate.textContent = '$' + hotel.offerPrice();
 
@@ -39,5 +39,8 @@
 
     }
 
+    today = new Date();
+    elEnds = document.getElementById('offerEnds');
+    elEnds.innerHTML = offerExpires(today);
 
 }()); //End of immediately invoked function expression IIFE
