@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
-<script>
-let ws = new WebSocket('url');
-console.log(ws);
-ws.onopen = (event) => ws.send("This is message from client");
-ws.onmessage = (message) => console.log(message);
-
-</script>
 <body>
-  <h1>This is client page</h1>
+  <script>
+    let ws = new window.WebSocket('ws://localhost:8000/');
+    console.log(ws);
+    ws.onopen = (event) => ws.send("This is message from client");
+    ws.onmessage = (message) => console.log(message);
+    
+    </script>
+  <h1>This is client page Updated</h1>
 </body>
 </html>
