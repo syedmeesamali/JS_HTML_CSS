@@ -1,23 +1,23 @@
+var table = 3;
+var operator = 'adddition';
 
-function getSize() {
+var i = 1;
+var msg = '';
 
-    var width = document.getElementById("wid").value;
-    var length = document.getElementById("len").value;
-    var height = document.getElementById("height").value;
-
-    var area = document.getElementById("Area");
-    var vol = document.getElementById("Volume");
-
-    var area1 = width * length;
-    var vol1 = width * length * height;
-
-    area.textContent = area1;
-    vol.textContent = vol1;
+if (operator == 'addition')
+{
+    while(i < 11)
+    {
+        msg += i + ' + ' + table + ' = ' + ( i + table ) + '<br />';
+        i++;
+    }
+} else {
+    while (i < 11)
+    {
+        msg += i + ' x ' + table + ' = ' + ( i * table ) + '<br />';
+        i++;
+    }
 }
 
-function changeName() {
-    var name = document.getElementById('name2');
-    name.textContent = "Ali Shah";
-}
-
-//document.getElementById("myBtn").onclick = function() {getSize(5,5,5)};
+var el = document.getElementById('blackboard');
+el.innerHTML = msg;
