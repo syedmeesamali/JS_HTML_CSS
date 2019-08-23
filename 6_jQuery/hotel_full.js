@@ -41,6 +41,6 @@
 
     today = new Date();
     elEnds = document.getElementById('offerEnds');
-    elEnds.innerHTML = offerExpires(today);
+    elEnds.innerHTML = hotel.offerExpires(today);
 
 }()); //End of immediately invoked function expression IIFE
