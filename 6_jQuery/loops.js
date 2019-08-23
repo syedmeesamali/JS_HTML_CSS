@@ -19,5 +19,5 @@ if (operator == 'addition')
     }
 }
 
-var el = document.getElementById('blackboard');
+var el = document.getElementById('content');
 el.innerHTML = msg;
