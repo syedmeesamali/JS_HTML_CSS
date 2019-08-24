@@ -12,5 +12,21 @@ body {
     background-color: greenyellow;
     width: 200px;
     padding: 5px;
-    border: 5px solid navy;
+    border: 2px solid white;
+}
+
+.hot {
+    background-color: red;
+    color: yellow;
+    width: 200px;
+    padding: 5px;
+    border: 2px solid white;
+}
+
+.normal {
+    background-color:orange;
+    color: blue;
+    width: 200px;
+    padding: 5px;
+    border: 2px solid white;
 }
