@@ -1,0 +1,16 @@
+* {
+    font-family: Arial;
+    box-sizing: border-box;
+    color:blue;
+}
+
+body {
+    text-align: left;
+}
+
+.cool {
+    background-color: greenyellow;
+    width: 200px;
+    padding: 5px;
+    border: 5px solid navy;
+}
