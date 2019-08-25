@@ -13,6 +13,7 @@ body {
     width: 200px;
     padding: 5px;
     border: 2px solid white;
+    
 }
 
 .hot {
@@ -29,4 +30,9 @@ body {
     width: 200px;
     padding: 5px;
     border: 2px solid white;
+}
+
+li:hover {
+    background-color: black;
+    color: aliceblue;
 }
