@@ -1,5 +1,9 @@
 var el = document.getElementById('one');
 el.className = 'cool';
 
-var el = document.getElementById('four');
-el.className = 'normal';
+var elements = document.getElementsByTagName('li');
+if (elements.length > 1) {
+    var el = elements[2];
+    el.className = 'cool';
+}
+
