@@ -7,3 +7,10 @@ if (elements.length > 1) {
     el.className = 'cool';
 }
 
+var hotelements = document.querySelectorAll('li.hot');
+if (hotelements.length > 1) {
+    for (var i=0; i < hotelements.length; i++) 
+    {
+        hotelements[i].className = 'cool';
+    }
+}
