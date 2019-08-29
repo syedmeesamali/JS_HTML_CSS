@@ -1,7 +1,11 @@
-var el = document.getElementById('one');
-el.className = 'cool';
+var firstElement = document.getElementById('one');
+var showText = firstElement.textContent;
+var showInnerText = firstElement.innerText;
 
-var elTwo = document.getElementById('one');
-var elText = elTwo.firstChild.nextSibling.nodeValue;
-var elText = elText.replace('Fresh Figs', 'new figs');
-elTwo.firstChild.nextSibling.nodeValue = elText;
+var msg = '<p>textContent:' + showText + '</p>';
+msg += '<p>innerText:' + showInnerText + '</p>';
+
+var el = document.getElementById('scriptResults');
+el.innerHTML = msg;
+
+firstElement.textContent = "special bread";
