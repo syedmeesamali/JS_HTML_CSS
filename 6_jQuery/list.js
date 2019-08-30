@@ -1,3 +1,7 @@
-var elOne = document.getElementById('one');
-var itemContent = elOne.innerHTML;
-elOne.innerHTML = '<a href=\"http:www.example.org\">' + itemContent + '</a>';
+var newEl = document.createElement('li');
+var newText = document.createTextNode('Quencha');
+newEl.appendChild(newText);
+
+var pos = document.getElementsByTagName('ul')[0];
+pos.appendChild(newEl);
+newEl.className = 'cool';
