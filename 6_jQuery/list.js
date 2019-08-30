@@ -1,11 +1,3 @@
-var firstElement = document.getElementById('one');
-var showText = firstElement.textContent;
-var showInnerText = firstElement.innerText;
-
-var msg = '<p>textContent:' + showText + '</p>';
-msg += '<p>innerText:' + showInnerText + '</p>';
-
-var el = document.getElementById('scriptResults');
-el.innerHTML = msg;
-
-firstElement.textContent = "special bread";
+var elOne = document.getElementById('one');
+var itemContent = elOne.innerHTML;
+elOne.innerHTML = '<a href=\"http:www.example.org\">' + itemContent + '</a>';
