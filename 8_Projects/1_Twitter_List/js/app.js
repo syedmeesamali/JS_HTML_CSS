@@ -6,7 +6,7 @@ eventListeners();
 
 function eventListeners() {
     document.querySelector('#form').addEventListener('submit', newTweet);
-
+    tweetList.addEventListener('click', removeTweet);
 }
 
 //Functions
@@ -27,4 +27,11 @@ function newTweet(e) {
     li.appendChild(removeBtn);
     tweetList.appendChild(li);
 
+}
+
+//Function to remove a tweet
+function removeTweet(e) {
+    if(e.target.classList.contains('remove-tweet')) {
+        e.target.parentElement.remove();
+    } 
 }
