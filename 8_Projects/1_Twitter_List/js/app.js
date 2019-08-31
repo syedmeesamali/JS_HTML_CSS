@@ -12,22 +12,16 @@ function eventListeners() {
 //Functions
 function newTweet(e) {
     e.preventDefault();
-
     const tweet = document.getElementById('tweet').value;
-    //Create a remove button
-    const removeBtn = document.createElement('a');
+    const removeBtn = document.createElement('a'); //Create a remove button
     removeBtn.classList = 'remove-tweet';
     removeBtn.textContent = "X";
 
-    //Create an <li> element to save and dispaly tweets
-    const li = document.createElement('li');
+    const li = document.createElement('li'); //Li to save and display the tweets
     li.textContent = tweet;
-    
-    //Add remove button to each tweet
-    li.appendChild(removeBtn);
+    li.appendChild(removeBtn); //Add remove button to each tweet
     tweetList.appendChild(li);
-    //Add the tweet to local storage
-    tweetsToStorage(tweet);
+    addTweetLocalStorage(tweet);    //Add the tweet to local storage
 }
 
 //Function to remove a tweet
@@ -38,15 +32,23 @@ function removeTweet(e) {
 }
 
 //Add tweets to the local storage
-function tweetsToStorage(e) {
-    console.log("Hello from local storage function");
+function addTweetLocalStorage(tweet) {
+    let tweets = getTweetsFromStorage();
+    tweets.push(tweet);
+    //Convert array to string and add to local storage
+    localStorage.setItem('tweets', JSON.stringify( tweets ));
 }
 
 //This function will retrieve tweets from localstorage
 function getTweetsFromStorage() {
     let tweets;
+    const tweetLS = localStorage.getItem('tweets');
+
     //Get the values, if null is returned then create empty array
-    if (localStorage.getItem('tweets') == null) {
+    if (tweetLS == null) {
         tweets = [];
+    } else {
+        tweets = JSON.parse( tweetLS );
     }
+    return tweets;
 }
