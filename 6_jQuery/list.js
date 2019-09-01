@@ -1,7 +1,6 @@
-var newEl = document.createElement('li');
-var newText = document.createTextNode('Quencha');
-newEl.appendChild(newText);
-
-var pos = document.getElementsByTagName('ul')[0];
-pos.appendChild(newEl);
-newEl.className = 'cool';
+var firstItem = document.getElementById('one');
+if (firstItem.hasAttribute('class')) {
+    var attr = firstItem.getAttribute('class');
+    var el = document.getElementById('check-class');
+    el.innerHTML = attr;
+}
