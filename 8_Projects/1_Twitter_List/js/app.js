@@ -31,8 +31,7 @@ function removeTweet(e) {
         e.target.parentElement.remove();
     } 
     //Remove the tweet from storage as well
-    console.log(e.target.parentElement.textContent);
-    removeTweetLocalStorage();
+    removeTweetLocalStorage( e.target.parentElement.textContent );
 }
 
 //Add tweets to the local storage
@@ -60,7 +59,6 @@ function getTweetsFromStorage() {
 //Print localstorage tweets
 function localStorageonLoad() {
     let tweets = getTweetsFromStorage();
-    console.log(tweets);
     //Loop through storage and print the values
     tweets.forEach(function(tweet){
         const removeBtn = document.createElement('a'); //Create a remove button
@@ -74,6 +72,16 @@ function localStorageonLoad() {
 }
 
 function removeTweetLocalStorage(tweet) {
+    //get tweets from storage
     let tweets = getTweetsFromStorage();
-    
+
+    //remove tweets from storage
+    const tweetDel = tweet.substring( 0, tweet.length - 1 );
+    tweets.forEach(function(tweetLS, index) {
+        if( tweetDel === tweetLS ) {
+            tweets.splice(index, 1);
+        }
+    });
+
+    localStorage.setItem('tweets', JSON.stringify(tweets));
 }
