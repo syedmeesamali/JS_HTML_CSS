@@ -7,6 +7,7 @@ eventListeners();
 function eventListeners() {
     document.querySelector('#form').addEventListener('submit', newTweet);
     tweetList.addEventListener('click', removeTweet);
+    document.addEventListener('DOMContentLoaded', localStorageonLoad)
 }
 
 //Functions
@@ -51,4 +52,10 @@ function getTweetsFromStorage() {
         tweets = JSON.parse( tweetLS );
     }
     return tweets;
+}
+
+//Print localstorage tweets
+function localStorageonLoad() {
+    let tweets = getTweetsFromStorage();
+    console.log(tweets);
 }
