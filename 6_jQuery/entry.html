@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title> Entry Related </title>
+  <script type="text/javascript" src = "functions.js"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<h1>Entry and On-Events</h1>
+
+<label for="len">Username: </label><input type="text" id="user-name" placeholder="username"><br> <br>
+
+<button onclick="getSize()">Click Me </button>
+<script>
+function checkUsername(e, minLength) {
+  var target = e.target;
+}
+
+var el = document.getElementById('user-name');
+el.addEventListener('blur', function(e) {
+  checkUsername(e, 8);
+}, false);
+
+</script>
+</body>
+</html>

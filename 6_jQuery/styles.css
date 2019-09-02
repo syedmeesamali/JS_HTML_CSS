@@ -1,31 +1,16 @@
 * {
     font-family: Arial;
     box-sizing: border-box;
-    color: yellow;
+    color: blue;
 }
 html, body, section {
     height: 100%;
 }
 body {
     text-align: left;
-    background-color: black;
 }
 input[type=text] {
     border-style: solid;
     border-bottom: 1px solid red;
     background-color:yellow;
 }
-.background-image {
-    position: fixed;
-    left: 0;
-    right: 0;
-    z-index: 1;
-    display: block;
-    background-image: url('blackboard.jpg');
-    width: 780px;
-    height: 600px;
- }
-.content {
-    border: 1px solid yellow;
-    margin: 50px 250px 50px 70px;
-  }
