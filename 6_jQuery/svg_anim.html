@@ -2,14 +2,26 @@
 <html>
 <head>
   <title> SVG Animation </title>
-  <link rel="stylesheet" href="styles.css">
+  <script src="https://d3js.org/d3.v5.min.js"></script>
 </head>
 <body>
-    <h1>SVG Graphics Example</h1>
-<svg style="width: 100%; height: 800px">
-  <circle cx="200" cy="200" r="50" style="fill:blue"></circle>
-</svg>
-
-
+<svg id="svg" style="width: 100%; height:800px"/>  
 </body>
+<script>
+  const svg = d3.select('#svg');
+  const c = svg.append('circle')
+      .attr('cx', 200)
+      .attr('cy', 200)
+      .attr('r', 90)
+      .style('fill', 'green');
+
+      c.on('click', function(){
+        d3.select(this).transition()
+              .attr('r',50)
+              .duration(3000)
+              .style('fill', 'red')
+      });
+
+</script>
+
 </html>
