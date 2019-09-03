@@ -7,7 +7,22 @@
 <body>
 
 <h1>Entry and On-Events</h1>
-<label for="len">Username: </label><input type="text" onblur="blurFunction()" onfocus="focusFunction()" id="len"><br> <br>
-<script src="JSevents.js"></script>
+<label for="len">Username: </label><input type="text" onblur="blurFunction()" class="Normal" id="len"><br> <br>
+<div id="feedback"></div>
+<script>
+//Function activated when focus is OUT
+function blurFunction(){
+   var elMsg = document.getElementById('feedback');
+   var elUser = document.getElementById('len');
+   if (elUser.value.length < 5) {
+     elMsg.textContent = "User name must be more than 5 characters! [" + elUser.value.length + "] Characters entered!";
+     elUser.className = 'changeNow';
+   } else  {
+    elUser.className = 'Normal';
+    elMsg.textContent = 'Looks Good';
+   }
+  }
+</script>
+
 </body>
 </html>

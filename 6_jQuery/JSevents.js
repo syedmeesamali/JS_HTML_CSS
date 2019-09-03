@@ -1,13 +1,4 @@
-function blurFunction(){
-    var fd = document.getElementById('len');
-    fd.className = 'changeNow';
-  }
-
-  function focusFunction(){
-    var fd = document.getElementById('len');
-    fd.className = 'Normal';
-  }
-
+//Check username for the validity in terms of length
 function checkUsername(e, minLength) {
     var target = e.target;
 }
