@@ -1,3 +1,13 @@
+function blurFunction(){
+    var fd = document.getElementById('len');
+    fd.className = 'changeNow';
+  }
+
+  function focusFunction(){
+    var fd = document.getElementById('len');
+    fd.className = 'Normal';
+  }
+
 function checkUsername(e, minLength) {
     var target = e.target;
 }
@@ -16,7 +26,7 @@ function checkLength(e, minLength) {
       }
   }
 
-  var elUserName = document.getElementById('user-name');
+  var elUserName = document.getElementById('len');
   if (elUserName.addEventListener) {
       elUserName.addEventListener('blur', function(e) {
           checkUsername(e, 5);
@@ -26,3 +36,5 @@ function checkLength(e, minLength) {
           checkUsername(e, 5);
       });
   }
+
+

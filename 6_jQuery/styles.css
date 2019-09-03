@@ -9,8 +9,14 @@ html, body, section {
 body {
     text-align: left;
 }
-input[type=text] {
+input[type=text].Normal {
     border-style: solid;
     border-bottom: 1px solid red;
     background-color:yellow;
+}
+
+input[type=text].changeNow {
+    border-style: solid;
+    border-bottom: 1px solid red;
+    background-color:red;
 }
