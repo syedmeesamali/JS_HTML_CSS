@@ -1,3 +1,4 @@
+//Check username for the validity in terms of length
 function checkUsername(e, minLength) {
     var target = e.target;
 }
@@ -16,7 +17,7 @@ function checkLength(e, minLength) {
       }
   }
 
-  var elUserName = document.getElementById('user-name');
+  var elUserName = document.getElementById('len');
   if (elUserName.addEventListener) {
       elUserName.addEventListener('blur', function(e) {
           checkUsername(e, 5);
@@ -26,3 +27,5 @@ function checkLength(e, minLength) {
           checkUsername(e, 5);
       });
   }
+
+
