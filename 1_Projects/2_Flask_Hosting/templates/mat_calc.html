@@ -2,7 +2,7 @@
 <!--This page is property of SYED MEESAM ALI-->
 <head>
     <title>Material Calculation</title>
-    <script src="jQuery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 <style>
 * {
@@ -90,41 +90,9 @@ label {
 }
 
 /* Background-color of the even rows */
-.container tr:nth-child(even) {
-	  background-color:lightgrey;
-}
 
-.container th {
-	  background-color: lightskyblue;
-}
 
-.container td:first-child { color:red; }
 
-.container tr:hover {
-   background-color: #464A52;
--webkit-box-shadow: 0 6px 6px -6px #0E1119;
-	   -moz-box-shadow: 0 6px 6px -6px #0E1119;
-	        box-shadow: 0 6px 6px -6px #0E1119;
-}
-
-.container td:hover {
-  background-color: #FFF842;
-  color: #403E10;
-  font-weight: bold;
-  
-  box-shadow: #7F7C21 -1px 1px, #7F7C21 -2px 2px, #7F7C21 -3px 3px, #7F7C21 -4px 4px, #7F7C21 -5px 5px, #7F7C21 -6px 6px;
-  transform: translate3d(6px, -6px, 0);
-  
-  transition-delay: 0s;
-	  transition-duration: 0.4s;
-	  transition-property: all;
-  transition-timing-function: line;
-}
-
-@media (max-width: 800px) {
-.container td:nth-child(4),
-.container th:nth-child(4) { display: none; }
-}
 
 </style>
 
@@ -142,7 +110,7 @@ label {
             <option value="conmix">Conmix</option>
         </select>
 </form>
-<img src="main1.png" width="250" height="150">
+<img src="../templates/main1.png" width="250" height="150">
 <p>
 <label for="dia">Diameter of bar:</label> 
 <input id="dia" type="text" placeholder="Enter dia."><br> <br>
@@ -163,7 +131,7 @@ Total amount of material required is: <span id="result">00 ml </span> </p>
             <option value="50kg">50 Kg Bags</option>
         </select>
 </form> <p>
-<img src="main2.png" width="300" height="300">
+<img src="../templates/main2.gif" width="300" height="300">
 <p>
 <label for="slab_a">Area in SQM:</label> 
 <input id="slab_a" type="text" placeholder="Area (sqm)"><br> <br>
