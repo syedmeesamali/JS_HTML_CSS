@@ -44,13 +44,28 @@ document.addEventListener('DOMContentLoaded', () => {
         lines = [];
   }
 
-  function draw_point() {
+  function draw_point(x, y, connect) {
     const color = document.querySelector('color-picker').value;
     const thickness = document.querySelector('thickness').value;
     if (connect) {
       const last_point = points[points.length - 1];
-      const line = svg.append('line');
+      const line = svg.append('line')
+                  .attr('x1', last_point.attr('cx'))
+                  .attr('y1', last_point.attr('cy'))
+                  .attr('X2', x)
+                  attr('y2', y)
+                  .attr('stroke-width', thickness)
+                  .style('stroke', color);
+      lines.push(line);
     }
+
+    const point = svg.append('circle')
+                .attr('cx', x)
+                .attr('cy', y)
+                .attr('r', thickness)
+                .style('fill', color)
+                
+
   }
 
 }); //End of main function
