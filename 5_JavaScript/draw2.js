@@ -40,10 +40,17 @@ document.addEventListener('DOMContentLoaded', () => {
         points[i].remove();
       for (let j=0; j<lines.length; j++)
         lines[i].remove();
-    
         points = [];
         lines = [];
   }
 
+  function draw_point() {
+    const color = document.querySelector('color-picker').value;
+    const thickness = document.querySelector('thickness').value;
+    if (connect) {
+      const last_point = points[points.length - 1];
+      const line = svg.append('line');
+    }
+  }
 
 }); //End of main function
