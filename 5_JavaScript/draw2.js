@@ -1,8 +1,7 @@
+//const svg = d3.select("body").append("svg");
 document.addEventListener('DOMContentLoaded', () => {
-
   //State variable
   let draw = false;
-
   //Elements
   let points = [];
   let lines = [];
@@ -38,34 +37,34 @@ document.addEventListener('DOMContentLoaded', () => {
   document.querySelector('#erase').onclick = () => {
       for (let i=0; i<points.length; i++) 
         points[i].remove();
+        console.log("Points: " + points.length);
       for (let j=0; j<lines.length; j++)
-        lines[i].remove();
-        points = [];
-        lines = [];
+        console.log("Lines: " + lines.length);
+        lines[j].remove();
+      points = [];
+      lines = [];
   }
 
   function draw_point(x, y, connect) {
-    const color = document.querySelector('color-picker').value;
-    const thickness = document.querySelector('thickness').value;
+    const color = document.querySelector('#color-picker').value;
+    const thickness = document.querySelector('#thickness').value;
     if (connect) {
       const last_point = points[points.length - 1];
-      const line = svg.append('line')
+      const line1 = svg.append("line")
                   .attr('x1', last_point.attr('cx'))
                   .attr('y1', last_point.attr('cy'))
                   .attr('X2', x)
-                  attr('y2', y)
+                  .attr('y2', y)
                   .attr('stroke-width', thickness)
                   .style('stroke', color);
-      lines.push(line);
+      lines.push(line1);
     }
 
-    const point = svg.append('circle')
+    const point = svg.append("circle")
                 .attr('cx', x)
                 .attr('cy', y)
                 .attr('r', thickness)
-                .style('fill', color)
-                
-
+                .style('fill', color)   
   }
-
+render();
 }); //End of main function

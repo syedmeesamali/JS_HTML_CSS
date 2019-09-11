@@ -2,6 +2,7 @@
 <html>
 <head>
   <title> SVG Animation </title>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
   <script src="draw2.js"></script>
 </head>
 <body>
@@ -17,8 +18,8 @@
       <select id="thickness">
         <option value=1>1</option>
         <option value=2>2</option>
-        <option value=3 selected>3</option>
-        <option value=4>4</option>
+        <option value=3>3</option>
+        <option value=4 selected>4</option>
         <option value=5>5</option>
         <option value=6>6</option>
         <option value=7>7</option>
@@ -26,6 +27,7 @@
       <button id="erase">Erase All</button>
     </div>
   </div>
-
+<svg id="draw">
+</svg>
 </body>
 </html>
