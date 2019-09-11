@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let points = [];
   let lines = [];
   let svg = null;
+  let i = 0;
 
   function render() {
       svg = d3.select('#draw')
@@ -16,31 +17,28 @@ document.addEventListener('DOMContentLoaded', () => {
           draw = true;
           const coords = d3.mouse(this);
           draw_point(coords[0], coords[1], false);
+          console.log("Called first");
       });
     
       svg.on('mouseup', () => {
         draw = false;
       });
     
-      svg.on('mousemove', draw_point);
+      svg.on('mousemove', function() {
+        draw = true;
+        const coords = d3.mouse(this);
+        draw_point(coords[0], coords[1], true);
+        console.log("Called second");
+      });
   }
-
-  function draw_point() {
-      if (draw === false) 
-      {
-        return ;
-      }
-    const coords = d3.mouse(this);
-    draw_point(coords[0], coords[1], true);
-  };
   
   document.querySelector('#erase').onclick = () => {
-      for (let i=0; i<points.length; i++) 
+      for (i=0; i<points.length; i++) 
         points[i].remove();
         console.log("Points: " + points.length);
-      for (let j=0; j<lines.length; j++)
+      for (i=0; i<lines.length; i++)
         console.log("Lines: " + lines.length);
-        lines[j].remove();
+        lines[i].remove();
       points = [];
       lines = [];
   }
@@ -50,21 +48,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const thickness = document.querySelector('#thickness').value;
     if (connect) {
       const last_point = points[points.length - 1];
-      const line1 = svg.append("line")
-                  .attr('x1', last_point.attr('cx'))
-                  .attr('y1', last_point.attr('cy'))
+      console.log(last_point);
+      const line = svg.append('line')
+                  .attr('x1', last_point('cx'))
+                  .attr('y1', last_point('cy'))
                   .attr('X2', x)
                   .attr('y2', y)
-                  .attr('stroke-width', thickness)
+                  .attr('stroke-width', thickness * 2)
                   .style('stroke', color);
-      lines.push(line1);
-    }
-
-    const point = svg.append("circle")
+      lines.push(line);
+    } else {
+      const point = svg.append("circle")
                 .attr('cx', x)
                 .attr('cy', y)
                 .attr('r', thickness)
                 .style('fill', color)   
+      points.push(point);
+    }
+    
   }
 render();
 }); //End of main function
