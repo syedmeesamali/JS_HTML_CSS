@@ -11,13 +11,12 @@ document.addEventListener('DOMContentLoaded', () => {
   function render() {
       svg = d3.select('#draw')
         .attr('height', window.innerHeight)
-        .attr('width', window.innerWidth)
+        .attr('width', window.innerWidth);
 
       svg.on('mousedown', function() {
           draw = true;
           const coords = d3.mouse(this);
           draw_point(coords[0], coords[1], false);
-          console.log("Called first");
       });
     
       svg.on('mouseup', () => {
@@ -25,14 +24,17 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     
       svg.on('mousemove', function() {
-        draw = true;
-        const coords = d3.mouse(this);
-        draw_point(coords[0], coords[1], true);
-        console.log("Called second");
+        if (draw === false) {
+          return;
+        } else {
+          const coords = d3.mouse(this);
+          draw_point(coords[0], coords[1], true);
+        }
       });
-  }
+
   
-  document.querySelector('#erase').onclick = () => {
+  document.querySelector('#erase').onclick = () => 
+  {
       for (i=0; i<points.length; i++) 
         points[i].remove();
         console.log("Points: " + points.length);
@@ -41,18 +43,18 @@ document.addEventListener('DOMContentLoaded', () => {
         lines[i].remove();
       points = [];
       lines = [];
-  }
-
-  function draw_point(x, y, connect) {
+  } //End of erase
+} //End of render()
+  
+function draw_point(x, y, connect) {
     const color = document.querySelector('#color-picker').value;
     const thickness = document.querySelector('#thickness').value;
     if (connect) {
       const last_point = points[points.length - 1];
-      console.log(last_point);
       const line = svg.append('line')
-                  .attr('x1', last_point('cx'))
-                  .attr('y1', last_point('cy'))
-                  .attr('X2', x)
+                  .attr('x1', last_point.attr('cx'))
+                  .attr('y1', last_point.attr('cy'))
+                  .attr('x2', x)
                   .attr('y2', y)
                   .attr('stroke-width', thickness * 2)
                   .style('stroke', color);
@@ -65,7 +67,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 .style('fill', color)   
       points.push(point);
     }
-    
-  }
+  }; //End of draw_point function
+
 render();
-}); //End of main function
+
+});
