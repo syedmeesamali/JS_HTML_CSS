@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.querySelector('#save').onclick = () => 
   {
-      
+    alert ("Still no save functionality! Come back later pls...");
   } //Save the image
 
 
