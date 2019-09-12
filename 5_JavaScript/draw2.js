@@ -24,26 +24,29 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     
       svg.on('mousemove', function() {
-        if (draw === false) {
-          return;
-        } else {
+        if (draw === false)
+              return;
           const coords = d3.mouse(this);
           draw_point(coords[0], coords[1], true);
-        }
       });
 
   
   document.querySelector('#erase').onclick = () => 
   {
       for (i=0; i<points.length; i++) 
-        points[i].remove();
-        console.log("Points: " + points.length);
-      for (i=0; i<lines.length; i++)
-        console.log("Lines: " + lines.length);
-        lines[i].remove();
+          points[i].remove();
+      for (let j=0; j<lines.length; j++)
+          lines[j].remove();
       points = [];
       lines = [];
   } //End of erase
+
+  document.querySelector('#save').onclick = () => 
+  {
+      
+  } //Save the image
+
+
 } //End of render()
   
 function draw_point(x, y, connect) {
@@ -59,14 +62,13 @@ function draw_point(x, y, connect) {
                   .attr('stroke-width', thickness * 2)
                   .style('stroke', color);
       lines.push(line);
-    } else {
+    } 
       const point = svg.append("circle")
                 .attr('cx', x)
                 .attr('cy', y)
                 .attr('r', thickness)
                 .style('fill', color)   
       points.push(point);
-    }
   }; //End of draw_point function
 
 render();
