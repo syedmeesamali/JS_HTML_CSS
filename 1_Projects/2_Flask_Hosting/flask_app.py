@@ -11,10 +11,10 @@ def mat():
     file2 = os.path.join('static','main2.gif')
     return render_template("mat_calc.html", image1 = file1, image2 = file2)
 
-@app.route('/bird')
-def bird():
-    return render_template("bird.html")
+@app.route('/draw')
+def draw():
+    return render_template("draw.html")
 
-if __name__ == '__main__':
-    app.debug = True
-    app.run(host = 'localhost',port=8000)
+
+if __name__ == "__main__":
+    app.run()
