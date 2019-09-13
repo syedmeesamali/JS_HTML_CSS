@@ -4,16 +4,21 @@
   <title> Elements Positions </title>
   <script src="position.js"></script>
 </head>
-<body>
-  <p>
-    <h1>Position of page items</h1>
-  </p>
-  <div>
-    <ul>
-      SX Value: <span id="sx"></span>
-      SY Value: <span id="sy"></span>
-    </ul>
-  </div>
+<style>
+  #my-div {
+    height: 100vh; /* vh stands for view-port height, 1vh is 1% of screen height */
+  }
   
+  </style>
+<body>
+  <div id="my-div">
+    <h1>Position of page items</h1>
+    <div id="elements">
+      <ul>
+        SX Value: <span id="sx"></span>
+        SY Value: <span id="sy"></span>
+      </ul>
+    </div>
+  </div>
 </body>
 </html>
