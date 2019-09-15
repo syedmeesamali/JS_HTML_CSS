@@ -43,7 +43,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.querySelector('#save').onclick = () => 
   {
-    alert("Sorry will be available soon!")
+    var domURL = window.URL || window.webkitURL || window;
+    if (!domURL)
+    {
+      throw new Error("(bowser doesn't support this)")
+    }
+
+    //Create a url and make sure its own name space is defined
+    if (!svgText.match(/xmlns="/mi)) {
+      svgText = svgText.replace ('<svg ', '<svg xmlns="http://www.w3.org/2000/svg" ');
+    }
+
+    //Create a blob
+    var svg = new Blob([svgText], {
+      type: "image/svg+xml; charset=utf-8"
+    });
+
+
   } //Save the image
 
 
