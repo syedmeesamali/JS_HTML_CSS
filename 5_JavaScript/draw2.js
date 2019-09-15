@@ -43,6 +43,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.querySelector('#save').onclick = () => 
   {
+    
+    //Use the domAPI to create an object
     var domURL = window.URL || window.webkitURL || window;
     if (!domURL)
     {
@@ -59,8 +61,50 @@ document.addEventListener('DOMContentLoaded', () => {
       type: "image/svg+xml; charset=utf-8"
     });
 
+    var url = domURL.createObjectURL(svg);
 
-  } //Save the image
+    //Now we need canvas to transfer this data
+    var match = svgText.match(/height=\"(d+)/m);
+    var height = match && match[1] ? parseInt(match[1], 10) : 200;
+    var match = svgText.match(/width=\"(d+)/m);
+    var width = match && match[1] ? parseInt(match[1], 10) : 200;
+
+    var canvas = document.createElement('canvas');
+    canvas.width = height + margin * 2;
+    canvas.height = width + margin * 2;
+    var ctx = canvas.getContext("2d");
+
+    var img = new Image;
+        
+        // when the image is loaded we can get it as base64 url
+        img.onload = function() {
+          // draw it to the canvas
+          ctx.drawImage(this, margin, margin);
+          
+          // if it needs some styling, we need a new canvas
+          if (fill) {
+            var styled = document.createElement("canvas");
+            styled.width = canvas.width;
+            styled.height = canvas.height;
+            var styledCtx = styled.getContext("2d");
+            styledCtx.save();
+            styledCtx.fillStyle = fill;   
+            styledCtx.fillRect(0,0,canvas.width,canvas.height);
+            styledCtx.strokeRect(0,0,canvas.width,canvas.height);
+            styledCtx.restore();
+            styledCtx.drawImage (canvas, 0,0);
+            canvas = styled;
+          }
+          // we don't need the original any more
+          domUrl.revokeObjectURL(url);
+          // now we can resolve the promise, passing the base64 url
+          resolve(canvas.toDataURL());
+        };
+        
+        // load the image
+        img.src = url;
+
+  } 
 
 
 } //End of render()
