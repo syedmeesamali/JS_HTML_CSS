@@ -1,3 +1,4 @@
+#!/bin/bash
 read input
 
 proto="$(echo $input | grep :// | sed -e's,^\(.*://\).*,\1,g')"

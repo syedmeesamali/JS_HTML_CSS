@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title> Coring Works </title>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <style>
+  * {
+    font-family: Arial;
+    box-sizing: border-box;
+}
+
+.main_container {
+    display: flex;
+}
+
+.split {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+}
+
+.left {
+    background: lightgoldenrodyellow;
+    padding: 1 rem;
+    flex: 1;
+}
+
+.right {
+    background: lightgoldenrodyellow;
+    padding: 1 rem;
+    flex: 1;
+}
+
+.container {
+	  text-align: left;
+	  width: 80%;
+	  margin: 0 auto;
+      display: table;
+}
+
+.container td, .container th {
+	  padding-bottom: 1%;
+	  padding-top: 1%;
+  padding-left:1%;  
+}
+
+</style>
+</head>
+<body>
+<section class="main_container">
+<svg id="svg"/>  
+<script>
+  const svg = d3.select('#svg');
+    const core = svg.append('circle')
+      .attr('cx', 50)
+      .attr('cy', 50)
+      .attr('r', 40)
+      .style('fill', 'grey');
+
+  core.on('click', () => {
+    core.style('fill', 'red');
+  })
+</script>
+
+<div class="split left">
+  <h2>Cutting Works Pricing</h2>
+  <table class="container">
+  <thead>
+    <tr>
+        <th><h3>Size (mm x mm)</h3></th>
+        <th><h3>Price (AED)</h3></th>
+    </tr>
+</thead>
+  <tr><td>300 x 300</td><td>400</td></tr>
+  <tr><td>350 x 160</td><td>500</td></tr>
+  <tr><td>400 x 160</td><td>500</td></tr>
+  <tr><td>300 x 160</td><td>500</td></tr>
+  <tr><td>350 x 350</td><td>550</td></tr>
+  <tr><td>400 x 400</td><td>650</td></tr>
+  <tr><td>450 x 450</td><td>750</td></tr>
+  <tr><td>500 x 500</td><td>800</td></tr>
+  <tr><td>550 x 550</td><td>875</td></tr>
+  <tr><td>700 x 700</td><td>1410</td></tr>
+  <tr><td>700 x 750</td><td>1440</td></tr>
+  <tr><td>750 x 750</td><td>1500</td></tr>
+  <tr><td>800 x 800</td><td>1550</td></tr>
+  <tr><td>850 x 850</td><td>1600</td></tr>
+  <tr><td>900 x 900</td><td>1800</td></tr>
+  <tr><td>1000 x 1000</td><td>3800</td></tr>  
+</table>
+</div>
+
+<div class="split right">
+    <h2>Coring Works Pricing</h2>
+  <table class="container">
+
+  <thead>
+    <tr>
+        <th><h3>Size (mm x mm)</h3></th>
+        <th><h3>Price (AED)</h3></th>
+    </tr>
+</thead>
+  <tr><td>300 x 300</td><td>400</td></tr>
+  <tr><td>350 x 160</td><td>500</td></tr>
+  <tr><td>400 x 160</td><td>500</td></tr>
+  <tr><td>300 x 160</td><td>500</td></tr>
+  <tr><td>350 x 350</td><td>550</td></tr>
+  <tr><td>400 x 400</td><td>650</td></tr>
+  <tr><td>450 x 450</td><td>750</td></tr>
+  <tr><td>500 x 500</td><td>800</td></tr>
+  <tr><td>550 x 550</td><td>875</td></tr>
+  <tr><td>700 x 700</td><td>1410</td></tr>
+  <tr><td>700 x 750</td><td>1440</td></tr>
+  <tr><td>750 x 750</td><td>1500</td></tr>
+  <tr><td>800 x 800</td><td>1550</td></tr>
+  <tr><td>850 x 850</td><td>1600</td></tr>
+  <tr><td>900 x 900</td><td>1800</td></tr>
+  <tr><td>1000 x 1000</td><td>3800</td></tr>  
+</table>
+</div>
+</section>
+</body>
+</html>
