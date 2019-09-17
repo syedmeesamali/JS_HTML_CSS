@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <head>
   <title> Coring Works </title>
   <script src="https://d3js.org/d3.v5.min.js"></script>
@@ -14,21 +15,21 @@
 }
 
 .split {
-    display: flex;
-    flex-direction: column;
+    margin: 0;
+    width: 100%;
     justify-content: left;
 }
 
 .left {
     background: lightgoldenrodyellow;
+    width: 30%;
     padding: 1 rem;
-    flex: 1;
 }
 
 .right {
-    background: lightgoldenrodyellow;
+    background: yellow;
+    width: 70%;
     padding: 1 rem;
-    flex: 1;
 }
 
 table {
@@ -39,11 +40,7 @@ table, td, th {
   border: 2px solid blue;
 }
 
-td, th {
-  text-align: left;
-  height: 20px;
-  width:  120px;
-}
+
 
 th {
   background-color: #4CAF50;
@@ -58,46 +55,46 @@ tr:hover {background-color: #f5f5f5;}
 <section class="main_container">
 <div class="split left">
   <h2>Cutting Works Pricing</h2>
-  <table class="container">
+  <table>
   <thead>
     <tr>
-        <th><h3>Size (mm x mm)</h3></th>
-        <th><h3>Price (AED)</h3></th>
+        <th style="width: 160px"><h3>Size (mm x mm)</h3></th>
+        <th style="width: 120px"><h3>Price (AED)</h3></th>
     </tr>
 </thead>
-  <tr><td>300 x 300</td><td>400</td></tr>
-  <tr><td>350 x 160</td><td>500</td></tr>
-  <tr><td>400 x 160</td><td>500</td></tr>
-  <tr><td>300 x 160</td><td>500</td></tr>
-  <tr><td>350 x 350</td><td>550</td></tr>
-  <tr><td>400 x 400</td><td>650</td></tr>
-  <tr><td>450 x 450</td><td>750</td></tr>
-  <tr><td>500 x 500</td><td>800</td></tr>
-  <tr><td>550 x 550</td><td>875</td></tr>
-  <tr><td>700 x 700</td><td>1410</td></tr>
-  <tr><td>700 x 750</td><td>1440</td></tr>
-  <tr><td>750 x 750</td><td>1500</td></tr>
-  <tr><td>800 x 800</td><td>1550</td></tr>
-  <tr><td>850 x 850</td><td>1600</td></tr>
-  <tr><td>900 x 900</td><td>1800</td></tr>
-  <tr><td>1000 x 1000</td><td>3800</td></tr>  
+  <tr><td>300 x 300</td><td style="text-align: right">400</td></tr>
+  <tr><td>350 x 160</td><td style="text-align: right">500</td></tr>
+  <tr><td>400 x 160</td><td style="text-align: right">500</td></tr>
+  <tr><td>300 x 160</td><td style="text-align: right">500</td></tr>
+  <tr><td>350 x 350</td><td style="text-align: right">550</td></tr>
+  <tr><td>400 x 400</td><td style="text-align: right">650</td></tr>
+  <tr><td>450 x 450</td><td style="text-align: right">750</td></tr>
+  <tr><td>500 x 500</td><td style="text-align: right">800</td></tr>
+  <tr><td>550 x 550</td><td style="text-align: right">875</td></tr>
+  <tr><td>700 x 700</td><td style="text-align: right">1410</td></tr>
+  <tr><td>700 x 750</td><td style="text-align: right">1440</td></tr>
+  <tr><td>750 x 750</td><td style="text-align: right">1500</td></tr>
+  <tr><td>800 x 800</td><td style="text-align: right">1550</td></tr>
+  <tr><td>850 x 850</td><td style="text-align: right">1600</td></tr>
+  <tr><td>900 x 900</td><td style="text-align: right">1800</td></tr>
+  <tr><td>1000 x 1000</td><td style="text-align: right">3800</td></tr>  
 </table>
 </div>
 
 <div class="split right">
     <h2>Coring Works Pricing</h2>
-  <table class="container">
-
+  <table>
   <thead>
     <tr>
-        <th><h3>Project</h3></th>
-        <th><h3>Year</h3></th>
-        <th><h3>Core Sizes</h3></th>
-        <th><h3>Quantity</h3></th>
-        <th><h3>Total Price</h3></th>
-        <th><h3>Unit Price</h3></th>
+        <th style="width: 250px"><h3>Project</h3></th>
+        <th style="width: 75px"><h3>Year</h3></th>
+        <th style="width: 150px"><h3>Core Sizes</h3></th>
+        <th style="width: 100px"><h3>Quantity</h3></th>
+        <th style="width: 120px"><h3>Total Price</h3></th>
+        <th style="width: 120px"><h3>Unit Price</h3></th>
     </tr>
 </thead>
+
 <tr><td>Marina Arcade - AlAjmi</td><td>2017</td><td>75, 150</td><td>8</td><td>3500</td><td>438</td></tr>
 <tr><td>Korus Interiors</td><td>2018</td><td>125</td><td>3</td><td>1750</td><td>584</td></tr>
 <tr><td>Cakes and More</td><td>2019</td><td>150</td><td>1</td><td>1000</td><td>1000</td></tr>
@@ -107,7 +104,7 @@ tr:hover {background-color: #f5f5f5;}
 <tr><td>Marina Arcade - Quantum</td><td>2018</td><td>150</td><td>2</td><td>1500</td><td>750</td></tr>
 <tr><td>Marina Continental</td><td>2018</td><td>Scanning only</td><td>0</td><td>2000</td><td>-</td></tr>
 <tr><td>PPI Contracting</td><td>2019</td><td>75, 150</td><td>51</td><td>9600</td><td>189</td></tr>
-
+<tr><td>Amesco Sky Villa</td><td>2019</td><td>Scanning Level-49</td><td>0</td><td>3500</td><td>-</td></tr>
 </table>
 </div>
 </section>
