@@ -1,18 +1,19 @@
-from flask import Flask, render_template
-import os
+import time
+
+from flask import Flask, jsonify, render_template, request
+
 app = Flask(__name__)
 
 @app.route('/')
-def first():
-    return render_template("first.html")
+def index():
+    return render_template("index.html")
 
-@app.route('/second')
-def second():
-    return render_template("second.html")
+@app.route('/posts', method=["POST"])
+def posts():
+    start = int(request.form.get("start") or 0)
+    end = int(request.form.get("end") or (start + 9))
 
-@app.route('/third')
-def draw():
-    return render_template("third.html")
+
 
 if __name__ == "__main__":
     app.run()
