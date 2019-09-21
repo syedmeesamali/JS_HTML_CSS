@@ -12,6 +12,11 @@
   const quantity = 20;
   document.addEventListener('DOMContentLoaded', load)
 
+  window.onscroll = () => {
+    if(window.innerHeight + window.scrollY >= document.body.offsetHeight)
+      load();
+  }
+
   //Main function for the loading of page
   function load() {
       const start = counter;
@@ -29,9 +34,15 @@
       data.append('start', start);
       data.append('end', end);
       
-  }
-  
-  
+      function add_post(content) {
+        const post = document.createElement('div');
+        post.className = 'post';
+        post.innerHTML = content;
+        document.querySelector('#posts').append(post);
+
+      };
+
+  };
   
   </script>
 
