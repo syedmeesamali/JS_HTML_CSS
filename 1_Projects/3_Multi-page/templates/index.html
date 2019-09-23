@@ -5,8 +5,8 @@
   <meta char-set="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <link rel="stylesheet" href="main.css" />
   <title> Infinite Scroll Page </title>
+  
   <script>
   let counter = 1;
   const quantity = 20;
@@ -33,7 +33,7 @@
       const data = new FormData();
       data.append('start', start);
       data.append('end', end);
-      
+  };  
       function add_post(content) {
         const post = document.createElement('div');
         post.className = 'post';
@@ -42,12 +42,11 @@
 
       };
 
-  };
-  
   </script>
 
 </head>
 <body>
+  <h3>Main Page</h3>
   <div id="posts">
   </div>
 
