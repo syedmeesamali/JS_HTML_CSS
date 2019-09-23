@@ -19,8 +19,8 @@ def posts():
         data.append(f"Post # {i}")
     #Artificially delay speed of mouse
     time.sleep(1)
+    
     return jsonify(data)
-    return render_template("scroll.html")
 
 if __name__ == "__main__":
     app.run()
