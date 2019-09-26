@@ -14,6 +14,7 @@ html, body, section {
     height: 100%;
 }
 body {
+    background-color: lightyellow;
     text-align: left;
 }
 
@@ -24,13 +25,11 @@ body {
 }
 
 .left {
-    background: lightgoldenrodyellow;
     padding: 1 rem;
     flex: 1;
 }
 
 .right {
-    background: lightgoldenrodyellow;
     padding: 1 rem;
     flex: 1;
 }
@@ -50,7 +49,7 @@ label {
     text-align: left;
     background-color:lime;
 }
-#result, #result_bags{
+#result, #result_bags, #epoxy1, #fire1{
     color: red;
     text-decoration: underline;
     font-family: Arial, Helvetica, sans-serif; 
@@ -89,20 +88,15 @@ label {
 	  background-color: lightgreen;
 }
 
-/* Background-color of the even rows */
-
-
-
-
 </style>
 
 </head>
 <body>
 <section class="main_container">
 <div class="split left">
-<h2 style="background-color:DodgerBlue;">Material Calculation for Various Materials Required</h2>
+<h2 style="background-color:yellow;">Material Calculation for Various Strengthening Materials</h2>
 <br>
-<h3>1. Calculation for Anchoring Epoxy</h3>
+<h3  style="background-color:yellow;">1. Calculation for Anchoring Epoxy</h3>
 <form>
         <select name="choose">
             <option value="300ml">300ml Sachet</option>
@@ -124,7 +118,7 @@ label {
 Total amount of material required is: <span id="result">00 ml </span> </p>
 
 <p>
-<h3>2. Calculation for Micro-Concrete</h3>
+<h3  style="background-color:yellow;">2. Calculation for Micro-Concrete</h3>
 <form>
         <select name="choose_one">
             <option value="25kg">25 Kg Bags</option>
@@ -139,6 +133,25 @@ Total amount of material required is: <span id="result">00 ml </span> </p>
 <input id="slab_t" type="text" placeholder="Thickness (mm)">  <br><br>
 <p>
 Total amount of bags required is: <span id="result_bags">00 Bags </span> </p>
+
+<br>
+<h3  style="background-color:yellow;">3. Calculation for CFRP Quantities</h3>
+<form>
+        <select name="choose_two">
+            <option value="S512">S512 Strips</option>
+            <option value="S1012">S1012 Strips</option>
+            <option value="C530">C530 Wrap</option>
+        </select>
+</form>
+<img src="{{ image3 }}" alt="Third Image" width="250" height="150">
+<p>
+<label for="len">Total Length (m):</label> 
+<input id="len" type="text" placeholder="Length (m)"><br> <br>
+
+<p>
+Expoy Sikadur 30-LP required is: <span id="epoxy1">00 6Kg Set </span> </p>
+Fire-protection 2-hr material (Sikacrete 213F) required is: <span id="fire1">00 25Kg Bags </span> </p>
+<p>
 </div>
 
 <div class="split right">
@@ -189,6 +202,18 @@ Total amount of bags required is: <span id="result_bags">00 Bags </span> </p>
                             <td>Sikadur 30-LP</td>
                             <td>6 Kg</td>
                             <td>200</td>
+                        </tr>
+                        <tr>
+                            <td>Sika</td>
+                            <td>Sika Carbodur S1012</td>
+                            <td>100LM</td>
+                            <td>7500</td>
+                        </tr>
+                        <tr>
+                            <td>Sika</td>
+                            <td>Sika Carbodur C530</td>
+                            <td>50LM</td>
+                            <td>3200</td>
                         </tr>
                     </tbody>
                 </table>
@@ -241,6 +266,37 @@ $(document).ready(function(){
             }
 
     }); // End of anchoring epoxy function
+
+
+    $("select[name='choose_two']").change(function(){
+            //Check which sachet type is selected to update the result value
+            //alert($(this).val());
+            var mat_type = $(this).val();
+                var length = $('#len').val();
+            if (mat_type == "S512") {
+                var result_ep = (length / 25);
+                var result_fr = (length / 15);
+                result_ep = result_ep.toFixed(0);
+                result_fr = result_fr.toFixed(0);
+                $('#epoxy1').text(result_ep + " [6Kg] Sets")
+                $('#fire1').text(result_fr + " [25Kg] Bags")
+            } else if (mat_type == "S1012") {
+                var result_ep = (length / 20);
+                var result_fr = (length / 10);
+                result_ep = result_ep.toFixed(0);
+                result_fr = result_fr.toFixed(0);
+                $('#epoxy1').text(result_ep + " [6Kg] Sets")
+                $('#fire1').text(result_fr + " [25Kg] Bags")
+            } else {
+                var result_ep = (length / 10);
+                var result_fr = (length / 8);
+                result_ep = result_ep.toFixed(0);
+                result_fr = result_fr.toFixed(0);
+                $('#epoxy1').text(result_ep + " [6Kg] Sets")
+                $('#fire1').text(result_fr + " [25Kg] Bags")
+            }
+
+    }); // End of CFRP Calculation Function
 
 
 });
