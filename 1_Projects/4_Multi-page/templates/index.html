@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lnag="en">
+
+<head>
+  <meta char-set="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title> Infinite Scroll Page </title>
+  
+  <script>
+  let counter = 1;
+  const quantity = 20;
+  document.addEventListener('DOMContentLoaded', load)
+
+  window.onscroll = () => {
+    if(window.innerHeight + window.scrollY >= document.body.offsetHeight)
+      load();
+  }
+
+  //Main function for the loading of page
+  function load() {
+      const start = counter;
+      const end = start + quantity - 1;
+      counter = end + 1;
+
+      const request = new XMLHttpRequest();
+      request.open('POST', '/posts');
+      request.onload = () => {
+          const data = JSON.parse(request.responseText);
+          data.forEach(add_post);
+      };
+
+      const data = new FormData();
+      data.append('start', start);
+      data.append('end', end);
+  };  
+      
+      console.log("Reached this part");
+      function add_post(content) {
+        const post = document.createElement('div');
+        post.className = 'post';
+        post.innerHTML = content;
+        document.querySelector('#posts').append(post);
+
+      };
+
+  </script>
+
+</head>
+<body>
+  <h3>Main Page</h3>
+
+  <div id="posts">
+  </div>
+
+</body>
+</html>
