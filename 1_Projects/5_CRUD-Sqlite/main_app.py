@@ -31,14 +31,11 @@ def close_connection(exception):
     if db is not None:
         db.close()
         
-    
-
-
 @app.route('/')
 def index():
-    return render_template("index.html")
-
-
+    cur = get_db().cursor()
+    res = cur.execute("SELECT * FROM users")
+    return render_template("index.html", users = res)
 
 if __name__ == "__main__":
     app.run()
