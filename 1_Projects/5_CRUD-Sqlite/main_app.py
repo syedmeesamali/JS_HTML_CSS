@@ -6,6 +6,7 @@ database = "./database.db"
 app = Flask(__name__)
 app.config['DEBUG'] = True
 
+#Below will run only on the first time. Will create initial db with three records
 if not os.path.exists(database):
     conn = sqlite3.connect(database)
     cur = conn.cursor()
@@ -18,6 +19,7 @@ if not os.path.exists(database):
     conn.commit()
     conn.close()
 
+#Get database details
 def get_db():
     db = getattr(g, '_database', None)
     if db is None:
@@ -46,6 +48,18 @@ def savedetails():
             fname = request.form["fname"]
             lname = request.form["lname"]
             age = request.form["age"]
+            with sqlite3.connect(database) as conn:
+                cur = conn.cursor()
+                cur.execute("INSERT INTO users VALUES('Jerry', 'Mouse', '40');", (fname, lname, age))
+                con.commit()
+                msg = "Data Entered Successfully"
+        except:
+            conn.rollback()
+            msg = "Can't add the data at this time"
+        finally:
+            return render_template("success.html", msg = msg)
+            conn.close()
+
 
     return render_template("index.html", users = res)
 
