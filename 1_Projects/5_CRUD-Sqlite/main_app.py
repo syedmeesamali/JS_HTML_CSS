@@ -37,5 +37,19 @@ def index():
     res = cur.execute("SELECT * FROM users")
     return render_template("index.html", users = res)
 
+
+@app.route('/savedetails', methods = ["POST", "GET"])
+def savedetails():
+    msg = "msg"
+    if request.method == "POST":
+        try:
+            fname = request.form["fname"]
+            lname = request.form["lname"]
+            age = request.form["age"]
+
+    return render_template("index.html", users = res)
+
+
+
 if __name__ == "__main__":
     app.run()
