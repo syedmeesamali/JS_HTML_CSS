@@ -52,6 +52,10 @@ def view():
     res = cur.execute("SELECT * FROM users")
     return render_template("view.html", users = res)
 
+@app.route('/delete')
+def delete():
+    return render_template("add.html")
+
 @app.route('/savedetails', methods = ["POST", "GET"])
 def savedetails():
     msg = "msg"
@@ -60,11 +64,11 @@ def savedetails():
             fname = request.form["fname"]
             lname = request.form["lname"]
             age = request.form["age"]
-            with sqlite3.connect(database) as conn:
-                cur = conn.cursor()
-                cur.execute("INSERT INTO users VALUES('Jerry', 'Mouse', '40');", (fname, lname, age))
-                con.commit()
-                msg = "Data Entered Successfully"
+            conn = sqlite3.connect(database)
+            cur = conn.cursor()
+            cur.execute("INSERT INTO users (fname, lname, age) VALUES(?, ?, ?)", (fname, lname, age))
+            conn.commit()
+            msg = "Data Entered Successfully"
         except:
             conn.rollback()
             msg = "Can't add the data at this time"
