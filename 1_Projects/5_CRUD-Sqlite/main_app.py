@@ -32,13 +32,25 @@ def close_connection(exception):
     db = getattr(g, '_database', None)
     if db is not None:
         db.close()
-        
+
+#Below is for the homepage
 @app.route('/')
 def index():
     cur = get_db().cursor()
     res = cur.execute("SELECT * FROM users")
     return render_template("index.html", users = res)
 
+#Below route is for ADDING new records
+@app.route('/add')
+def add():
+    return render_template("add.html")
+
+#Below route is for viewing the existing records
+@app.route('/view')
+def view():
+    cur = get_db().cursor()
+    res = cur.execute("SELECT * FROM users")
+    return render_template("view.html", users = res)
 
 @app.route('/savedetails', methods = ["POST", "GET"])
 def savedetails():
@@ -59,8 +71,6 @@ def savedetails():
         finally:
             return render_template("success.html", msg = msg)
             conn.close()
-
-
     return render_template("index.html", users = res)
 
 
