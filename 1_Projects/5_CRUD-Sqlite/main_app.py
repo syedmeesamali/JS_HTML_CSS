@@ -54,7 +54,7 @@ def view():
 
 @app.route('/delete')
 def delete():
-    return render_template("add.html")
+    return render_template("index.html")
 
 @app.route('/savedetails', methods = ["POST", "GET"])
 def savedetails():
