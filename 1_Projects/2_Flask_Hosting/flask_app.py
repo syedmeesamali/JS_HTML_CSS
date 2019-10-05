@@ -9,23 +9,12 @@ def index():
 def savedetails():
     msg = "msg"
     if request.method == "POST":
-        try:
-            fname = request.form["fname"]
-            lname = request.form["lname"]
-            age = request.form["age"]
-            conn = sqlite3.connect(database)
-            cur = conn.cursor()
-            cur.execute("INSERT INTO users (fname, lname, age) VALUES(?, ?, ?)", (fname, lname, age))
-            conn.commit()
+        code = request.form["code"]
+        if code == "MA15":
             msg = "Data Entered Successfully"
-        except:
-            conn.rollback()
-            msg = "Can't add the data at this time"
-        finally:
-            return render_template("success.html", msg = msg)
-            conn.close()
-    return render_template("index.html", users = res)
-
+            return render_template("ideas.html")
+    else:
+        return render_template("code.html")
 
 @app.route('/links')
 def links():

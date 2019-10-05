@@ -1,55 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title> SVG Animation </title>
-  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <title> Home Page </title>
+  <style>
+    * {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    
+</style>    
 </head>
 <body>
-<svg id="svg" style="width: 100%; height:800px"/>  
-<script>
-  const svg = d3.select('#svg');
-  svg.append('rect')
-    .attr('x', 100)
-    .attr('y', 10)
-    .attr('width', 200)
-    .attr('height', 500)
-    .style('fill', 'black')
+<h2><a href="/ideas">Ideas Sheet</a></h2>
+<p><h2><a href="/links">Links</a></h2></p>
+<p><h2><a href="/coring">Coring</a></h2></p>
+<p><h2><a href="/bird">Bird</a></h2></p>
+<p><h2><a href="/draw">Draw</a></h2></p>
 
-  const red = svg.append('circle')
-      .attr('cx', 200)
-      .attr('cy', 100)
-      .attr('r', 75)
-      .style('fill', 'grey');
-
-  const yellow = svg.append('circle')
-      .attr('cx', 200)
-      .attr('cy', 260)
-      .attr('r', 75)
-      .style('fill', 'grey');
-
-  const green = svg.append('circle')
-      .attr('cx', 200)
-      .attr('cy', 420)
-      .attr('r', 75)
-      .style('fill', 'grey');
-
-  red.on('click', () => {
-    red.style('fill', 'red');
-    yellow.style('fill', 'grey');
-    green.style('fill', 'grey');
-  })
-
-  yellow.on('click', () => {
-    red.style('fill', 'grey');
-    yellow.style('fill', 'yellow');
-    green.style('fill', 'grey');
-  })
-
-  green.on('click', () => {
-    red.style('fill', 'grey');
-    yellow.style('fill', 'grey');
-    green.style('fill', 'green');
-  })
-</script>
 </body>
 </html>
