@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import *
 import os
 app = Flask(__name__)
 @app.route('/')
@@ -6,15 +6,14 @@ def index():
     return render_template("index.html")
 
 @app.route('/token', methods = ["POST", "GET"])
-def savedetails():
-    msg = "msg"
-    if request.method == "POST":
-        code = request.form["code"]
+def token():
+    if request.method == "POST" or request.method == "GET":    
+        code = request.form["code1"]
         if code == "MA15":
-            msg = "Data Entered Successfully"
             return render_template("ideas.html")
-    else:
-        return render_template("code.html")
+        else:
+            return render_template("code.html")
+            
 
 @app.route('/links')
 def links():
@@ -26,7 +25,7 @@ def coring():
 
 @app.route('/ideas')
 def ideas():
-    return render_template("ideas.html")
+    return render_template("code.html")
 
 @app.route('/material')
 def mat():
