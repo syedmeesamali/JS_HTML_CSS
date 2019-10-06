@@ -1,39 +1,135 @@
 <!DOCTYPE html>
 <html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <head>
   <title> Home Page </title>
   <style>
-    body {
+
+@keyframes example {
+  0%   {background-color:red; left:450px; top:0px;}
+  25%  {background-color:yellow; left:600px; top:0px;}
+  50%  {background-color:blue; left:600px; top:450px;}
+  75%  {background-color:green; left:450px; top:450px;}
+  100% {background-color:red; left:450px; top:0px;}
+}
+
+body {
         font-family: Arial, Helvetica, sans-serif;
         height: 100%;
         background: #456368;
         background: -webkit-linear-gradient(#644580, #493f50);
         background:    -moz-linear-gradient(#7FFFD4, #493f50);
         background:         linear-gradient(#648880, #7FFFD4);
-    }
-    
-table, td, th {
-  border: 2px solid yellowgreen;
 }
 
-th {
-  background-color: #4CAF50;
-  color: white;
+ .header {
+  text-align: center;
+  padding: 20px;
+}
+/* Style the top navigation bar */
+.topnav {
+  overflow: hidden;
 }
 
-tr:hover {background-color: yellow;}
+/* Style the topnav links */
+.topnav a {
+  float: left;
+  display: block;
+  color: blue;
+  text-align: left;
+  padding: 14px 20px;
+  text-decoration: none;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+/* Create three equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 30%;
+  padding: 5px;
+}
+
+.anim {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  background-color: red;
+  animation-name: example;
+  animation-duration: 4s;
+  animation-iteration-count: 2;
+  animation-direction: alternate-reverse;
+  animation-iteration-count: infinite;
+}
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width:600px) {
+  .column {
+    width: 100%;
+  }
+}
+
+.footer {
+  color:green;
+  text-align: center;
+  padding: 10px;
+}
 </style>    
 </head>
 <body>
-<table>
-<tr><td><h2><a href="/ideas">Ideas Sheet</a></h2></tr></td>
-<tr><td><p><h2><a href="/links">Links</a></h2></p></tr></td>
-<tr><td><p><h2><a href="/coring">Coring</a></h2></p></tr></td>
-<tr><td><p><h2><a href="/bird">Bird</a></h2></p></tr></td>
-<tr><td><p><h2><a href="/draw">Draw</a></h2></p></tr></td>
-</table>
-<br><br><br><br><br><br><br><br><br><br><br><br>
-<p>Date and Time Now: <span id="datetime"></span></p>
+<div class="header"><h1>Welcome by Syed!</h1></div>
+<div class="topnav">
+<h2><h2><a href="/ideas">Ideas Sheet</a></h2></h2>
+<h2><a href="/links">Links</a></h2>
+<h2><a href="/coring">Coring</a></h2>
+<h2><a href="/bird">Bird</a></h2>
+<h2><a href="/draw">Draw</a></h2>
+</div>
+
+<div class="row">
+    <div class="column">
+      <h2>Programming Skills</h2>
+      <ul>
+          <li>Make List</li>
+          <li>Python</li>
+          <li>VBA-Excel</li>
+          <li>VBA-Outlook</li>
+          <li>C</li>
+          <li>Java</li>
+          <li>JavaScript</li>
+          <li>SQL</li>
+          <li>EOS Programming</li>
+          <li>Ethereum Programming</li>
+      </ul>
+    </div>    
+    <div class="column">
+      <h2>Projects Done</h2>
+      <ol>
+          <li>Website with Flask back-end, SQL database for records, HTML and CSS for front-end</li>
+          <li>BOT using NODE for Gemini Crypto Exchange</li>
+          <li>Various automation scripts using VBA - Excel & Outlook</li>
+          <li>Teaching Java, C, Python, BASH, HTML and CSS</li>
+          <li>Telegram BOT in Python</li>
+      </ol>
+    </div>
+    <div class="anim">
+        
+    </div>
+</div>
+
+<div class="footer">
+<p>Date and Time: <span id="datetime"></span></p>
+</div>
 
 <script>
 var dt = new Date();
