@@ -3,18 +3,41 @@
 <head>
   <title> Home Page </title>
   <style>
-    * {
+    body {
         font-family: Arial, Helvetica, sans-serif;
+        height: 100%;
+        background: #456368;
+        background: -webkit-linear-gradient(#644580, #493f50);
+        background:    -moz-linear-gradient(#7FFFD4, #493f50);
+        background:         linear-gradient(#648880, #7FFFD4);
     }
     
+table, td, th {
+  border: 2px solid yellowgreen;
+}
+
+th {
+  background-color: #4CAF50;
+  color: white;
+}
+
+tr:hover {background-color: yellow;}
 </style>    
 </head>
 <body>
-<h2><a href="/ideas">Ideas Sheet</a></h2>
-<p><h2><a href="/links">Links</a></h2></p>
-<p><h2><a href="/coring">Coring</a></h2></p>
-<p><h2><a href="/bird">Bird</a></h2></p>
-<p><h2><a href="/draw">Draw</a></h2></p>
+<table>
+<tr><td><h2><a href="/ideas">Ideas Sheet</a></h2></tr></td>
+<tr><td><p><h2><a href="/links">Links</a></h2></p></tr></td>
+<tr><td><p><h2><a href="/coring">Coring</a></h2></p></tr></td>
+<tr><td><p><h2><a href="/bird">Bird</a></h2></p></tr></td>
+<tr><td><p><h2><a href="/draw">Draw</a></h2></p></tr></td>
+</table>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+<p>Date and Time Now: <span id="datetime"></span></p>
 
+<script>
+var dt = new Date();
+document.getElementById("datetime").innerHTML = dt.toLocaleString();
+</script>
 </body>
 </html>
