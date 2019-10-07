@@ -8,11 +8,11 @@
   <style>
 
 @keyframes example {
-  0%   {background-color:red; left:450px; top:0px;}
-  25%  {background-color:yellow; left:600px; top:0px;}
-  50%  {background-color:blue; left:600px; top:450px;}
-  75%  {background-color:green; left:450px; top:450px;}
-  100% {background-color:red; left:450px; top:0px;}
+  0%   {background-color:red; left:0px; top:10px; opacity: 0.1;}
+  25%  {background-color:yellow; left:100px; top:10px; opacity: 0.3;}
+  50%  {background-color:yellow; left:150px; top:10px; opacity: 0.7;}
+  75%  {background-color:green; left:200px; top:10px; opacity: 0.5;}
+  100% {background-color:red; left:250px; top:10px; opacity: 0.1;}
 }
 
 body {
@@ -55,15 +55,11 @@ body {
 }
 
 .anim {
-  width: 100px;
-  height: 100px;
+  width: 50px;
+  height: 50px;
   position: relative;
-  background-color: red;
-  animation-name: example;
-  animation-duration: 4s;
-  animation-iteration-count: 2;
-  animation-direction: alternate-reverse;
-  animation-iteration-count: infinite;
+  background-color: yellow;
+  animation: example 5s linear 2s infinite alternate;
 }
 /* Clear floats after the columns */
 .row:after {
@@ -89,10 +85,11 @@ body {
 <body>
 <div class="header"><h1>Welcome by Syed!</h1></div>
 <div class="topnav">
+<h2><h2><a href="/aboutme">About Me</a></h2></h2>
 <h2><h2><a href="/ideas">Ideas Sheet</a></h2></h2>
 <h2><a href="/links">Links</a></h2>
 <h2><a href="/coring">Coring</a></h2>
-<h2><a href="/bird">Bird</a></h2>
+<h2><a href="/mat_calc">Mat Calc</a></h2>
 <h2><a href="/draw">Draw</a></h2>
 </div>
 
@@ -100,14 +97,15 @@ body {
     <div class="column">
       <h2>Programming Skills</h2>
       <ul>
-          <li>Make List</li>
-          <li>Python</li>
-          <li>VBA-Excel</li>
-          <li>VBA-Outlook</li>
-          <li>C</li>
-          <li>Java</li>
-          <li>JavaScript</li>
+          <li>Front-End: HTML, CSS, JS</li>
+          <li>Python - Automation</li>
+          <li>VBA - Excel</li>
+          <li>VBA - Outlook</li>
+          <li>C - Embedded</li>
+          <li>Java SE</li>
+          <li>NODE</li>
           <li>SQL</li>
+          <li>C++</li>
           <li>EOS Programming</li>
           <li>Ethereum Programming</li>
       </ul>
