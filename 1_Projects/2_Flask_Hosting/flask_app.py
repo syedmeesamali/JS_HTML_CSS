@@ -13,6 +13,20 @@ def token():
             return render_template("ideas.html")
         else:
             return render_template("code.html")
+<<<<<<< HEAD
+=======
+            
+@app.route('/token2', methods = ["POST", "GET"])
+def token2():
+    if request.method == "POST" or request.method == "GET":    
+        code = request.form["code2"]
+        if code == "ccl123":
+            return render_template("coring.html")
+        else:
+            return render_template("code.html")
+
+
+>>>>>>> b5172758258470f14099c71ac895fc487892fd2c
 
 @app.route('/links')
 def links():
@@ -24,7 +38,7 @@ def aboutme():
 
 @app.route('/coring')
 def coring():
-    return render_template("Coring.html")
+    return render_template("code.html")
 
 @app.route('/ideas')
 def ideas():
