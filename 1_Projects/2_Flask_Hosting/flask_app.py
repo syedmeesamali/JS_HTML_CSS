@@ -7,17 +7,20 @@ def index():
 
 @app.route('/token', methods = ["POST", "GET"])
 def token():
-    if request.method == "POST" or request.method == "GET":    
+    if request.method == "POST" or request.method == "GET":
         code = request.form["code1"]
         if code == "MA15":
             return render_template("ideas.html")
         else:
             return render_template("code.html")
-            
 
 @app.route('/links')
 def links():
     return render_template("links.html")
+
+@app.route('/aboutme')
+def aboutme():
+    return render_template("intro.html")
 
 @app.route('/coring')
 def coring():
@@ -27,7 +30,7 @@ def coring():
 def ideas():
     return render_template("code.html")
 
-@app.route('/material')
+@app.route('/mat_calc')
 def mat():
     file1 = os.path.join('static','main1.png')
     file2 = os.path.join('static','main2.gif')
@@ -38,7 +41,6 @@ def mat():
 def draw():
     filesrc = os.path.join('static','draw2.js')
     return render_template("draw.html", filesrc1 = filesrc)
-
 
 if __name__ == "__main__":
     app.run(debug=True)
