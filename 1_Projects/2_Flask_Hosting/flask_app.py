@@ -60,5 +60,9 @@ def draw():
     filesrc = os.path.join('static','draw2.js')
     return render_template("draw.html", filesrc1 = filesrc)
 
+@app.route('/bird')
+def draw():
+    return render_template("bird.html")
+
 if __name__ == "__main__":
     app.run(debug=True)
