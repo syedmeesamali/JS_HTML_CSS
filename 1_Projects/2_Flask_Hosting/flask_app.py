@@ -13,20 +13,24 @@ def token():
             return render_template("ideas.html")
         else:
             return render_template("code.html")
-<<<<<<< HEAD
-=======
             
 @app.route('/token2', methods = ["POST", "GET"])
 def token2():
     if request.method == "POST" or request.method == "GET":    
-        code = request.form["code2"]
-        if code == "ccl123":
+        code2 = request.form["code2"]
+        if code2 == "ccl123":
             return render_template("coring.html")
         else:
-            return render_template("code.html")
+            return render_template("code2.html")
 
-
->>>>>>> b5172758258470f14099c71ac895fc487892fd2c
+@app.route('/token3', methods = ["POST", "GET"])
+def token3():
+    if request.method == "POST" or request.method == "GET":    
+        code3 = request.form["code3"]
+        if code3 == "meesamali":
+            return render_template("entry.html")
+        else:
+            return render_template("code3.html")
 
 @app.route('/links')
 def links():
