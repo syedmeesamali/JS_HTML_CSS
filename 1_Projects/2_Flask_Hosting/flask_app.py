@@ -1,6 +1,57 @@
 from flask import *
 import os
+
+database = "./database.db"
 app = Flask(__name__)
+
+#Below will run only on the first time. Will create initial db with three records
+if not os.path.exists(database):
+    conn = sqlite3.connect(database)
+    cur = conn.cursor()
+    cur.execute("CREATE TABLE projects (pname TEXT, year INTEGER, cores TEXT, Qty INTEGER, price INTEGER);")
+    conn.commit()
+    cur.execute("INSERT INTO users VALUES('Sample Project', 2017, '100, 150', 50, 7500);")
+    conn.commit()
+    conn.close()
+
+#Get database details
+def get_db():
+    db = getattr(g, '_database', None)
+    if db is None:
+        db = g._database = sqlite3.connect(database)
+    return db
+
+#Helper to close
+@app.teardown_appcontext
+def close_connection(exception):
+    db = getattr(g, '_database', None)
+    if db is not None:
+        db.close()
+
+@app.route('/savedetails', methods = ["POST", "GET"])
+def savedetails():
+    msg = "msg"
+    if request.method == "POST":
+        try:
+            pname = request.form["project"]
+            year = request.form["year"]
+            cores = request.form["core"]
+            quantity = request.form["quantity"]
+            price = request.form["price"]
+            conn = sqlite3.connect(database)
+            cur = conn.cursor()
+            cur.execute("INSERT INTO projects (pname, year, cores, quantity, price) VALUES(?, ?, ?, ?, ?)", (pname, year, cores, quantity, price))
+            conn.commit()
+            msg = "Data Entered Successfully !"
+        except:
+            conn.rollback()
+            msg = "Sorry can't update the database..."
+        finally:
+            return render_template("success.html", msg = msg)
+            conn.close()
+    return render_template("index.html", users = res)
+
+
 @app.route('/')
 def index():
     return render_template("index.html")
