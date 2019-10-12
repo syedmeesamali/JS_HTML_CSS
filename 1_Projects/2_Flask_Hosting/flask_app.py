@@ -5,14 +5,14 @@ app = Flask(__name__)
 def index():
     return render_template("index.html")
 
-@app.route('/token', methods = ["POST", "GET"])
-def token():
+@app.route('/token1', methods = ["POST", "GET"])
+def token1():
     if request.method == "POST" or request.method == "GET":
-        code = request.form["code1"]
-        if code == "MA15":
+        code1 = request.form["code1"]
+        if code1 == "MA15":
             return render_template("ideas.html")
         else:
-            return render_template("code.html")
+            return render_template("code1.html")
             
 @app.route('/token2', methods = ["POST", "GET"])
 def token2():
@@ -42,11 +42,11 @@ def aboutme():
 
 @app.route('/coring')
 def coring():
-    return render_template("code.html")
+    return render_template("code2.html")
 
 @app.route('/ideas')
 def ideas():
-    return render_template("code.html")
+    return render_template("code1.html")
 
 @app.route('/mat_calc')
 def mat():
@@ -60,8 +60,13 @@ def draw():
     filesrc = os.path.join('static','draw2.js')
     return render_template("draw.html", filesrc1 = filesrc)
 
+@app.route('/entry')
+def entry():
+    return render_template("code3.html")
+
+
 @app.route('/bird')
-def draw():
+def bird():
     return render_template("bird.html")
 
 if __name__ == "__main__":
