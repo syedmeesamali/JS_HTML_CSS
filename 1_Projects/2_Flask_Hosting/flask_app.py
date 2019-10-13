@@ -1,4 +1,5 @@
 from flask import *
+import sqlite3
 import os
 
 database = "./database.db"
@@ -10,39 +11,25 @@ if not os.path.exists(database):
     cur = conn.cursor()
     cur.execute("CREATE TABLE projects (pname TEXT, year INTEGER, cores TEXT, Qty INTEGER, price INTEGER);")
     conn.commit()
-    cur.execute("INSERT INTO users VALUES('Sample Project', 2017, '100, 150', 50, 7500);")
+    cur.execute("INSERT INTO projects VALUES('Sample Project', 2017, '100, 150', 50, 7500);")
     conn.commit()
     conn.close()
-
-#Get database details
-def get_db():
-    db = getattr(g, '_database', None)
-    if db is None:
-        db = g._database = sqlite3.connect(database)
-    return db
-
-#Helper to close
-@app.teardown_appcontext
-def close_connection(exception):
-    db = getattr(g, '_database', None)
-    if db is not None:
-        db.close()
 
 @app.route('/savedetails', methods = ["POST", "GET"])
 def savedetails():
     msg = "msg"
     if request.method == "POST":
         try:
-            pname = request.form["project"]
-            year = request.form["year"]
-            cores = request.form["core"]
-            quantity = request.form["quantity"]
-            price = request.form["price"]
+            project = request.form["project"]
+            year1 = request.form["year"]
+            cores1 = request.form["core"]
+            qty1 = request.form["quantity"]
+            price1 = request.form["price"]
             conn = sqlite3.connect(database)
             cur = conn.cursor()
-            cur.execute("INSERT INTO projects (pname, year, cores, quantity, price) VALUES(?, ?, ?, ?, ?)", (pname, year, cores, quantity, price))
+            cur.execute("INSERT INTO projects (pname, year, cores, quantity, price) VALUES(?, ?, ?, ?, ?)", (project, year1, cores1, qty, price1))
             conn.commit()
-            msg = "Data Entered Successfully !"
+            msg = "Data Entered Successfully!"
         except:
             conn.rollback()
             msg = "Sorry can't update the database..."
@@ -51,6 +38,12 @@ def savedetails():
             conn.close()
     return render_template("index.html", users = res)
 
+@app.route('/entry2')
+def entry2():
+    conn = sqlite3.connect(database)
+    cur = conn.cursor()        
+    res = cur.execute("SELECT * FROM projects")
+    return render_template("entry2.html", users = res)
 
 @app.route('/')
 def index():
