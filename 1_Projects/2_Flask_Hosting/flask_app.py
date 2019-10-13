@@ -20,14 +20,14 @@ def savedetails():
     msg = "msg"
     if request.method == "POST":
         try:
-            project = request.form["project"]
-            year1 = request.form["year"]
-            cores1 = request.form["core"]
-            qty1 = request.form["quantity"]
-            price1 = request.form["price"]
+            pname = request.form["project"]
+            year = request.form["year"]
+            cores = request.form["core"]
+            Qty = request.form["quantity"]
+            price = request.form["price"]
             conn = sqlite3.connect(database)
             cur = conn.cursor()
-            cur.execute("INSERT INTO projects (pname, year, cores, quantity, price) VALUES(?, ?, ?, ?, ?)", (project, year1, cores1, qty, price1))
+            cur.execute("INSERT INTO projects (pname, year, cores, Qty, price) VALUES(?, ?, ?, ?, ?)" , (pname, year, cores, Qty, price))
             conn.commit()
             msg = "Data Entered Successfully!"
         except:
