@@ -8,24 +8,30 @@
     font-family: "Lucida Sans Unicode";
 }
 
-@keyframes move {
+@keyframes hide {
     0% {
-        font-size: 20px;
+        opacity: 1;
     }
     50% {
-        font-size: 23px;
+        opacity: 0;
     }
     100% {
-        font-size: 20px;
+        opacity: 1;
     }
 }
 
-h1 {
-    position: relative;
-    animation-name: move;
-    animation-duration: 20s;
+.hide {
+    float: left;
+}
+
+.heading {
+    background-color: aqua;
+    padding: 20px;
+    margin-bottom: 10px;
+    animation-name: hide;
+    animation-duration: 10s;
     animation-fill-mode: forwards;
-    animation-iteration-count: infinite;
+    animation-play-state: paused;
 }
 
 html {
@@ -47,7 +53,7 @@ body {
 </head>
 <body>
 
-<h1>Something About Me</h1>
+<div class="heading"><h1>Something About Me</h1></div>
 <p>
     My name is "Syed Meesam Ali Naqvi" and I am an experienced (more than 10 years) "Civil Engineer" by profession. 
     However computer programming had been my passion since childhood from the day I read a book on GW-BASIC and it 
