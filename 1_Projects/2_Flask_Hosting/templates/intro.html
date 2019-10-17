@@ -9,19 +9,23 @@
 }
 
 @keyframes move {
-    from {
-        left: 0%;
+    0% {
+        font-size: 20px;
     }
-    to {
-        left: 50%;
+    50% {
+        font-size: 23px;
+    }
+    100% {
+        font-size: 20px;
     }
 }
 
 h1 {
     position: relative;
     animation-name: move;
-    animation-duration: 3s;
+    animation-duration: 20s;
     animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
 }
 
 html {
