@@ -8,6 +8,22 @@
     font-family: "Lucida Sans Unicode";
 }
 
+@keyframes move {
+    from {
+        left: 0%;
+    }
+    to {
+        left: 50%;
+    }
+}
+
+h1 {
+    position: relative;
+    animation-name: move;
+    animation-duration: 3s;
+    animation-fill-mode: forwards;
+}
+
 html {
     height: 100%;
 }
@@ -27,7 +43,7 @@ body {
 </head>
 <body>
 
-<h2>Something About Me</h2>
+<h1>Something About Me</h1>
 <p>
     My name is "Syed Meesam Ali Naqvi" and I am an experienced (more than 10 years) "Civil Engineer" by profession. 
     However computer programming had been my passion since childhood from the day I read a book on GW-BASIC and it 
