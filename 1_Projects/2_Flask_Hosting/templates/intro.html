@@ -13,7 +13,7 @@
         opacity: 1;
     }
     75% {
-        opacity: 0;
+        opacity: 0.3;
     }
     100% {
         opacity: 1;
@@ -49,7 +49,7 @@ body {
 </head>
 <body>
 
-<div class="heading"><h2>Something About Me</h2></div>
+<div onclick="hello()"><h2>Something About Me</h2></div>
 <p>
     My name is "Syed Meesam Ali Naqvi" and I am an experienced (more than 10 years) "Civil Engineer" by profession. 
     However computer programming had been my passion since childhood from the day I read a book on GW-BASIC and it 
@@ -97,6 +97,10 @@ programming techniques. I learned VBA for Outlook and this helped me prepare a m
 along with their attachments to their own independent folders. I also started my own "Excel Advanced" page on Facebook.
 <a href="https://www.facebook.com/exceladvanced">Here is my excel facebook page.</a> 
 </p>
-
+<script>
+function hello() {
+    document.querySelector("h2").innerHTML = "Hello from Syed";
+}
+</script>
 </body>
 </html>
