@@ -98,8 +98,16 @@ along with their attachments to their own independent folders. I also started my
 <a href="https://www.facebook.com/exceladvanced">Here is my excel facebook page.</a> 
 </p>
 <script>
+let counter = 0;
 function hello() {
-    document.querySelector("h2").innerHTML = "Hello from Syed";
+    counter ++;
+    if (counter % 2 == 0)
+    {
+        document.querySelector("h2").innerHTML = "Hello from Syed";
+    } else {
+        document.querySelector("h2").innerHTML = "Something about Syed";
+    }
+        
 }
 </script>
 </body>
