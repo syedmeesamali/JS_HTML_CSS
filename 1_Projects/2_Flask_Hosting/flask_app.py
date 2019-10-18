@@ -36,7 +36,7 @@ def savedetails():
         finally:
             return render_template("success.html", msg = msg)
             conn.close()
-    return render_template("index.html", users = res)
+    return render_template("index.html")
 
 @app.route('/entry2')
 def entry2():
@@ -80,9 +80,12 @@ def token3():
 def links():
     return render_template("links.html")
 
+counter = 0
 @app.route('/aboutme')
 def aboutme():
-    return render_template("intro.html")
+    global counter
+    counter = counter + 1
+    return render_template("intro.html", count = counter)
 
 @app.route('/coring')
 def coring():
