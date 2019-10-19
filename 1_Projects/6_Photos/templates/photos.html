@@ -1,0 +1,26 @@
+<!doctype html>
+<!--This page is property of SYED MEESAM ALI-->
+<head>
+    <title>Photos Here</title>
+<style>
+* {
+    font-family: Arial;
+    box-sizing: border-box;
+}
+html, body, section {
+    height: 100%;
+}
+body {
+    text-align: left;
+}
+</style>
+
+</head>
+<body>
+<h2 style="background-color:Yellow;">My Photo List</h2>
+
+    {% for photo in photos: %}
+      <img src="static/" + {{ photo }} alt={{ photo }} width="800" height="800">{{ photo }}</img>
+    {% endfor %}
+</body>
+</html>
