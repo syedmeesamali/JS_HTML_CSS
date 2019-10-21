@@ -49,7 +49,7 @@ label {
     text-align: left;
     background-color:lime;
 }
-#result, #result_bags, #epoxy1, #epoxy2, #epoxy3, #fire1{
+#result, #result_bags, #epoxy1, #epoxy2, #epoxy3, #fire1, #jreq, #jreq1{
     color: red;
     font-weight: bold;
     font-family: Arial, Helvetica, sans-serif; 
@@ -141,6 +141,31 @@ Epoxy Sikadur 30-LP required: <span id="epoxy1">00 6Kg Set </span> </p>
 <p>Epoxy Sikadur 330 required: <span id="epoxy3">00 5Kg Set </span> </p>
 <p>Fire-protection 2-hr material (Sikacrete 213F) required: <span id="fire1">00 25Kg Bags </span> </p>
 <p>
+
+
+    <br>
+    <h3  style="background-color:yellow;">4. Concrete Jacketing</h3>
+    <form>
+            <select name="choose_three">
+                <option value="100mm">100mm</option>
+                <option value="150mm">150mm</option>
+                <option value="200mm">200mm</option>
+            </select>
+    </form>
+    <img src="{{ image4 }}" alt="Jacketing" width="300" height="200">
+    <p>
+    <label for="iwid">Initial Width (mm):</label>
+    <input id="iwid" type="text" placeholder="Width (mm)"><br> <br>
+    <label for="ilen">Initial Length (mm):</label>
+    <input id="ilen" type="text" placeholder="Length (mm)"><br> <br>
+    <label for="ht">Height (mm):</label>
+    <input id="ht" type="text" placeholder="Height (mm)"><br> <br>
+    <p>
+        <p>Total Micro-Concrete Quantity: <span id="jreq1">00 m3 </span> </p>
+        <p>Total Micro-Concrete material required: <span id="jreq">00 25Kg Bags </span> </p>
+    <p>
+
+
 </div>
 
 <div class="split right">
@@ -305,6 +330,40 @@ $(document).ready(function(){
             }
 
     }); // End of CFRP Calculation Function
+
+    //Start of JACKETING Calculation portion
+    $("select[name='choose_three']").change(function(){
+            //Check which sachet type is selected to update the result value
+            //alert($(this).val());
+            var j_type = $(this).val();
+            var length = $('#ilen').val();
+            var width = $('#iwid').val();
+            var height = $('#ht').val();
+
+            if (j_type == "100mm") {
+                var result1 = ((((length + 200) * (width + 200))/1000000) - ((length * width)/1000000)); // * (height / 1000);
+                result = 115 * result1;
+                result1 = result1.toFixed(0);
+                result = result.toFixed(0);
+                $('#jreq1').text(result1 + " m3")
+                $('#jreq').text(result + " [25Kg] Bags")
+            } else if (j_type == "150mm") {
+                var result1 = ((((length + 300)/1000) * ((width + 300)/1000)) - ((length/1000) * (width/1000))) * (height / 1000);
+                result = 115 * result1;
+                result1 = result1.toFixed(0);
+                result = result.toFixed(0);
+                $('#jreq1').text(result1 + " m3")
+                $('#jreq').text(result + " [25Kg] Bags")
+            } else {
+                var result1 = ((((length + 400)/1000) * ((width + 400)/1000)) - ((length/1000) * (width/1000))) * (height / 1000);
+                result = 115 * result1;
+                result1 = result1.toFixed(0);
+                result = result.toFixed(0);
+                $('#jreq1').text(result1 + " m3")
+                $('#jreq').text(result + " [25Kg] Bags")
+            }
+
+    }); // End of Jacketing Function
 
 
 });
