@@ -160,6 +160,9 @@ Epoxy Sikadur 30-LP required: <span id="epoxy1">00 6Kg Set </span> </p>
     <input id="ilen" type="text" placeholder="Length (mm)"><br> <br>
     <label for="ht">Height (mm):</label>
     <input id="ht" type="text" placeholder="Height (mm)"><br> <br>
+    <label for="nos">Quantity (No's):</label>
+    <input id="nos" type="text" placeholder="No's"><br> <br>
+    <button id="jCalculate">Calculate</button>
     <p>
         <p>Total Micro-Concrete Quantity: <span id="jreq1">00 m3 </span> </p>
         <p>Total Micro-Concrete material required: <span id="jreq">00 25Kg Bags </span> </p>
@@ -332,37 +335,37 @@ $(document).ready(function(){
     }); // End of CFRP Calculation Function
 
     //Start of JACKETING Calculation portion
-    $("select[name='choose_three']").change(function(){
-            //Check which sachet type is selected to update the result value
-            //alert($(this).val());
-            var j_type = $(this).val();
-            var length = $('#ilen').val();
-            var width = $('#iwid').val();
-            var height = $('#ht').val();
+    $("#jCalculate").click(function(){
+            
+            var j_type = $("select[name='choose_three']").val();
+            console.log("Value is: " + j_type);
+            var length = $('#ilen').val() / 1000;
+            var width = $('#iwid').val() / 1000;
+            var height = $('#ht').val() / 1000;
+            var nos = $('#nos').val();
 
             if (j_type == "100mm") {
-                var result1 = ((((length + 200) * (width + 200))/1000000) - ((length * width)/1000000)); // * (height / 1000);
+                var result1 = (((length + 0.1) * (width + 0.1)) - (length * width)) * height * nos;
                 result = 115 * result1;
-                result1 = result1.toFixed(0);
+                result1 = result1.toFixed(2);
                 result = result.toFixed(0);
                 $('#jreq1').text(result1 + " m3")
                 $('#jreq').text(result + " [25Kg] Bags")
             } else if (j_type == "150mm") {
-                var result1 = ((((length + 300)/1000) * ((width + 300)/1000)) - ((length/1000) * (width/1000))) * (height / 1000);
+                var result1 = (((length + 0.15) * (width + 0.15)) - (length * width)) * height * nos;
                 result = 115 * result1;
-                result1 = result1.toFixed(0);
+                result1 = result1.toFixed(2);
                 result = result.toFixed(0);
                 $('#jreq1').text(result1 + " m3")
                 $('#jreq').text(result + " [25Kg] Bags")
             } else {
-                var result1 = ((((length + 400)/1000) * ((width + 400)/1000)) - ((length/1000) * (width/1000))) * (height / 1000);
+                var result1 = (((length + 0.2) * (width + 0.2)) - (length * width)) * height * nos;
                 result = 115 * result1;
-                result1 = result1.toFixed(0);
+                result1 = result1.toFixed(2);
                 result = result.toFixed(0);
                 $('#jreq1').text(result1 + " m3")
                 $('#jreq').text(result + " [25Kg] Bags")
             }
-
     }); // End of Jacketing Function
 
 
