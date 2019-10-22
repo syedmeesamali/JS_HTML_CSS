@@ -60,6 +60,23 @@ label {
     margin: 1px;
 }
 
+.block {
+  display: block;
+  width: 100%;
+  border: none;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.block:hover {
+  background-color: #ddd;
+  color: black;
+}
+
 table {
   border-collapse: collapse;
 }
@@ -101,6 +118,7 @@ tr:hover {background-color: #f5f5f5;}
 <input id="hole_width" type="text" placeholder="Dia. + 4mm usually"> <br><br>
 <label for="drill_nos">Number of Anchors:</label> 
 <input id="drill_nos" type="text" placeholder="# of anchors"> <br><br>
+<button class="block" id="eCalculate">Calculate</button>
 <p>
 Anchoring material required: <span id="result">00 ml </span> </p>
 
@@ -118,6 +136,7 @@ Anchoring material required: <span id="result">00 ml </span> </p>
 <input id="slab_a" type="text" placeholder="Area (sqm)"><br> <br>
 <label for="slab_t">Thickness of Pour (mm):</label> 
 <input id="slab_t" type="text" placeholder="Thickness (mm)">  <br><br>
+<button class="block" id="mCalculate">Calculate</button>
 <p>
 Bags required: <span id="result_bags">00 Bags </span> </p>
 
@@ -134,12 +153,13 @@ Bags required: <span id="result_bags">00 Bags </span> </p>
 <p>
 <label for="len">Total Length (m):</label> 
 <input id="len" type="text" placeholder="Length (m)"><br> <br>
-
+<button class="block" id="cCalculate">Calculate</button>
 <p>
 Epoxy Sikadur 30-LP required: <span id="epoxy1">00 6Kg Set </span> </p>
 <p>Epoxy Sikadur 300 required: <span id="epoxy2">00 30Kg Set </span> </p>
 <p>Epoxy Sikadur 330 required: <span id="epoxy3">00 5Kg Set </span> </p>
-<p>Fire-protection 2-hr material (Sikacrete 213F) required: <span id="fire1">00 25Kg Bags </span> </p>
+<p>Fire-protection 2-hr material (Sikacrete 213F) required: 
+    <br><span id="fire1">00 25Kg Bags </span> </p>
 <p>
 
 
@@ -162,10 +182,11 @@ Epoxy Sikadur 30-LP required: <span id="epoxy1">00 6Kg Set </span> </p>
     <input id="ht" type="text" placeholder="Height (mm)"><br> <br>
     <label for="nos">Quantity (No's):</label>
     <input id="nos" type="text" placeholder="No's"><br> <br>
-    <button id="jCalculate">Calculate</button>
+    <button class="block" id="jCalculate">Calculate</button>
     <p>
         <p>Total Micro-Concrete Quantity: <span id="jreq1">00 m3 </span> </p>
-        <p>Total Micro-Concrete material required: <span id="jreq">00 25Kg Bags </span> </p>
+        <p>Total Micro-Concrete material required: 
+            <br><span id="jreq">00 25Kg Bags </span> </p>
     <p>
 
 
@@ -249,10 +270,10 @@ Epoxy Sikadur 30-LP required: <span id="epoxy1">00 6Kg Set </span> </p>
 //Invoke function when the document is ready
 $(document).ready(function(){
     
-    $("select[name='choose']").change(function(){
+    $("#eCalculate").click(function(){
             //Check which sachet type is selected to update the result value
             //alert($(this).val());
-            var sachet = $(this).val();
+            var sachet = $("select[name='choose']").val();
                 var dia = $('#dia').val();
                 var depth = $('#depth').val();
                 var hole_width = $('#hole_width').val();
@@ -275,10 +296,10 @@ $(document).ready(function(){
 
     }); // End of anchoring epoxy function
 
-    $("select[name='choose_one']").change(function(){
+    $("#mCalculate").click(function(){
             //Check which sachet type is selected to update the result value
             //alert($(this).val());
-            var baggage = $(this).val();
+            var baggage = $("select[name='choose_one']").val();
                 var areaslab = $('#slab_a').val();
                 var thickness = $('#slab_t').val();
             if (baggage == "25kg") {
@@ -294,10 +315,10 @@ $(document).ready(function(){
     }); // End of anchoring epoxy function
 
 
-    $("select[name='choose_two']").change(function(){
+    $("#cCalculate").click(function(){
             //Check which sachet type is selected to update the result value
             //alert($(this).val());
-            var mat_type = $(this).val();
+            var mat_type = $("select[name='choose_two']").val();
                 var length = $('#len').val();
             if (mat_type == "S512") {
                 var result_ep = (length / 25);
