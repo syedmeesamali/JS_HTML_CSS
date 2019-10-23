@@ -111,13 +111,13 @@ tr:hover {background-color: #f5f5f5;}
 <img src="{{ image1 }}" alt="First Image" width="250" height="150">
 <p>
 <label for="dia">Diameter of bar:</label> 
-<input id="dia" type="text" placeholder="Enter dia."><br> <br>
+<input id="dia" pattern="[0-9]*" type="text" placeholder="Enter dia."><br> <br>
 <label for="depth">Depth of Anchor (mm):</label> 
-<input id="depth" type="text" placeholder="Usually 10 times dia.">  <br><br>
+<input id="depth" pattern="[0-9]*" type="text" placeholder="Usually 10 times dia.">  <br><br>
 <label for="hole_width">Width of Drilling:</label> 
-<input id="hole_width" type="text" placeholder="Dia. + 4mm usually"> <br><br>
+<input id="hole_width" pattern="[0-9]*" type="text" placeholder="Dia. + 4mm usually"> <br><br>
 <label for="drill_nos">Number of Anchors:</label> 
-<input id="drill_nos" type="text" placeholder="# of anchors"> <br><br>
+<input id="drill_nos" pattern="[0-9]*" type="text" placeholder="# of anchors"> <br><br>
 <button class="block" id="eCalculate">Calculate</button>
 <p>
 Anchoring material required: <span id="result">00 ml </span> </p>
@@ -133,9 +133,9 @@ Anchoring material required: <span id="result">00 ml </span> </p>
 <img src="{{ image2 }}" alt="Second Image"  width="300" height="300">
 <p>
 <label for="slab_a">Area in SQM:</label> 
-<input id="slab_a" type="text" placeholder="Area (sqm)"><br> <br>
+<input id="slab_a" pattern="[0-9]*" type="text" placeholder="Area (sqm)"><br> <br>
 <label for="slab_t">Thickness of Pour (mm):</label> 
-<input id="slab_t" type="text" placeholder="Thickness (mm)">  <br><br>
+<input id="slab_t" pattern="[0-9]*" type="text" placeholder="Thickness (mm)">  <br><br>
 <button class="block" id="mCalculate">Calculate</button>
 <p>
 Bags required: <span id="result_bags">00 Bags </span> </p>
@@ -152,7 +152,7 @@ Bags required: <span id="result_bags">00 Bags </span> </p>
 <img src="{{ image3 }}" alt="Third Image" width="300" height="200">
 <p>
 <label for="len">Total Length (m):</label> 
-<input id="len" type="text" placeholder="Length (m)"><br> <br>
+<input id="len" pattern="[0-9]*" type="text" placeholder="Length (m)"><br> <br>
 <button class="block" id="cCalculate">Calculate</button>
 <p>
 Epoxy Sikadur 30-LP required: <span id="epoxy1">00 6Kg Set </span> </p>
@@ -175,13 +175,13 @@ Epoxy Sikadur 30-LP required: <span id="epoxy1">00 6Kg Set </span> </p>
     <img src="{{ image4 }}" alt="Jacketing" width="300" height="200">
     <p>
     <label for="iwid">Initial Width (mm):</label>
-    <input id="iwid" type="text" placeholder="Width (mm)"><br> <br>
+    <input id="iwid" pattern="[0-9]*" type="text" placeholder="Width (mm)"><br> <br>
     <label for="ilen">Initial Length (mm):</label>
-    <input id="ilen" type="text" placeholder="Length (mm)"><br> <br>
+    <input id="ilen" pattern="[0-9]*" type="text" placeholder="Length (mm)"><br> <br>
     <label for="ht">Height (mm):</label>
-    <input id="ht" type="text" placeholder="Height (mm)"><br> <br>
+    <input id="ht" pattern="[0-9]*" type="text" placeholder="Height (mm)"><br> <br>
     <label for="nos">Quantity (No's):</label>
-    <input id="nos" type="text" placeholder="No's"><br> <br>
+    <input id="nos" pattern="[0-9]*" type="text" placeholder="No's"><br> <br>
     <button class="block" id="jCalculate">Calculate</button>
     <p>
         <p>Total Micro-Concrete Quantity: <span id="jreq1">00 m3 </span> </p>
