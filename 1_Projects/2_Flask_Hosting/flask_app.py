@@ -48,7 +48,7 @@ def savelinks():
             linktype = request.form["linktype"]
             conn = sqlite3.connect(database2)
             cur = conn.cursor()
-            cur.execute("INSERT INTO (linkurl, linktype) VALUES(?, ?)" , (linkurl, linkurl))
+            cur.execute("INSERT INTO mylinks (linkurl, linktype) VALUES(?, ?)" , (linkurl, linktype))
             conn.commit()
             msg = "Data Entered Successfully!"
         except:
@@ -62,9 +62,16 @@ def savelinks():
 @app.route('/entry2')
 def entry2():
     conn = sqlite3.connect(database)
-    cur = conn.cursor()        
+    cur = conn.cursor()
     res = cur.execute("SELECT * FROM projects")
     return render_template("entry2.html", users = res)
+
+@app.route('/links')
+def links():
+    conn = sqlite3.connect(database2)
+    cur = conn.cursor()
+    res = cur.execute("SELECT * FROM mylinks")
+    return render_template("links2.html", links = res)
 
 @app.route('/')
 def index():
@@ -78,10 +85,10 @@ def token1():
             return render_template("ideas.html")
         else:
             return render_template("code1.html")
-            
+
 @app.route('/token2', methods = ["POST", "GET"])
 def token2():
-    if request.method == "POST" or request.method == "GET":    
+    if request.method == "POST" or request.method == "GET":
         code2 = request.form["code2"]
         if code2 == "ccl123":
             return render_template("coring.html")
@@ -90,7 +97,7 @@ def token2():
 
 @app.route('/token3', methods = ["POST", "GET"])
 def token3():
-    if request.method == "POST" or request.method == "GET":    
+    if request.method == "POST" or request.method == "GET":
         code3 = request.form["code3"]
         if code3 == "meesamali":
             return render_template("entry.html")
@@ -98,17 +105,13 @@ def token3():
             return render_template("code3.html")
 
 @app.route('/token4', methods = ["POST", "GET"])
-def token3():
-    if request.method == "POST" or request.method == "GET":    
-        code3 = request.form["code3"]
-        if code3 == "shahg":
+def token4():
+    if request.method == "POST" or request.method == "GET":
+        code4 = request.form["code4"]
+        if code4 == "shahg":
             return render_template("linkentry.html")
         else:
             return render_template("code4.html")
-
-@app.route('/links')
-def links():
-    return render_template("links.html")
 
 counter = 0
 @app.route('/aboutme')
@@ -142,8 +145,8 @@ def entry():
     return render_template("code3.html")
 
 @app.route('/linkentry')
-def entry():
-    return render_template("code3.html")
+def linkentry():
+    return render_template("code4.html")
 
 @app.route('/bird')
 def bird():

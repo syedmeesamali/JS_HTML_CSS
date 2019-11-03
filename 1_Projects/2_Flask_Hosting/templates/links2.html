@@ -33,16 +33,19 @@ table {
 
 </head>
 <body>
-    <h1><p>Current Saved Links</p></h1><a href="/">Home Page</a><br><br><br>
+    <h1><p>Current Saved Links</p></h1><a href="/"><h3>Home Page</h3></a>
+    <h3><a href="/linkentry">Add a link</a></h3>
     <table>
       <tr>
+        <th>Sr. </th>
         <th>Link</th>
         <th>Type</th>
       </tr>
        {% for link in links %}
        <tr>
-         <td>{{ link[0] }}</td>
-         <td>{{ link[1] }}</td>
+         <td> {{ loop.index }} </td>
+         <td><a href="{{ link[0] }}">{{ link[0] }}</a></td>
+         <td> {{ link[1] }} </td>
        </tr>
        {% endfor %}
     </table>
