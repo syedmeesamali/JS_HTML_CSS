@@ -6,16 +6,6 @@ database = "./database.db"
 database2 = "./linkdb.db"
 app = Flask(__name__)
 
-#Below will run only on the first time. Will create initial db with three records
-if not os.path.exists(database2):
-    conn = sqlite3.connect(database2)
-    cur = conn.cursor()
-    cur.execute("CREATE TABLE mylinks (linkurl TEXT, linktype TEXT);")
-    conn.commit()
-    cur.execute("INSERT INTO mylinks VALUES('https://aiexperiments.withgoogle.com/', 'AI');")
-    conn.commit()
-    conn.close()
-
 @app.route('/savedetails', methods = ["POST", "GET"])
 def savedetails():
     msg = "msg"
@@ -44,11 +34,12 @@ def savelinks():
     msg = "msg"
     if request.method == "POST":
         try:
+            desc = request.form["desc"]
             linkurl = request.form["linkurl"]
             linktype = request.form["linktype"]
             conn = sqlite3.connect(database2)
             cur = conn.cursor()
-            cur.execute("INSERT INTO mylinks (linkurl, linktype) VALUES(?, ?)" , (linkurl, linktype))
+            cur.execute("INSERT INTO mylinks (desc, linkurl, linktype) VALUES(?, ?, ?)" , (desc, linkurl, linktype))
             conn.commit()
             msg = "Data Entered Successfully!"
         except:

@@ -13,20 +13,21 @@ body {
         height: 100%;
         margin: 0;
         background:gold;
-        background: -webkit-linear-gradient(yellow,brown);
+        background: -webkit-linear-gradient(yellow, #98FB98);
+        background: -webkit-linear-gradient(green, gold);
         background-repeat: no-repeat;
         background-attachment: fixed;
 }
 
 table {
     border-collapse: collapse;
-    width: 50%;
+    width: 80%;
   }
 
   td, th {
-    border: 1px solid #dddddd;
+    border: 1px solid whitesmoke;
     text-align: left;
-    padding: 8px;
+    padding: 4px;
   }
   
 </style>
@@ -37,15 +38,17 @@ table {
     <h3><a href="/linkentry">Add a link</a></h3>
     <table>
       <tr>
-        <th>Sr. </th>
-        <th>Link</th>
+        <th>Sr. #</th>
+        <th>Description </th>
+        <th>Link URL</th>
         <th>Type</th>
       </tr>
        {% for link in links %}
        <tr>
          <td> {{ loop.index }} </td>
-         <td><a href="{{ link[0] }}">{{ link[0] }}</a></td>
-         <td> {{ link[1] }} </td>
+         <td> {{ link[0] }} </td>
+         <td><a href="{{ link[1] }}">{{ link[1] }}</a></td>
+         <td> {{ link[2] }} </td>
        </tr>
        {% endfor %}
     </table>
