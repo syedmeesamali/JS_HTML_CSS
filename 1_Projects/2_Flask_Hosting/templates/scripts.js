@@ -14,4 +14,4 @@ function newLink(e)
     li.appendChild(document.createTextNode(links));
     ol.appendChild(li)
 
-}
+} //End of function

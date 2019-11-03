@@ -3,15 +3,16 @@ import sqlite3
 import os
 
 database = "./database.db"
+database2 = "./linkdb.db"
 app = Flask(__name__)
 
 #Below will run only on the first time. Will create initial db with three records
-if not os.path.exists(database):
-    conn = sqlite3.connect(database)
+if not os.path.exists(database2):
+    conn = sqlite3.connect(database2)
     cur = conn.cursor()
-    cur.execute("CREATE TABLE projects (pname TEXT, year INTEGER, cores TEXT, Qty INTEGER, price INTEGER);")
+    cur.execute("CREATE TABLE mylinks (linkurl TEXT, linktype TEXT);")
     conn.commit()
-    cur.execute("INSERT INTO projects VALUES('Sample Project', 2017, '100, 150', 50, 7500);")
+    cur.execute("INSERT INTO mylinks VALUES('https://aiexperiments.withgoogle.com/', 'AI');")
     conn.commit()
     conn.close()
 
@@ -33,6 +34,26 @@ def savedetails():
         except:
             conn.rollback()
             msg = "Sorry can't update the database..."
+        finally:
+            return render_template("success.html", msg = msg)
+            conn.close()
+    return render_template("index.html")
+
+@app.route('/savelinks', methods = ["POST", "GET"])
+def savelinks():
+    msg = "msg"
+    if request.method == "POST":
+        try:
+            linkurl = request.form["linkurl"]
+            linktype = request.form["linktype"]
+            conn = sqlite3.connect(database2)
+            cur = conn.cursor()
+            cur.execute("INSERT INTO (linkurl, linktype) VALUES(?, ?)" , (linkurl, linkurl))
+            conn.commit()
+            msg = "Data Entered Successfully!"
+        except:
+            conn.rollback()
+            msg = "Sorry couldn't update the database..."
         finally:
             return render_template("success.html", msg = msg)
             conn.close()
@@ -76,6 +97,15 @@ def token3():
         else:
             return render_template("code3.html")
 
+@app.route('/token4', methods = ["POST", "GET"])
+def token3():
+    if request.method == "POST" or request.method == "GET":    
+        code3 = request.form["code3"]
+        if code3 == "shahg":
+            return render_template("linkentry.html")
+        else:
+            return render_template("code4.html")
+
 @app.route('/links')
 def links():
     return render_template("links.html")
@@ -111,6 +141,9 @@ def draw():
 def entry():
     return render_template("code3.html")
 
+@app.route('/linkentry')
+def entry():
+    return render_template("code3.html")
 
 @app.route('/bird')
 def bird():

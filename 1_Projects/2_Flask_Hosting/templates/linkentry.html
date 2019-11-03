@@ -1,0 +1,44 @@
+<!doctype html>
+<!--This page is property of SYED MEESAM ALI-->
+<head>
+    <title>Data Entry Page</title>
+
+<style>
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+        font-family: Arial, Helvetica, sans-serif;
+        height: 100%;
+        margin: 0;
+        background:blue;
+        background: -webkit-linear-gradient(blue,brown);
+        background:         linear-gradient(#7FFFD4, green);
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+}
+
+.url {
+    width: 700px;
+}
+
+.url-type {
+    width: 200px;
+}
+
+</style>
+
+</head>
+<body>
+<h1>Addition of New Links</h1>
+<form action="/savelinks" method="POST">
+    <table>
+      <tr><td>Link URL:</td><td><input type="text" name="linkurl" class="url"></td></tr>
+      <tr><td>Link Type:</td><td><input type="text" name="linktype" class="url-type"></td></tr>
+    </table>
+    <input type="submit" value="Submit">
+    </form>
+    <p><a href="/">Go back to homepage</a></p>
+</body>
+</html>
