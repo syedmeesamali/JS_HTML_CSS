@@ -50,8 +50,8 @@ def savelinks():
             conn.close()
     return render_template("index.html")
 
-@app.route('/entry2')
-def entry2():
+@app.route('/entry')
+def entry():
     conn = sqlite3.connect(database)
     cur = conn.cursor()
     res = cur.execute("SELECT * FROM projects")
@@ -131,8 +131,8 @@ def draw():
     filesrc = os.path.join('static','draw2.js')
     return render_template("draw.html", filesrc1 = filesrc)
 
-@app.route('/entry')
-def entry():
+@app.route('/entry2')
+def entry2():
     return render_template("code3.html")
 
 @app.route('/linkentry')
