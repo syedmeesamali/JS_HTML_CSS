@@ -1,51 +1,64 @@
 <!doctype html>
 <!--This page is property of SYED MEESAM ALI-->
 <head>
-    <title>Links List</title>
+    <title>Link View List</title>
+
 <style>
 * {
-    font-family: Arial;
-    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-html, body, section {
-    height: 100%;
-}
 body {
-    text-align: left;
+        font-family: Arial, Helvetica, sans-serif;
+        height: 100%;
+        margin: 0;
+        background:gold;
+        background: -webkit-linear-gradient(yellow, #98FB98);
+        background: -webkit-linear-gradient(green, gold);
+        background-repeat: no-repeat;
+        background-attachment: fixed;
 }
 
-.input-link {
-    width: 350px;
-}
+table {
+    border-collapse: collapse;
+    width: 90%;
+  }
+
+  td, th {
+    border: 1px solid whitesmoke;
+    text-align: left;
+    padding: 4px;
+  }
+  
 </style>
+
 </head>
 <body>
-<h2 style="background-color:Yellow;">Useful Links List</h2>
-<label for="links">Add Links:</label>
-<form action="#" id="form1">
-    <input type="text" id="addlink" class="input-link">
-    <input type="submit" value="Add New Link">
-</form>
-<p>
-<ol id="list">
-<li><a href="https://aiexperiments.withgoogle.com/">Google AI Experiments</a> <br></li>
-<li><a href="https://atomiks.github.io/30-seconds-of-css/">30 Seconds of CSS</a> <br></li>
-<li><a href="https://github.com/hellerve/programming-talks">Awesome and Interesting Talks about Programming</a> <br></li>
-<li><a href="https://blog.usejournal.com/20-html-and-css-projects-to-sharpen-your-skills-c124c2377206">HTML and CSS tricks to sharpen your skill</a> <br></li>
-<li><a href="https://dariusforoux.com/reading-list/">Personal Development Reading List</a> <br></li>
-<li><a href="https://www.imgbot.ai/">Image Manipulation BOT</a> <br></li>
-<li><a href="https://cgcookie.com/articles/blender-2-8-python-scripting-superpowers-for-non-programmers">Blender 2.8 with Python Scripting</a> <br></li>
-<li><a href="https://blenderscripting.blogspot.com/">Blender Scripting Blog</a> <br></li>
-<li><a href="https://github.com/zeffii/BlenderPythonRecipes/wiki/PyGeom">Blender Python Recipes - Github Blog</a> <br></li>
-<li><a href="https://perplex.city/the-search-for-self-60e2149cffa3#.oqeazto3n">Google Searches Project</a> <br></li>
-<!-- <li><a href="http://chagataikhan.blogspot.com/">Chagatai Khan Blog</a> <br></li> -->
-<li><a href="https://dev.to/pagely/seo-cheat-sheet-for-devs-5h1g">SEO Sheet for the Devs</a> <br></li>
-<li><a href="https://dev.to/yechielk/writing-your-first-browser-extension-part-1-d5e">Writing your own browser extension</a> <br></li>
-<li><a href="https://github.com/ethereumbook/ethereumbook/blob/develop/06transactions.asciidoc">ETHEREUM BOOK: Transactions</a> <br></li>
-<li><a href="">ETHEREUM BOOK: Transactions</a> <br></li>
-<li><a href="">New link</a> <br></li>
-</ol>
-<script src="scripts.js"></script>
+    <h1><p>Current Saved Links</p></h1><a href="/"><h3>Home Page</h3></a>
+    <h3><a href="/linkentry">Add a link</a></h3>
+    <table>
+      <tr>
+        <th>Sr. #</th>
+        <th>Description </th>
+        <th>Link URL</th>
+        <th>Type</th>
+        <th>Status</th>
+      </tr>
+       {% for link in links %}
+       <tr>
+        <td width="5%" style="text-align: center;"> {{ loop.index }} </td>
+        <td width="40%"> {{ link[0] }} </td>
+        <td width="40%"><a href="{{ link[1] }}">{{ link[1] }}</a></td>
+        <td width="5%"> {{ link[2] }} </td>
+        <td width="5%">
+          <form action="/read" method="POST">
+            <input type="hidden" value="{{ loop.index }}"/>
+            <button id="w3-btn">Read</button>
+          </form> 
+        </td>
+       </tr>
+       {% endfor %}
+    </table>
+    
 </body>
 </html>

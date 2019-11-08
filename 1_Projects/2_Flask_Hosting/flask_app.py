@@ -62,7 +62,7 @@ def links():
     conn = sqlite3.connect(database2)
     cur = conn.cursor()
     res = cur.execute("SELECT * FROM mylinks")
-    return render_template("links2.html", links = res)
+    return render_template("links.html", links = res)
 
 @app.route('/')
 def index():
@@ -104,6 +104,16 @@ def token4():
         else:
             return render_template("code4.html")
 
+@app.route('/token5', methods = ["POST", "GET"])
+def token5():
+    if request.method == "POST" or request.method == "GET":
+        code5 = request.form["code5"]
+        if code5 == "shah":
+            return render_template("read.html")
+        else:
+            return render_template("code5.html")
+
+
 counter = 0
 @app.route('/aboutme')
 def aboutme():
@@ -134,6 +144,10 @@ def draw():
 @app.route('/entry2')
 def entry2():
     return render_template("code3.html")
+
+@app.route('/read')
+def read():
+    return render_template("code5.html")
 
 @app.route('/linkentry')
 def linkentry():
