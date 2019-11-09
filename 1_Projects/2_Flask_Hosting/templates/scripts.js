@@ -1,4 +1,3 @@
-
 eventListeners();
 
 function eventListeners() {

@@ -113,7 +113,6 @@ def token5():
         else:
             return render_template("code5.html")
 
-
 counter = 0
 @app.route('/aboutme')
 def aboutme():
@@ -145,9 +144,25 @@ def draw():
 def entry2():
     return render_template("code3.html")
 
-@app.route('/read')
+@app.route('/read/<int>', methods = ["POST", "GET"])
 def read():
-    return render_template("code5.html")
+    if request.method == "POST":
+        try:
+            desc = request.form["desc"]
+            linkurl = request.form["linkurl"]
+            linktype = request.form["linktype"]
+            conn = sqlite3.connect(database2)
+            cur = conn.cursor()
+            cur.execute("INSERT INTO mylinks (desc, linkurl, linktype) VALUES(?, ?, ?)" , (desc, linkurl, linktype))
+            conn.commit()
+            msg = "Data Entered Successfully!"
+        except:
+            conn.rollback()
+            msg = "Sorry couldn't update the database..."
+        finally:
+            return render_template("success.html", msg = msg)
+            conn.close()
+    return render_template("index.html")
 
 @app.route('/linkentry')
 def linkentry():
