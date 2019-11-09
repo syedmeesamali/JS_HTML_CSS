@@ -64,6 +64,13 @@ def links():
     res = cur.execute("SELECT * FROM mylinks")
     return render_template("links.html", links = res)
 
+@app.route('/links/<int:val>')
+def links_entry(val):
+    conn = sqlite3.connect(database2)
+    cur = conn.cursor()
+    res = cur.execute("SELECT * FROM mylinks WHERE rowid = ?", (val,))
+    return render_template("links.html", links = res)
+
 @app.route('/')
 def index():
     return render_template("index.html")
