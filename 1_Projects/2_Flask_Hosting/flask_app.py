@@ -151,25 +151,18 @@ def draw():
 def entry2():
     return render_template("code3.html")
 
-@app.route('/read/<int>', methods = ["POST", "GET"])
-def read():
+@app.route('/read/<int:val>', methods = ["POST", "GET"])
+def read(val):
     if request.method == "POST":
         try:
-            desc = request.form["desc"]
-            linkurl = request.form["linkurl"]
-            linktype = request.form["linktype"]
             conn = sqlite3.connect(database2)
             cur = conn.cursor()
-            cur.execute("INSERT INTO mylinks (desc, linkurl, linktype) VALUES(?, ?, ?)" , (desc, linkurl, linktype))
-            conn.commit()
-            msg = "Data Entered Successfully!"
+            res = cur.execute("SELECT * FROM mylinks WHERE rowid = ?", (val,))
         except:
             conn.rollback()
-            msg = "Sorry couldn't update the database..."
         finally:
-            return render_template("success.html", msg = msg)
+            return render_template("links.html", links = res)
             conn.close()
-    return render_template("index.html")
 
 @app.route('/linkentry')
 def linkentry():
