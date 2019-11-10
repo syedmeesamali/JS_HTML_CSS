@@ -60,10 +60,14 @@ def entry():
 
 @app.route('/links')
 def links():
-    conn = sqlite3.connect(database2)
+    return render_template("code5.html")
+
+@app.route('/readlinks')
+def readlinks():
+    conn = sqlite3.connect(database3)
     cur = conn.cursor()
-    res = cur.execute("SELECT * FROM mylinks")
-    return render_template("links.html", links = res)
+    res = cur.execute("SELECT * FROM readlinks")
+    return render_template("readlinks.html", links = res)
 
 @app.route('/')
 def index():
@@ -110,7 +114,10 @@ def token5():
     if request.method == "POST" or request.method == "GET":
         code5 = request.form["code5"]
         if code5 == "shah":
-            return render_template("read.html")
+            conn = sqlite3.connect(database2)
+            cur = conn.cursor()
+            res = cur.execute("SELECT * FROM mylinks")
+            return render_template("links.html", links = res)
         else:
             return render_template("code5.html")
 
@@ -154,16 +161,21 @@ def read(val):
             conn2 = sqlite3.connect(database3)
             cur = conn.cursor()
             cur1 = conn2.cursor()
-            desc1 = cur.execute("SELECT desc FROM mylinks WHERE rowid = ?", (val,))
-            url1 = cur.execute("SELECT linkurl FROM mylinks WHERE rowid = ?", (val,))
-            typ1 = cur.execute("SELECT linktype FROM mylinks WHERE rowid = ?", (val,))
-            cur1.execute("INSERT INTO readlinks (desc, linkurl, linktype) VALUES(?, ?, ?)" , (desc1, url1, typ1))
+            cur.execute("SELECT desc FROM mylinks WHERE rowid = ?", (val,))
+            desc = cur.fetchone()[0]
+            cur.execute("SELECT linkurl FROM mylinks WHERE rowid = ?", (val,))
+            linkurl = cur.fetchone()[0]
+            cur.execute("SELECT linktype FROM mylinks WHERE rowid = ?", (val,))
+            linktype = cur.fetchone()[0]
+            cur1.execute("INSERT INTO readlinks (desc, linkurl, linktype) VALUES(?, ?, ?)" , (desc, linkurl, linktype))
+            cur.execute("DELETE FROM mylinks WHERE rowid = ?", (val,))
             conn2.commit()
-            res = cur1.execute("SELECT * FROM readlinks")
+            conn.commit()
             msg = "Data Entered Successfully!"
         except:
+            conn.rollback()
             conn2.rollback()
-            msg = "Couldn't update the readlinks database.....!"
+            msg = "Couldn't update the databases.....!"
         finally:
             return render_template("success.html", msg = msg)
             conn.close()
