@@ -1,7 +1,7 @@
 <!doctype html>
 <!--This page is property of SYED MEESAM ALI-->
 <head>
-    <title>Link View List</title>
+    <title>Links Read</title>
 
 <style>
 * {
@@ -34,32 +34,22 @@ table {
 
 </head>
 <body>
-    <h1><p>Current Saved Links</p></h1><a href="/"><h3>Home Page</h3></a>
-    <h3><a href="/linkentry">Add a link</a></h3>
-    <h3><a href="/readlinks">Read Links</a></h3>
+    <h1><p>Links Read Already</p></h1><a href="/"><h3>Home Page</h3></a>
     <table>
       <tr>
         <th>Sr. #</th>
         <th>Description </th>
         <th>Link URL</th>
         <th>Type</th>
-        <th>Status</th>
       </tr>
        {% for link in links %}
        <tr>
-        <td width="4%" style="text-align: center;"> {{ loop.index }} </td>
+        <td width="5%" style="text-align: center;"> {{ loop.index }} </td>
         <td width="40%"> {{ link[0] }} </td>
-        <td width="38%"><a href="{{ link[1] }}">{{ link[1] }}</a></td>
+        <td width="40%"><a href="{{ link[1] }}">{{ link[1] }}</a></td>
         <td width="5%"> {{ link[2] }} </td>
-        <td width="9%">
-          <form action="/read/{{ loop.index }}" method="POST">
-            <input type="hidden" value="{{ loop.index }}"/>
-            <button id="w3-btn">Read Done</button>
-          </form> 
-        </td>
        </tr>
        {% endfor %}
     </table>
-    
 </body>
 </html>

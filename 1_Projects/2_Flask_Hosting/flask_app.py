@@ -4,6 +4,7 @@ import os
 
 database = "./database.db"
 database2 = "./linkdb.db"
+database3 = "./read.db"
 app = Flask(__name__)
 
 @app.route('/savedetails', methods = ["POST", "GET"])
@@ -62,13 +63,6 @@ def links():
     conn = sqlite3.connect(database2)
     cur = conn.cursor()
     res = cur.execute("SELECT * FROM mylinks")
-    return render_template("links.html", links = res)
-
-@app.route('/links/<int:val>')
-def links_entry(val):
-    conn = sqlite3.connect(database2)
-    cur = conn.cursor()
-    res = cur.execute("SELECT * FROM mylinks WHERE rowid = ?", (val,))
     return render_template("links.html", links = res)
 
 @app.route('/')
@@ -154,15 +148,27 @@ def entry2():
 @app.route('/read/<int:val>', methods = ["POST", "GET"])
 def read(val):
     if request.method == "POST":
+        msg = "msg"
         try:
             conn = sqlite3.connect(database2)
+            conn2 = sqlite3.connect(database3)
             cur = conn.cursor()
-            res = cur.execute("SELECT * FROM mylinks WHERE rowid = ?", (val,))
+            cur1 = conn2.cursor()
+            desc1 = cur.execute("SELECT desc FROM mylinks WHERE rowid = ?", (val,))
+            url1 = cur.execute("SELECT linkurl FROM mylinks WHERE rowid = ?", (val,))
+            typ1 = cur.execute("SELECT linktype FROM mylinks WHERE rowid = ?", (val,))
+            cur1.execute("INSERT INTO readlinks (desc, linkurl, linktype) VALUES(?, ?, ?)" , (desc1, url1, typ1))
+            conn2.commit()
+            res = cur1.execute("SELECT * FROM readlinks")
+            msg = "Data Entered Successfully!"
         except:
-            conn.rollback()
+            conn2.rollback()
+            msg = "Couldn't update the readlinks database.....!"
         finally:
-            return render_template("links.html", links = res)
+            return render_template("success.html", msg = msg)
             conn.close()
+            conn2.close()
+    return render_template("index.html")
 
 @app.route('/linkentry')
 def linkentry():
