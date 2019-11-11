@@ -3,8 +3,8 @@ import sqlite3
 import os
 
 database = "./database.db"
-database2 = "./linkdb.db"
-database3 = "./read.db"
+link_db = "./linkdb.db"
+read_db = "./read.db"
 db_ideas = "./ideas.db"
 db_done = "./done.db"
 app = Flask(__name__)
@@ -40,7 +40,7 @@ def savelinks():
             desc = request.form["desc"]
             linkurl = request.form["linkurl"]
             linktype = request.form["linktype"]
-            conn = sqlite3.connect(database2)
+            conn = sqlite3.connect(link_db)
             cur = conn.cursor()
             cur.execute("INSERT INTO mylinks (desc, linkurl, linktype) VALUES(?, ?, ?)" , (desc, linkurl, linktype))
             conn.commit()
@@ -66,7 +66,7 @@ def links():
 
 @app.route('/readlinks')
 def readlinks():
-    conn = sqlite3.connect(database3)
+    conn = sqlite3.connect(read_db)
     cur = conn.cursor()
     res = cur.execute("SELECT * FROM readlinks")
     return render_template("readlinks.html", links = res)
@@ -89,7 +89,7 @@ def token2():
     if request.method == "POST" or request.method == "GET":
         code2 = request.form["code2"]
         if code2 == "ccl123":
-            return render_template("coring.html")
+            return render_template("entry.html")
         else:
             return render_template("code2.html")
 
@@ -116,7 +116,7 @@ def token5():
     if request.method == "POST" or request.method == "GET":
         code5 = request.form["code5"]
         if code5 == "shah":
-            conn = sqlite3.connect(database2)
+            conn = sqlite3.connect(link_db)
             cur = conn.cursor()
             res = cur.execute("SELECT * FROM mylinks")
             return render_template("links.html", links = res)
@@ -159,8 +159,8 @@ def read(val):
     if request.method == "POST":
         msg = "msg"
         try:
-            conn = sqlite3.connect(database2)
-            conn2 = sqlite3.connect(database3)
+            conn = sqlite3.connect(link_db)
+            conn2 = sqlite3.connect(read_db)
             cur = conn.cursor()
             cur1 = conn2.cursor()
             cur.execute("SELECT desc FROM mylinks WHERE rowid = ?", (val,))
@@ -187,6 +187,10 @@ def read(val):
 @app.route('/linkentry')
 def linkentry():
     return render_template("code4.html")
+
+@app.route('/contact')
+def contact():
+    return render_template("contact.html")
 
 @app.route('/bird')
 def bird():

@@ -2,32 +2,40 @@
 <!--This page is property of SYED MEESAM ALI-->
 <head>
     <title>Introduction</title>
-
 <style>
 * {
-    font-family: "Lucida Sans Unicode";
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 @keyframes hide {
     0% {
         opacity: 1;
     }
+    50% {
+        opacity: 0.4; }
     75% {
-        opacity: 0.3;
+        opacity: 0.7;
     }
     100% {
         opacity: 1;
     }
 }
 
+.special :hover {
+    background-color: yellow;
+}
 h2 {
     background-color: aqua;
-    padding: 20px;
+    left: 20px;
     margin-bottom: 10px;
     animation-name: hide;
     animation-duration: 10s;
     animation-fill-mode: forwards;
     animation-iteration-count: infinite;
+}
+
+h2 :hover {
+    background-color: yellow;
 }
 
 html {
@@ -36,7 +44,8 @@ html {
 body {
         font-family: Arial, Helvetica, sans-serif;
         height: 100%;
-        margin: 0;
+        padding-left: 20px;
+        padding-right: 100px;
         background: aqua;
         background: -webkit-linear-gradient(aqua, lightyellow);
         background:         linear-gradient(lightyellow, #7FFFD4);
@@ -51,65 +60,72 @@ body {
 
 <div onclick="hello()"><h2>Something About Me</h2></div>
 <p>
-    My name is "Syed Meesam Ali Naqvi" and I am an experienced (more than 10 years) "Civil Engineer" by profession. 
-    However computer programming had been my passion since childhood from the day I read a book on GW-BASIC and it 
-    was an aha moment for me. It was amazing to know that the "magic box" (as my uncle used to call it) could be 
-    programmed by anyone with knowledge of programming. 
-    I had a small taste of "C" while reading a friend's course book on C-language. Interestingly though it was part of 
-    my friend's course-work but he had no interest in it while I was enjoying it and surprisingly at one point I was
-    teaching him "C-Language (Turbo-C compiler)".
+    My name is "Syed Meesam Ali" and I am an experienced Engineer by profession. Computer programming had been my 
+    passion since childhood starting from the day I read a book on GW-BASIC. It was an aha moment for me. 
+    It was an amazing feeling that the "magic box" (as my uncle used to call it) could be controlled by anyone with 
+    knowledge of something called programming.
+    I had a small taste of "C Language" while reading a friend's course book on C-language. Interestingly, though it was part of 
+    his course-work but he had no interest in programming while I was enjoying it. Unsurprisingly at one point I was the one
+    <em>teaching</em> him "C-Language (Turbo-C compiler)".
 </p>
 
 <p>
-    Things changed when I joined university and opted for a course of "Civil Engineering" instead of "Computer Science"
-    as the former had better job prospects (back in 2005). I was the most excited one while taking course on Visual Basic in
-    my university's first year. We built a simple calculator and I was helping most of my mates who were totally new to 
-    programming and didn't enjoy it much. 
-    Later during the course I was disconnected from programming as civil engineering is all 
-    about bricks and mortar (not really....). For my final year project I choose "computer 
-    program for calculation of forces on "composite bridge girders".
-    The implementation was done using Fortran-77 and I tried to shift it to visual basic.
+    Things changed when I joined university and opted for a course in "Civil Engineering" (due to friends recommendation). 
+    I was the most excited one while taking course on Visual Basic in my university's first year. We built a simple calculator 
+    and I was helping many of my classmates who were totally new to programming and didn't enjoy it much. 
+    For my final year project I choose the project with title (computer program for calculation of forces on "composite bridge girders").
+    The original program was written using Fortran-77 and I had to convert it to Visual Basic.
 </p>
-<p> I was also deeply interested in electronics and when I found out about 
-    "8051 Microcontrollers" it got me hooked completely. I learnt more about MCUs and how
-    to program them using Assembly as well as C-language. I made a simple temperature
-    sensor project using LM35DZ sensor and display using 7-segment LEDs. 
-    Later I programmed some stepper motors by connecting them to LPT printer port 
-    of PC and controlling through MATLAB program. 
+<p> I got also deeply interested in electronics and embedded systems when I found out about <span class="special"><strong>"8051 Microcontrollers"</strong></span>.
+    It got me hooked completely to programming (Assembly & C) as well as electronics. I learnt a lot about MCUs and how
+    to program and interface them to external world. I did a <span class="special"><strong>"Simple Temperature Sensor"</strong></span> 
+    project using LM35DZ sensor (Display was using 7-segment LEDs). Later I programmed stepper motor by connecting it 
+    to LPT printer port of PC and controlling through MATLAB.
 </p>
 <p>
-    After joining my first job as a professional civil engineer there wasn't much use of 
-programming directly. My work mostly involved preparing BOQs (bill of quantities) for various civil projects in 
-Excel. Always working on excel made me realise that lot of mundane tasks could be made 
-easier through custom formulas. Building these formulas required understanding of basic 
-coding techniques and this directly lead me towards VBA (i.e. Visual Basic for Applications). 
+After starting my first job as a professional civil engineer there wasn't much use of 
+programming directly. My work mostly involved preparing BOQs for various projects using MS Excel. 
+Always working on excel made me realise that a lot of mundane tasks could be made 
+automated through macros (made in Visual Basic for Applications or VBA).
 </p>
 <p>
-VBA was a fun language to learn and the best part was that I could immediately put it into use. Many simple tasks 
-can be automated with VBA quite easily. I embarked upon creating my own estimation module i.e. a simple VBA module 
-which will automatically gather data from various sheets and give the aggregate result and some calculations on some 
-final results sheet. It was great success for me as it was my <strong> FIRST CODING / PROGRAMMING PROJECT </strong>.
+VBA was fun language to learn and the best part was that I could immediately put it to use. Many simple tasks 
+can be automated with VBA easily. I embarked upon creating my own estimation module i.e. a simple VBA module 
+which will automatically gather data from various sheets and give the aggregate result including calculations on some 
+final results sheet. It was great success for me as it was my first full scale <strong> Programming Project</strong>.
 </p>
 
 <p>
 Best thing that I learnt from my first project was that anything can be AUTOMATED through combination of various 
-programming techniques. I learned VBA for Outlook and this helped me prepare a module for automatically saving emails
-along with their attachments to their own independent folders. I also started my own "Excel Advanced" page on Facebook.
+programming techniques. I learned VBA for Outlook and this helped me prepare a simple module for automatically saving emails
+along with their attachments to their own independent folders. In the meanwhile I also started my own "Excel Advanced" 
+page on Facebook where I try to post some advanced excel tips regularly.
 <br><br>
-<a href="https://www.facebook.com/exceladvanced">Here is my "Excel Advanced" facebook page.</a> 
+<strong><a href="https://www.facebook.com/exceladvanced">Here is my "Excel Advanced" facebook page</a></strong>
 </p>
+
 <p>
-    <h5>Counter = {{ count }} since last update. </h5>
+Starting in 2018 I started to think seriously about programming due to below reasons. <br>
+<ul>
+    <li>Blockchain became mainstream due to introduction of Bitcoin-mania towards end of 2017</li>
+    <li>I took some <strong>edx courses</strong> on Python and found it to be most versatile and useful of all</li>
+    <li>Embedded is always something I love. MCUs and hardware is my passion. IoT is nothing but connected embedded devices</li>
+    <li>I started teaching (only to enhance and fine-tune by existing programming knowledge and learn what i didn't know)</li>
+    <li>I took a course on <strong>Javascript, C++ and Blockchain Programming</strong> from online academy</li>
+    <li>I became serious about transitioning myself full-time IT/Programming career path</li>
+</ul>
 </p>
+
+<h3><a href="/">Back to HomePage</a></h3>
 <script>
 let counter = 0;
 function hello() {
     counter ++;
     if (counter % 2 == 0)
     {
-        document.querySelector("h2").innerHTML = "Hello from Syed";
+        document.querySelector("h2").innerHTML = "Welcome from Syed Meesam Ali";
     } else {
-        document.querySelector("h2").innerHTML = "Intro of Syed";
+        document.querySelector("h2").innerHTML = "About Syed Meesam Ali";
     }
 }
 </script>
