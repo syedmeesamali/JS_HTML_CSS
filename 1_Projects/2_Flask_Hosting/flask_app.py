@@ -5,6 +5,8 @@ import os
 database = "./database.db"
 database2 = "./linkdb.db"
 database3 = "./read.db"
+db_ideas = "./ideas.db"
+db_done = "./done.db"
 app = Flask(__name__)
 
 @app.route('/savedetails', methods = ["POST", "GET"])
@@ -77,7 +79,7 @@ def index():
 def token1():
     if request.method == "POST" or request.method == "GET":
         code1 = request.form["code1"]
-        if code1 == "MA15":
+        if code1 == "meesam":
             return render_template("ideas.html")
         else:
             return render_template("code1.html")

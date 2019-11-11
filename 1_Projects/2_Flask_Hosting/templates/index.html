@@ -8,25 +8,24 @@
   <style>
 
 @keyframes example {
-  0%   {background-color:red; left:0px; top:10px; opacity: 0.1;}
-  25%  {background-color:yellow; left:100px; top:10px; opacity: 0.3;}
-  50%  {background-color:yellow; left:150px; top:10px; opacity: 0.7;}
-  75%  {background-color:green; left:200px; top:10px; opacity: 0.5;}
-  100% {background-color:red; left:250px; top:10px; opacity: 0.1;}
+  0%   {background-color:red; left:0px; top:10px; opacity: 0.25;}
+  25%  {background-color:yellow; transform: scale(0.4); left:100px; top:10px; opacity: 0.3;}
+  50%  {background-color:yellow; transform: scale(0.8);left:150px; top:10px; opacity: 0.7;}
+  75%  {background-color:green; left:200px; scale(0.6);top:10px; opacity: 0.5;}
+  100% {background-color:red; left:250px; top:10px; opacity: 0.25;}
 }
 
 body {
         font-family: Arial, Helvetica, sans-serif;
         height: 100%;
-        background: #456368;
-        background: -webkit-linear-gradient(#644580, #493f50);
-        background:    -moz-linear-gradient(#7FFFD4, #493f50);
-        background:         linear-gradient(#648880, #7FFFD4);
+        background: lightsalmon;
+        background: -webkit-linear-gradient(lightyellow, lightgreen);
+        background:         linear-gradient(lightblue, #7FFFD4);
 }
 
  .header {
   text-align: center;
-  padding: 20px;
+  padding: 10px;
 }
 /* Style the top navigation bar */
 .topnav {
@@ -39,12 +38,12 @@ body {
   display: block;
   color: blue;
   text-align: left;
-  padding: 14px 20px;
+  padding: 5px 15px;
   text-decoration: none;
 }
 
 .topnav a:hover {
-  background-color: #ddd;
+  background-color: yellow;
   color: black;
 }
 /* Create three equal columns that floats next to each other */
@@ -61,6 +60,7 @@ body {
   background-color: yellow;
   animation: example 5s linear 2s infinite alternate;
 }
+
 /* Clear floats after the columns */
 .row:after {
   content: "";
@@ -80,46 +80,69 @@ body {
   text-align: center;
   padding: 10px;
 }
-</style>    
+</style>
 </head>
 <body>
-<div class="header"><h1>Welcome by Syed!</h1></div>
+<div class="header"><h1>Welcome to my page</h1></div>
 <div class="topnav">
 <h2><h2><a href="/aboutme">About Me</a></h2></h2>
 <h2><h2><a href="/ideas">Ideas Sheet</a></h2></h2>
 <h2><a href="/links">Links</a></h2>
 <h2><a href="/mat_calc">Mat Calc</a></h2>
+<h2><a href="/entry">Coring DB</a></h2>
 <h2><a href="/draw">Draw</a></h2>
 <h2><a href="/bird">Bird</a></h2>
-<h2><a href="/entry">Coring DB</a></h2>
+<h2><a href="/contact">Contact</a></h2>
 </div>
 
 <div class="row">
     <div class="column">
+      <h2>What Do I Offer?</h2>
+      <ul>
+        <li>Website Building (Python Flask Back-end)</li>
+        <li>[Full Stack (Front-end, database & Hosting)]</li>
+        <li>VBA Automation - Excel</li>
+        <li>VBA Automation - Outlook</li>
+        <li>Python Automation - Files, Images etc</li>
+        <li>Teaching Programming</li>
+        <ul>
+            <li>Python programming from scratch</li>
+            <li>VBA programming from scratch</li>
+            <li>Excel formulas & macros</li>
+            <li>Java programming </li>
+            <li>C programming </li>
+            <li>AutoCAD (CAD Design 2D & 3D)</li>
+          </ul>
+    </ul>
+    </div>
+    <div class="column">
       <h2>Programming Skills</h2>
       <ul>
+        <li>Python - Automation</li>
+        <li>Python - Flask</li>
+        <li>C - Embedded</li>
         <li>VBA - Excel</li>
         <li>VBA - Outlook</li>
-        <li>Python - Automation</li>
-        <li>Front-End: HTML, CSS, JS</li>  
-        <li>C - Embedded</li>
-        <li>Java SE</li>
-        <li>NODE</li>
         <li>SQLite and PostGres</li>
+        <li>Front-End: HTML, CSS, JS</li>
+        <li>Java - No Frameworks</li>
+        <li>Node</li>
         <li>C++</li>
         <li>EOS Programming</li>
         <li>Ethereum Programming</li>
     </ul>
-    </div>    
+    </div>
+
+
     <div class="column">
       <h2>Programming Experience</h2>
       <ol>
-        <li>Automation and solutions using Excel VBA</li>  
         <li>Website with Python Flask back-end, SQLite for records, HTML and CSS for front-end</li>
-        <li>BOT using NODE for Gemini Crypto Exchange</li>
         <li>Automation scripts using Python</li>
+        <li>Automation and solutions using Excel VBA</li>
+        <li>BOT using NODE for Gemini Crypto Exchange</li>
         <li>Telegram BOT in Python</li>
-        <li>Consulting and Teaching Programming: 
+        <li>Consulting and Teaching Programming:
           <ul>
             <li>Python programming from scratch</li>
             <li>VBA programming from scratch</li>
@@ -127,13 +150,14 @@ body {
             <li>Java programming </li>
             <li>BASH </li>
             <li>Sockets in Python </li>
+            <li>C Algorithms & Linked Lists </li>
           </ul>
         </li>
-        
+        <li>Micro-controller 8051 Programming</li>
+        <li>Advanced Modules in VBA</li>
       </ol>
     </div>
     <div class="anim">
-        
     </div>
 </div>
 
