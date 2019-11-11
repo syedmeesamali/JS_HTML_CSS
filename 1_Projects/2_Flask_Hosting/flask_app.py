@@ -1,6 +1,7 @@
 from flask import *
 import sqlite3
 import os
+from datetime import datetime
 
 database = "./database.db"
 link_db = "./linkdb.db"
@@ -53,6 +54,68 @@ def savelinks():
             conn.close()
     return render_template("index.html")
 
+@app.route('/saveideas', methods = ["POST", "GET"])
+def saveideas():
+    msg = "msg"
+    if request.method == "POST":
+        try:
+            ID = request.form["id"]
+            desc = request.form["desc"]
+            Type = request.form["type"]
+            timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            conn = sqlite3.connect(db_ideas)
+            cur = conn.cursor()
+            cur.execute("INSERT INTO ideas (ID, Desc, Type, Date) VALUES(?, ?, ?, ?)" , (ID, desc, Type, timestamp))
+            conn.commit()
+            msg = "Data Entered Successfully!"
+        except:
+            conn.rollback()
+            msg = "Sorry couldn't update the database..."
+        finally:
+            return render_template("success.html", msg = msg)
+            conn.close()
+    return render_template("index.html")
+
+@app.route('/ideasdone')
+def ideasdone():
+    conn = sqlite3.connect(db_done)
+    cur = conn.cursor()
+    res = cur.execute("SELECT * FROM ideasdone")
+    return render_template("ideasdone.html", links = res)
+
+@app.route('/done/<int:val>', methods = ["POST", "GET"])
+def read(val):
+    if request.method == "POST":
+        msg = "msg"
+        try:
+            conn = sqlite3.connect(db_ideas)
+            conn2 = sqlite3.connect(db_done)
+            cur = conn.cursor()
+            cur1 = conn2.cursor()
+            cur.execute("SELECT ID FROM ideas WHERE ID = ?", (val,))
+            id = cur.fetchone()[0]
+            cur.execute("SELECT Desc FROM ideas WHERE ID = ?", (val,))
+            desc = cur.fetchone()[0]
+            cur.execute("SELECT Type FROM ideas WHERE ID = ?", (val,))
+            Type = cur.fetchone()[0]
+            cur.execute("SELECT Date FROM ideas WHERE ID = ?", (val,))
+            Date = cur.fetchone()[0]
+            timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            cur1.execute("INSERT INTO ideasdone (ID, Desc, Type, strt, ending) VALUES(?, ?, ?, ?, ?)" , (id, desc, Type, Date, timestamp))
+            cur.execute("DELETE FROM ideas WHERE ID = ?", (val,))
+            conn2.commit()
+            conn.commit()
+            msg = "Data Entered Successfully!"
+        except:
+            conn.rollback()
+            conn2.rollback()
+            msg = "Couldn't update the databases.....!"
+        finally:
+            return render_template("success.html", msg = msg)
+            conn.close()
+            conn2.close()
+    return render_template("index.html")
+
 @app.route('/entry')
 def entry():
     conn = sqlite3.connect(database)
@@ -63,6 +126,10 @@ def entry():
 @app.route('/links')
 def links():
     return render_template("code5.html")
+
+@app.route('/ideaentry')
+def ideaentry():
+    return render_template("ideaentry.html")
 
 @app.route('/readlinks')
 def readlinks():
@@ -80,7 +147,10 @@ def token1():
     if request.method == "POST" or request.method == "GET":
         code1 = request.form["code1"]
         if code1 == "meesam":
-            return render_template("ideas.html")
+            conn = sqlite3.connect(db_ideas)
+            cur = conn.cursor()
+            res = cur.execute("SELECT * FROM ideas")
+            return render_template("ideas.html", links = res)
         else:
             return render_template("code1.html")
 
@@ -153,36 +223,6 @@ def draw():
 @app.route('/entry2')
 def entry2():
     return render_template("code3.html")
-
-@app.route('/read/<int:val>', methods = ["POST", "GET"])
-def read(val):
-    if request.method == "POST":
-        msg = "msg"
-        try:
-            conn = sqlite3.connect(link_db)
-            conn2 = sqlite3.connect(read_db)
-            cur = conn.cursor()
-            cur1 = conn2.cursor()
-            cur.execute("SELECT desc FROM mylinks WHERE rowid = ?", (val,))
-            desc = cur.fetchone()[0]
-            cur.execute("SELECT linkurl FROM mylinks WHERE rowid = ?", (val,))
-            linkurl = cur.fetchone()[0]
-            cur.execute("SELECT linktype FROM mylinks WHERE rowid = ?", (val,))
-            linktype = cur.fetchone()[0]
-            cur1.execute("INSERT INTO readlinks (desc, linkurl, linktype) VALUES(?, ?, ?)" , (desc, linkurl, linktype))
-            cur.execute("DELETE FROM mylinks WHERE rowid = ?", (val,))
-            conn2.commit()
-            conn.commit()
-            msg = "Data Entered Successfully!"
-        except:
-            conn.rollback()
-            conn2.rollback()
-            msg = "Couldn't update the databases.....!"
-        finally:
-            return render_template("success.html", msg = msg)
-            conn.close()
-            conn2.close()
-    return render_template("index.html")
 
 @app.route('/linkentry')
 def linkentry():
