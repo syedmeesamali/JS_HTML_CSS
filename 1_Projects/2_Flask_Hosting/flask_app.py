@@ -3,7 +3,7 @@ import sqlite3
 import os
 from datetime import datetime
 
-database = "./database.db"
+database = "./coring.db"
 link_db = "./links.db"
 read_db = "./read.db"
 db_ideas = "./ideas.db"
@@ -163,7 +163,6 @@ def delete(val):
             msg = "Data Deleted Successfully!"
         except:
             conn.rollback()
-            conn2.rollback()
             msg = "Couldn't update the databases.....!"
         finally:
             return render_template("success.html", msg = msg)
@@ -173,8 +172,20 @@ def delete(val):
 def entry():
     conn = sqlite3.connect(database)
     cur = conn.cursor()
-    res = cur.execute("SELECT * FROM projects")
+    res = cur.execute("SELECT * FROM cores")
     return render_template("entry2.html", users = res)
+
+@app.route('/sort', methods = ["POST", "GET"])
+def sort():
+    if request.method == "POST":
+        try:
+            conn = sqlite3.connect(database)
+            cur = conn.cursor()
+            res = cur.execute("SELECT * FROM cores ORDER BY total DESC")
+        except:
+            return render_template("entry2.html", users = res)
+        finally:
+            return render_template("entry2.html", users = res)
 
 @app.route('/links')
 def links():
@@ -215,15 +226,6 @@ def token2():
             return render_template("entry.html")
         else:
             return render_template("code2.html")
-
-@app.route('/token3', methods = ["POST", "GET"])
-def token3():
-    if request.method == "POST" or request.method == "GET":
-        code3 = request.form["code3"]
-        if code3 == "meesamali":
-            return render_template("entry.html")
-        else:
-            return render_template("code3.html")
 
 @app.route('/token4', methods = ["POST", "GET"])
 def token4():

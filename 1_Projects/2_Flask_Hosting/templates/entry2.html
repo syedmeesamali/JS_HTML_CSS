@@ -34,24 +34,30 @@ table {
 
 </head>
 <body>
-    <h1><p>Current Data in Database</p></h1>
+    <h1><p>Scanning & Coring Projects Done</p></h1>
     <h3><a href="/">Home Page</a></h3>
     <h3><a href="/coring">Add New Data</a></h3><br>
     <table>
       <tr>
+        <th>Sr. #</th>
         <th>Project Name</th>
         <th>Year</th>
         <th>Cores</th>
         <th>Quantity</th>
-        <th>Total Price</th>
+        <th>
+            <form action="/sort" method="POST">
+              <input type="hidden" value="price-sort"/>
+              <button id="w3-btn">Sort by Total</button>
+            </form></th>
       </tr>
        {% for user in users %}
        <tr>
-         <td>{{ user[0] }}</td>
-         <td>{{ user[1] }}</td>
+        <td  style="text-align: center;">{{ loop.index }}</td> 
+        <td>{{ user[1] }}</td>
          <td>{{ user[2] }}</td>
          <td>{{ user[3] }}</td>
-         <td>{{ user[4] }}</td>
+         <td  style="text-align: center;">{{ user[4] }}</td>
+         <td>{{ user[5] }}</td>
        </tr>
        {% endfor %}
     </table>
