@@ -43,17 +43,19 @@ table {
         <th>Description </th>
         <th>Link URL</th>
         <th>Type</th>
+        <th>Date/Time</th>
         <th>Status</th>
       </tr>
        {% for link in links %}
        <tr>
         <td width="4%" style="text-align: center;"> {{ loop.index }} </td>
-        <td width="40%"> {{ link[0] }} </td>
-        <td width="38%"><a href="{{ link[1] }}">{{ link[1] }}</a></td>
-        <td width="5%"> {{ link[2] }} </td>
+        <td width="30%"> {{ link[1] }} </td>
+        <td width="30%"><a href="{{ link[1] }}">{{ link[2] }}</a></td>
+        <td width="15%"> {{ link[3] }} </td>
+        <td width="10%"> {{ link[4] }} </td>
         <td width="9%">
-          <form action="/read/{{ loop.index }}" method="POST">
-            <input type="hidden" value="{{ loop.index }}"/>
+          <form action="/read/{{ link[0] }}" method="POST">
+            <input type="hidden" value="{{ link[0] }}"/>
             <button id="w3-btn">READ</button>
           </form> 
         </td>

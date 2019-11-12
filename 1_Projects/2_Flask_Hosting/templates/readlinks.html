@@ -41,13 +41,17 @@ table {
         <th>Description </th>
         <th>Link URL</th>
         <th>Type</th>
+        <th>Added</th>
+        <th>Read</th>
       </tr>
        {% for link in links %}
        <tr>
         <td width="5%" style="text-align: center;"> {{ loop.index }} </td>
-        <td width="40%"> {{ link[0] }} </td>
-        <td width="40%"><a href="{{ link[1] }}">{{ link[1] }}</a></td>
-        <td width="5%"> {{ link[2] }} </td>
+        <td width="30%"> {{ link[1] }} </td>
+        <td width="25%"><a href="{{ link[2] }}">{{ link[2] }}</a></td>
+        <td width="10%"> {{ link[3] }} </td>
+        <td width="10%"> {{ link[4] }} </td>
+        <td width="10%"> {{ link[5] }} </td>
        </tr>
        {% endfor %}
     </table>
