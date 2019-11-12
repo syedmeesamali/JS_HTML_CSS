@@ -45,19 +45,25 @@ table {
         <th>Type</th>
         <th>Date/Time</th>
         <th>Status</th>
+        <th>Delete</th>
       </tr>
        {% for link in links %}
        <tr>
-        <td width="4%" style="text-align: center;"> {{ loop.index }} </td>
+        <td width="4%" style="text-align: center;"> {{ link[0] }} </td>
         <td width="30%"> {{ link[1] }} </td>
-        <td width="30%"><a href="{{ link[1] }}">{{ link[2] }}</a></td>
+        <td width="25%"><a href="{{ link[1] }}">{{ link[2] }}</a></td>
         <td width="15%"> {{ link[3] }} </td>
         <td width="10%"> {{ link[4] }} </td>
-        <td width="9%">
+        <td width="5%">
           <form action="/read/{{ link[0] }}" method="POST">
             <input type="hidden" value="{{ link[0] }}"/>
             <button id="w3-btn">READ</button>
           </form> 
+          <td width="5%">
+            <form action="/delete/{{ link[0] }}" method="POST">
+              <input type="hidden" value="{{ link[0] }}"/>
+              <button id="w3-btn">DEL</button>
+            </form> 
         </td>
        </tr>
        {% endfor %}

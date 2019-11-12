@@ -38,12 +38,14 @@ def savelinks():
     msg = "msg"
     if request.method == "POST":
         try:
+            id = request.form["id"]
             desc = request.form["desc"]
             linkurl = request.form["linkurl"]
             linktype = request.form["linktype"]
             conn = sqlite3.connect(link_db)
             cur = conn.cursor()
-            cur.execute("INSERT INTO mylinks (desc, linkurl, linktype) VALUES(?, ?, ?)" , (desc, linkurl, linktype))
+            timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            cur.execute("INSERT INTO links (ID, Desc, linkUrl, linkType, added) VALUES(?, ?, ?, ?, ?)" , (id, desc, linkurl, linktype, timestamp))
             conn.commit()
             msg = "Data Entered Successfully!"
         except:
@@ -149,6 +151,24 @@ def read(val):
             return render_template("success.html", msg = msg)
             conn.close()
 
+@app.route('/delete/<int:val>', methods = ["POST", "GET"])
+def delete(val):
+    if request.method == "POST":
+        msg = "msg"
+        try:
+            conn = sqlite3.connect(link_db)
+            cur = conn.cursor()
+            cur.execute("DELETE FROM links WHERE ID = ?", (val,))
+            conn.commit()
+            msg = "Data Deleted Successfully!"
+        except:
+            conn.rollback()
+            conn2.rollback()
+            msg = "Couldn't update the databases.....!"
+        finally:
+            return render_template("success.html", msg = msg)
+            conn.close()
+
 @app.route('/entry')
 def entry():
     conn = sqlite3.connect(database)
@@ -158,10 +178,7 @@ def entry():
 
 @app.route('/links')
 def links():
-    conn = sqlite3.connect(link_db)
-    cur = conn.cursor()
-    res = cur.execute("SELECT * FROM links")
-    return render_template("links.html", links = res)
+    return render_template("code5.html")
 
 @app.route('/ideaentry')
 def ideaentry():
@@ -224,7 +241,7 @@ def token5():
         if code5 == "shah":
             conn = sqlite3.connect(link_db)
             cur = conn.cursor()
-            res = cur.execute("SELECT * FROM mylinks")
+            res = cur.execute("SELECT * FROM links")
             return render_template("links.html", links = res)
         else:
             return render_template("code5.html")
