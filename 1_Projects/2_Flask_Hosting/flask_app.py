@@ -8,6 +8,7 @@ link_db = "./links.db"
 read_db = "./read.db"
 db_ideas = "./ideas.db"
 db_done = "./done.db"
+db_mat = "./mat_pricing.db"
 app = Flask(__name__)
 
 @app.route('/savedetails', methods = ["POST", "GET"])
@@ -268,7 +269,10 @@ def mat():
     file1 = os.path.join('static','main1.png')
     file2 = os.path.join('static','main2.gif')
     file3 = os.path.join('static','main3.gif')
-    return render_template("mat_calc.html", image1 = file1, image2 = file2, image3 = file3)
+    conn = sqlite3.connect(db_mat)
+    cur = conn.cursor()
+    res = cur.execute("SELECT * FROM prices")
+    return render_template("mat_calc.html", image1 = file1, image2 = file2, image3 = file3, items = res)
 
 @app.route('/draw')
 def draw():
