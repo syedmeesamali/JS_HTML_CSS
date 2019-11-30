@@ -186,86 +186,35 @@ Epoxy Sikadur 30-LP required: <span id="epoxy1">00 6Kg Set </span> </p>
     <p>
         <p>Total Micro-Concrete Quantity: <span id="jreq1">00 m3 </span> </p>
         <p>Total Micro-Concrete material required: 
-            <br><span id="jreq">00 25Kg Bags </span> </p>
+        <br><span id="jreq">00 25Kg Bags </span> </p>
     <p>
-
-
 </div>
 
 <div class="split right">
     <br>
     <h3><a href="/">Back to HomePage</a></h3>
-    
-    <p>
-            <table class="container">
-                    <thead>
-                        <tr>
-                            <th><h3>Supplier</h3></th>
-                            <th><h3>Material Name</h3></th>
-                            <th><h3>Type</h3></th>
-                            <th><h3>Packaging</h3></th>
-                            <th><h3>General Price</h3></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Conmix</td>
-                            <td>NanoGrout SG</td>
-                            <td>Anchoring</td>
-                            <td>3 Ltr</td>
-                            <td>115</td>
-                        </tr>
-                        <tr>
-                            <td>Conmix</td>
-                            <td>ReCon MC5mm</td>
-                            <td>Micro-Concrete</td>
-                            <td>25 Kg</td>
-                            <td>13.5</td>
-                        </tr>
-                        <tr>
-                            <td>Conmix</td>
-                            <td>ReCon GP55</td>
-                            <td>Grouting</td>
-                            <td>25 Kg</td>
-                            <td>17.0</td>
-                        </tr>
-                        <tr>
-                            <td>Sika</td>
-                            <td>Anchor Fix-2</td>
-                            <td>Anchoring</td>
-                            <td>12 pc box</td>
-                            <td>415</td>
-                        </tr>
-                    <tr>
-                            <td>Sika</td>
-                            <td>Sikacrete 113-PP</td>
-                            <td>Fire-protection</td>
-                            <td>25 Kg</td>
-                            <td>19</td>
-                        </tr>
-                    <tr>
-                            <td>Sika</td>
-                            <td>Sikadur 30-LP</td>
-                            <td>Epoxy putty</td>
-                            <td>6 Kg</td>
-                            <td>200</td>
-                        </tr>
-                        <tr>
-                            <td>Sika</td>
-                            <td>Sika Carbodur S1012</td>
-                            <td>CFRP Strips</td>
-                            <td>100LM</td>
-                            <td>7500</td>
-                        </tr>
-                        <tr>
-                            <td>Sika</td>
-                            <td>Sika-Wrap 530C</td>
-                            <td>CFRP Wrapping</td>
-                            <td>50LM</td>
-                            <td>3200</td>
-                        </tr>
-                    </tbody>
-                </table>
+        <table>
+            <tr>
+              <th>ID</th>
+              <th>Supplier</th>
+              <th>Name</th>
+              <th>Type</th>
+              <th>Package</th>
+              <th>Price (AED)</th>
+              <th>Date</th>
+            </tr>
+             {% for item in items %}
+             <tr>
+              <td width="5%" style="text-align: center;"> {{ loop.index }} </td>
+              <td width="8%" style="text-align: center;"> {{ item[1] }} </td>
+              <td width="15%"> {{ item[2] }} </td>
+              <td width="8%"> {{ item[3] }} </td>
+              <td width="8%"> {{ item[4] }} </td>
+              <td width="7%" style="text-align: right;"> {{ item[5] }} </td>
+              <td width="10%" style="text-align: center;"> {{ item[6] }} </td>
+             </tr>
+             {% endfor %}
+          </table>
 </div>
 
 <script>
@@ -359,7 +308,6 @@ $(document).ready(function(){
 
     //Start of JACKETING Calculation portion
     $("#jCalculate").click(function(){
-            
             var j_type = $("select[name='choose_three']").val();
             console.log("Value is: " + j_type);
             var length = $('#ilen').val() / 1000;
@@ -368,21 +316,21 @@ $(document).ready(function(){
             var nos = $('#nos').val();
 
             if (j_type == "100mm") {
-                var result1 = (((length + 0.1) * (width + 0.1)) - (length * width)) * height * nos;
+                var result1 = (((length + 0.2) * (width + 0.2)) - (length * width)) * height * nos;
                 result = 115 * result1;
                 result1 = result1.toFixed(2);
                 result = result.toFixed(0);
                 $('#jreq1').text(result1 + " m3")
                 $('#jreq').text(result + " [25Kg] Bags")
             } else if (j_type == "150mm") {
-                var result1 = (((length + 0.15) * (width + 0.15)) - (length * width)) * height * nos;
+                var result1 = (((length + 0.3) * (width + 0.3)) - (length * width)) * height * nos;
                 result = 115 * result1;
                 result1 = result1.toFixed(2);
                 result = result.toFixed(0);
                 $('#jreq1').text(result1 + " m3")
                 $('#jreq').text(result + " [25Kg] Bags")
             } else {
-                var result1 = (((length + 0.2) * (width + 0.2)) - (length * width)) * height * nos;
+                var result1 = (((length + 0.4) * (width + 0.4)) - (length * width)) * height * nos;
                 result = 115 * result1;
                 result1 = result1.toFixed(2);
                 result = result.toFixed(0);
