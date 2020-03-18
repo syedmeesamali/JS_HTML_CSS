@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<head>
+  <title> Home Page </title>
+  <style>
+
+@keyframes example {
+  0%   {background-color:yellow; left:0px; top:10px; opacity: 0.25;}
+  25%  {background-color:yellow; transform: scale(0.4); left:100px; top:10px; opacity: 0.3;}
+  50%  {background-color:yellow; transform: scale(0.8); left:150px; top:10px; opacity: 0.7;}
+  75%  {background-color:green; left:200px; transform: scale(0.6); top:10px; opacity: 0.5;}
+  100% {background-color:yellowgreen; left:250px; top:10px; opacity: 0.25;}
+}
+
+body {
+        font-family: Arial, Helvetica, sans-serif;
+        height: 100%;
+        background: lightsalmon;
+        background: -webkit-linear-gradient(lightyellow, lightgreen);
+        background:         linear-gradient(lightblue, #7FFFD4);
+}
+
+ .header {
+  text-align: center;
+  padding: 10px;
+}
+/* Style the top navigation bar */
+.topnav {
+  overflow: hidden;
+}
+
+/* Style the topnav links */
+.topnav a {
+  float: left;
+  display: block;
+  color: blue;
+  text-align: left;
+  padding: 5px 15px;
+  text-decoration: none;
+}
+
+.topnav a:hover {
+  background-color: yellow;
+  color: black;
+}
+/* Create three equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 30%;
+  padding: 5px;
+}
+
+.anim {
+  width: 50px;
+  height: 50px;
+  position: relative;
+  background-color: yellow;
+  animation: example 5s linear 2s infinite alternate;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width:600px) {
+  .column {
+    width: 100%;
+  }
+}
+
+.footer {
+  color:green;
+  text-align: center;
+  padding: 10px;
+}
+
+li:hover {
+  background: lightyellow;
+}
+</style>
+</head>
+<body>
+<div class="header"><h1>Welcome to my page</h1></div>
+<div class="topnav">
+<h2><h2><a href="/aboutme">About Me</a></h2></h2>
+<h2><h2><a href="/ideas">Ideas Sheet</a></h2></h2>
+<h2><a href="/links">Links</a></h2>
+<h2><a href="/mat_calc">Mat Calc</a></h2>
+<h2><a href="/entry">Coring DB</a></h2>
+<h2><a href="/draw">Draw</a></h2>
+<h2><a href="/bird">Bird</a></h2>
+<h2><a href="/contact">Contact</a></h2>
+</div>
+
+<div class="row">
+    <div class="column">
+      <h2>What Do I Offer?</h2>
+      <ul>
+        <li>Website Building (Python Flask Back-end)</li>
+        <li>[Full Stack (Front-end, database & Hosting)]</li>
+        <li>VBA Automation - Excel</li>
+        <li>VBA Automation - Outlook</li>
+        <li>Python Automation - Files, Images etc</li>
+        <li>Teaching Programming</li>
+        <ul>
+            <li>Python programming from scratch</li>
+            <li>VBA programming from scratch</li>
+            <li>Excel formulas & macros</li>
+            <li>Java programming </li>
+            <li>C programming </li>
+            <li>AutoCAD (CAD Design 2D & 3D)</li>
+          </ul>
+    </ul>
+    </div>
+    <div class="column">
+      <h2>Programming Skills</h2>
+      <ul>
+        <li>Python - Automation</li>
+        <li>Python - Flask</li>
+        <li>C - Embedded</li>
+        <li>VBA - Excel</li>
+        <li>VBA - Outlook</li>
+        <li>SQLite and PostGres</li>
+        <li>Front-End: HTML, CSS, JS</li>
+        <li>Java - No Frameworks</li>
+        <li>Node</li>
+        <li>C++</li>
+        <li>EOS Programming</li>
+        <li>Ethereum Programming</li>
+    </ul>
+    </div>
+
+
+    <div class="column">
+      <h2>Programming Experience</h2>
+      <ol>
+        <li>Website with Python Flask back-end, SQLite for records, HTML and CSS for front-end</li>
+        <li>Automation scripts using Python</li>
+        <li>Automation and solutions using Excel VBA</li>
+        <li>Trading BOT in Node for Crypto Exchange "Gemini"</li>
+        <li>Telegram BOT in Python</li>
+        <li>Consulting and Teaching Programming:
+          <ul>
+            <li>Python programming from scratch</li>
+            <li>VBA programming from scratch</li>
+            <li>Excel Advanced Level</li>
+            <li>Java programming </li>
+            <li>BASH </li>
+            <li>Sockets in Python </li>
+            <li>C Algorithms & Linked Lists </li>
+          </ul>
+        </li>
+        <li>Micro-controller 8051 Programming</li>
+        <li>Advanced Modules in VBA</li>
+      </ol>
+    </div>
+    <div class="anim">
+    </div>
+</div>
+
+<div class="footer">
+<p>Date and Time: <span id="datetime"></span></p>
+</div>
+
+<script>
+var dt = new Date();
+document.getElementById("datetime").innerHTML = dt.toLocaleString();
+</script>
+</body>
+</html>

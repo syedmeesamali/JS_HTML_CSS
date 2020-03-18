@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title> SVG Animation </title>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script src="/static/draw2.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>Drawing Canvas</h1> <h3><a href="/">Back to HomePage</a></h3>
+    <div id="options" class="row">
+      <select id="color-picker">
+        <option value="black">Black</option>
+        <option value="red">Red</option>
+        <option value="blue">Blue</option>
+        <option value="green">Green</option>
+      </select>
+      <select id="thickness">
+        <option value=1>1</option>
+        <option value=2>2</option>
+        <option value=3>3</option>
+        <option value=4 selected>4</option>
+        <option value=5>5</option>
+        <option value=6>6</option>
+        <option value=7>7</option>
+      </select>
+      <button id="erase">Erase All</button>
+      <button id="save">SAVE</button>
+    </div>
+  </div>
+<svg id="draw">
+</svg>
+</body>
+</html>

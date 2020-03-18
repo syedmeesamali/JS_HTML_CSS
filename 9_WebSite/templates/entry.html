@@ -1,0 +1,43 @@
+<!doctype html>
+<!--This page is property of SYED MEESAM ALI-->
+<head>
+    <title>Data Entry Page</title>
+
+<style>
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+        font-family: Arial, Helvetica, sans-serif;
+        height: 100%;
+        margin: 0;
+        background:gold;
+        background: -webkit-linear-gradient(yellow,brown);
+        background:         linear-gradient(gold, #7FFFD4);
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+}
+
+td input {
+    width: 200px;
+}
+
+</style>
+
+</head>
+<body>
+<h1>Data Entry Page</h1>
+<form action="/savedetails" method="POST">
+    <table>
+      <tr><td>Project Name:</td><td><input type="text" name="project"></td></tr>
+      <tr><td>Year Done:</td><td><input type="number" name="year" maxlength="8"></td></tr>
+      <tr><td>Core Sizes: </td><td><input type="text" name="core"></td></tr>
+      <tr><td>Quantity (No's): </td><td><input type="number" name="quantity"></td></tr>
+      <tr><td>Total Price (AED): </td><td><input type="number" name="price"></td></tr>  
+    </table>
+    <input type="submit" value="Submit">
+    </form>
+    <p><a href="/">Go back to homepage</a></p>
+</body>
+</html>

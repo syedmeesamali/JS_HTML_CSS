@@ -1,0 +1,45 @@
+<!doctype html>
+<!--This page is property of SYED MEESAM ALI-->
+<head>
+    <title>Ideas Entry Page</title>
+
+<style>
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+        font-family: Arial, Helvetica, sans-serif;
+        height: 100%;
+        margin: 0;
+        background:blue;
+        background: -webkit-linear-gradient(blue,brown);
+        background:         linear-gradient(#7FFFD4, green);
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+}
+
+.url {
+    width: 700px;
+}
+
+.url-type {
+    width: 200px;
+}
+
+</style>
+
+</head>
+<body>
+<h1>Add New Idea</h1>
+<form action="/saveideas" method="POST">
+    <table>
+        <tr><td>ID:</td><td><input type="text" name="id" class="url-type"></td></tr>
+        <tr><td>Description:</td><td><input type="text" name="desc" class="url"></td></tr>
+        <tr><td>Type:</td><td><input type="text" name="type" class="url"></td></tr>
+    </table>
+    <input type="submit" value="Submit">
+    </form>
+    <p><a href="/">Go back to homepage</a></p>
+</body>
+</html>
