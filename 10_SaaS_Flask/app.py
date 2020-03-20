@@ -1,14 +1,9 @@
 from flask import Flask
+app = Flask(__name__)
 
-def create_app():
+@app.route('/')
+def index():
+    return app.config['Hello']
 
-    app = Flask(__name__, instance_relative_config = True)
-    app.config.from_object('config.settings')
-    app.config.from_pyfile('settings.py', silent = True)
-
-    @app.route('/')
-    def index():
-
-        return 'Flask app'
-
-    return app
+if __name__ == "__main__":
+    app.run(debug=True)
