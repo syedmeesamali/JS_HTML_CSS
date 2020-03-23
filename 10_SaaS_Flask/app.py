@@ -23,6 +23,13 @@ def puppylatin(name):
         pupname = name + 'y'
     return "<h2> Your puppy latin name is: {}".format(pupname)
 
+@app.route('/info')
+def info():
+    return "<h2> Cute puppy site </h2>"
+
+@app.route('/home')
+def home():
+    return render_template('main.html')
 
 if __name__ == "__main__":
     app.run(debug=True)
