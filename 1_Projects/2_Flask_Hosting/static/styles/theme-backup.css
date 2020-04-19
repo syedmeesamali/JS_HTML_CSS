@@ -1,8 +1,5 @@
 * { margin: 0px; padding: 0px; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, 
-big, cite, code, del, dfn, em, font, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, 
-ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td { border: 0; 
-	font-family: inherit; font-size: 100%; font-weight: inherit; margin: 0; outline: 0; padding: 0; vertical-align: baseline; }
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td { border: 0; font-family: inherit; font-size: 100%; font-weight: inherit; margin: 0; outline: 0; padding: 0; vertical-align: baseline; }
 article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary { display: block; }
 html, body, button, input, select, textarea { font-family: Arial; font-size: 12px; color: #8c806e; }
 ul, ol { margin-top: 0; margin-bottom: 10px; }
@@ -97,8 +94,7 @@ header.smaller .Navigation li { height: 60px; }
 .Banner_sec .leftside h3 { font-size: 36px; color: #fff; font-family: 'Open Sans', sans-serif; font-weight: 800; text-transform: uppercase; margin: 0px; line-height: 34px;}
 .Banner_sec .leftside h3 span { color: #ff9000; font-family: 'Open Sans', sans-serif; font-weight: 600; display: block; }
 .Banner_sec .leftside p { padding: 16px 0px 26px 0px; font-size: 16px; color: #fff; font-family: 'Open Sans', sans-serif; font-weight: 600; font-style: italic; margin: 0px; word-spacing: 2px; line-height: 22px; }
-.Banner_sec .leftside a { padding: 11px 16px; font-size: 14px; color: #fff; font-family: 'Open Sans', sans-serif; font-weight: 600; text-transform: uppercase; text-decoration: none; display: inline-block; 
-	border: solid 1px #b0bdc8; background: rgba(64, 93, 118, 0.8); transition: all 0.3s ease; }
+.Banner_sec .leftside a { padding: 11px 16px; font-size: 14px; color: #fff; font-family: 'Open Sans', sans-serif; font-weight: 600; text-transform: uppercase; text-decoration: none; display: inline-block; border: solid 1px #b0bdc8; background: rgba(64, 93, 118, 0.8); transition: all 0.3s ease; }
 .Banner_sec .leftside a:hover { background: #ff9000; color: #fff; border: solid 1px #ff9000; }
 .Banner_sec .rightside { width: 68.36%; float: right; position: relative; }
 .Banner_sec .rightside .bx-wrapper { position: relative; z-index: 1; }
@@ -118,8 +114,7 @@ header.smaller .Navigation li { height: 60px; }
 .Banner_sec .rightside .Slider .text .Lorem { float: right; width: 31%; }
 .Banner_sec .rightside .Slider .text .Lorem p { padding-top: 5px; font-size: 18px; color: #fff; margin: 0px; font-family: 'Open Sans', sans-serif; font-weight: 400; text-transform: uppercase; text-align: right; line-height: 19px; }
 .Banner_sec .rightside .Slider .text .Lorem p span { font-size: 14px; text-align: right; color: #ff9000; display: block; text-transform: capitalize;}
-.Banner_sec .rightside .prevBtn { width: 42px; height: 42px; display: block; text-indent: -9999px; background: url(../img/prev-arrow.png) no-repeat; position: absolute; top: 213px; 
-	left: 49px;  z-index: 1; opacity: 0.5; transition: opacity 0.3s ease; }
+.Banner_sec .rightside .prevBtn { width: 42px; height: 42px; display: block; text-indent: -9999px; background: url(../img/prev-arrow.png) no-repeat; position: absolute; top: 213px; left: 49px;  z-index: 1; opacity: 0.5; transition: opacity 0.3s ease; }
 .Banner_sec .rightside .prevBtn:hover {  opacity: 1; }	
 .Banner_sec .rightside .nextBtn { width: 42px; height: 42px; display: block; text-indent: -9999px; background: url(../img/next-arrow.png) no-repeat; position: absolute; top: 213px; right: 47px;  z-index: 1; opacity: 0.5; transition: opacity 0.3s ease; }
 .Banner_sec .rightside .nextBtn:hover { opacity: 1; }	
@@ -144,10 +139,10 @@ header.smaller .Navigation li { height: 60px; }
 	.Services_sec .Serviceside { padding: 76px 0px 30px 0px; width: 100%; overflow: hidden; }
 	.Services_sec .Serviceside ul { list-style: none; margin: 0px }
 	.Services_sec .Serviceside li { float: left; padding: 0px; margin: 0px 40px 0px 0px; text-align: center; width: 245px; }
-	.Services_sec .Serviceside li.ECommerce { padding: 44px 0px 161px 0px; background-image: url('/static/e-commerce.png') no-repeat;box-shadow: 1px 4px 7px -4px rgba(0,0,50,0.75); }	
-	.Services_sec .Serviceside li.ECommerce a { text-decoration: none; background-image: url('/static/e-commerce.png') top center no-repeat; display: block; }
-	.Services_sec .Serviceside li.ECommerce h4 { padding: 138px 0px 0px 0px;  font-size: 20px; color: #03a4df; text-decoration: none; text-transform: uppercase; font-family: 'Open Sans', sans-serif; font-weight: 400;  }
-	.Services_sec .Serviceside li.ECommerce a:hover h4 { color: yellow; background-image: url('/static/e-commerce.png') top center no-repeat; }
+	.Services_sec .Serviceside li:last-child { margin-right: 0px;}
+	.Services_sec .Serviceside li.Development { padding: 44px 0px 161px 0px; background: url(../img/Development-bg.jpg) no-repeat;box-shadow: 1px 4px 7px -4px rgba(0,0,0,0.75); }	.Services_sec .Serviceside li.Development a { text-decoration: none; background: url(../img/Development-cn.png) top center no-repeat; display: block; }
+	.Services_sec .Serviceside li.Development h4 { padding: 138px 0px 0px 0px;  font-size: 17px; color: #03a4df; text-decoration: none; text-transform: uppercase; font-family: 'Open Sans', sans-serif; font-weight: 400;  }
+	.Services_sec .Serviceside li.Development a:hover h4 { color: yellowgreen; background: url(../img/Develop-hover-icn.png) top center no-repeat; }
 
 	.Services_sec .Serviceside li.Desdin { padding: 44px 0px 159px 0px;background: url(../img/desgin-bg.jpg) no-repeat; box-shadow: 1px 4px 7px -4px rgba(0,0,0,0.75);  }
 	.Services_sec .Serviceside li.Desdin a { text-decoration: none; background: url(../img/desgin-icn.png) top center no-repeat; display: block; }
@@ -158,6 +153,11 @@ header.smaller .Navigation li { height: 60px; }
 	.Services_sec .Serviceside li.Concept a { text-decoration: none; background: url(../img/concept-icn.png) top center no-repeat; display: block; }
 	.Services_sec .Serviceside li.Concept h4 { padding: 138px 0px 0px 0px; font-size: 18px; color: #ae382d; text-decoration: none; text-transform: uppercase;font-family: 'Open Sans', sans-serif; font-weight: 400; }
 	.Services_sec .Serviceside li.Concept a:hover h4 { color: yellowgreen; background: url(../img/concept-hover-icn.png) top center no-repeat; }
+
+	.Services_sec .Serviceside li.System { padding: 44px 0px 159px 0px;background: url(../img/systam-bg.jpg) no-repeat; box-shadow: 1px 4px 7px -4px rgba(0,0,0,0.75);  }
+	.Services_sec .Serviceside li.System a { text-decoration: none; background: url(../img/systam-icn.png) top center no-repeat; display: block; }
+	.Services_sec .Serviceside li.System h4 { padding: 138px 0px 0px 0px;  font-size: 18px; color: #5e5f61; text-decoration: none; letter-spacing: -1px; text-transform: uppercase; font-family: 'Open Sans', sans-serif; font-weight: 400;  }
+	.Services_sec .Serviceside li.System a:hover h4 { color: yellowgreen; background: url(../img/systam-hover-icn.png) top center no-repeat;}
 	
 	/* <<< Pricing Section >>> */
 	.Pricing_sec { padding: 112px 0px 108px 0px ; width: 100%; overflow: hidden; background: #ececec; }
@@ -169,9 +169,7 @@ header.smaller .Navigation li { height: 60px; }
 	.Pricing_sec .Pricingside ul { list-style: none; margin: 0px; }
 	.Pricing_sec .Pricingside li { float: none; padding: 0px; margin: 0px 0px 11px 0px; height: 103px; background: #fff; text-align: center; }
 	.Pricing_sec .Pricingside li .Basic { width: 55px; float: left; display: table; height: 103px; background: #ff9408; transition: all ease 0.3s; }
-	.Pricing_sec .Pricingside li .Basic h5 { display: table-cell; vertical-align: middle; font-size: 17px; color: #2d2d2d; font-family: 'Oswald', sans-serif; font-weight: 400; 
-		text-transform: uppercase; margin: 0px; -webkit-transform: rotate(270deg); -moz-transform: rotate(270deg); -o-transform: rotate(270deg); 
-		-ms-transform: rotate(270deg); transform: rotate(270deg); clear: none; text-align: center; }
+	.Pricing_sec .Pricingside li .Basic h5 { display: table-cell; vertical-align: middle; font-size: 17px; color: #2d2d2d; font-family: 'Oswald', sans-serif; font-weight: 400; text-transform: uppercase; margin: 0px; -webkit-transform: rotate(270deg); -moz-transform: rotate(270deg); -o-transform: rotate(270deg); -ms-transform: rotate(270deg); transform: rotate(270deg); clear: none; text-align: center; }
 	.Pricing_sec .Pricingside li .Dollar { padding: 22px 0px 21px 0px; width: 205px; float: left; background: #2d2d2d; transition: all ease 0.3s;}
 	.Pricing_sec .Pricingside li .Dollar h2 { font-size: 34px; color: #ff9408; font-family: 'Oswald', sans-serif; font-weight: 400; letter-spacing: 1px; }
 
@@ -180,8 +178,7 @@ header.smaller .Navigation li { height: 60px; }
 	.Pricing_sec .Pricingside li .Band p span { display: block; }
 	.Pricing_sec .Pricingside li .Band.last { background: none; }
 	.Pricing_sec .Pricingside li .Order {width: 147px; float: left; display: table; height: 103px;  }
-	.Pricing_sec .Pricingside li .Order a { font-size: 17px; color: #fff; font-family: 'Oswald', sans-serif; font-weight: 400; text-decoration: none;  
-		display: table-cell; vertical-align: middle; text-transform: uppercase;  background: #2d2d2d; }
+	.Pricing_sec .Pricingside li .Order a { font-size: 17px; color: #fff; font-family: 'Oswald', sans-serif; font-weight: 400; text-decoration: none;  display: table-cell; vertical-align: middle; text-transform: uppercase;  background: #2d2d2d; }
 
 	.Pricing_sec .Pricingside li:hover .Basic { padding: 0px; background: #2d2d2d; }
 	.Pricing_sec .Pricingside li:hover .Basic h5 { color: #fff; }
@@ -273,8 +270,7 @@ border-top-color: #f9c922; -webkit-animation: spin 1.5s linear infinite; /* Chro
 	}
 }
 
-#loader-wrapper .loader-section { position: fixed; top: 0; width: 51%; height: 100%; background: #222222; 
-	z-index: 1000; -webkit-transform: translateX(0);  /* Chrome, Opera 15+, Safari 3.1+ */  /* IE 9 */ transform: translateX(0);  /* Firefox 16+, IE 10+, Opera */}
+#loader-wrapper .loader-section { position: fixed; top: 0; width: 51%; height: 100%; background: #222222; z-index: 1000; -webkit-transform: translateX(0);  /* Chrome, Opera 15+, Safari 3.1+ */  /* IE 9 */ transform: translateX(0);  /* Firefox 16+, IE 10+, Opera */}
 
 #loader-wrapper .loader-section.section-left {
 	left: 0;
