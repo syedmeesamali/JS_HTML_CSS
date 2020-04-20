@@ -1,14 +1,9 @@
-/*
-
-November Template
-
-http://www.templatemo.com/tm-473-november
-
-*/
-
 /* --** Reset CSS **-- */
 * { margin: 0px; padding: 0px; box-sizing: border-box; -webkit-font-smoothing: antialiased; }
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td { border: 0; font-family: inherit; font-size: 100%; font-weight: inherit; margin: 0; outline: 0; padding: 0; vertical-align: baseline; }
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, 
+big, cite, code, del, dfn, em, font, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, 
+ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td { border: 0; 
+	font-family: inherit; font-size: 100%; font-weight: inherit; margin: 0; outline: 0; padding: 0; vertical-align: baseline; }
 article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary { display: block; }
 html, body, button, input, select, textarea { font-family: Arial; font-size: 12px; color: #8c806e; }
 ul, ol { margin-top: 0; margin-bottom: 10px; }
@@ -176,7 +171,7 @@ header.smaller .Navigation li { height: 60px; }
 	.Services_sec .Serviceside ul { list-style: none; margin: 0px }
 	.Services_sec .Serviceside li { float: left; padding: 0px; margin: 0px 40px 0px 0px; text-align: center; width: 245px; }
 	.Services_sec .Serviceside li:last-child { margin-right: 0px;}
-	.Services_sec .Serviceside li.Development { padding: 44px 0px 161px 0px; background: url('/static/Development-bg.jpg) no-repeat;box-shadow: 1px 4px 7px -4px rgba(0,0,0,0.75); }	.Services_sec .Serviceside li.Development a { text-decoration: none; background: url('/static/Development-cn.png') top center no-repeat; display: block; }
+	.Services_sec .Serviceside li.Development { padding: 44px 0px 161px 0px; background: url('/static/Development-bg.jpg') no-repeat;box-shadow: 1px 4px 7px -4px rgba(0,0,0,0.75); }	.Services_sec .Serviceside li.Development a { text-decoration: none; background: url('/static/Development-cn.png') top center no-repeat; display: block; }
 	.Services_sec .Serviceside li.Development h4 { padding: 138px 0px 0px 0px;  font-size: 17px; color: #03a4df; text-decoration: none; text-transform: uppercase; font-family: 'Open Sans', sans-serif; font-weight: 400;  }
 	.Services_sec .Serviceside li.Development a:hover h4 { color: #fff; background: url('/static/Develop-hover-icn.png') top center no-repeat; }
 
