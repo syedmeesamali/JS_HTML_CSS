@@ -190,36 +190,6 @@ header.smaller .Navigation li { height: 60px; }
 	.Services_sec .Serviceside li.System h4 { padding: 138px 0px 0px 0px;  font-size: 18px; color: #5e5f61; text-decoration: none; letter-spacing: -1px; text-transform: uppercase; font-family: 'Open Sans', sans-serif; font-weight: 400;  }
 	.Services_sec .Serviceside li.System a:hover h4 { color: #fff; background: url('/static/systam-hover-icn.png') top center no-repeat;}
 	
-	/* <<< Pricing Section >>> */
-	.Pricing_sec { padding: 112px 0px 108px 0px ; width: 100%; overflow: hidden; background: #ececec; }
-	.Pricing_sec .Center { max-width: 1100px; margin: auto; overflow: hidden; text-align: center; }
-	.Pricing_sec h2 { font-size: 57px; color: #000; font-family: 'Oswald', sans-serif; font-weight: 400; margin: 0px; text-transform: uppercase; line-height: 60px; }
-	.Pricing_sec p { padding: 26px 0px 35px 0px; font-size: 14px; color: #8f8f8f; margin: 0px; font-family: 'Open Sans', sans-serif; line-height: 25px; font-weight: 400; }
-	.Pricing_sec .Line { border: solid 1px #ff9408; height: 2px; width: 252px; margin: auto; }
-	.Pricing_sec .Pricingside { padding: 75px 0px 0px 0px; width: 100%; overflow: hidden; text-align: initial; }
-	.Pricing_sec .Pricingside ul { list-style: none; margin: 0px; }
-	.Pricing_sec .Pricingside li { float: none; padding: 0px; margin: 0px 0px 11px 0px; height: 103px; background: #fff; text-align: center; }
-	.Pricing_sec .Pricingside li .Basic { width: 55px; float: left; display: table; height: 103px; background: #ff9408; transition: all ease 0.3s; }
-	.Pricing_sec .Pricingside li .Basic h5 { display: table-cell; vertical-align: middle; font-size: 17px; color: #2d2d2d; font-family: 'Oswald', sans-serif; font-weight: 400; text-transform: uppercase; margin: 0px; -webkit-transform: rotate(270deg); -moz-transform: rotate(270deg); -o-transform: rotate(270deg); -ms-transform: rotate(270deg); transform: rotate(270deg); clear: none; text-align: center; }
-	.Pricing_sec .Pricingside li .Dollar { padding: 22px 0px 21px 0px; width: 205px; float: left; background: #2d2d2d; transition: all ease 0.3s;}
-	.Pricing_sec .Pricingside li .Dollar h2 { font-size: 34px; color: #ff9408; font-family: 'Oswald', sans-serif; font-weight: 400; letter-spacing: 1px; }
-
-	.Pricing_sec .Pricingside li .Band { padding: 1px 30px; width: 173px; float: left; background: url('/static/divider.png') right 16px no-repeat; transition: all 0.3s ease; }
-	.Pricing_sec .Pricingside li .Band p { font-size: 16px; color: #979797; margin: 0px; font-family: 'Oswald', sans-serif; font-weight: 400; text-transform: uppercase; line-height: 20px; }
-	.Pricing_sec .Pricingside li .Band p span { display: block; }
-	.Pricing_sec .Pricingside li .Band.last { background: none; }
-	.Pricing_sec .Pricingside li .Order {width: 147px; float: left; display: table; height: 103px;  }
-	.Pricing_sec .Pricingside li .Order a { font-size: 17px; color: #fff; font-family: 'Oswald', sans-serif; font-weight: 400; text-decoration: none;  display: table-cell; vertical-align: middle; text-transform: uppercase;  background: #2d2d2d; }
-
-	.Pricing_sec .Pricingside li:hover .Basic { padding: 0px; background: #2d2d2d; }
-	.Pricing_sec .Pricingside li:hover .Basic h5 { color: #fff; }
-	.Pricing_sec .Pricingside li:hover .Band { padding: 0px; background: #2d2d2d url('/static/divider-black.png') right 16px no-repeat; height: 103px; }
-	.Pricing_sec .Pricingside li:hover .Band p { color: #fff; }
-	.Pricing_sec .Pricingside li:hover .Dollar { background: #ff9408; color: #fff; }
-	.Pricing_sec .Pricingside li:hover .Dollar h2 { color: #fff; }
-
-	.Pricing_sec .Pricingside li:hover .Order a { background: #ff9408; color: #fff; transition: all 0.3s ease;}
-
 	
 
 	/* <<< Contact Section >>> */
