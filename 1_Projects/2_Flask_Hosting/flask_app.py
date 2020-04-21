@@ -9,6 +9,7 @@ read_db = "./read.db"
 db_ideas = "./ideas.db"
 db_done = "./done.db"
 db_mat = "./mat_pricing.db"
+form_data = "./form_data.db"
 app = Flask(__name__)
 
 @app.route('/savedetails', methods = ["POST", "GET"])
@@ -294,6 +295,30 @@ def contact():
 @app.route('/bird')
 def bird():
     return render_template("bird.html")
+
+
+@app.route('/save_form', methods = ["POST", "GET"])
+def save_form():
+    msg = "msg"
+    if request.method == "POST":
+        try:
+            Name = request.form["name"]
+            Email = request.form["email"]
+            Title = request.form["title"]
+            Message = request.form["message"]
+            timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+            conn = sqlite3.connect(form_data)
+            cur = conn.cursor()
+            cur.execute("INSERT INTO form_data (Name, Email, Title, Message, Date) VALUES(?, ?, ?, ?, ?)" , (Name, Email, Title, Message, timestamp))
+            conn.commit()
+            msg = "Data Entered Successfully!"
+        except:
+            conn.rollback()
+            msg = "Sorry couldn't submit your message!"
+        finally:
+            return render_template("index.html", msg = msg)
+            conn.close()
+    return render_template("index.html")
 
 if __name__ == "__main__":
     app.run(debug=True)
