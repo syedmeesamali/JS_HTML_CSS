@@ -222,21 +222,25 @@ header.smaller .Navigation li { height: 60px; }
 .Get_sec .Leftside textarea:focus { outline: none;}
 .Get_sec .Leftside .button { padding: 16px 0px 17px 0px; margin-top: -3px; font-size: 14px; color: #e9ecee; font-family: 'Open Sans', sans-serif; font-weight: 700; text-align: center; background: #e2850a; border: 0px; text-transform:uppercase; width: 100%; cursor: pointer; box-shadow: 0px 2px 6px 0px #242424; -webkit-box-shadow: 0px 2px 6px 0px #242424; -moz-box-shadow: 0px 2px 6px 0px #242424; -o-box-shadow: 0px 2px 6px 0px #242424; border-radius: 0px; transition: all 0.3s ease;}
 .Get_sec .Leftside .button:hover { background: #2d2d2d; color: #fff;}
-.Get_sec .Leftside .alert {	padding: 20px; background-color: #f44336; color: white;  }
-.Get_sec .Leftside .alert .closebtn {	margin-left: 15px; color: white; font-weight: bold; float: right;
-	font-size: 22px; line-height: 20px;	cursor: pointer; transition: 0.3s;  }  
-.Get_sec .Leftside .alert .closebtn:hover {	color: black;  }
+
 
 .Get_sec .Rightside { padding-top: 12px; width: 48.18%; float: right;}
-.Get_sec .Rightside h3 { padding-bottom: 44px; font-size: 46px; color: #f88e04; font-family: 'Oswald', sans-serif; font-weight: 400; margin: 0px; text-transform:uppercase; line-height: 46px; }
-.Get_sec .Rightside address { padding: 0px 0px 27px 65px; margin-left: 3px; font-size: 14px; color: #ebedf1; font-family: 'Open Sans', sans-serif; font-weight: 400; font-style: normal; background: url('/static/location-icn.png') left 4px no-repeat; line-height: 24px;  }
+.Get_sec .Rightside h3 { padding-bottom: 44px; font-size: 46px; color: #f88e04; font-family: 'Oswald', sans-serif; font-weight: 400; 
+	margin: 0px; text-transform:uppercase; line-height: 46px; }
+.Get_sec .Rightside address { padding: 0px 0px 20px 100px; margin-left: 3px; font-size: 14px; 
+	color: #ebedf1; font-family: 'Open Sans', sans-serif; font-weight: 200; font-style: normal; 
+	background: url('/static/location-icn.png') left 4px no-repeat; line-height: 24px;  }
 .Get_sec .Rightside address.Number { background: url('/static/phone-icn.png') left 5px no-repeat; }
-.Get_sec .Rightside address.Email { margin-left: 4px; background: url('/static/mail-icn.png') left 0px no-repeat; }
+.Get_sec .Rightside address.Email { margin-left: 4px; background: url('/static/mail-icn.png') left 5px no-repeat; }
 .Get_sec .Rightside address.Email a { text-decoration: none; color: #ebedf1; }
 .Get_sec .Rightside address.Email a:Hover { color: #f88e04; }
 .Get_sec .Rightside ul { list-style: none; margin: 0px; padding: 27px 0px 0px 3px; }
 .Get_sec .Rightside li { float: left; padding: 0px; margin: 0px  22px 0px 0px; }
 .Get_sec .Rightside li a { text-decoration: none; }
+.Get_sec .Rightside .calert  {	color: gold; background-color: green; 	}
+.Get_sec .Rightside .calert.closebtn {	color: yellow; font-weight: bold; font-size: 40px; 
+	line-height: 20px;	cursor: pointer; transition: 0.3s;  }  
+.Get_sec .Rightside .calert.closebtn:hover {	color: white;  }
 
 
 
