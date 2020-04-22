@@ -237,10 +237,10 @@ header.smaller .Navigation li { height: 60px; }
 .Get_sec .Rightside ul { list-style: none; margin: 0px; padding: 27px 0px 0px 3px; }
 .Get_sec .Rightside li { float: left; padding: 0px; margin: 0px  22px 0px 0px; }
 .Get_sec .Rightside li a { text-decoration: none; }
-.Get_sec .Rightside .calert  {	border: 2px solid yellow; padding: 10px; color: gold; background-color: green; 	}
-.Get_sec .Rightside .calert:hover  {	color: green; }
-.Get_sec .Rightside .closebtn {	color: yellow; font-weight: bold; font-size: 40px; float: right;
-	line-height: 20px;	cursor: pointer; transition: 0.3s;  }  
+.Get_sec .Rightside .calert  {	border: 1px solid yellow; padding: 10px; color: gold; background-color: green; 	}
+.Get_sec .Rightside .calert:hover  {	color:white; }
+.Get_sec .Rightside .closebtn {	color: yellow; font-weight: bold; font-size: 30px; float: right;
+	line-height: 10px;	cursor: pointer; transition: 0.3s;  }  
 .Get_sec .Rightside .closebtn:hover {	color: white;  }
 
 
