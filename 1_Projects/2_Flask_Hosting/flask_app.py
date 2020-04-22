@@ -316,7 +316,7 @@ def save_form():
             conn.rollback()
             msg = "Sorry couldn't submit your message!"
         finally:
-            return render_template("index.html", msg = msg)
+            return render_template("success.html", msg = msg)
             conn.close()
     return render_template("index.html")
 
