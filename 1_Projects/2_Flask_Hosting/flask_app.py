@@ -312,13 +312,13 @@ def save_form():
             cur.execute("INSERT INTO form_data (Name, Email, Title, Message, Date) VALUES(?, ?, ?, ?, ?)" , (Name, Email, Title, Message, timestamp))
             conn.commit()
             msg = "Data Entered Successfully!"
+            return render_template("index.html", msg = msg)
         except:
             conn.rollback()
             msg = "Sorry couldn't submit your message!"
-        finally:
-            return render_template("success.html", msg = msg)
-            conn.close()
-    return render_template("index.html")
+            return render_template("index.html", msg = msg)
+        conn.close()
+    return render_template("index.html", msg = msg)
 
 if __name__ == "__main__":
     app.run(debug=True)

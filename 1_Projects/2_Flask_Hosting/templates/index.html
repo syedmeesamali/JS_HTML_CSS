@@ -241,10 +241,10 @@
                 <div class="Leftside">
                     <form action="/save_form" method="POST">
                         <fieldset>
-                            <p><input type="text" value="" placeholder="NAME" name="name" class="field"></p>
-                            <p><input type="email" value="" placeholder="EMAIL" name="email" class="field"></p>
-                            <p><input type="text" value="" placeholder="TITLE" name="title" class="field"></p>
-                            <p><textarea cols="2"  rows="2" name="message" placeholder="MESSAGE"></textarea></p>
+                            <p><input type="text" value="" placeholder="NAME" name="name" class="field" required></p>
+                            <p><input type="email" value="" placeholder="EMAIL" name="email" class="field" required></p>
+                            <p><input type="text" value="" placeholder="TITLE" name="title" class="field" required></p>
+                            <p><textarea cols="2"  rows="2" name="message" placeholder="MESSAGE" required></textarea></p>
                             <p><input type="submit" value="send" class="button"></p>
                         </fieldset>
                     </form>
@@ -268,10 +268,18 @@
                         </ul>
                         <br><br><br>
                         <p>
-                            <div class="calert" id="successfulMessage" style="display:none;">
+                            {% if msg == "Data Entered Successfully!" %}
+                            <div class="calert" id="successfulMessage"><!-- // style="display:none;" // -->
                                 <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-                                <h4>Thanks! Your message is well received.</h4>
+                                <h4>{{ msg }}</h4>
                             </div>
+                          {% else %}
+                          <div class="calert-fail" id="successfulMessage"><!-- // style="display:none;" // -->
+                            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                            <h4>{{ msg }}</h4>
+                        </div>
+                          {%endif %}
+
                         </p>
                 </div>
                 <!-- // End Right Side // -->
