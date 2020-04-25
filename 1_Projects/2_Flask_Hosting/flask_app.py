@@ -311,11 +311,11 @@ def save_form():
             cur = conn.cursor()
             cur.execute("INSERT INTO form_data (Name, Email, Title, Message, Date) VALUES(?, ?, ?, ?, ?)" , (Name, Email, Title, Message, timestamp))
             conn.commit()
-            msg = "Data Entered Successfully!"
+            msg = "Your message is well received. Thanks!"
             return render_template("index.html", msg = msg)
         except:
             conn.rollback()
-            msg = "Sorry couldn't submit your message!"
+            msg = "Sorry some error occured ...."
             return render_template("index.html", msg = msg)
         conn.close()
     return render_template("index.html", msg = msg)
