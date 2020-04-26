@@ -270,12 +270,12 @@
                         <br><br>
                         <p>
                             {% if msg == "Your message is well received. Thanks!" %}
-                            <div class="calert" id="successfulMessage"><!-- // style="display:none;" // -->
+                            <div class="calert" id="successfulMessage" style="display:none;"><!-- // style="display:none;" // -->
                                 <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
                                 <h4>{{ msg }}</h4>
                             </div>
                           {% else %}
-                          <div class="calert-fail" id="successfulMessage"><!-- // style="display:none;" // -->
+                          <div class="calert-fail" id="successfulMessage" style="display:none;"><!-- // style="display:none;" // -->
                             <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
                             <h4>{{ msg }}</h4>
                         </div>
@@ -311,6 +311,7 @@
   <script type="text/javascript" src="/static/jquery.sudoSlider.min.js"></script>
   <script type="text/javascript" src="/static/global.js"></script>
   <script type="text/javascript" src="/static/modernizr.js"></script>
+  <script type="text/javascript" src="/static/validation.js"></script>
 
 </body>
 </html>

@@ -1,7 +1,13 @@
 const form = document.getElementsByTagName('form')[0];
-
-const email = document.getElementById('mail');
-
+const email = document.getElementById('email');
+email.addEventListener("input", function (event){
+  if (email.validity.typeMismatch)
+  {
+    email.setCustomValidity("Hey where is proper email???");
+  } else {
+    email.setCustomValidity("");
+  }
+})
 
 function showError() {
   if (email.validity.valueMissing)
