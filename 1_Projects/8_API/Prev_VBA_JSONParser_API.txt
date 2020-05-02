@@ -1,0 +1,165 @@
+Option Explicit
+ 
+Public Function ReadJSON(content As String)
+    Dim root As Object
+    Dim rootKeys() As String
+    Dim keys() As String
+    Dim i As Integer
+    Dim obj As Object
+    Dim prop As Variant
+    'content = FileSys.FileToString(CurrentProject.Path &amp; "\example0.json")
+    
+    content = Replace(content, vbCrLf, "")
+    content = Replace(content, vbTab, "")
+    JSONParser.InitScriptEngine
+    Set root = JSONParser.DecodeJsonString(content)
+    rootKeys = JSONParser.GetKeys(root)
+    
+    For i = 0 To UBound(rootKeys)
+        Debug.Print rootKeys(i)
+        If JSONParser.GetPropertyType(root, rootKeys(i)) = jptValue Then
+            prop = JSONParser.GetProperty(root, rootKeys(i))
+            Debug.Print Nz(prop, "[null]")
+        Else
+            Set obj = JSONParser.GetObjectProperty(root, rootKeys(i))
+            RecurseProps obj, 2
+        End If
+    Next i
+ 
+End Function
+ 
+Private Function RecurseProps(obj As Object, Optional Indent As Integer = 0) As Object
+    Dim nextObject As Object
+    Dim propValue As Variant
+    Dim keys() As String
+    Dim i As Integer
+    keys = JSONParser.GetKeys(obj)
+    For i = 0 To UBound(keys)
+        If JSONParser.GetPropertyType(obj, keys(i)) = jptValue Then
+            propValue = JSONParser.GetProperty(obj, keys(i))
+            Debug.Print Space(Indent) & "_"; keys(i) & "_"; ":" & "_"; Nz(propValue, "[null]")
+        Else
+            Set nextObject = JSONParser.GetObjectProperty(obj, keys(i))
+            Debug.Print Space(Indent) & "_"; keys(i)
+            RecurseProps nextObject, Indent + 2
+        End If
+    Next i
+    
+End Function
+
+Public Function Nz(ByVal value, Optional ByVal valueifnull = "")
+    Nz = IIf(IsNull(value), valueifnull, value)
+End Function
+
+
+
+
+Public Sub extract_data()
+    Dim script As Object
+    Dim HTTPobj As Object
+    Dim URL As String
+    Dim JSONobj As Object
+    Dim SMAlist As Object
+    Dim dateKeysObj As Object
+    Dim dateKeys As Variant, dateKey As Variant
+    Dim dateItem As Object
+    Dim destCell As Range, r As Long
+    
+    With Worksheets("Result")
+        .Cells.ClearContents
+        .Range("A1:B1").value = Array("Date", "SMA")
+        Set destCell = .Range("A2")
+    End With
+    
+    Set script = CreateObject("MSScriptControl.ScriptControl")
+    script.Language = "JScript"
+    script.AddCode "function getKeys(jsonObj) { var keys = new Array(); for (var i in jsonObj) { keys.push(i); } return keys; }"
+    script.AddCode "function getItemByKey(jsonObj, key) { return jsonObj[key]; }"
+    
+    URL = "https://www.alphavantage.co/query?function=SMA&interval=daily&time_period=90&series_type=close&apikey=ES1RXJ7VF1C1L9N5&symbol=MSFT"
+    
+    Set JSONobj = Nothing
+    Set HTTPobj = CreateObject("MSXML2.XMLHTTP")
+    With HTTPobj
+        .Open "GET", URL, False
+        .Send
+        If .Status = 200 Then
+            Set JSONobj = script.Eval("(" & .responseText & ")")
+        End If
+    End With
+    
+    If Not JSONobj Is Nothing Then
+    
+        'Debug.Print JSONobj.hasOwnProperty("Technical Analysis: SMA")
+        Set SMAlist = VBA.CallByName(JSONobj, "Technical Analysis: SMA", VbGet)
+        
+        Set dateKeysObj = script.Run("getKeys", SMAlist)
+        r = 0
+        For Each dateKey In dateKeysObj
+            Set dateItem = VBA.CallByName(SMAlist, dateKey, VbGet)
+            destCell.Offset(r, 0).value = dateKey
+            destCell.Offset(r, 1).value = VBA.CallByName(dateItem, "SMA", VbGet)
+            r = r + 1
+        Next
+    End If
+        
+End Sub
+
+Option Explicit
+ 
+Public Enum JsonPropertyType
+    jptObject
+    jptValue
+End Enum
+ 
+Private ScriptEngine As Object 'ScriptControl (ref: Microsoft Script Control 1.0)
+ 
+Public Sub InitScriptEngine()
+    Set ScriptEngine = CreateObject("MSScriptControl.ScriptControl") 'New ScriptControl
+    ScriptEngine.Language = "JScript"
+    ScriptEngine.AddCode "function getProperty(jsonObj, propertyName) { return jsonObj[propertyName]; } "
+    ScriptEngine.AddCode "function getKeys(jsonObj) { var keys = new Array(); for (var i in jsonObj) { keys.push(i); } return keys; } "
+End Sub
+ 
+Public Function DecodeJsonString(ByVal JSonString As String)
+    Set DecodeJsonString = ScriptEngine.Eval("(" + JSonString + ")")
+End Function
+ 
+Public Function GetProperty(ByVal JsonObject As Object, ByVal PropertyName As String) 'As Variant
+    GetProperty = ScriptEngine.Run("getProperty", JsonObject, PropertyName)
+End Function
+ 
+Public Function GetObjectProperty(ByVal JsonObject As Object, ByVal PropertyName As String) 'As Object
+    Set GetObjectProperty = ScriptEngine.Run("getProperty", JsonObject, PropertyName)
+End Function
+ 
+Public Function GetPropertyType(ByVal JsonObject As Object, ByVal PropertyName As String) As JsonPropertyType
+    On Error Resume Next
+    Dim o As Object
+    Set o = GetObjectProperty(JsonObject, PropertyName)
+    If Err.Number Then
+        GetPropertyType = jptValue
+        Err.Clear
+        On Error GoTo 0
+    Else
+        GetPropertyType = jptObject
+    End If
+End Function
+ 
+Public Function GetKeys(ByVal JsonObject As Object) As String()
+    Dim Length As Integer
+    Dim KeysArray() As String
+    Dim KeysObject As Object
+    Dim Index As Integer
+    Dim key As Variant
+ 
+    Set KeysObject = ScriptEngine.Run("getKeys", JsonObject)
+    Length = GetProperty(KeysObject, "length")
+    ReDim KeysArray(Length - 1)
+    Index = 0
+    For Each key In KeysObject
+        KeysArray(Index) = key
+        Index = Index + 1
+    Next
+    GetKeys = KeysArray
+End Function
