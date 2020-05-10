@@ -2,7 +2,6 @@
 <html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
 <head>
   <title> SYED_MEESAM_ALI </title>
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/theme.css') }}">
@@ -50,8 +49,6 @@
             </div>
           </div>
       </header>
-        
-      
       <div id="Container">
         <div class="Banner_sec" id="home">
           <!--  \\ Begin banner Side -->
@@ -189,18 +186,13 @@
                                 Client plays a key role in problem idetification and presentation. For me, the most valuable thing is a satisfied client and a returning
                                 client. 
                               </p>
-                              
                           </div>
                       </div>
                     <div class="clear"></div>	
                   </div> <!-- // End Tab Side // -->
-                  
               </div>
           </div>
-          <!-- // End About Section // -->
-      
-
-
+      <!-- // End About Section // -->
       <!-- \\ Begin Services Section \\ -->
         <div class="Services_sec" id="services">
           <div class="Center">
@@ -220,11 +212,6 @@
               <!-- // End Services Side // -->
           </div>                
       </div>
-
-
-
-
-
  <!-- \\ Begin Contact Section \\ -->
   <div class="Contact_sec" id="contact">
     <div class="Contactside">
@@ -291,11 +278,8 @@
                     <p>COPYRIGHT © 2021 SYEDMEESAMALI</p>
                 </div>
             </footer><!-- // End Footer // -->
-            
           </div><!-- // End Get Section // -->
-    
         </div><!-- // End Contact Section // -->
-  
     </div><!-- // End of COTAINER // -->
   </div><!-- // End of LAYOUT FRAME // -->
 </div> <!-- // End of TOP DIV // -->
@@ -304,9 +288,16 @@
   <div id="loader"></div>
       <div class="loader-section section-left"></div>
       <div class="loader-section section-right"></div>
-  </div>
-
+</div>
 <!-- <<Attched Javascripts>> -->
+  <script>  
+    $(document).ready(function(){
+      $("form").submit(function(){
+        $(".calert").show();
+      });
+    });
+    </script>  
+  
   <script type="text/javascript" src="/static/jquery-1.11.0.min.js"></script>
   <script type="text/javascript" src="/static/jquery.sudoSlider.min.js"></script>
   <script type="text/javascript" src="/static/global.js"></script>
