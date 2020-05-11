@@ -272,7 +272,9 @@ border-top-color: #f9c922; -webkit-animation: spin 1.5s linear infinite; /* Chro
 	}
 }
 
-#loader-wrapper .loader-section { position: fixed; top: 0; width: 51%; height: 100%; background: #222222; z-index: 1000; -webkit-transform: translateX(0);  /* Chrome, Opera 15+, Safari 3.1+ */  /* IE 9 */ transform: translateX(0);  /* Firefox 16+, IE 10+, Opera */}
+#loader-wrapper .loader-section { position: fixed; top: 0; width: 51%; height: 100%; background: #222222; 
+	z-index: 1000; -webkit-transform: translateX(0);  /* Chrome, Opera 15+, Safari 3.1+ */  /* IE 9 */ 
+	transform: translateX(0);  /* Firefox 16+, IE 10+, Opera */}
 
 #loader-wrapper .loader-section.section-left {
 	left: 0;

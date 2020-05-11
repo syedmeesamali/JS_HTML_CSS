@@ -11,6 +11,14 @@
     <link href='https://fonts.googleapis.com/css?family=Oswald:400,700,300' rel='stylesheet' type='text/css'>
 </head>
 <body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+      $("#formBtn").click(function(){
+        $("#successfulMessage").show();
+      });
+    });
+</script>  
 <!-- \\ Begin Holder \\ -->
 <div class="DesignHolder">
 	<!-- \\ Begin Frame \\ -->
@@ -226,13 +234,13 @@
             <div class="Mid">					
                 <!-- \\ Begin Left Side \\ -->
                 <div class="Leftside">
-                <form action="/save_form" method="POST">
+                <form action="/save_form" method="POST" id="myForm">
                 <fieldset>
                 <p><input type="text" value="" minlength="3" maxlength="30" placeholder="NAME" id="name" name="name" class="field" required></p>
                 <p><input type="email" value="" minlength="9" maxlength="50" placeholder="EMAIL" id="email" name="email" class="field" required></p>
                 <p><input type="text" value="" minlength="2" maxlength="10" placeholder="TITLE" id="title" name="title" class="field" required></p>
                 <p><textarea cols="2"  rows="2" minlength="3" maxlength="1000" id="message" name="message" placeholder="MESSAGE" required></textarea></p>
-                <p><input type="submit" value="send" class="button"></p>
+                <p><input type="submit" value="send" class="button" id="formBtn"></p>
                 </fieldset>
                 </form>
                 </div>
@@ -267,7 +275,6 @@
                             <h4>{{ msg }}</h4>
                         </div>
                           {%endif %}
-
                         </p>
                 </div>
                 <!-- // End Right Side // -->
@@ -290,13 +297,7 @@
       <div class="loader-section section-right"></div>
 </div>
 <!-- <<Attched Javascripts>> -->
-  <script>  
-    $(document).ready(function(){
-      $("form").submit(function(){
-        $(".calert").show();
-      });
-    });
-    </script>  
+  
   
   <script type="text/javascript" src="/static/jquery-1.11.0.min.js"></script>
   <script type="text/javascript" src="/static/jquery.sudoSlider.min.js"></script>

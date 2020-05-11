@@ -3,7 +3,7 @@ const email = document.getElementById('email');
 email.addEventListener("input", function (event){
   if (email.validity.typeMismatch)
   {
-    email.setCustomValidity("Hey where is proper email???");
+    email.setCustomValidity("Enter proper email address please!!");
   } else {
     email.setCustomValidity("");
   }
