@@ -3,6 +3,7 @@ import sqlite3
 import os
 from datetime import datetime
 
+
 database = "./coring.db"
 link_db = "./links.db"
 read_db = "./read.db"
@@ -296,6 +297,12 @@ def contact():
 def bird():
     return render_template("bird.html")
 
+
+@app.route('/_addNums')
+def _addNums():
+    a = request.args.get('a', 0, type = int)
+    b = request.args.get('b', 0, type = int)
+    return jsonify(result = a+b)
 
 @app.route('/save_form', methods = ["POST", "GET"])
 def save_form():

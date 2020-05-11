@@ -12,13 +12,21 @@
 </head>
 <body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function(){
-      $("#formBtn").click(function(){
-        $("#successfulMessage").show();
+
+<script type=text/javascript>
+  $(function() {
+    $('a#calculate').bind('click', function() {
+      $.getJSON($SCRIPT_ROOT + '/_addNums', {
+        a: $('input[name="a"]').val(),
+        b: $('input[name="b"]').val()
+      }, function(data) {
+        $("#result").text(data.result);
       });
+      return false;
     });
-</script>  
+  });
+</script>
+
 <!-- \\ Begin Holder \\ -->
 <div class="DesignHolder">
 	<!-- \\ Begin Frame \\ -->
@@ -241,6 +249,11 @@
                 <p><input type="text" value="" minlength="2" maxlength="10" placeholder="TITLE" id="title" name="title" class="field" required></p>
                 <p><textarea cols="2"  rows="2" minlength="3" maxlength="1000" id="message" name="message" placeholder="MESSAGE" required></textarea></p>
                 <p><input type="submit" value="send" class="button" id="formBtn"></p>
+                <h1>jQuery Example</h1>
+                <p><input type="text" size="5" name="a"> +
+                <input type="text" size="5" name="b"> =
+                <span id="result">?</span>
+                <p><a href=# id="calculate">calculate server side</a>
                 </fieldset>
                 </form>
                 </div>
