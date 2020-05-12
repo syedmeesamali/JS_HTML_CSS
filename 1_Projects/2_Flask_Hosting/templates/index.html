@@ -14,19 +14,32 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
 <script type=text/javascript>
-  $(function() {
-    $('a#calculate').bind('click', function() {
-      $.getJSON($SCRIPT_ROOT + '/_addNums', {
-        a: $('input[name="a"]').val(),
-        b: $('input[name="b"]').val()
-      }, function(data) {
-        $("#result").text(data.result);
-      });
-      return false;
+  $(document).ready(function ({
+    $('jForm').on('submit', function(event) {
+        $.ajax ({
+          data: {
+            a : $('#a').val(),
+            b : $('#b').val()
+          }, 
+          type: 'POST', url : '/process'
+        })
+        .done(function(data){
+            if (data.error) {
+                $('#.calert').text(data.error).show();
+                $('#.calert-fail').hide();
+            } else {
+              $('#.calert-fail').text(data.error).show();
+              $('#.calert').hide();
+            }
+          })
+        });
+        
+        event.preventDefault();
     });
+  
   });
-</script>
 
+</script>
 <!-- \\ Begin Holder \\ -->
 <div class="DesignHolder">
 	<!-- \\ Begin Frame \\ -->
@@ -249,14 +262,17 @@
                 <p><input type="text" value="" minlength="2" maxlength="10" placeholder="TITLE" id="title" name="title" class="field" required></p>
                 <p><textarea cols="2"  rows="2" minlength="3" maxlength="1000" id="message" name="message" placeholder="MESSAGE" required></textarea></p>
                 <p><input type="submit" value="send" class="button" id="formBtn"></p>
+              </fieldset>
+                </form>
+              
                 <h1>jQuery Example</h1>
+                <form action="/process" method="POST" id="jForm">
                 <p><input type="text" size="5" name="a"> +
                 <input type="text" size="5" name="b"> =
-                <span id="result">?</span>
-                <p><a href=# id="calculate">calculate server side</a>
-                </fieldset>
+                <span id="result">?</span><p><br><br>
+                <input type="submit" class="button" id="jBtn"></p>
                 </form>
-                </div>
+              </div> 
                 <!-- // End Left Side // -->
                 <!-- \\ Begin Right Side \\ -->
                 <div class="Rightside">

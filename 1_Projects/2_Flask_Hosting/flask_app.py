@@ -300,14 +300,12 @@ def bird():
 
 @app.route('/process', methods = ["POST"])
 def process():
-        try:
-            a = request.form["a"]
-            b = request.form["b"]
-            total = a + b
-            if a and b:
-                return jsonify({'total': total})
-            return jsonify({'total': 0})
-            return render_template("index.html", _anchor="contact", msg = msg)
+    a = request.form["a"]
+    b = request.form["b"]
+    total = a + b
+    if a and b:
+        return jsonify({'total': total})
+    return jsonify({'total': 0})
 
 @app.route('/save_form', methods = ["POST", "GET"])
 def save_form():
