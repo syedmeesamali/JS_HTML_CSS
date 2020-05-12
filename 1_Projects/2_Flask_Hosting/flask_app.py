@@ -298,11 +298,16 @@ def bird():
     return render_template("bird.html")
 
 
-@app.route('/_addNums')
-def _addNums():
-    a = request.args.get('a', 0, type = int)
-    b = request.args.get('b', 0, type = int)
-    return jsonify(result = a+b)
+@app.route('/process', methods = ["POST"])
+def process():
+        try:
+            a = request.form["a"]
+            b = request.form["b"]
+            total = a + b
+            if a and b:
+                return jsonify({'total': total})
+            return jsonify({'total': 0})
+            return render_template("index.html", _anchor="contact", msg = msg)
 
 @app.route('/save_form', methods = ["POST", "GET"])
 def save_form():
