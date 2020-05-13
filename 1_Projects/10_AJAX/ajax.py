@@ -19,5 +19,19 @@ def api_info():
     }
     return jsonify(info)
 
+@app.route("/api/calc")
+def add():
+    a = int(request.args.get('a', 0))
+    b = int(request.args.get('b', 0))
+    div = 'na'
+    if b != 0:
+        div = a/b
+    return jsonify({
+        "a" : a,
+        "b" : a,
+        "add" : a + b,
+        "multiply" : a * b,
+    })
+
 if __name__ == "__main__":
     app.run(debug=True) 
