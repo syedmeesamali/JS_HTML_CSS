@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<head>
+  <title> SYED_MEESAM_ALI </title>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,600italic,400italic,800,700' rel='stylesheet' type='text/css'>    
+    <link href='https://fonts.googleapis.com/css?family=Oswald:400,700,300' rel='stylesheet' type='text/css'>
+</head>
+<body>
+<script type="text/javascript" src="/static/jquery-1.11.0.min.js"></script>
+
+<script type="text/javascript">
+  $('#jBtn').click(function() {
+    $('#calert').css('display', "none");
+    $('#calert-fail').css('display', "none");
+    $.ajax({
+          data: {
+            a : $('#a').val(),
+            b : $('#b').val()
+          }, 
+          type: 'POST', url : '/process'
+    }).done(function(data){
+            if (data.error) {
+                $('#.calert').text(data.error).show();
+                $('#.calert-fail').hide();
+            } else {
+              $('#.calert-fail').text(data.error).show();
+              $('#.calert').hide();
+            }
+          })
+        event.preventDefault();
+  })
+  
+</script>
+<form action="/save_form" method="POST" id="myForm">
+<fieldset>
+<p><input type="text" value="" placeholder="NAME" id="name" name="name" class="field" required></p>
+<p><input type="email" value="" placeholder="EMAIL" id="email" name="email" class="field" required></p>
+<p><input type="submit" value="send" class="button" id="formBtn"></p>
+</fieldset>
+</form>
+
+</body>
+</html>
