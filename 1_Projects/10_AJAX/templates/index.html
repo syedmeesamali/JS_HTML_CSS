@@ -3,50 +3,34 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <head>
-  <title> SYED_MEESAM_ALI </title>
-    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,600italic,400italic,800,700' rel='stylesheet' type='text/css'>    
-    <link href='https://fonts.googleapis.com/css?family=Oswald:400,700,300' rel='stylesheet' type='text/css'>
+  <title> AJAX Review </title>
 </head>
 <body>
 <script type="text/javascript" src="/static/jquery-1.11.0.min.js"></script>
-<script type="text/javascript" src="/static/math.js?r={{reload}}"></script>
 
-<script type="text/javascript">
-  $('#jBtn').click(function() {
-    $('#calert').css('display', "none");
-    $('#calert-fail').css('display', "none");
-    $.ajax({
-          data: {
-            a : $('#a').val(),
-            b : $('#b').val()
-          }, 
-          type: 'POST', url : '/process'
-    }).done(function(data){
-            if (data.error) {
-                $('#.calert').text(data.error).show();
-                $('#.calert-fail').hide();
-            } else {
-              $('#.calert-fail').text(data.error).show();
-              $('#.calert').hide();
-            }
-          })
-        event.preventDefault();
-  })
-  
+<script type=text/javascript>
+  $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
 </script>
 
-<input type="number" id="a">
-<input type="number" id="b">
-<button id="calc">Calc</button>
-<div id="results">
-   <div id="add"></div>
-   <div id="subtract"></div>
-   <div id="multiply"></div>
-   <div id="divide"></div>
-</div>
+<script type="text/javascript">
+$(function() {
+  $('a#calculate').click(function(){
+    $.getJSON($SCRIPT_ROOT + '/_addNumbers', {
+      a : $('input[name="a"]').val(), 
+      b : $('input[name="b"]').val()
+    }, function(data) {
+      $('#result').text(data.result);
+    });
+    return false;
+  });
+});
+console.log("Script run");
+</script>
 
-<pre id="info"></pre>
-<div id="description"></div>
+<input type="number" id="a"> + 
+<input type="number" id="b">
+<span id="result">?</span>
+<p><a href="#" id="calculate">calculate server side</a>
 
 </body>
 </html>
