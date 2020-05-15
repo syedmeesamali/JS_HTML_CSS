@@ -12,6 +12,6 @@ def addNumbers():
     a = int(request.args.get('a', 0))
     b = int(request.args.get('b', 0))
     return jsonify(result = a + b)
-
+    d
 if __name__ == "__main__":
     app.run(debug=True) 
