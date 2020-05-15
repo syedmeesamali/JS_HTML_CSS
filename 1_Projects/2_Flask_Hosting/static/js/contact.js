@@ -1,6 +1,5 @@
 $(document).ready(function() {
-    $('form').on('submit', function(event){
-        alert("Data submitted")
+    $('#myForm').on('submit', function(event){
         console.log("Contact js is loaded!")
         $.ajax({
             data: {
@@ -14,10 +13,10 @@ $(document).ready(function() {
         })
         .done(function(data) {
             if (data.error) {
-                $('#errorAlert').show();
+                $('#errorAlert').text(data.error).show();
                 $('#successAlert').hide();
             } else {
-                $('#successAlert').show();
+                $('#successAlert').text(data.Message).show();
                 $('#errorAlert').hide();
             }
 

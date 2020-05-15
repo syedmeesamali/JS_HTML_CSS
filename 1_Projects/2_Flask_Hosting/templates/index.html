@@ -10,14 +10,16 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,600italic,400italic,800,700' rel='stylesheet' type='text/css'>    
     <link href='https://fonts.googleapis.com/css?family=Oswald:400,700,300' rel='stylesheet' type='text/css'>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
   </head>
 <body>
-<script type="text/javascript" src="/static/jquery-1.11.0.min.js"></script>
+<script src="/static/js/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="/static/jquery.sudoSlider.min.js"></script>
 <script type="text/javascript" src="/static/global.js"></script>
 <script type="text/javascript" src="/static/modernizr.js"></script>
 <script type="text/javascript" src="/static/validation.js"></script>
-<script type="text/javascript" src="/static/contact.js"></script>
+<script src="/static/js/contact.js"></script>
 
 <!-- \\ Begin Holder \\ -->
 <div class="DesignHolder">
@@ -234,7 +236,7 @@
             <div class="Mid">					
                 <!-- \\ Begin Left Side \\ -->
                 <div class="Leftside">
-                <form action="/save_form" method="POST">
+                <form id="myForm" action="/save_form" method="POST">
                 <fieldset>
                 <p><input type="text" value="" minlength="3" maxlength="30" placeholder="NAME" id="name" name="name" class="field" required></p>
                 <p><input type="email" value="" minlength="9" maxlength="50" placeholder="EMAIL" id="email" name="email" class="field" required></p>
@@ -243,8 +245,8 @@
                 <p><input type="submit" value="submit" class="button" id="formBtn"></p>
                 </fieldset>
                 </form>
-                <div id="successAlert" class="calert">Some data</div>
-                <div id="errorAlert" class="calert-fail">New Data</div>
+                <div id="successAlert" class="alert alert-success" role="alert" style="display:none;"></div>
+                <div id="errorAlert" class="alert alert-danger" role="alert" style="display:none;"></div>
                 </div> 
                 <!-- // End Left Side // -->
                 <!-- \\ Begin Right Side \\ -->
