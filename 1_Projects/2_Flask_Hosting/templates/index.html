@@ -9,38 +9,16 @@
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/font-awesome.min.css') }}">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,600italic,400italic,800,700' rel='stylesheet' type='text/css'>    
     <link href='https://fonts.googleapis.com/css?family=Oswald:400,700,300' rel='stylesheet' type='text/css'>
-</head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  </head>
 <body>
 <script type="text/javascript" src="/static/jquery-1.11.0.min.js"></script>
 <script type="text/javascript" src="/static/jquery.sudoSlider.min.js"></script>
 <script type="text/javascript" src="/static/global.js"></script>
 <script type="text/javascript" src="/static/modernizr.js"></script>
 <script type="text/javascript" src="/static/validation.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="/static/contact.js"></script>
 
-<script type="text/javascript">
-  $('#jBtn').click(function() {
-    $('#calert').css('display', "none");
-    $('#calert-fail').css('display', "none");
-    $.ajax({
-          data: {
-            a : $('#a').val(),
-            b : $('#b').val()
-          }, 
-          type: 'POST', url : '/process'
-    }).done(function(data){
-            if (data.error) {
-                $('#.calert').text(data.error).show();
-                $('#.calert-fail').hide();
-            } else {
-              $('#.calert-fail').text(data.error).show();
-              $('#.calert').hide();
-            }
-          })
-        event.preventDefault();
-  })
-  
-</script>
 <!-- \\ Begin Holder \\ -->
 <div class="DesignHolder">
 	<!-- \\ Begin Frame \\ -->
@@ -256,24 +234,18 @@
             <div class="Mid">					
                 <!-- \\ Begin Left Side \\ -->
                 <div class="Leftside">
-                <form action="/save_form" method="POST" id="myForm">
+                <form action="/save_form" method="POST">
                 <fieldset>
                 <p><input type="text" value="" minlength="3" maxlength="30" placeholder="NAME" id="name" name="name" class="field" required></p>
                 <p><input type="email" value="" minlength="9" maxlength="50" placeholder="EMAIL" id="email" name="email" class="field" required></p>
                 <p><input type="text" value="" minlength="2" maxlength="10" placeholder="TITLE" id="title" name="title" class="field" required></p>
                 <p><textarea cols="2"  rows="2" minlength="3" maxlength="1000" id="message" name="message" placeholder="MESSAGE" required></textarea></p>
-                <p><input type="submit" value="send" class="button" id="formBtn"></p>
-              </fieldset>
+                <p><input type="submit" value="submit" class="button" id="formBtn"></p>
+                </fieldset>
                 </form>
-              
-                <h1>jQuery Example</h1>
-                <form action="/process" method="POST" id="jForm">
-                <p><input type="text" size="5" name="a"> +
-                <input type="text" size="5" name="b"> =
-                <span id="result">?</span><p><br><br>
-                <input type="submit" class="button" id="jBtn"></p>
-                </form>
-              </div> 
+                <div id="successAlert" class="calert">Some data</div>
+                <div id="errorAlert" class="calert-fail">New Data</div>
+                </div> 
                 <!-- // End Left Side // -->
                 <!-- \\ Begin Right Side \\ -->
                 <div class="Rightside">
@@ -294,17 +266,14 @@
                         <br><br><br>
                         <br><br>
                         <p>
-                            {% if msg == "Your message is well received. Thanks!" %}
-                            <div class="calert" id="successfulMessage" style="display:none;"><!-- // style="display:none;" // -->
+                            <div id="successAlert" class="calert" style="display:none;"><!-- // style="display:none;" // -->
                                 <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-                                <h4>{{ msg }}</h4>
+                                <h4></h4>
                             </div>
-                          {% else %}
-                          <div class="calert-fail" id="successfulMessage" style="display:none;"><!-- // style="display:none;" // -->
-                            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-                            <h4>{{ msg }}</h4>
-                        </div>
-                          {%endif %}
+                           <div id="errorAlert" class="calert-fail" style="display:none;"><!-- // style="display:none;" // -->
+                                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                                <h4></h4>
+                            </div>
                         </p>
                 </div>
                 <!-- // End Right Side // -->

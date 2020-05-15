@@ -1,4 +1,4 @@
-from flask import *
+from flask import Flask, render_template, request, jsonify
 import sqlite3
 import os
 from datetime import datetime
@@ -307,28 +307,29 @@ def process():
         return jsonify({'total': total})
     return jsonify({'total': 0})
 
-@app.route('/save_form', methods = ["POST", "GET"])
+@app.route('/save_form', methods=['POST'])
 def save_form():
-    msg = "msg"
-    if request.method == "POST":
-        try:
-            Name = request.form["name"]
-            Email = request.form["email"]
-            Title = request.form["title"]
-            Message = request.form["message"]
-            timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-            conn = sqlite3.connect(form_data)
-            cur = conn.cursor()
-            cur.execute("INSERT INTO form_data (Name, Email, Title, Message, Date) VALUES(?, ?, ?, ?, ?)" , (Name, Email, Title, Message, timestamp))
-            conn.commit()
-            msg = "Your message is well received. Thanks!"
-            return render_template("index.html", _anchor="contact", msg = msg)
-        except:
-            conn.rollback()
-            msg = "Sorry some error occured ...."
-            return render_template("index.html", _anchor="contact", msg = msg)
-        conn.close()
-    return render_template("index.html", _anchor="contact", msg = msg)
+    #msg = "msg"
+    try:
+        Name = request.form["name"]
+        Email = request.form["email"]
+        Title = request.form["title"]
+        Message = request.form["message"]
+        timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        conn = sqlite3.connect(form_data)
+        cur = conn.cursor()
+        cur.execute("INSERT INTO form_data (Name, Email, Title, Message, Date) VALUES(?, ?, ?, ?, ?)" , (Name, Email, Title, Message, timestamp))
+        conn.commit()
+        return jsonify({'Message': 'Thanks for your message!'})
+        #msg = "Your message is well received. Thanks!"
+        #return render_template("index.html", _anchor="contact", msg = msg)
+    except:
+        conn.rollback()
+        return jsonify({'error': 'Sorry your message couldn\'t be delivered!'})
+        #msg = "Sorry some error occured ...."
+        #return render_template("index.html", _anchor="contact", msg = msg)
+    conn.close()
+#return render_template("index.html", _anchor="contact", msg = msg)
 
 if __name__ == "__main__":
     app.run(debug=True) 
