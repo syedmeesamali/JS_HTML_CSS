@@ -1,9 +1,9 @@
 $(document).ready(function() {
-    $('#contact-form').on('submit', function(event){
+    $('form').on('submit', function(event){
         $.ajax({
             data: {
-                name : $('#first-name').val(),
-                email : $('#mail-address').val()
+                name : $('#name').val(),
+                email : $('#email').val()
             }, 
             type : 'POST',
             url : '/process'
