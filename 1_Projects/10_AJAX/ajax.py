@@ -1,4 +1,4 @@
-from flask import *
+from flask import Flask, render_template, request, jsonify
 import time
 
 app = Flask(__name__)
@@ -7,11 +7,14 @@ app = Flask(__name__)
 def main():
     return render_template("index.html")
 
-@app.route("/_addNumbers")
-def addNumbers():
-    a = int(request.args.get('a', 0))
-    b = int(request.args.get('b', 0))
-    return jsonify(result = a + b)
-    d
+@app.route('/process', methods=['POST'])
+def process():
+    name = request.form["name"]
+    email = request.form["email"]
+    if name and email:
+        newName = name[::-1]
+        return jsonify({'name': newName})
+    return jsonify({'error': 'Missing Data!'})
+
 if __name__ == "__main__":
     app.run(debug=True) 

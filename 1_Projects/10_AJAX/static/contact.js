@@ -1,11 +1,23 @@
-$('#contact-form-button').click(function (e) { 
-    e.preventDefault();
-    var form = $('#contact-form');
-    var form_id = 'contact-form';
-    var url = form.prop('action');
-    var type = form.prop('method');
-    var formData = getFormData(form_id);
+$(document).ready(function() {
+    $('#contact-form').on('submit', function(event){
+        $.ajax({
+            data: {
+                name : $('#first-name').val(),
+                email : $('#mail-address').val()
+            }, 
+            type : 'POST',
+            url : '/process'
+        })
+        .done(function(data) {
+            if (data.error) {
+                $('#errorAlert').text(data.error).show();
+                $('#successAlert').hide();
+            } else {
+                $('#successAlert').text(data.name).show();
+                $('#errorAlert').hide();
+            }
 
-    send_form(form, form_id, url, type, modular_ajax, formData);
-    
+        });
+        event.preventDefault();
+    });
 });
