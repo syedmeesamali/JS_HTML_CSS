@@ -9,12 +9,10 @@ def main():
 
 @app.route('/process', methods=['POST'])
 def process():
-    name = request.form["name"]
-    email = request.form["email"]
-    if name and email:
-        newName = name[::-1]
-        return jsonify({'name': newName})
-    return jsonify({'error': 'Missing Data!'})
+    req = request.get_json()
+    print(req)
+    res = make_response(jsonify({"message": "OK"}),200)
+    return res
 
 if __name__ == "__main__":
     app.run(debug=True) 
