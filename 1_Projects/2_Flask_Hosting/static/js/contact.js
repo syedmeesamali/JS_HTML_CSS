@@ -13,11 +13,17 @@ $(document).ready(function() {
         })
         .done(function(data) {
             if (data.error) {
-                $('#errorAlert').text(data.error).show();
-                $('#successAlert').hide();
+                document.getElementById('errorAlert').style.display = '';
+                document.getElementById('errorAlert').innerHTML = data.error;
+                document.getElementById('successAlert').style.display = 'none';
+                //$('#errorAlert').text(data.error).show();
+                //$('#successAlert').hide();
             } else {
-                $('#successAlert').text(data.Message).show();
-                $('#errorAlert').hide();
+                document.getElementById('successAlert').style.display = '';
+                document.getElementById('successAlert').innerHTML = data.Message;
+                document.getElementById('errorAlert').style.display = 'none';
+                //$('#successAlert').text(data.Message).show();
+                //$('#errorAlert').hide();
             }
 
         });

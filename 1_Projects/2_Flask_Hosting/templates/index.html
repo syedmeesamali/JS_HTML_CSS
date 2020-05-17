@@ -19,7 +19,7 @@
 <script type="text/javascript" src="/static/global.js"></script>
 <script type="text/javascript" src="/static/modernizr.js"></script>
 <script type="text/javascript" src="/static/validation.js"></script>
-<script src="/static/js/contact.js"></script>
+
 
 <!-- \\ Begin Holder \\ -->
 <div class="DesignHolder">
@@ -298,8 +298,32 @@
       <div class="loader-section section-right"></div>
 </div>
 <!-- <<Attched Javascripts>> -->
-  
-  
+<script>
+    document.getElementById('myForm').addEventListener('submit', addPost);
+    
+    function addPost(event) {
+        event.preventDefault();
+        let name = document.getElementById('name').value;
+        let email = document.getElementById('email').value;
+        const myPost = {
+            name: name,
+            email: email
+        };
+
+        fetch('https://jsonplaceholder.typicode.com/users/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }, 
+            body: JSON.stringify(myPost)
+        })
+        .then((res) => res.json())
+        .then((data) => console.log(data))
+        console.log("Inside fetch now");
+        document.getElementById("successAlert").innerHTML = "Data submitted nicely!";
+        document.getElementById("successAlert").style.display = '';
+    }
+</script>
  
 
 </body>
