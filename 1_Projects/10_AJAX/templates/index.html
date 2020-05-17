@@ -41,45 +41,52 @@ body
 </head>
 <body>
 
-<script>
-  function submit_message() {
-    var name = document.getElementById("name");
-    var email = document.getElementById("email");
-    var entry = {
-      name = name.value,
-      email = email.value
-    };
-
-    fetch('${windows.origin}/process', {
-      method: "POST",
-      credentials: "include",
-      body: JSON.stringify(entry),
-      cache: "no-cache",
-      headers: new Headers({
-        "content-type": "application/json"
-      })
-    }) .then(function (response){
-      if (response.status !== 200) {
-        console.log('Some problem happened: Status code ${response.status}');
-        return;
-      }
-      response.json().then(function (data) {
-        console.log(data);
-      });
-    }) .catch(function (error){
-      console.log("Fetch error! " + error);
-    });
-  }
-</script>
-
 <form action="/process" method="POST">
   <table>
       <tr><td>Name:</td><td><input type="text" name="name" id="name"></td></tr>
       <tr><td>Email:</td><td><input type="text" name="email" id="email"></td></tr>
   </table>
-<input type="submit" value="Submit" onclick="submit_message();">
 </form>
-
+<button id="pressBtn">Submit Data</button>
+<script>
+  var el = document.getElementById('pressBtn');
+  if (el)
+  {
+    console.log("Inside element now");
+    el.addEventListener('click', fetchData);
+  }
+    var name = document.getElementById("name");
+    var email = document.getElementById("email");
+    entry = {
+      name: name.value,
+      email: email.value
+    };
+  function fetchData() {
+    console.log("Inside fetch now");
+    fetch('/process', {
+      method: "POST",
+      credentials: "include",
+      body: "JSON.stringify(entry)",
+      cache: "no-cache",
+      headers: new Headers({
+        "content-type": "application/json"
+      })
+    })
+    .then(function (response){
+      if (response.status !== 200) {
+        console.log('Some problem happened: Status code:' + (response.status).toString());
+        return;
+      }
+      response.json().then(function (data) {
+        console.log(data);
+        document.getElementById("successAlert").value = "Updated successfully!";
+      });
+    }) 
+    .catch(function (error){
+      console.log("Fetch error! " + error);
+    });
+  }
+</script>
 <div id="successAlert" class="alert-simple alert-success" style="display: none;"></div>
 <div id="errorAlert" class="alert-simple alert-danger" style="display: none;"></div>
 </body>
