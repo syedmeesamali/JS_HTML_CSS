@@ -41,31 +41,37 @@ body
 </head>
 <body>
   
-<form action="/process" method="POST">
+<form id="myForm" action="/process" method="POST">
   <table>
       <tr><td>Name:</td><td><input type="text" name="name" id="name"></td></tr>
       <tr><td>Email:</td><td><input type="text" name="email" id="email"></td></tr>
   </table>
+  <input type="submit" id="pressBtn">
 </form>
-<button id="pressBtn">Submit Data</button>
 
 <div id="successAlert" class="alert-simple alert-success" style="display: none;"></div>
 <div id="errorAlert" class="alert-simple alert-danger" style="display: none;"></div>
 <script>
-  var el = document.getElementById('pressBtn');
-  if (el)
-  {
-    console.log("Inside element now");
-    el.addEventListener('click', fetchData);
-    
-  } 
-  function fetchData() {
-    fetch('https://jsonplaceholder.typicode.com/users/')
-    .then(response => response.json())
-    .then(users => console.log(users));
-    console.log("Inside fetch now");
-    document.getElementById("successAlert").innerHTML = "Data submitted nicely!";
-    document.getElementById("successAlert").style.display = '';
+  document.getElementById('myForm').addEventListener('submit', addPost);
+  function addPost(event) {
+      event.preventDefault();
+      let name = document.getElementById('name').value;
+      let email = document.getElementById('email').value;
+      const myPost = {
+          name: name,
+          email: email
+      };
+      fetch('/process', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json'
+          }, 
+          body: JSON.stringify(myPost)
+      })
+      .then((res) => res.json())
+      .then((data) => console.log(data))
+      document.getElementById("successAlert").innerHTML = "Data submitted nicely!";
+      document.getElementById("successAlert").style.display = '';
   }
 </script>
 </body>
