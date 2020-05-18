@@ -10,8 +10,7 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,600italic,400italic,800,700' rel='stylesheet' type='text/css'>    
     <link href='https://fonts.googleapis.com/css?family=Oswald:400,700,300' rel='stylesheet' type='text/css'>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"-->
   </head>
 <body>
 <script src="/static/js/jquery-1.11.0.min.js"></script>
@@ -268,14 +267,12 @@
                         <br><br><br>
                         <br><br>
                         <p>
-                            <div id="successAlert" class="calert" style="display:none;"><!-- // style="display:none;" // -->
-                                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-                                <h4>Close</h4>
+                            <div id="successAlert" class="calert" style="display:none;">
                             </div>
-                           <div id="errorAlert" class="calert-fail" style="display:none;"><!-- // style="display:none;" // -->
-                                <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
-                                <h4>Close-Fail</h4>
+                            <span id="close1" class="closebtn" style="display:none;">X</span>
+                           <div id="errorAlert" class="calert-fail" style="display:none;">
                             </div>
+                            <span id="close2" class="closebtn" style="display:none;">X</span>
                         </p>
                 </div>
                 <!-- // End Right Side // -->
@@ -298,8 +295,19 @@
       <div class="loader-section section-right"></div>
 </div>
 <!-- <<Attched Javascripts>> -->
-<script>
-    document.getElementById('myForm').addEventListener('submit', addPost);   
+<script type="text/javascript">
+    document.getElementById('myForm').addEventListener('submit', addPost);
+    document.getElementById('formBtn').addEventListener('click', makeCheck);
+    document.getElementById('close1').addEventListener('click', this.style.display='none');
+
+    function makeCheck(event){
+        var x = document.getElementById("successAlert");
+        var y = document.getElementById("close1");
+        x.style.visibility = 'visible';
+        console.log("Value of y is: " + y.innerHTML);
+        y.style.visibility = '';
+    }
+
     function addPost(event) {
         event.preventDefault();
         let name = document.getElementById('name').value;
@@ -308,10 +316,11 @@
             name: name,
             email: email
         };
-        fetch('/save_form', {
+        fetch('./save_form', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
             }, 
             body: JSON.stringify(myPost)
         })
@@ -320,6 +329,7 @@
         console.log("Inside fetch now");
         document.getElementById("successAlert").innerHTML = "Thank you for your contact. Will get back ASAP!";
         document.getElementById("successAlert").style.display = '';
+        document.getElementById("closebtn").style.display = '';
     }
 </script>
  

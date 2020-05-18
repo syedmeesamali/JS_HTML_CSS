@@ -226,7 +226,7 @@ header.smaller .Navigation li { height: 60px; }
 .Get_sec .Rightside .calert-fail  {	border: 1px solid yellow; border-radius: 5px; color: gold; background-color: red; 
 		line-height: 10px;	width: 500px; height: 50px;}
 .Get_sec .Rightside .calert:hover  {	color:white; }
-.Get_sec .Rightside .closebtn {	color: yellow; font-weight: bold; font-size: 20px; float: right;
+.Get_sec .Rightside .closebtn {	color: red; font-weight: bold; font-size: 20px; float: right;
 	line-height: 20px;	cursor: pointer; transition: 0.3s;  }  
 .Get_sec .Rightside .closebtn:hover {	color: white;  }
 
