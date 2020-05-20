@@ -23,21 +23,24 @@ cursor: pointer; transition: 0.3s;  }
 <p><input type="email" value="" minlength="9" maxlength="50" placeholder="EMAIL" id="email" name="email" class="field" required></p>
 <p><input type="text" value="" minlength="2" maxlength="10" placeholder="TITLE" id="title" name="title" class="field" required></p>
 <p><textarea cols="20"  rows="5" minlength="3" maxlength="1000" id="message" name="message" placeholder="MESSAGE" required></textarea></p>
-<p><input type="submit" value="submit" class="button" id="formBtn"></p>
+<p><button type="submit" value="submit" class="button" id="formBtn">Enter Data</button>
 </form>
 <p>
-    <div id="successAlert" class="calert">
-        <span id="close1" class="closebtn">X</span>
+    <div id="successAlert" class="calert" style="display:none;">
+        <span id="close1" class="closebtn" style="display:none;">X</span>
     </div>
-    
    <div id="errorAlert" class="calert-fail" style="display:none;">
     </div>
-    <span id="close2" class="closebtn" style="display:none;">X</span>
+    <span id="close2" class="closebtn2" style="display:none;">X</span>
 </p>
 <script type="text/javascript">
-    document.getElementById('myForm').addEventListener('submit', addPost);
-    document.getElementById('formBtn').addEventListener('click', makeCheck);
+    document.addEventListener('DOMContentLoaded', function(){
+        myBtn = document.querySelector('#formBtn');
+        myBtn.addEventListener('click', removeThis);
+    });
     
+    //document.getElementById('myForm').addEventListener('submit', addPost);
+        
     function addPost(event){
         event.preventDefault();
         console.log("Form submitted");
@@ -45,16 +48,21 @@ cursor: pointer; transition: 0.3s;  }
 
     function removeThis(event){
         console.log("Inside remove");
+        var x = document.querySelector("#successAlert");
+        x.style.display = 'block';
+        var y = document.querySelector("#close1");
+        y.style.display = 'block';
+        y.addEventListener('click', function(){
+            x.style.display = 'none';
+            y.style.display = 'none';
+        });
     }
 
-    function makeCheck(){
-        var x = document.getElementById("successAlert");
-        var y = document.getElementById("close1");
-        x.style.visibility = 'visible';
+    function makeCheck(){   
+        var y = document.querySelector("#close1");
         console.log("Value of y is: " + y.innerHTML);
-        y.style.visibility = '';
+        y.style.visibility = 'none';
     }
-    
 </script>
  
 </body>
