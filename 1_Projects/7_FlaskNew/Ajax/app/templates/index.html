@@ -36,14 +36,38 @@ cursor: pointer; transition: 0.3s;  }
 <script type="text/javascript">
     document.addEventListener('DOMContentLoaded', function(){
         myBtn = document.querySelector('#formBtn');
-        myBtn.addEventListener('click', removeThis);
+        myBtn.addEventListener('click', updateForm);
     });
           
+    function updateForm(event){
+        event.preventDefault();
+        let data = new FormData();
+        data.name = document.getElementById('#name');
+        data.email = document.getElementById('#email');
+        data.title = document.getElementById('#title');
+        data.message = document.getElementById('#message');
+
+        fetch('/save_form',
+        {
+            method: "POST",
+            headers: new Headers({
+                'Content-Type': 'application/json'
+            }),
+            body: data
+        })
+        .then(function(res){ return res.json(); })
+        .then(function(data){ alert( JSON.stringify( data ) ) })
+        .catch(function (error) {  
+            console.log('Request failure: ', error);  
+        });
+    }
+    
+    
+    
     function removeThis(event){
         event.preventDefault();
         var myForm = document.getElementById('myForm');
         myForm.submit();
-        console.log("Inside submission and show!");
         var x = document.querySelector("#successAlert");
         x.style.display = 'block';
         var y = document.querySelector("#close1");

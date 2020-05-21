@@ -13,12 +13,12 @@ def index():
 @app.route('/save_form', methods=['POST'])
 def save_form():
     try:
+        conn = sqlite3.connect(form_data)
         Name = request.form["name"]
         Email = request.form["email"]
         Title = request.form["title"]
         Message = request.form["message"]
         timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-        conn = sqlite3.connect(form_data)
         cur = conn.cursor()
         cur.execute("INSERT INTO form_data (Name, Email, Title, Message, Date) VALUES(?, ?, ?, ?, ?)" , (Name, Email, Title, Message, timestamp))
         conn.commit()
