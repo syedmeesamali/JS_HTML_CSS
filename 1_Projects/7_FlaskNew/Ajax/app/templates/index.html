@@ -41,25 +41,19 @@ cursor: pointer; transition: 0.3s;  }
           
     function updateForm(event){
         event.preventDefault();
-        let data = new FormData();
-        data.name = document.getElementById('#name');
-        data.email = document.getElementById('#email');
-        data.title = document.getElementById('#title');
-        data.message = document.getElementById('#message');
-
+        //let data = new FormData();
+        let name = document.getElementById('#name');
+        let email = document.getElementById('#email');
+        let title = document.getElementById('#title');
+        let message = document.getElementById('#message');
         fetch('/save_form',
         {
-            method: "POST",
-            headers: new Headers({
-                'Content-Type': 'application/json'
-            }),
-            body: data
-        })
-        .then(function(res){ return res.json(); })
-        .then(function(data){ alert( JSON.stringify( data ) ) })
-        .catch(function (error) {  
-            console.log('Request failure: ', error);  
-        });
+            method: 'POST',
+            headers: new Headers(),
+            body: JSON.stringify({name: name, email: email, title: title, message: message})
+        }).then((res) => res.json())
+        .then((data) => console.log(JSON.stringify(data)))
+        .catch((err) => console.log(err))    
     }
     
     
