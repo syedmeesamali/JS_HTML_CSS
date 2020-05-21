@@ -19,7 +19,8 @@ cursor: pointer; transition: 0.3s;  }
 <body>
 
 <form action='/save_form' id="myForm" name="myForm" method="POST">
-<p><input type="text" value="" minlength="3" maxlength="30" placeholder="NAME" id="name" name="name" class="field" required></p>
+<p><div id="div1"><input type="text" value="" minlength="3" maxlength="30" placeholder="NAME" id="name" name="name" class="field" required>
+</p></div>
 <p><input type="email" value="" minlength="9" maxlength="50" placeholder="EMAIL" id="email" name="email" class="field" required></p>
 <p><input type="text" value="" minlength="2" maxlength="10" placeholder="TITLE" id="title" name="title" class="field" required></p>
 <p><textarea cols="20"  rows="5" minlength="3" maxlength="1000" id="message" name="message" placeholder="MESSAGE" required></textarea></p>
@@ -42,10 +43,12 @@ cursor: pointer; transition: 0.3s;  }
     function updateForm(event){
         event.preventDefault();
         //let data = new FormData();
-        let name = document.getElementById('#name');
-        let email = document.getElementById('#email');
-        let title = document.getElementById('#title');
-        let message = document.getElementById('#message');
+        let name = document.getElementById('div1').children[0].value;
+        console.log("name is: " + name);
+        let email = document.querySelector('#email');
+        let title = document.querySelector('#title');
+        let message = document.querySelector('#message');
+        console.log("message is: " + message.innerHTML);
         fetch('/save_form',
         {
             method: 'POST',
@@ -60,7 +63,7 @@ cursor: pointer; transition: 0.3s;  }
     
     function removeThis(event){
         event.preventDefault();
-        var myForm = document.getElementById('myForm');
+        var myForm = document.querySelector('myForm');
         myForm.submit();
         var x = document.querySelector("#successAlert");
         x.style.display = 'block';
