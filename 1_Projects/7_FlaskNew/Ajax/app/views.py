@@ -1,6 +1,8 @@
-from flask import render_template, request, jsonify
+from flask import  Flask, render_template, request, jsonify
 from app import app
+import os
 from datetime import datetime
+import sqlite3
 
 form_data = "./form_data.db"
 
@@ -8,10 +10,8 @@ form_data = "./form_data.db"
 def index():
     return render_template("index.html")
 
-
 @app.route('/save_form', methods=['POST'])
 def save_form():
-    #msg = "msg"
     try:
         Name = request.form["name"]
         Email = request.form["email"]

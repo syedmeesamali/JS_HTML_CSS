@@ -2,7 +2,6 @@ from flask import Flask, render_template, request, jsonify
 import sqlite3
 import os
 from datetime import datetime
-from flask_cors import CORS, cross_origin
 
 
 database = "./coring.db"
@@ -13,7 +12,6 @@ db_done = "./done.db"
 db_mat = "./mat_pricing.db"
 form_data = "./form_data.db"
 app = Flask(__name__)
-CORS(app)
 
 @app.route('/savedetails', methods = ["POST", "GET"])
 def savedetails():

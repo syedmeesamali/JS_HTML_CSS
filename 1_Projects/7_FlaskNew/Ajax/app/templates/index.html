@@ -18,12 +18,12 @@ cursor: pointer; transition: 0.3s;  }
 </head>
 <body>
 
-<form id="myForm" method="POST">
+<form action='/save_form' id="myForm" name="myForm" method="POST">
 <p><input type="text" value="" minlength="3" maxlength="30" placeholder="NAME" id="name" name="name" class="field" required></p>
 <p><input type="email" value="" minlength="9" maxlength="50" placeholder="EMAIL" id="email" name="email" class="field" required></p>
 <p><input type="text" value="" minlength="2" maxlength="10" placeholder="TITLE" id="title" name="title" class="field" required></p>
 <p><textarea cols="20"  rows="5" minlength="3" maxlength="1000" id="message" name="message" placeholder="MESSAGE" required></textarea></p>
-<p><button type="submit" value="submit" class="button" id="formBtn">Enter Data</button>
+<p><button type="submit" id="formBtn">Enter Data</button>
 </form>
 <p>
     <div id="successAlert" class="calert" style="display:none;">
@@ -38,16 +38,12 @@ cursor: pointer; transition: 0.3s;  }
         myBtn = document.querySelector('#formBtn');
         myBtn.addEventListener('click', removeThis);
     });
-    
-    //document.getElementById('myForm').addEventListener('submit', addPost);
-        
-    function addPost(event){
-        event.preventDefault();
-        console.log("Form submitted");
-    }
-
+          
     function removeThis(event){
-        console.log("Inside remove");
+        event.preventDefault();
+        var myForm = document.getElementById('myForm');
+        myForm.submit();
+        console.log("Inside submission and show!");
         var x = document.querySelector("#successAlert");
         x.style.display = 'block';
         var y = document.querySelector("#close1");
@@ -58,12 +54,6 @@ cursor: pointer; transition: 0.3s;  }
         });
     }
 
-    function makeCheck(){   
-        var y = document.querySelector("#close1");
-        console.log("Value of y is: " + y.innerHTML);
-        y.style.visibility = 'none';
-    }
 </script>
- 
 </body>
 </html>
