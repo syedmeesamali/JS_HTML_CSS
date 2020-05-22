@@ -19,10 +19,10 @@ cursor: pointer; transition: 0.3s;  }
 <body>
 
 <form action='/save_form' id="myForm" name="myForm" method="POST">
-<p><div id="div1"><input type="text" value="" minlength="3" maxlength="30" placeholder="NAME" id="name" name="name" class="field" required></p></div>
-<p><div id="div2"><input type="email" value="" minlength="9" maxlength="50" placeholder="EMAIL" id="email" name="email" class="field" required></p></div>
-<p><div id="div3"><input type="text" value="" minlength="2" maxlength="10" placeholder="TITLE" id="title" name="title" class="field" required></p></div>
-<p><div id="div4"><textarea cols="20"  rows="5" minlength="3" maxlength="1000" id="message" name="message" placeholder="MESSAGE" required></textarea></p></div>
+<p><div><input type="text" value="" minlength="3" maxlength="30" placeholder="NAME" id="name" name="name" class="field" required></p></div>
+<p><div><input type="email" value="" minlength="9" maxlength="50" placeholder="EMAIL" id="email" name="email" class="field" required></p></div>
+<p><div><input type="text" value="" minlength="2" maxlength="10" placeholder="TITLE" id="title" name="title" class="field" required></p></div>
+<p><div><textarea cols="20"  rows="5" minlength="3" maxlength="1000" id="message" name="message" placeholder="MESSAGE" required></textarea></p></div>
 <p><button type="submit" id="formBtn">Enter Data</button>
 </form>
 <p>
@@ -40,25 +40,29 @@ cursor: pointer; transition: 0.3s;  }
     });
     function updateForm(event){
         event.preventDefault();
-        //let data = new FormData();
-        let name = document.getElementById('div1').children[0].value;
-        console.log("name is: " + name);
-        let email = document.getElementById('div2').children[0].value;
-        let title = document.getElementById('div3').children[0].value;
-        let message = document.getElementById('div4').children[0].value;
+        let name = document.getElementById('name').value;
+        let email = document.getElementById('email').value;
+        let title = document.getElementById('title').value;
+        let message = document.getElementById('message').value;
         console.log("message is: " + message);
+        var entry = {
+            name: name.value,
+            email: email.value,
+            title: title.value,
+            message: message.value
+            };
         fetch('/save_form',
         {
             method: "POST",
             credentials: "include",
-            body: JSON.stringify({name: name, email: email, title: title, message: message}),
+            body: JSON.stringify(entry),
             cache: "no-cache",
             headers: new Headers({
                 "content-type": "application/json"
-            }),
-        }).then((res) => res.json())
-        .then((data) => console.log(JSON.stringify(data)))
-        .catch((err) => console.log(err))    
+            })
+        }).then(res => res.json())
+        .then(res => console.log(res))
+        .catch(err => console.log(err))    
     }
     function removeThis(event){
         event.preventDefault();
