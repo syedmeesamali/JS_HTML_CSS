@@ -1,4 +1,4 @@
-from flask import  Flask, render_template, request, jsonify
+from flask import  Flask, render_template, request, jsonify, make_response
 from app import app
 import os
 from datetime import datetime
@@ -22,7 +22,7 @@ def save_form():
         cur.execute("INSERT INTO form_data (Name, Email, Title, Message, Date) VALUES(?, ?, ?, ?, ?)" , 
         (Name, Email, Title, Message, timestamp))
         conn.commit()
-        return jsonify({'Success': 'Thanks for your message!'})
+        return make_response(jsonify({'Success': 'Thanks for your message!'}),200)
     except:
         conn.rollback()
         return jsonify({'Error': 'Sorry your message couldn\'t be delivered!'})

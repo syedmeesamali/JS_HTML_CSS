@@ -6,11 +6,11 @@
     <link rel="shortcut icon" type="image/x-icon" href="../static/favicon.ico">
 <style>
 .calert  {	border: 1px solid yellow; border-radius: 5px; color: gold; background-color: green; 
-	width: 200px; height: 20px;}
+	width: 400px; height: 30px;}
 .calert-fail  {	border: 1px solid yellow; border-radius: 5px; color: gold; background-color: red; 
-    width: 200px; height: 20px;}
+    width: 200px; height: 10px;}
 .calert:hover  {	color:white; }
-.closebtn {	color: red; font-weight: bold; font-size: 20px; float: right;
+.closebtn {	color: red; font-weight: bold; font-size: 10px; float: right;
 cursor: pointer; transition: 0.3s;  }  
 .closebtn:hover {	color: white;  }
 </style>
@@ -26,9 +26,8 @@ cursor: pointer; transition: 0.3s;  }
 <p><button type="submit" id="formBtn">Enter Data</button>
 </form>
 <p>
-    <div id="successAlert" class="calert" style="display:none;">
-        <span id="close1" class="closebtn" style="display:none;">X</span>
-    </div>
+    <div id="successAlert" class="calert" style="display:none;"></div>
+    <span id="close1" class="closebtn" style="display:none;">X</span>
    <div id="errorAlert" class="calert-fail" style="display:none;">
         <span id="close2" class="closebtn2" style="display:none;">X</span>    
     </div>
@@ -41,10 +40,10 @@ cursor: pointer; transition: 0.3s;  }
     function updateForm(event){
         event.preventDefault();
         let data = new FormData();
-        let data.name = document.getElementById('name').value;
-        let data.email = document.getElementById('email').value;
-        let data.title = document.getElementById('title').value;
-        let data.message = document.getElementById('message').value;
+        data.name = document.getElementById('name').value;
+        data.email = document.getElementById('email').value;
+        data.title = document.getElementById('title').value;
+        data.message = document.getElementById('message').value;
         fetch('./save_form', {
             method: "POST",
             credentials: "include",
@@ -55,10 +54,10 @@ cursor: pointer; transition: 0.3s;  }
             body: data
         }).then(res => res.json())
         .then(data => JSON.stringify(data))
-        .catch(error => console.log(err))
+        .catch(error => console.log(error))
         var x = document.querySelector("#successAlert");
         x.style.display = 'block';
-        x.innerHTML= JSON.stringify(res);
+        x.innerHTML= "Message Submitted Successfully";
         var y = document.querySelector("#close1");
         y.style.display = 'block';
         y.addEventListener('click', function(){
@@ -73,7 +72,7 @@ cursor: pointer; transition: 0.3s;  }
         myForm.submit();
         var x = document.querySelector("#successAlert");
         x.style.display = 'block';
-        var y = document.querySelector("#close1");
+        var y = document.getElementById('close1');
         y.style.display = 'block';
         y.addEventListener('click', function(){
             x.style.display = 'none';
