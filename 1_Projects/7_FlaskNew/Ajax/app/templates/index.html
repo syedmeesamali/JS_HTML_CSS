@@ -19,11 +19,10 @@ cursor: pointer; transition: 0.3s;  }
 <body>
 
 <form action='/save_form' id="myForm" name="myForm" method="POST">
-<p><div id="div1"><input type="text" value="" minlength="3" maxlength="30" placeholder="NAME" id="name" name="name" class="field" required>
-</p></div>
-<p><input type="email" value="" minlength="9" maxlength="50" placeholder="EMAIL" id="email" name="email" class="field" required></p>
-<p><input type="text" value="" minlength="2" maxlength="10" placeholder="TITLE" id="title" name="title" class="field" required></p>
-<p><textarea cols="20"  rows="5" minlength="3" maxlength="1000" id="message" name="message" placeholder="MESSAGE" required></textarea></p>
+<p><div id="div1"><input type="text" value="" minlength="3" maxlength="30" placeholder="NAME" id="name" name="name" class="field" required></p></div>
+<p><div id="div2"><input type="email" value="" minlength="9" maxlength="50" placeholder="EMAIL" id="email" name="email" class="field" required></p></div>
+<p><div id="div3"><input type="text" value="" minlength="2" maxlength="10" placeholder="TITLE" id="title" name="title" class="field" required></p></div>
+<p><div id="div4"><textarea cols="20"  rows="5" minlength="3" maxlength="1000" id="message" name="message" placeholder="MESSAGE" required></textarea></p></div>
 <p><button type="submit" id="formBtn">Enter Data</button>
 </form>
 <p>
@@ -31,36 +30,36 @@ cursor: pointer; transition: 0.3s;  }
         <span id="close1" class="closebtn" style="display:none;">X</span>
     </div>
    <div id="errorAlert" class="calert-fail" style="display:none;">
+        <span id="close2" class="closebtn2" style="display:none;">X</span>    
     </div>
-    <span id="close2" class="closebtn2" style="display:none;">X</span>
 </p>
 <script type="text/javascript">
     document.addEventListener('DOMContentLoaded', function(){
         myBtn = document.querySelector('#formBtn');
         myBtn.addEventListener('click', updateForm);
     });
-          
     function updateForm(event){
         event.preventDefault();
         //let data = new FormData();
         let name = document.getElementById('div1').children[0].value;
         console.log("name is: " + name);
-        let email = document.querySelector('#email');
-        let title = document.querySelector('#title');
-        let message = document.querySelector('#message');
-        console.log("message is: " + message.innerHTML);
+        let email = document.getElementById('div2').children[0].value;
+        let title = document.getElementById('div3').children[0].value;
+        let message = document.getElementById('div4').children[0].value;
+        console.log("message is: " + message);
         fetch('/save_form',
         {
-            method: 'POST',
-            headers: new Headers(),
-            body: JSON.stringify({name: name, email: email, title: title, message: message})
+            method: "POST",
+            credentials: "include",
+            body: JSON.stringify({name: name, email: email, title: title, message: message}),
+            cache: "no-cache",
+            headers: new Headers({
+                "content-type": "application/json"
+            }),
         }).then((res) => res.json())
         .then((data) => console.log(JSON.stringify(data)))
         .catch((err) => console.log(err))    
     }
-    
-    
-    
     function removeThis(event){
         event.preventDefault();
         var myForm = document.querySelector('myForm');
