@@ -18,11 +18,11 @@ cursor: pointer; transition: 0.3s;  }
 </head>
 <body>
 
-<form action='/save_form' id="myForm" name="myForm" method="POST">
-<p><div><input type="text" value="" minlength="3" maxlength="30" placeholder="NAME" id="name" name="name" class="field" required></p></div>
-<p><div><input type="email" value="" minlength="9" maxlength="50" placeholder="EMAIL" id="email" name="email" class="field" required></p></div>
-<p><div><input type="text" value="" minlength="2" maxlength="10" placeholder="TITLE" id="title" name="title" class="field" required></p></div>
-<p><div><textarea cols="20"  rows="5" minlength="3" maxlength="1000" id="message" name="message" placeholder="MESSAGE" required></textarea></p></div>
+<form action="/save_form" id="myForm" name="myForm" method="POST">
+<p><div><input type="text" placeholder="NAME" id="name" name="name" class="field" required></p></div>
+<p><div><input type="email" placeholder="EMAIL" id="email" name="email" class="field" required></p></div>
+<p><div><input type="text" placeholder="TITLE" id="title" name="title" class="field" required></p></div>
+<p><div><textarea cols="22" rows="5" id="message" name="message" placeholder="MESSAGE" required></textarea></p></div>
 <p><button type="submit" id="formBtn">Enter Data</button>
 </form>
 <p>
@@ -40,30 +40,33 @@ cursor: pointer; transition: 0.3s;  }
     });
     function updateForm(event){
         event.preventDefault();
-        let name = document.getElementById('name').value;
-        let email = document.getElementById('email').value;
-        let title = document.getElementById('title').value;
-        let message = document.getElementById('message').value;
-        console.log("message is: " + message);
-        var entry = {
-            name: name.value,
-            email: email.value,
-            title: title.value,
-            message: message.value
-            };
-        fetch('/save_form',
-        {
+        let data = new FormData();
+        let data.name = document.getElementById('name').value;
+        let data.email = document.getElementById('email').value;
+        let data.title = document.getElementById('title').value;
+        let data.message = document.getElementById('message').value;
+        fetch('./save_form', {
             method: "POST",
             credentials: "include",
-            body: JSON.stringify(entry),
             cache: "no-cache",
             headers: new Headers({
                 "content-type": "application/json"
-            })
+            }),
+            body: data
         }).then(res => res.json())
-        .then(res => console.log(res))
-        .catch(err => console.log(err))    
+        .then(data => JSON.stringify(data))
+        .catch(error => console.log(err))
+        var x = document.querySelector("#successAlert");
+        x.style.display = 'block';
+        x.innerHTML= JSON.stringify(res);
+        var y = document.querySelector("#close1");
+        y.style.display = 'block';
+        y.addEventListener('click', function(){
+            x.style.display = 'none';
+            y.style.display = 'none';
+        });
     }
+    
     function removeThis(event){
         event.preventDefault();
         var myForm = document.querySelector('myForm');
