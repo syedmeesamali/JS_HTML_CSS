@@ -39,4 +39,20 @@ document.addEventListener('DOMContentLoaded', () => {
     [1, width + 1, width * 2 + 1, width * 3 + 1],
     [width, width + 1, width + 2, width + 3]
     ]
+
+    const Tetrominoes = [L_tetris, Z_tetris, T_tetris, O_tetris, I_tetris]
+
+    let currentPosition = 4;
+    let random = Math.floor(Math.random() * Tetrominoes.length);
+    console.log(random);
+    let current = Tetrominoes[random][0];
+    console.log(Tetrominoes[0][0]);
+
+    //Lets draw the first rotation
+    function draw() {
+        current.forEach(index => {
+            squares[currentPosition + index].classList.add('tetromino')
+        })
+    }
+    draw()
 })
