@@ -63,14 +63,29 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     //Timer related
-    timerId = setInterval(moveDown, 500);
+    timerId = setInterval(moveDown, 300);
+
+    //Assign functions to key-codes
+    function control(e) {
+        if (e.keyCode == 37) {
+            moveLeft();
+        } else if (e.keyCode == 38) {
+            //rotate
+        } else if (e.keyCode == 39) {
+            //move right
+        } else if (e.keyCode == 40) {
+            //move down faster
+        }
+    }
+    document.addEventListener('keyup', control);
+
     function moveDown() {
         undraw()
         currentPosition += width
         draw()
         Freeze()
     }
-
+    //Stop them at bottom of grid
     function Freeze() {
         if(current.some(index => squares[currentPosition + index + width].classList.contains('taken')))
         {
@@ -78,7 +93,19 @@ document.addEventListener('DOMContentLoaded', () => {
             random = Math.floor(Math.random() * Tetrominoes.length);
             current = Tetrominoes[random][currentRotation];
             currentPosition = 4;
-            draw()
+            draw();
         }
+    }
+
+    //Move left
+    function moveLeft() {
+        undraw();
+        const isAtLeftEdge = current.some(index => (currentPosition + index) % width === 0);
+        if (!isAtLeftEdge) currentPosition -= 1;
+
+        if (current.some(index => squares[currentPosition + index].classList.contains('taken'))) {
+            currentPosition += 1;
+        }
+        draw();
     }
 })
