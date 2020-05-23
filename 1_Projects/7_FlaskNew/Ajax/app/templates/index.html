@@ -5,14 +5,11 @@
 <head>
     <link rel="shortcut icon" type="image/x-icon" href="../static/favicon.ico">
 <style>
-.calert  {	border: 1px solid yellow; border-radius: 5px; color: gold; background-color: green; 
-	width: 400px; height: 30px;}
-.calert-fail  {	border: 1px solid yellow; border-radius: 5px; color: gold; background-color: red; 
-    width: 200px; height: 10px;}
-.calert:hover  {	color:white; }
-.closebtn {	color: red; font-weight: bold; font-size: 10px; float: right;
-cursor: pointer; transition: 0.3s;  }  
-.closebtn:hover {	color: white;  }
+.calert  {	border: 1px solid yellow; color: gold; background-color: green; width: 400px; height: 30px;}
+.calert-fail  {	border: 1px solid yellow; color: gold; background-color: red; width: 200px; height: 10px;}
+.calert:hover  { color:white; }
+.closebtn {	color: red; font-weight: bold; font-size: 10px; float: right; cursor: pointer; transition: 0.3s;  }  
+.closebtn:hover { color: white; }
 </style>
     <title> Main_Website </title>
 </head>
@@ -26,8 +23,10 @@ cursor: pointer; transition: 0.3s;  }
 <p><button type="submit" id="formBtn">Enter Data</button>
 </form>
 <p>
-    <div id="successAlert" class="calert" style="display:none;"></div>
-    <span id="close1" class="closebtn" style="display:none;">X</span>
+    <div id="successAlert" class="calert" style="display:none;">
+        <span id="close1" class="closebtn" style="display:none;">X</span>
+    </div>
+    
    <div id="errorAlert" class="calert-fail" style="display:none;">
         <span id="close2" class="closebtn2" style="display:none;">X</span>    
     </div>
@@ -58,7 +57,7 @@ cursor: pointer; transition: 0.3s;  }
         var x = document.querySelector("#successAlert");
         x.style.display = 'block';
         x.innerHTML= "Message Submitted Successfully";
-        var y = document.querySelector("#close1");
+        var y = document.getElementById('close1');
         y.style.display = 'block';
         y.addEventListener('click', function(){
             x.style.display = 'none';
@@ -72,7 +71,7 @@ cursor: pointer; transition: 0.3s;  }
         myForm.submit();
         var x = document.querySelector("#successAlert");
         x.style.display = 'block';
-        var y = document.getElementById('close1');
+        var y = document.querySelector("#successAlert").children[0];
         y.style.display = 'block';
         y.addEventListener('click', function(){
             x.style.display = 'none';
