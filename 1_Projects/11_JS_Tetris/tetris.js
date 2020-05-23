@@ -43,16 +43,42 @@ document.addEventListener('DOMContentLoaded', () => {
     const Tetrominoes = [L_tetris, Z_tetris, T_tetris, O_tetris, I_tetris]
 
     let currentPosition = 4;
+    let currentRotation = 0;
     let random = Math.floor(Math.random() * Tetrominoes.length);
     console.log(random);
-    let current = Tetrominoes[random][0];
+    let current = Tetrominoes[random][currentRotation];
     console.log(Tetrominoes[0][0]);
 
     //Lets draw the first rotation
     function draw() {
         current.forEach(index => {
-            squares[currentPosition + index].classList.add('tetromino')
+            squares[currentPosition + index].classList.add('tetromino');
         })
     }
-    draw()
+    
+    function undraw() {
+        current.forEach(index => {
+            squares[currentPosition + index].classList.remove('tetromino');
+        })
+    }
+
+    //Timer related
+    timerId = setInterval(moveDown, 500);
+    function moveDown() {
+        undraw()
+        currentPosition += width
+        draw()
+        Freeze()
+    }
+
+    function Freeze() {
+        if(current.some(index => squares[currentPosition + index + width].classList.contains('taken')))
+        {
+            current.forEach(index => squares[currentPosition + index].classList.add('taken'));
+            random = Math.floor(Math.random() * Tetrominoes.length);
+            current = Tetrominoes[random][currentRotation];
+            currentPosition = 4;
+            draw()
+        }
+    }
 })
