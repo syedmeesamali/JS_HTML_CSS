@@ -63,16 +63,16 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     //Timer related
-    timerId = setInterval(moveDown, 300);
-
+    timerId = setInterval(moveDown, 1000);
     //Assign functions to key-codes
     function control(e) {
         if (e.keyCode == 37) {
             moveLeft();
         } else if (e.keyCode == 38) {
-            //rotate
+            rotate();
         } else if (e.keyCode == 39) {
             //move right
+            moveRight();
         } else if (e.keyCode == 40) {
             //move down faster
         }
@@ -106,6 +106,29 @@ document.addEventListener('DOMContentLoaded', () => {
         if (current.some(index => squares[currentPosition + index].classList.contains('taken'))) {
             currentPosition += 1;
         }
+        draw();
+    }
+
+    //Move right
+    function moveRight() {
+        undraw();
+        const isAtRightEdge = current.some(index => (currentPosition + index) % width === width - 1);
+        if (!isAtRightEdge) currentPosition += 1;
+
+        if (current.some(index => squares[currentPosition + index].classList.contains('taken'))) {
+            currentPosition -= 1;
+        }
+        draw();
+    }
+
+    //rotate the tetrominoes
+    function rotate() {
+        undraw();
+        currentRotation++;
+        if (currentRotation === current.length) {
+            currentRotation = 0;
+        }
+        current = Tetrominoes[random][currentRotation];
         draw();
     }
 })
