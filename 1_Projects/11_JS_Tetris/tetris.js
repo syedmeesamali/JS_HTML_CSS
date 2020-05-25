@@ -76,10 +76,12 @@ document.addEventListener('DOMContentLoaded', () => {
             moveRight();
         } else if (e.keyCode == 40) {
             //move down faster
+            moveDown();
         }
     }
-    document.addEventListener('keyup', control);
-
+    document.addEventListener('keydown', control);
+    
+    //Move it down
     function moveDown() {
         undraw()
         currentPosition += width
