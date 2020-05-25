@@ -10,13 +10,12 @@ def index():
 
 @app.route('/save_form', methods=['POST'])
 def save_form(): 
-    try:
-        Name = request.form.get["name"]
-        Email = request.form.get["email"]
-        Title = request.form.get["title"]
-        Message = request.form.get["message"]
-        timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-        return jsonify({'Success': 'Thanks for your message!'})
-    except:
-        return jsonify({'Error': 'Sorry your message couldn\'t be delivered!'})
+    a = 20
+    # try:
+    #     Name = request.form.get["name"]
+    #     Email = request.form.get["email"]
+    #     timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    #     return "Hello Mr. " + Name + " and email address: " + Email + " Time: " + timestamp
+    # except:
+    #     return "Sorry some problem happened"
 
