@@ -6,9 +6,23 @@
 <meta charset="utf-8">
 <script src="tetris.js" charset="utf-8"></script>
 <style>
+
 .grid {
     background-color: yellow;
     width: 400px; height: 500px; display: flex; flex-wrap: wrap; border: 1px solid red;
+}
+
+.container {
+    display: flex;
+}
+
+.mini-grid {
+    background-color: yellow; margin-left: 40px;
+    width: 80px; height: 80px; display: flex; flex-wrap: wrap;
+}
+
+.mini-grid div {
+    width: 20px; height: 20px; color: red;
 }
 
 .grid div {
@@ -26,7 +40,8 @@
 <body>
     <h3>Score: <span id="score">0</span></h3>
     <button id="start-button">Start Game</button>
-<div class="grid">
+<div class="container">
+    <div class="grid">
     <div></div>
     <div></div>
     <div></div>
@@ -137,6 +152,26 @@
     <div class="taken"></div>
     <div class="taken"></div>
     <div class="taken"></div>
+</div>
+
+    <div class="mini-grid">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    </div>
 </div>
 
 </body>
