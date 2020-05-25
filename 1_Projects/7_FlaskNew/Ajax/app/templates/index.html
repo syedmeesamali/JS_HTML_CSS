@@ -16,10 +16,10 @@
 <body>
 
 <form action="/save_form" id="myForm" name="myForm" method="POST">
-<p><div><input type="text" placeholder="NAME" id="name" name="name" class="field" required></p></div>
-<p><div><input type="email" placeholder="EMAIL" id="email" name="email" class="field" required></p></div>
-<p><div><input type="text" placeholder="TITLE" id="title" name="title" class="field" required></p></div>
-<p><div><textarea cols="22" rows="5" id="message" name="message" placeholder="MESSAGE" required></textarea></p></div>
+<p><div><input type="text" placeholder="NAME" name="name" class="field" required></p></div>
+<p><div><input type="email" placeholder="EMAIL" name="email" class="field" required></p></div>
+<p><div><input type="text" placeholder="TITLE" name="title" class="field" required></p></div>
+<p><div><textarea cols="22" rows="5" name="message" placeholder="MESSAGE" required></textarea></p></div>
 <p><button type="submit" id="formBtn">Enter Data</button>
 </form>
 <p>
@@ -39,30 +39,25 @@
     function updateForm(event){
         event.preventDefault();
         let data = new FormData();
-        data.name = document.getElementById('name').value;
-        data.email = document.getElementById('email').value;
-        data.title = document.getElementById('title').value;
-        data.message = document.getElementById('message').value;
-        fetch('./save_form', {
-            method: "POST",
-            credentials: "include",
-            cache: "no-cache",
-            headers: new Headers({
-                "content-type": "application/json"
-            }),
-            body: data
-        }).then(res => res.json())
-        .then(data => JSON.stringify(data))
-        .catch(error => console.log(error))
+        data.name = document.querySelectorAll('name').value;
+        data.email = document.querySelectorAll('email').value;
+        data.title = document.querySelectorAll('title').value;
+        data.message = document.querySelectorAll('message').value;
+        
+        //XML HTTP to get the data asynchronously without re-loading the page
+        const request = new XMLHttpRequest();
+        request.open('POST', '/save_form');
+        request.onload = () => {
+            const data = JSON.parse(request.responseText);
+            data.forEach(add_post);
+            
+        }
+
+
         var x = document.querySelector("#successAlert");
         x.style.display = 'block';
         x.innerHTML= "Message Submitted Successfully";
-        var y = document.getElementById('close1');
-        y.style.display = 'block';
-        y.addEventListener('click', function(){
-            x.style.display = 'none';
-            y.style.display = 'none';
-        });
+        
     }
     
     function removeThis(event){
