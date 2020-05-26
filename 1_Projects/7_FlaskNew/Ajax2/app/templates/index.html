@@ -9,15 +9,15 @@
     ul li {
         color: red; border: 1px blue solid; }
 </style>
-<script src="../static/ajax.js"></script>
+<script src="../static/api.js"></script>
 </head>
 <body>
 <form id="myForm" action="" method="POST">
-<p><div><input type="text" placeholder="NAME" id="name" class="field" required></p></div>
-<p><div><input type="email" placeholder="EMAIL" id="email" class="field" required></p></div>
+<p><div><input type="text" placeholder="Currency" id="currency" required></p></div>
 <p><button type="submit" id="formBtn">Enter Data</button>
 <p></p>
-<ul id="items">My List</ul>
+<div id="contents"></div>
+<ul id="items"></ul>
 </form>
 </body>
 </html>

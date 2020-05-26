@@ -8,14 +8,18 @@ from datetime import datetime
 def index():
     return render_template("index.html")
 
-@app.route('/save_form', methods=['POST'])
-def save_form(): 
-    a = 20
-    # try:
-    #     Name = request.form.get["name"]
-    #     Email = request.form.get["email"]
-    #     timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-    #     return "Hello Mr. " + Name + " and email address: " + Email + " Time: " + timestamp
-    # except:
-    #     return "Sorry some problem happened"
+@app.route('/api', methods=['POST'])
+def api(): 
+    currency = request.form.get("currency")
+    res = request.get("http://api.fixer.io/latest", params = {"base": "USD", "symbols": currency})
+    
+    #Check for success
+    if res.status_code != 200:
+        return jsonify({"Success": False})
 
+    #Make sure currrency is there
+    data = res.json()
+    if currency not in data["rates"]:
+        return jsonify({"Success": False})
+
+    return jsonify({"Success": True, "rate": data["rates"][currency]})
