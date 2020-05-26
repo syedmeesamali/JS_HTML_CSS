@@ -17,14 +17,3 @@ document.addEventListener('DOMContentLoaded', () => {
         return false;
     }
 });
-    // function do_ajax() {
-    //     var req = new XMLHttpRequest();
-    //     var res = document.getElementById('result');
-    //     req.onload  = () => {
-    //         const response = req.responseText();
-    //         res.innerHTML = response;
-    //     } 
-    //     req.open('POST', '/save_form');
-    //     req.setRequestHeader('content-type', 'application/json');
-    //     req.send("name=" + document.getElementById('name').value);
-    // }

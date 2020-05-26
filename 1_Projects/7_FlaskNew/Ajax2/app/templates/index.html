@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <head>
+    <script src="../static/convert.js"></script>
     <link rel="shortcut icon" type="image/x-icon" href="../static/favicon.ico">
     <title> Reference </title>
 <style>
@@ -9,15 +10,13 @@
     ul li {
         color: red; border: 1px blue solid; }
 </style>
-<script src="../static/api.js"></script>
 </head>
 <body>
-<form id="myForm" action="" method="POST">
-<p><div><input type="text" placeholder="Currency" id="currency" required></p></div>
-<p><button type="submit" id="formBtn">Enter Data</button>
-<p></p>
+<form id="myForm">
+<p><input id="currency" autofocus placeholder="Currency" required></p>
+<p><input type="submit" Value="Enter Data">
+</form>
 <div id="contents"></div>
 <ul id="items"></ul>
-</form>
 </body>
 </html>
