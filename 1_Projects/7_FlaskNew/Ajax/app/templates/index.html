@@ -3,77 +3,36 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <head>
-    <link rel="shortcut icon" type="image/x-icon" href="../static/favicon.ico">
+<script src="../static/ajax.js?u={{ last_updated }}"></script>
+<link rel="shortcut icon" type="image/x-icon" href="../static/favicon.ico">
+<title> Reference Site </title>
 <style>
 .calert  {	border: 1px solid yellow; color: gold; background-color: green; width: 400px; height: 30px;}
-.calert-fail  {	border: 1px solid yellow; color: gold; background-color: red; width: 200px; height: 10px;}
+.calert-fail  {	border: 1px solid yellow; color: gold; background-color: red; width: 200px; height: 30px;}
 .calert:hover  { color:white; }
 .closebtn {	color: red; font-weight: bold; font-size: 10px; float: right; cursor: pointer; transition: 0.3s;  }  
 .closebtn:hover { color: white; }
 </style>
-    <title> Main_Website </title>
+    <title> Reference Site </title>
 </head>
 <body>
-
-<form action="/save_form" id="myForm" name="myForm" method="POST">
-<p><div><input type="text" placeholder="NAME" name="name" class="field" required></p></div>
-<p><div><input type="email" placeholder="EMAIL" name="email" class="field" required></p></div>
-<p><div><input type="text" placeholder="TITLE" name="title" class="field" required></p></div>
-<p><div><textarea cols="22" rows="5" name="message" placeholder="MESSAGE" required></textarea></p></div>
-<p><button type="submit" id="formBtn">Enter Data</button>
+<form id="form" action="save_form" method="post">
+<p><input type="text" placeholder="NAME" id="name" name="name" class="field" required></p>
+<p><input type="email" placeholder="EMAIL" id="email" name="email" class="field" required></p>
+<p><input type="text" placeholder="TITLE" id="title" name="title" class="field" required></p>
+<p><textarea cols="22" rows="5" id="message" name="message" placeholder="MESSAGE" required></textarea></p>
+<p><input type="submit" value="Submit Data">
 </form>
 <p>
     <div id="successAlert" class="calert" style="display:none;">
         <span id="close1" class="closebtn" style="display:none;">X</span>
     </div>
-    
    <div id="errorAlert" class="calert-fail" style="display:none;">
         <span id="close2" class="closebtn2" style="display:none;">X</span>    
     </div>
 </p>
-<script type="text/javascript">
-    document.addEventListener('DOMContentLoaded', function(){
-        myBtn = document.querySelector('#formBtn');
-        myBtn.addEventListener('click', updateForm);
-    });
-    function updateForm(event){
-        event.preventDefault();
-        let data = new FormData();
-        data.name = document.querySelectorAll('name').value;
-        data.email = document.querySelectorAll('email').value;
-        data.title = document.querySelectorAll('title').value;
-        data.message = document.querySelectorAll('message').value;
-        
-        //XML HTTP to get the data asynchronously without re-loading the page
-        const request = new XMLHttpRequest();
-        request.open('POST', '/save_form');
-        request.onload = () => {
-            const data = JSON.parse(request.responseText);
-            data.forEach(add_post);
-            
-        }
-
-
-        var x = document.querySelector("#successAlert");
-        x.style.display = 'block';
-        x.innerHTML= "Message Submitted Successfully";
-        
-    }
-    
-    function removeThis(event){
-        event.preventDefault();
-        var myForm = document.querySelector('myForm');
-        myForm.submit();
-        var x = document.querySelector("#successAlert");
-        x.style.display = 'block';
-        var y = document.querySelector("#successAlert").children[0];
-        y.style.display = 'block';
-        y.addEventListener('click', function(){
-            x.style.display = 'none';
-            y.style.display = 'none';
-        });
-    }
-
-</script>
+<svg width="500" height="500">
+    <line x1="100" y1="50" x2="500" y2="50" stroke="red"/>
+</svg>
 </body>
 </html>
