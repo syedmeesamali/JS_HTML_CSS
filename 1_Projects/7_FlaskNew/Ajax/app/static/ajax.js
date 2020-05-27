@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-        console.log('DOM Loaded');
         document.querySelector('#form').onsubmit = (event) => {
         event.preventDefault();
         const request = new XMLHttpRequest();                

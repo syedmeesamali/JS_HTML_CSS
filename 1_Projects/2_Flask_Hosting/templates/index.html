@@ -13,12 +13,12 @@
     <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous"-->
   </head>
 <body>
-<script src="/static/js/jquery-1.11.0.min.js"></script>
+<script src="../static/js/jquery-1.11.0.min.js"></script>
+<script src="../static/js/contact.js?u={{ last_updated }}"></script>
 <script type="text/javascript" src="/static/jquery.sudoSlider.min.js"></script>
 <script type="text/javascript" src="/static/global.js"></script>
 <script type="text/javascript" src="/static/modernizr.js"></script>
 <script type="text/javascript" src="/static/validation.js"></script>
-
 
 <!-- \\ Begin Holder \\ -->
 <div class="DesignHolder">
@@ -44,7 +44,7 @@
                               <span class="menu-item-bg"></span>
                             </li>
                             <li>
-                                <a href="/links">Links</a>
+                                <a href="/bird">Links</a>
                                 <span class="menu-item-bg"></span>
                             </li>
                             <li>
@@ -235,18 +235,18 @@
             <div class="Mid">					
                 <!-- \\ Begin Left Side \\ -->
                 <div class="Leftside">
-                <form id="myForm" action="/save_form" method="POST">
+                <form id="form" action="save_form" method="POST">
                 <fieldset>
                 <p><input type="text" value="" minlength="3" maxlength="30" placeholder="NAME" id="name" name="name" class="field" required></p>
                 <p><input type="email" value="" minlength="9" maxlength="50" placeholder="EMAIL" id="email" name="email" class="field" required></p>
                 <p><input type="text" value="" minlength="2" maxlength="10" placeholder="TITLE" id="title" name="title" class="field" required></p>
                 <p><textarea cols="2"  rows="2" minlength="3" maxlength="1000" id="message" name="message" placeholder="MESSAGE" required></textarea></p>
-                <p><input type="submit" value="submit" class="button" id="formBtn"></p>
+                <p><input type="submit" value="Submit" class="button"></p>
                 </fieldset>
                 </form>
                 </div> 
-                <!-- // End Left Side // -->
-                <!-- \\ Begin Right Side \\ -->
+                <!-- End Left Side  -->
+                <!-- Begin Right Side -->
                 <div class="Rightside">
                     <h3>Get in touch !</h3>
                         <address>
@@ -266,11 +266,11 @@
                         <br><br>
                         <p>
                             <div id="successAlert" class="calert" style="display:none;">
+                                <span id="close1" class="closebtn" style="display:none;">X</span>
                             </div>
-                            <span id="close1" class="closebtn" style="display:none;">X</span>
                            <div id="errorAlert" class="calert-fail" style="display:none;">
+                                <span id="close2" class="closebtn" style="display:none;">X</span>    
                             </div>
-                            <span id="close2" class="closebtn" style="display:none;">X</span>
                         </p>
                 </div>
                 <!-- // End Right Side // -->
@@ -292,44 +292,6 @@
       <div class="loader-section section-left"></div>
       <div class="loader-section section-right"></div>
 </div>
-<!-- <<Attched Javascripts>> -->
-<script type="text/javascript">
-    document.getElementById('myForm').addEventListener('submit', addPost);
-    document.getElementById('formBtn').addEventListener('click', makeCheck);
-    document.getElementById('close1').addEventListener('click', this.style.display='none');
 
-    function makeCheck(event){
-        var x = document.getElementById("successAlert");
-        var y = document.getElementById("close1");
-        x.style.visibility = 'visible';
-        console.log("Value of y is: " + y.innerHTML);
-        y.style.visibility = '';
-    }
-
-    function addPost(event) {
-        event.preventDefault();
-        let name = document.getElementById('name').value;
-        let email = document.getElementById('email').value;
-        const myPost = {
-            name: name,
-            email: email
-        };
-        fetch('./save_form', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json'
-            }, 
-            body: JSON.stringify(myPost)
-        })
-        .then((res) => res.json())
-        .then((data) => console.log(data))
-        console.log("Inside fetch now");
-        document.getElementById("successAlert").innerHTML = "Thank you for your contact. Will get back ASAP!";
-        document.getElementById("successAlert").style.display = '';
-        document.getElementById("closebtn").style.display = '';
-    }
-</script>
- 
 </body>
 </html>

@@ -1,32 +1,39 @@
-$(document).ready(function() {
-    $('#myForm').on('submit', function(event){
-        console.log("Contact js is loaded!")
-        $.ajax({
-            data: {
-                name : $('#name').val(),
-                email : $('#email').val(),
-                title : $('#title').val(),
-                Message : $('#message').val()
-            }, 
-            type : 'POST',
-            url : '/save_form'
-        })
-        .done(function(data) {
-            if (data.error) {
-                document.getElementById('errorAlert').style.display = '';
-                document.getElementById('errorAlert').innerHTML = data.error;
-                document.getElementById('successAlert').style.display = 'none';
-                //$('#errorAlert').text(data.error).show();
-                //$('#successAlert').hide();
-            } else {
-                document.getElementById('successAlert').style.display = '';
-                document.getElementById('successAlert').innerHTML = data.Message;
-                document.getElementById('errorAlert').style.display = 'none';
-                //$('#successAlert').text(data.Message).show();
-                //$('#errorAlert').hide();
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelector('#form').onsubmit = (event) => {
+    event.preventDefault();
+    const request = new XMLHttpRequest();                
+    request.onload = () => {
+        const data = JSON.parse(request.responseText);
+        if (data.success) {
+            document.querySelector("#successAlert").style.display = 'block';
+            document.querySelector("#successAlert").innerHTML = "Thank you for your submission!";
+            setInterval(clearForm, 2000);
+            function clearForm() {
+                document.querySelector('#name').value = "";
+                document.querySelector('#email').value = "";
+                document.querySelector('#title').value = "";
+                document.querySelector('#message').value = "";
+                document.querySelector("#successAlert").style.display = 'none';
             }
+        } else {
+            document.querySelector("#errorAlert").style.display = 'block';
+            document.querySelector("#errorAlert").innerHTML = "Sorry some error ...";
+            document.querySelector('#name').value = "";
+            document.querySelector('#email').value = "";
+            document.querySelector('#title').value = "";
+            document.querySelector('#message').value = "";
+            document.querySelector("#errorAlert").style.display = 'none';
+        }
+    }
+    const data = new FormData();
+    data.append('name', document.querySelector('#name').value);
+    data.append('email', document.querySelector('#email').value);
+    data.append('title', document.querySelector('#title').value);
+    data.append('message', document.querySelector('#message').value);
+    request.open('POST', '/save_form', true); //Type, URL, Async boolean
+    request.send(data);
+    //return false;
+}
 
-        });
-        event.preventDefault();
-    });
 });
+
