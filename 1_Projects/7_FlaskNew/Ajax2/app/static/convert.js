@@ -1,11 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
-        console.log("Latest file!!!!");        
+        console.log("lATEST NOW");        
         document.querySelector('#form').onsubmit = (event) => {
         event.preventDefault();
         const currency = document.querySelector('#currency').value;
         console.log("Currency entered is: " + currency);
-        const request = new XMLHttpRequest();        
-        request.open('POST', '/convert');
+        const request = new XMLHttpRequest();                
         request.onload = () => {
             console.log("Response text: " + request.responseText);
             const data = JSON.parse(request.responseText);
@@ -16,14 +15,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.querySelector("#contents").innerHTML = content;
             } else {
                 console.log("Failed");
-                document.querySelector("#contents").innerHTML = "Error";
+                document.querySelector("#contents").innerHTML = "Some Error !!";
             }
         }
         const data = new FormData();
         data.append('currency', currency);     
+        request.open('POST', '/convert');
         request.setRequestHeader('content-type', 'application/json');
         request.send(data);
+        console.log("Didn't reach here??");
+        document.querySelector('#currency').value = '';
         return false;
-        document.querySelectorAll('#currency').value = '';        
     }
 });

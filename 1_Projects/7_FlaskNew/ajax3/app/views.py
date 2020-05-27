@@ -1,9 +1,6 @@
-from flask import  Flask, render_template, request, jsonify, make_response
+from flask import  Flask, render_template, request, jsonify
 import requests
 from app import app
-import os
-from datetime import datetime
-
 
 @app.route("/")
 def index():
@@ -12,9 +9,10 @@ def index():
 @app.route("/convert", methods=["POST"])
 def convert(): 
     currency = request.form.get("currency")
-    res = requests.get("https://api.exchangeratesapi.io/latest?symbols=USD," + str(currency))
+    res = requests.get("https://api.exchangeratesapi.io/latest", params = {
+        "base": "USD", "symbols": currency})
     #Check for success
     if res.status_code != 200:
         return jsonify({"success": False})
     data = res.json()
-    return jsonify({"success": True, "rate": data})
+    return jsonify({"success": True, "rate": data["rates"][currency]})
