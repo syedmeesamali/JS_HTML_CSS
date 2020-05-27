@@ -3,11 +3,11 @@ document.addEventListener('DOMContentLoaded', () => {
         document.querySelector('#form').onsubmit = (event) => {
         event.preventDefault();
         const request = new XMLHttpRequest();                
-        request.onreadystatechange = () => {
+        request.onload = () => {
+            const data = JSON.parse(request.responseText);
             if (data.success) {
                 document.querySelector("#successAlert").style.display = 'block';
                 document.querySelector("#successAlert").innerHTML = "Successfull";
-                console.log(data2);
             } else {
                 document.querySelector("#errorAlert").style.display = 'block';
                 document.querySelector("#errorAlert").innerHTML = "Some Error";
@@ -19,9 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
         data.append('title', document.querySelector('#title').value);
         data.append('message', document.querySelector('#message').value);
         request.open('POST', '/save_form', true); //Type, URL, Async boolean
-        request.setRequestHeader('content-type', 'application/x-www-form-urlencoded;charset=UTF-8');
         request.send(data);
-        console.log("Name is: " + document.querySelector('#name').value);
-        return false;
+        //return false;
     }
 });
