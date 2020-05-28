@@ -6,8 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const data = JSON.parse(request.responseText);
         if (data.success) {
             document.querySelector("#successAlert").style.display = 'block';
-            document.querySelector("#successAlert").innerHTML = "Thank you for your submission!";
-            setInterval(clearForm, 2000);
+            document.querySelector("#successAlert").innerHTML = "Thank you for your submission! We'll get back asap.";
+            setInterval(clearForm, 5000);
             function clearForm() {
                 document.querySelector('#name').value = "";
                 document.querySelector('#email').value = "";
@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         } else {
             document.querySelector("#errorAlert").style.display = 'block';
-            document.querySelector("#errorAlert").innerHTML = "Sorry some error ...";
+            document.querySelector("#errorAlert").innerHTML = "Sorry some error ... Apologies!";
             document.querySelector('#name').value = "";
             document.querySelector('#email').value = "";
             document.querySelector('#title').value = "";
