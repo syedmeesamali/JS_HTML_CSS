@@ -1,0 +1,48 @@
+<!doctype html>
+<!--This page is property of SYED MEESAM ALI-->
+<head>
+    <title>Messages</title>
+<style>
+* {
+    font-family: Arial, Helvetica, sans-serif;
+}
+body {
+        font-family: Arial, Helvetica, sans-serif;
+        height: 100%; margin: 0; background:gold;
+        background: -webkit-linear-gradient(yellow, #98FB98);
+        background: -webkit-linear-gradient(lightyellow, gold);
+        background-repeat: no-repeat; background-attachment: fixed;
+}
+table {
+    border-collapse: collapse;
+  }
+  td, th {
+    border: 1px solid whitesmoke;    text-align: left;    padding: 4px;
+  }
+</style>
+
+</head>
+<body>
+    <h1><p>Messages</p></h1><a href="/"><h3>Home Page</h3></a>
+    <table>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Title</th>
+        <th>Message</th>
+        <th>Date</th>
+      </tr>
+       {% for link in links %}
+       <tr>
+        <td width="4%" style="text-align: center;"> {{ link[0] }} </td>
+        <td width="15%" style="text-align: left;"> {{ link[1] }} </td>
+        <td width="20%"><a href="{{ link[2] }}">{{ link[2] }}</a></td>
+        <td width="15%"> {{ link[3] }} </td>
+        <td width="35%"> {{ link[4] }} </td>
+        <td width="10%">{{ link[5] }} </td>
+       </tr>
+       {% endfor %}
+    </table>
+</body>
+</html>

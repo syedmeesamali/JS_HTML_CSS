@@ -31,5 +31,13 @@ def save_form():
         return jsonify({"success": False})
     conn.close()
 
+@app.route('/msgs', methods = ["POST", "GET"])
+def msgs():
+    if request.method == "POST" or request.method == "GET":
+        conn = sqlite3.connect(form_data)
+        cur = conn.cursor()
+        res = cur.execute("SELECT * FROM form_data")
+        return render_template("msgs.html", links = res)
+
 if __name__ == "__main__":
     app.run(debug=True)
