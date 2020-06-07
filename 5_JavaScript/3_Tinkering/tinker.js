@@ -1,18 +1,23 @@
-const friends = ['ali', 'mohsin', 'aun'];
-const res = friends.map((friend, i) => ({
-    firstName: friend,
-    lastName: 'shah',
-    id: 'lasdfs${i}sdf'
-}));
-console.log(res);
-
-function car(model) {
-    this.model = '911 Carrera';
-}
-var myCar = new car();
-console.log(myCar.model);
-
-function sum(a=1,b=2,c=3) {
-    return a+b+c;
-}
-console.log(sum(5,4,3));
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelector('#reset').addEventListener('click', () => {
+    console.log("Inside now!");
+    const request = new XMLHttpRequest();                
+    request.onload = () => {
+        if (request.status === 200) {
+            var elements = request.response.getElementByTagName("a");
+            for (x of elements) {
+                if (x.href.match(/\.(jpe?g|png|gif)$/)) {
+                    let img = document.createElement("img");
+                    img.src = x.href;
+                    document.body.appendChild(img);
+                }
+            }
+        } else {
+            alert("request failed: " + request.status);
+        }
+    }
+    request.open('GET', 'localhost/img', true); //Type, URL, Async boolean
+    request.responseType = 'blob';
+    request.send();
+    })
+});
