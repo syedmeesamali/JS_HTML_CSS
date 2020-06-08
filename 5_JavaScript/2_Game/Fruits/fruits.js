@@ -1,19 +1,21 @@
 document.addEventListener('DOMContentLoaded', () => {
     console.log("Document loaded!");
-    let num1 = document.getElementById("nums").value;
-    let val1 = parseDozen(num1);
-    let btn = document.getElementById("reset");
-    btn.addEventListener('click', () => {
-        console.log("Val is: " + num1);
-        console.log("Donuts are: " + val1);
-    })
-    var timer = setInterval("document.getElementById('fruit-2').src = './img/figs.png'", 2000);
-    function parseDozen(inputString) {
-        numDons = parseInt(inputString);
-        if (inputString.indexOf("dozen") != -1) {
-            numDons *= 12;
-        } return numDons;
+    
+    var imageArray;
+
+    function ImageItem(src){
+        this.image = new Image();
+        this.src = src;
     }
+    function initialize() {
+        imgArray[imgNum++] = new ImageItem(imageDir + "letter-a.png");
+    }
+
+    //Starting image function
+    function startImage() {
+        document.getElementById("fruit-1").src = imageArray[0].src;
+    }
+
 })
 
 
