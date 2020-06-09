@@ -9,7 +9,25 @@ body { font-family: Arial, Helvetica, sans-serif; background-color: burlywood;}
 </style>
 <title> Tinkering </title>
 </head>
-<body>
-<button id="reset">Reset</button>
+<body onload="greet();">
+    <img id='letter-a' src='img/rock.png' style="cursor:pointer" onclick="touchRock();" />
+    <script type = "text/javascript">
+    var userName;
+    function greet(){
+        alert('Hell user!');
+    }
+    function touchRock() {
+        if (userName) {
+            alert('I like attention!' + userName + ' Thanks');
+        } else {
+            prompt('what is your name!', 'what is your name here?');
+            if (userName) {
+                alert('Good to meet you ..... ' + userName);
+            }
+            setTimeout("document.getElementById('letter-a').style.height = '100px';", 2500);
+        }
+    }
+    </script>
+<button id="reset">Re-load page</button>
 </body>
 </html>

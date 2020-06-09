@@ -1,16 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     console.log("Document loaded!");
     
-    var imageArray;
-
-    function ImageItem(src){
-        this.image = new Image();
-        this.src = src;
-    }
-    function initialize() {
-        imgArray[imgNum++] = new ImageItem(imageDir + "letter-a.png");
-    }
-
     //Starting image function
     function startImage() {
         document.getElementById("fruit-1").src = imageArray[0].src;
