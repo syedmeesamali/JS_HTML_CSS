@@ -4,8 +4,22 @@ document.addEventListener('DOMContentLoaded', () => {
     let shape1 = document.getElementById("square-1");
 
     btn.addEventListener('click', function() {
-        console.log("Button clicked");
-        const randNumber = 2;
-        shape1.style.backgroundColor = "red";
+        let randNumber = "#";
+        for (var i=0; i<6; i++) {
+            randNumber += colors[Math.floor(Math.random() * 15)];
+        }
+        shape1.style.position = "relative";
+        shape1.style.left = shape1.style.top = "10%";
+        shape1.style.backgroundColor = randNumber;
     })
+
+    setInterval(changeBox, 500);
+
+    function changeBox() {
+        let randNumber = "#";
+        for (var i=0; i<6; i++) {
+            randNumber += colors[Math.floor(Math.random() * 15)];
+        }
+        shape1.style.backgroundColor = randNumber;
+    }
 })
