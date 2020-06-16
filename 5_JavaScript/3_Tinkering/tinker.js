@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const colors = [1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F'];
     let shape1 = document.getElementById("square-1");
     
+    //Animation of the wording fancy    
     const text = document.querySelector(".fancy"); //Animate text
     const stringText = text.textContent;
     const splitText = stringText.split("");
@@ -22,13 +23,13 @@ document.addEventListener('DOMContentLoaded', () => {
             return; 
         }
     }
-
+    //Clear the interval
     function complete() {
         clearInterval(timer);
         return;
     }
 
-
+    //Counter sequence
     let count = 0;
     const btn = document.querySelectorAll(".btn");
     btn.forEach(function (btn) {
