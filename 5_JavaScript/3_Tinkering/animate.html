@@ -3,27 +3,24 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <head>
-<script type="text/javascript"  src="tinker.js" charset="utf-8"></script>
 <script type="text/javascript"  src="animate.js" charset="utf-8"></script>
 <style>
 body { font-family: Arial, Helvetica, sans-serif;}
 .square {width: 200px; height: 200px; background: blue; font-size: large; font-weight: 300;}
 span {opacity: 0; transition: all 0.4s ease;}
 span.fade {opacity: 1;}
+#container {width: 400px; height: 400px; position: relative; background: yellow;}
+#animate {width: 50px; height: 50px; position: absolute; background: red;}
 </style>
-<title> Tinkering </title>
+<title> Animations </title>
 </head>
 <body>
-<button class="btn reset">reset</button>
-<button class="btn increase">increase</button>
-<button class="btn decrease">decrease</button>
-<div id="square-1" class="square">
-00
-</div>
-<h1 class="fancy">Fancy Mancy</h1>
-
+<div id="square-1" class="square">00</div>
 <svg width="300px" height="175px">
     <path fill="transparent" stroke="#000000" stroke-width="4" d="M10 80 Q 77.5 10, 145 80 T 280 80"></path> 
 </svg>
+<div id="container">
+    <div id="animate">Animation here</div>
+</div>
 </body>
 </html>
