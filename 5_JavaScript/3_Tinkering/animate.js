@@ -4,14 +4,19 @@ document.addEventListener('DOMContentLoaded', () => {
     function myMove() {
         var elem = document.getElementById("animate");
         var pos = 0;
-        var id = setInterval(frame, 5);
+        var id = setInterval(frame, 500);
         function frame() {
             if (pos == 350) {
                 clearInterval(id);
             } else {
-                pos++;
+                pos = Math.floor(Math.random() * 300)
                 elem.style.top = pos + 'px';
-                elem.style.left = pos + 'px';
+                elem.style.left = pos + Math.floor(Math.random() * 100) + 'px';
+                let randNumber = "#";
+                for (var i=0; i<6; i++) {
+                randNumber += colors[Math.floor(Math.random() * 15)];
+                }
+                elem.style.backgroundColor = randNumber;
             }
         }
     }
