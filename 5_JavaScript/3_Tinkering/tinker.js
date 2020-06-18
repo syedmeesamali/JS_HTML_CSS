@@ -17,16 +17,12 @@ document.addEventListener('DOMContentLoaded', () => {
     function onTick() {
         const span = document.querySelectorAll('span')[char];
         span.classList.add('fade');
+        console.log("Char now: " + span.innerHTML);
         char++;
         if (char === splitText.length) {
-            complete();
-            return; 
-        }
-    }
-    //Clear the interval
-    function complete() {
-        clearInterval(timer);
-        return;
+            clearInterval(timer);
+            timer();
+        } 
     }
 
     //Counter sequence
