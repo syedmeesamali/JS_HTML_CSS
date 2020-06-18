@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
         text.innerHTML += "<span>" + splitText[i] + "</span>";
     }
     let char = 0;
-    let timer = setInterval(onTick, 500);
+    let timer = setInterval(onTick, 100);
     
     //Ticker for the effect
     function onTick() {
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
             shape1.textContent = count;
         })
     });
-
+    //Interval for color change portion
     setInterval(changeBox, 1000);
     function changeBox() {
         let randNumber = "#";
