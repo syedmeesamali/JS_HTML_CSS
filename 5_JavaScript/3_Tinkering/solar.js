@@ -1,0 +1,35 @@
+document.addEventListener('DOMContentLoaded', () => {
+    const colors = [1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F'];
+    
+    var sun = new Image();
+    var moon = new Image();
+    var earth = new Image();
+
+    function init() {
+        sun.src = 'https://mdn.mozillademos.org/files/1456/Canvas_sun.png';
+        moon.src = 'https://mdn.mozillademos.org/files/1443/Canvas_moon.png';
+        earth.src = 'https://mdn.mozillademos.org/files/1429/Canvas_earth.png';
+        window.requestAnimationFrame(draw);
+    }
+    
+    //Draw the items
+    function draw() {
+        var ctx =  document.getElementById('canvas').getContext('2d');
+        ctx.globalCompositeOperation = 'destination-over';
+        ctx.clearRect(0, 0, 300, 300); //Clear canvas
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.4)';
+        ctx.strokeStyle = 'rgba(0, 153, 255, 0.4)';
+        ctx.save();
+        ctx.translate(150, 150);
+
+        //Earth drawing
+        var time = new Date();
+
+
+
+        ctx.drawImage(sun, 0, 0, 300, 300);
+        window.requestAnimationFrame(draw);
+    }
+    init();
+
+})
