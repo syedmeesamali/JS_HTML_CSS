@@ -14,7 +14,11 @@ document.addEventListener('DOMContentLoaded', () => {
     
     //Draw the items
     function draw() {
+        var canvas = document.getElementById('canvas');
         var ctx =  document.getElementById('canvas').getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
         ctx.globalCompositeOperation = 'destination-over';
         ctx.clearRect(0, 0, 300, 300); //Clear canvas
         ctx.fillStyle = 'rgba(0, 0, 0, 0.4)';
