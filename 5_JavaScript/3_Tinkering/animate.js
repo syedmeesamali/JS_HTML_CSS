@@ -16,28 +16,24 @@ document.addEventListener('DOMContentLoaded', () => {
         this.color = rgbaColor();
         this.draw = function () {
             brush.beginPath();
-            //brush.arc(100, 75, 50, 0, 2*Math.PI, false);
             brush.arc(this.x, this.y, this.radius, 0, 2 * Math.PI, false);
-            console.log("X is: " + x);
-            console.log("Y is: " + y);
-            console.log("Radius is: " + radius);
-            brush.strokeStyle = 'black';
+            brush.strokeStyle = rgbaColor();
             brush.fillStyle = this.color;
             brush.fill();
             brush.stroke();
         }
-
         //Reverse direction once hitting the wall
         this.update = function() {
             if (this.x + this.radius > innerWidth || this.x - this.radius < 0) {
                 this.dx = -this.dx;
             } if (this.y + this.radius > innerHeight || this.y - this.radius < 0){
                 this.dy = -this.dy
-            } this.x += this.dx;
+            } 
+            this.x += this.dx;
             this.y += this.dy;
             this.draw();
         }
-    }
+    } //End of circle function
 
     //Random rgba colors
     function rgbaColor() {
@@ -49,23 +45,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     let circleArray = [];
-    let timer = 0;
+    let counter = 0;
+    let circleCount = document.getElementById("circleCount");
     canvas.addEventListener('click', function(event) {
-        timer = new Date();
-        let timePassed = (new Date() - timer) / 10;
+        counter++;
         let radius = (Math.random() * 45);
-        if (timePassed > 100) {
-            timePassed = 100;
-        } 
-            timer = 0;
-            console.log("X coordinate is: " + event.pageX);
-            //let x = event.pageX;
-            //let y = event.pageY;
-            let x = (Math.random() - 0.5) * 5;
-            let y = (Math.random() - 0.5) * 9;
-            let dx = (Math.random() - 0.5) * 10;
-            let dy = (Math.random() - 0.5) * 10;
-            circleArray.push(new Circle(x,y,dx,dy,radius));
+        console.log("Counter is: " + counter);
+        let x = event.pageX;
+        let y = event.pageY;
+        let dx = (Math.random() - 0.5) * 10;
+        let dy = (Math.random() - 0.5) * 10;
+        circleArray.push(new Circle(x,y,dx,dy,radius));
+        circleCount.textContent = counter;
     })
 
     //Main animate function
