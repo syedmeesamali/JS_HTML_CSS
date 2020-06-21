@@ -1,9 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
     const colors = [1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F'];
     
-    var canvas = document.getElementById('canvas');
+    const canvas = document.getElementById('canvas');
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
+    var brush = canvas.getContext("2d");
     
     //Function to draw random circles    
     function Circle(x, y, dx, dy, radius) {
@@ -15,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
         this.color = rgbaColor();
         this.draw = function () {
             brush.beginPath();
+            brush.arc(100, 75, 50, 0, 2*Math.PI, false);
             brush.arc(this.x, this.y, this.radius, 0, Math.PI*2, false);
             brush.strokeStyle = 'black';
             brush.fillStyle = this.color;
@@ -45,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let circleArray = [];
     let timer = 0;
-    canvas.addEventListener('click', () => {
+    canvas.addEventListener('click', function(event) {
         timer = new Date();
         let timePassed = (new Date() - timer) / 10;
         if (timePassed > 100) {
