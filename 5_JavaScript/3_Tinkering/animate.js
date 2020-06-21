@@ -16,8 +16,11 @@ document.addEventListener('DOMContentLoaded', () => {
         this.color = rgbaColor();
         this.draw = function () {
             brush.beginPath();
-            brush.arc(100, 75, 50, 0, 2*Math.PI, false);
-            brush.arc(this.x, this.y, this.radius, 0, Math.PI*2, false);
+            //brush.arc(100, 75, 50, 0, 2*Math.PI, false);
+            brush.arc(this.x, this.y, this.radius, 0, 2 * Math.PI, false);
+            console.log("X is: " + x);
+            console.log("Y is: " + y);
+            console.log("Radius is: " + radius);
             brush.strokeStyle = 'black';
             brush.fillStyle = this.color;
             brush.fill();
@@ -50,16 +53,19 @@ document.addEventListener('DOMContentLoaded', () => {
     canvas.addEventListener('click', function(event) {
         timer = new Date();
         let timePassed = (new Date() - timer) / 10;
+        let radius = (Math.random() * 45);
         if (timePassed > 100) {
             timePassed = 100;
-        } let radius = timePassed;
+        } 
             timer = 0;
-            let x = event.x;
-            let y = event.y;
+            console.log("X coordinate is: " + event.pageX);
+            //let x = event.pageX;
+            //let y = event.pageY;
+            let x = (Math.random() - 0.5) * 5;
+            let y = (Math.random() - 0.5) * 9;
             let dx = (Math.random() - 0.5) * 10;
             let dy = (Math.random() - 0.5) * 10;
             circleArray.push(new Circle(x,y,dx,dy,radius));
-
     })
 
     //Main animate function
