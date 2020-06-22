@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
     const colors = [1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F'];
-    
     const canvas = document.getElementById('canvas');
     //canvas.width = window.innerWidth;
     //canvas.height = window.innerHeight;
@@ -67,8 +66,8 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log("Counter is: " + counter);    
         let x = event.pageX;
         let y = event.pageY;
-        let dx = (Math.random() - 0.5) * 10;
-        let dy = (Math.random() - 0.5) * 10;
+        let dx = (Math.random() - 0.5) * 5;
+        let dy = (Math.random() - 0.5) * 15;
         circleArray.push(new Circle(x,y,dx,dy,radius));
         console.log("circleArray.length = " + circleArray.length);
         circleCount.textContent = circleArray.length;
@@ -83,19 +82,13 @@ document.addEventListener('DOMContentLoaded', () => {
         };
     }
     
-    setInterval(popCircle, 2000);
-    
-    //Remove the circles after some interval
+    //Remove the circles after 2 seconds interval
+    /*setInterval(popCircle, 2000);
     function popCircle() {
         if (circleArray.length != 0) {
             circleArray.pop(Math.floor(Math.random() * circleArray.length));
         }
-    }
-
-    //Intersection function
-    function interSect(point, circle) {
-        return Math.sqrt((point.x - circle.x) ** 2 + (point.y - circle.y) ** 2) < circle.radius;
-    }
+    }*/
 
     //Main animate function
     function animate(){
