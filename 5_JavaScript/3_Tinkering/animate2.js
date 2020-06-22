@@ -1,8 +1,23 @@
 document.addEventListener('DOMContentLoaded', () => {
     const canvas = document.getElementById('canvas');
     var brush = canvas.getContext("2d");
-    innerWidth = 800;
-    innerHeight = 500;
+    innerWidth = 400;
+    innerHeight = 400;
+    let ht = 10;
+    let wid = 200;
+    let x = 10; let y = 10;
+    function makeRect(x,y,wid,ht) {
+        this.x = x;
+        this.y = y;
+        this.wid = wid;
+        this.ht = ht;
+        brush.beginPath();
+        brush.rect(x,y,wid,ht);
+        brush.strokeStyle = 'blue'; 
+        brush.fillStyle = 'red';
+        brush.fill();
+    }
+    
 
     //Function to draw random rectangles
     function Rectangle(x, y, dx, dy, size) {
@@ -30,23 +45,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let rectArray = [];
     canvas.addEventListener('click', function(event) {
-        //If there are no circles then can't check for the hit inside one
-        let size = (Math.random() * 45);
-        let x = event.pageX;
-        let y = event.pageY;
-        let dx = (Math.random() - 0.5) * 5;
-        let dy = (Math.random() - 0.5) * 15;
-        rectArray.push(new Rectangle(x,y,dx,dy,size));
-        circleCount.textContent = rectArray.length;
+        ht += 10;
+        makeRect(x,y,wid,ht);
+        if (ht > 100) {
+            x += 5; y += 5;
+            makeRect(x,y,wid,ht);
+        }
+        
     })
 
-    //Main animate function
-    function animate(){
-        requestAnimationFrame(animate);
-        brush.clearRect(0, 0, innerWidth, innerHeight);
-        for (let i=0; i<rectArray.length; i++) {
-            rectArray[i].update();
-        }
-    }
-    animate();
+    
 }) //End of main
