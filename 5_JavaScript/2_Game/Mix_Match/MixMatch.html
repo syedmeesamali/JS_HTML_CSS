@@ -6,17 +6,29 @@
 <meta charset="utf-8">
 <script src="MixMatch.js" charset="utf-8"></script>
 <style>
+* {box-sizing: border-box; }
 html {min-height: 100vh;}
 body {margin: 0; background: radial-gradient(brown, black);}
 .page-title {color: brown; font-family: fantasy; font-weight: normal;
 text-align: center; font-size: 6em; }
 .game-info {font-family: cursive; color: lightcoral; font-size: 4em; }
-
+.game-container {display: grid; grid-template-columns: repeat(4, auto); grid-gap: 10px;
+ }
 
 </style>
 <title> Tetris Game </title>
 </head>
 <body>
-
+<h1 class="page-title"> Mix or Match </h1>
+<div class="game-container">
+    <div class="game-info-container">
+        <div class="game-info">
+            Time: <span id="time-remaining">0</span>
+        </div>
+        <div class="game-info">
+            Flips: <span id="flips">0</span>
+        </div>
+    </div>
+</div>
 </body>
 </html>
