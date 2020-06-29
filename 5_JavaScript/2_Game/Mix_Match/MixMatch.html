@@ -9,14 +9,13 @@
 * {box-sizing: border-box; }
 html {min-height: 100vh;}
 body {margin: 0; background: radial-gradient(brown, black);}
-.page-title {color: brown; font-family: fantasy; font-weight: normal;
-text-align: center; font-size: 6em; }
+.page-title {color: brown; font-family: fantasy; font-weight: normal; text-align: center; font-size: 6em; }
 .game-info {font-family: cursive; color: lightcoral; font-size: 4em; }
-.game-container {display: grid; grid-template-columns: repeat(4, auto); grid-gap: 10px;
- }
-
+.game-container {display: grid; grid-template-columns: repeat(4, auto); grid-gap: 10px; margin: 50px; justify-content: center; }
+.game-info-container {grid-column: 1 / -1; display: flex; justify-content: space-between;}
+.card {background-color: orange; height: 175px; width: 125px;}
 </style>
-<title> Tetris Game </title>
+<title> Mix and Match </title>
 </head>
 <body>
 <h1 class="page-title"> Mix or Match </h1>
@@ -29,6 +28,29 @@ text-align: center; font-size: 6em; }
             Flips: <span id="flips">0</span>
         </div>
     </div>
+    <div class="card">
+        <div class="card-back card-face">
+
+        </div>
+        <div class="card-front card-face">
+            
+        </div>
+    </div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
+    <div class="card"></div>
 </div>
 </body>
 </html>
