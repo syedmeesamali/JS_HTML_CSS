@@ -44,6 +44,19 @@ document.addEventListener('DOMContentLoaded', () => {
             } 
             this.x += this.dx;
             this.y += this.dy;
+            
+            //Part of new interactivity based on the mouse position
+            if ((mouse.x - this.x < 50) && (mouse.x - this.x > -50) && (mouse.y - this.y < 50) && (mouse.y - this.y > -50))  
+            {
+                //Grow the circles up to a limit of 40 only
+                if (this.radius < 40)
+                 {
+                     this.radius += 1;
+                 }
+            } else if (this.radius > 4) {
+                this.radius -= 1;
+            }
+            
             this.draw();
         }
     } //End of circle function
@@ -74,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
         counter++;
-        let radius = (Math.random() * 45);
+        let radius = (Math.random() * 40);
         console.log("Counter is: " + counter);    
         let x = event.pageX;
         let y = event.pageY;
@@ -95,7 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     //Remove the circles after 2 seconds interval
-    /*setInterval(popCircle, 2000);
+    /*setInterval(popCircle, 1000);
     function popCircle() {
         if (circleArray.length != 0) {
             circleArray.pop(Math.floor(Math.random() * circleArray.length));
