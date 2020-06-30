@@ -7,6 +7,18 @@ document.addEventListener('DOMContentLoaded', () => {
     innerWidth = 800;
     innerHeight = 500;
 
+
+    var mouse = {
+        x: undefined,
+        y: undefined
+    }
+
+    window.addEventListener('mousemove', function (event) {
+        mouse.x = event.x;
+        mouse.y = event.y;
+        console.log(mouse);
+    })
+
     //Function to draw random circles    
     function Circle(x, y, dx, dy, radius) {
         this.x = x;

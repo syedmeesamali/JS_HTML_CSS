@@ -44,7 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         brush.stroke();
     }
-
+//
     
     //Random rgba colors
     function rgbaColor() {
