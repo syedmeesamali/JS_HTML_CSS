@@ -1,12 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
     const colors = [1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F'];
     const canvas = document.getElementById('canvas');
-    //canvas.width = window.innerWidth;
-    //canvas.height = window.innerHeight;
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
     var brush = canvas.getContext("2d");
-    innerWidth = 800;
-    innerHeight = 500;
-
+    //innerWidth = 800;
+    //innerHeight = 500;
+    var maxRadius = 40;
 
     var mouse = {
         x: undefined,
@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener('mousemove', function (event) {
         mouse.x = event.x;
         mouse.y = event.y;
-        console.log(mouse);
+        //console.log(mouse);
     })
 
     //Function to draw random circles    
@@ -26,11 +26,12 @@ document.addEventListener('DOMContentLoaded', () => {
         this.dx = dx;
         this.dy = dy;
         this.radius = radius;
+        this.minRadius = radius;
         this.color = rgbaColor();
         this.draw = function () {
             brush.beginPath();
             brush.arc(this.x, this.y, this.radius, 0, 2 * Math.PI, false); //2 * Pi is the angle of full circle
-            brush.strokeStyle = 'blue'; 
+            brush.strokeStyle = this.color; 
             brush.fillStyle = this.color;
             brush.fill();
             brush.stroke();
@@ -49,14 +50,15 @@ document.addEventListener('DOMContentLoaded', () => {
             if ((mouse.x - this.x < 50) && (mouse.x - this.x > -50) && (mouse.y - this.y < 50) && (mouse.y - this.y > -50))  
             {
                 //Grow the circles up to a limit of 40 only
-                if (this.radius < 40)
+                if (this.radius < maxRadius)
                  {
                      this.radius += 1;
                  }
-            } else if (this.radius > 4) {
+            } else if (this.radius > this.minRadius) {
                 this.radius -= 1;
             }
             
+            //Draw the circle
             this.draw();
         }
     } //End of circle function
@@ -70,9 +72,16 @@ document.addEventListener('DOMContentLoaded', () => {
         return randNumber;
     }
 
+    window.addEventListener('resize', function(){
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        
+    })
+
     let circleArray = [];
-    let counter = 0;
-    let circleCount = document.getElementById("circleCount");
+    //let counter = 0;
+    //let circleCount = document.getElementById("circleCount");
+    /*
     canvas.addEventListener('click', function(event) {
         //If there are no circles then can't check for the hit inside one
         if (circleArray.length != 0) {
@@ -95,17 +104,21 @@ document.addEventListener('DOMContentLoaded', () => {
         let dy = (Math.random() - 0.5) * 15;
         circleArray.push(new Circle(x,y,dx,dy,radius));
         console.log("circleArray.length = " + circleArray.length);
-        circleCount.textContent = circleArray.length;
-    })
-
-    //Mouse position function
-    function getMouse(canvas, event) {
-        var rect = canvas.getBoundingClientRect();
-        return {
-            x: event.pageX - rect.left,
-            y: event.pageY - rect.top
-        };
+        //circleCount.textContent = circleArray.length;
+    }) */
+    
+    function init() {
+        for (var i=0; i<800; i++) {
+            let radius = (Math.random() * 5 + 1);
+            let x = Math.random() * (innerWidth - radius * 2) + radius;
+            let y = Math.random() * (innerHeight - radius * 2) + radius;
+            let dx = (Math.random() - 0.5) * 5;
+            let dy = (Math.random() - 0.5) * 5;
+            circleArray.push(new Circle(x, y, dx, dy, radius));
+        }
+        console.log("Cricle array length is: " + circleArray.length);
     }
+    init(); //First main initialization
     
     //Remove the circles after 2 seconds interval
     /*setInterval(popCircle, 1000);
