@@ -5,40 +5,35 @@ document.addEventListener('DOMContentLoaded', () => {
     canvas.height = window.innerHeight;
     
     //Mouse coordinates object
-    const mouse = {
-        x : undefined, 
-        y : undefined
-    }
-    
+    const mouse = {x : undefined,  y : undefined}
     //Main object which will be drawn
     function Particle(x, y, radius, color) {
         this.x = x;     this.y = y;
         this.radius = radius;
         this.color = color;
+        this.radians = 0;
+        this.velocity = 0.05;
         this.update = () => {
-            this.draw();
-        }
+            this.radians += this.velocity;
+            this.x = x + Math.cos(this.radians) * 100;
+            this.draw();    } //End of update
         this.draw = () => {
             brush.beginPath();
             brush.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
             brush.fillStyle = this.color;
             brush.fill();
-            brush.closePath();
-        }
-    }
-    
-    
+            brush.closePath();   } //End of draw
+    } //End of particle object
+        
     //Implementation of particles
-    let particles;
+    let particles = [];
     function init() {
-        particles = [];
         for (let i=0; i<1; i++){
             particles.push(new Particle(canvas.width / 2, canvas.height / 2, 
                 5, 'blue'));
         }
         console.log(particles);
     }
-
     init();
 
     //Main event listener
@@ -51,9 +46,12 @@ document.addEventListener('DOMContentLoaded', () => {
     //Main animate function
     function animate() {
         requestAnimationFrame(animate);
-        brush.clearRect(0, 0, canvas.width, canvas.height);
-    }
-    particles.forEach(particles => {
-        particles.update();
-    })
+        brush.clearRect(0, 0, innerWidth, innerHeight);
+        for (let j=0; j<particles.length; j++) {
+            particles[j].update();
+        }
+    } //End of animate
+    
+    animate();
+
 }) //End of main
