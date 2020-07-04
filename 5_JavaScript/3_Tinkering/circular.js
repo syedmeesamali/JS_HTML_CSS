@@ -23,10 +23,14 @@ document.addEventListener('DOMContentLoaded', () => {
         this.color = color;
         this.radians = Math.random() * Math.PI * 2;
         this.velocity = 0.02;
+        this.distanceFromCenter = {
+            x: Math.random() * 120 + 50,
+            y: Math.random() * 120 + 50
+        }
         this.update = () => {
             this.radians += this.velocity;
-            this.x = x + Math.cos(this.radians) * (Math.random() * 50 + 50); //Circular movement due to cos angle
-            this.y = y + Math.sin(this.radians) * (Math.random() * 50 + 50); //y should have sin angle
+            this.x = x + Math.cos(this.radians) * this.distanceFromCenter.x; //Circular movement due to cos angle
+            this.y = y + Math.sin(this.radians) * this.distanceFromCenter.y; //y should have sin angle
             this.draw();    } //End of update
             this.draw = () => {
                 brush.beginPath();
