@@ -22,30 +22,38 @@ document.addEventListener('DOMContentLoaded', () => {
         this.radius = radius;
         this.color = color;
         this.radians = Math.random() * Math.PI * 2;
-        this.velocity = 0.02;
+        this.velocity = 0.03;
         this.distanceFromCenter = {
-            x: Math.random() * 120 + 50,
-            y: Math.random() * 120 + 50
+            dist: Math.random() * 120 + 50
         }
         this.update = () => {
+            const lastPoint = {x: this.x, y: this.y}
             this.radians += this.velocity;
-            this.x = x + Math.cos(this.radians) * this.distanceFromCenter.x; //Circular movement due to cos angle
-            this.y = y + Math.sin(this.radians) * this.distanceFromCenter.y; //y should have sin angle
-            this.draw();    } //End of update
-            this.draw = () => {
+            this.x = x + Math.cos(this.radians) * this.distanceFromCenter.dist; //Circular movement due to cos angle
+            this.y = y + Math.sin(this.radians) * this.distanceFromCenter.dist; //y should have sin angle
+            this.draw(lastPoint);    } //End of update
+            this.draw = lastPoint => {
                 brush.beginPath();
-                brush.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
+                brush.strokeStyle = this.color;
+                brush.lineWidth = this.radius;
+                brush.moveTo(lastPoint.x, lastPoint.y);
+                brush.lineTo(this.x, this.y);
+                brush.stroke();
+                brush.closePath();
+                /*brush.arc(this.x, this.y, this.radius, 0, Math.PI * 2, false);
                 brush.fillStyle = this.color;
                 brush.fill();
-                brush.closePath();   } //End of draw
+                brush.closePath();*/   
+            } //End of draw
         } //End of particle object
         
     //Implementation of particles
     let particles = [];
     function init() {
         for (let i=0; i<50; i++){
+            const rad = Math.random() * 2 + 1;
             particles.push(new Particle(canvas.width / 2, canvas.height / 2, 
-                5, 'blue'));
+                rad, 'blue'));
         }
         console.log(particles);
     }
@@ -61,8 +69,9 @@ document.addEventListener('DOMContentLoaded', () => {
     //Main animate function
     function animate() {
         requestAnimationFrame(animate);
-        brush.clearRect(0, 0, innerWidth, innerHeight);
-        
+        //brush.clearRect(0, 0, innerWidth, innerHeight);
+        brush.fillStyle = 'rgba(255, 255, 255, 0.05)'; //Some transparency for rectangle
+        brush.fillRect(0, 0, innerWidth, innerHeight);
         for (let j=0; j<particles.length; j++) {
             particles[j].update();
             drawCircle();
