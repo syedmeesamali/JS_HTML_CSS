@@ -3,7 +3,15 @@ document.addEventListener('DOMContentLoaded', () => {
     var brush = canvas.getContext("2d");
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-    
+    colors = ['#7d67bc', '#dcd947','#47dc53','#474cdc','#dc479e','#dc6247'];
+    //Random rgba colors
+    function rgbaColor() {
+        for (var i=0; i<6; i++) {
+            randNumber = colors[Math.floor(Math.random() * 5)];
+        }
+        return randNumber;
+    }
+
     //Draw central circle
     function drawCircle() {
         brush.beginPath();
@@ -20,7 +28,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function Particle(x, y, radius, color) {
         this.x = x;     this.y = y;
         this.radius = radius;
-        this.color = color;
+        this.color = rgbaColor();
         this.radians = Math.random() * Math.PI * 2;
         this.velocity = 0.03;
         this.distanceFromCenter = {
@@ -29,8 +37,8 @@ document.addEventListener('DOMContentLoaded', () => {
         this.update = () => {
             const lastPoint = {x: this.x, y: this.y}
             this.radians += this.velocity;
-            this.x = x + Math.cos(this.radians) * this.distanceFromCenter.dist; //Circular movement due to cos angle
-            this.y = y + Math.sin(this.radians) * this.distanceFromCenter.dist; //y should have sin angle
+            this.x = mouse.x + Math.cos(this.radians) * this.distanceFromCenter.dist; //Circular movement due to cos angle
+            this.y = mouse.y + Math.sin(this.radians) * this.distanceFromCenter.dist; //y should have sin angle
             this.draw(lastPoint);    } //End of update
             this.draw = lastPoint => {
                 brush.beginPath();
@@ -50,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //Implementation of particles
     let particles = [];
     function init() {
-        for (let i=0; i<50; i++){
+        for (let i=0; i<20; i++){
             const rad = Math.random() * 2 + 1;
             particles.push(new Particle(canvas.width / 2, canvas.height / 2, 
                 rad, 'blue'));
@@ -60,10 +68,10 @@ document.addEventListener('DOMContentLoaded', () => {
     init();
 
     //Main event listener
-    canvas.addEventListener('click', function(event) {
+    canvas.addEventListener('mousemove', function(event) {
         mouse.x = event.x;
         mouse.y = event.y;
-        console.log(mouse);
+        //console.log(mouse);
     })
 
     //Main animate function
