@@ -30,13 +30,19 @@ document.addEventListener('DOMContentLoaded', () => {
         this.radius = radius;
         this.color = rgbaColor();
         this.radians = Math.random() * Math.PI * 2;
-        this.velocity = 0.03;
+        this.velocity = 0.05;
+        this.lastMouse = {x: x, y: y};
         this.distanceFromCenter = {
-            dist: Math.random() * 120 + 50
+            dist: Math.random() * 50 + 10
         }
         this.update = () => {
             const lastPoint = {x: this.x, y: this.y}
             this.radians += this.velocity;
+
+            //Create the drag effect as below
+            this.lastMouse.x = (mouse.x - this.lastMouse.x) * 0.05;
+            this.lastMouse.y = (mouse.y - this.lastMouse.y) * 0.05;
+
             this.x = mouse.x + Math.cos(this.radians) * this.distanceFromCenter.dist; //Circular movement due to cos angle
             this.y = mouse.y + Math.sin(this.radians) * this.distanceFromCenter.dist; //y should have sin angle
             this.draw(lastPoint);    } //End of update
