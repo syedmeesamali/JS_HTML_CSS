@@ -1,25 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
     console.log("Document loaded!");
+
+    let cardContainer = document.querySelectorAll(".flip-card");
+    cardContainer.addEventListener('click', flipCard(cardContainer));
     
-    //Starting image function
-    function startImage() {
-        document.getElementById("fruit-1").src = imageArray[0].src;
+    function flipCard(cardContainer) {
+        console.log("Clicked inside!");
+        console.log(cardContainer);
+        cardContainer.style.transform = "rotatey(180deg)";
+        cardContainer.style.transitionDuration = "1.5s";
     }
-
 })
-
-
-// document.addEventListener('DOMContentLoaded', () => {
-//     var isSwap = true;
-//     let img1 = document.querySelector('#fruit-1');
-//     let img2 = document.querySelector('#fruit-5');
-//     img2.addEventListener('click', () => {
-//         img2.style.visibility = 'hidden';
-//         img1.style.visibility = 'visible';
-//     });
-//     img1.addEventListener('click', () => {
-//         img1.style.visibility = 'hidden';
-//         img2.style.visibility = 'visible';
-//     });
-    
-// });
