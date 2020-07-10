@@ -39,18 +39,21 @@ function mostPopularDays(week) {
  */
 
 let animalArray = [];
+namesArray = ["puma", "tommy", "kitty"];
+typesArray = ["tiger", "dog", "cat"];
+breedsArray = ["asian", "african", "persian"];
 function createAnimalObjects(names, types, breeds) {
-    names = ["puma", "tommy", "kitty"];
-    types = ["tiger", "dog", "cat"];
-    breeds = ["asian", "african", "persian"];
-    for (let i=0; i <= 2; i++) {
+    this.names = names;
+    this.types = types;
+    this.breeds = breeds;
+    for (let i=0; i < names.length; i++) {
         animalArray.push(new Animal(names[i], types[i], breeds[i]));
     }
-    return animalArray();
+    //return animalArray;
 }
 
-createAnimalObjects();
-console.log(animals);
+createAnimalObjects(namesArray, typesArray, breedsArray);
+console.log(animalArray);
 /////////////////////////////////////////////////////////////////
 //
 //  Do not change any code below here!
