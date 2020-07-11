@@ -21,9 +21,19 @@ function calculateFoodOrder(numAnimals, avgFood) {
  * @param week an array of Weekday objects
  * @return a string containing the name of the most popular day of the week if there is only one most popular day, and an array of the strings containing the names of the most popular days if there are more than one that are most popular
  */
+let weekArray = [];
+weekDays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+traffic = [5, 7, 8, 5, 2, 1, 2];
 function mostPopularDays(week) {
     // IMPLEMENT THIS FUNCTION!
+    this.week = week;
+    for (let i=0; i<7; i++) {
+        weekArray.push(new Weekday(weekDays[i], traffic[i]));
+    }
 }
+
+mostPopularDays('week1');
+console.log(weekArray);
 
 
 /**
