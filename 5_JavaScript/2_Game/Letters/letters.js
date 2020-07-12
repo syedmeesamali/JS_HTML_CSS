@@ -1,21 +1,23 @@
 document.addEventListener('DOMContentLoaded', () => {
     console.log("Document loaded!");
-    let clickToggle = true;  
+    let cards = document.querySelector('.flip-card');
+    let innerCard = document.querySelector('.flip-card-inner');
     
-    //Main items to be acquired
-    /*
-    let cardContainer = document.querySelector(".flip-card");
-    cardContainer.addEventListener('click', function(e) {
-        console.log("Clicked on the card!");
-        if (!clickToggle) return;
-    }); */
-    function handleClick(e) {
+
+    //Check for clicks
+    let clickToggle = true;
+
+    cards.addEventListener('click', () => {
+        console.log("Card clicked");
+        if (clickToggle) {
+            innerCard.classList.add("hidden");
+            clickToggle = false;
+        } else {
+            innerCard.classList.remove("hidden");
+            clickToggle = true;
+        }
         
-    }
+    })
     
-    
-    
-    let arr1 = [1,3,5,7,9];
-    let arr2 = arr1.map(mem => mem + " is odd");
-    
+
 })
