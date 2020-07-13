@@ -6,25 +6,34 @@
 <script type="text/javascript"  src="letters.js" charset="utf-8"></script>
 <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
 <style>
-body { font-family: Arial, Helvetica, sans-serif; background-color: white; }
-.flip-card { background-color: wheat; width: 100px; height: 100px;
-  border: 2px solid blue; border-radius: 1px; }
-.flip-card-front, .flip-card-back { position: absolute; }
+html {min-height: 100vh;}
+body {margin: 0; background: radial-gradient(brown, black);}
+.container {display: grid; grid-template-columns: repeat(4, auto); 
+grid-gap: 10px; margin: 50px; justify-content: center; }
 .hidden { visibility: hidden;}
 </style>
 <title> Letters Game </title>
 </head>
 <body>
 
-<div class="flip-card">
+<div class="container">
     <!--Card front side to be shown-->
-    <div class="flip-card-front"> 
+    <div class="card-front"> 
       <img src="img/letter-a.png">
     </div>
     <!--Need to add small animation for the turn-->
-    <div class="flip-card-back">
+    <div class="card-back">
       <img src="img/apple.png">
     </div>
+
+    <div class="card-front"> 
+      <img src="img/letter-b.png">
+    </div>
+    <!--Need to add small animation for the turn-->
+    <div class="card-back">
+      <img src="img/banana.png">
+    </div>
+
 </div>
 
 
