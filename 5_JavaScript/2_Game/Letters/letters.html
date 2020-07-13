@@ -10,7 +10,6 @@ body { font-family: Arial, Helvetica, sans-serif; background-color: white; }
 .flip-card { background-color: wheat; width: 100px; height: 100px;
   border: 2px solid blue; border-radius: 1px; }
 .flip-card-front, .flip-card-back { position: absolute; }
-.flip-card-inner { transition: transform 0.8s;}
 .hidden { visibility: hidden;}
 </style>
 <title> Letters Game </title>
@@ -18,14 +17,14 @@ body { font-family: Arial, Helvetica, sans-serif; background-color: white; }
 <body>
 
 <div class="flip-card">
-  <div class="flip-card-inner">
-    <div class="flip-card-front">
+    <!--Card front side to be shown-->
+    <div class="flip-card-front"> 
       <img src="img/letter-a.png">
     </div>
+    <!--Need to add small animation for the turn-->
     <div class="flip-card-back">
       <img src="img/apple.png">
     </div>
-  </div>
 </div>
 
 
