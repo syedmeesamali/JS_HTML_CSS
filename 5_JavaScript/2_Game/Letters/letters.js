@@ -2,10 +2,12 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log("Document loaded!");
     let cards = document.querySelector('.container');
     frontCard = document.querySelectorAll(".card-front"); //This is an array now
-    let backCard = document.querySelector('.card-back');
+    backCard = document.querySelectorAll('.card-back');
     for (var i=0; i<frontCard.length; i++) {
-        frontCard[i].classList.add("hidden");
+        frontCard[i].classList.remove("hidden");
+        backCard[i].classList.add("hidden");
     }
+    
 
     //Check for clicks
     let clickToggle = true;
@@ -13,13 +15,15 @@ document.addEventListener('DOMContentLoaded', () => {
         console.log("Card clicked");
         if (clickToggle) {
             for (var i=0; i<frontCard.length; i++) {
-                frontCard[i].classList.remove("hidden");
+                frontCard[i].classList.add("hidden");
+                backCard[i].classList.remove("hidden");
             }
-            backCard.classList.add("hidden");
             clickToggle = false;
         } else {
-            frontCard.classList.add("hidden");
-            backCard.classList.remove("hidden");
+            for (var i=0; i<frontCard.length; i++) {
+                frontCard[i].classList.remove("hidden");
+                backCard[i].classList.add("hidden");
+            }
             clickToggle = true;
         }
         
