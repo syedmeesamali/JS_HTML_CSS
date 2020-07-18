@@ -24,3 +24,5 @@ html { min-height: 100vh; }
 .card.visible .card-front { transform: rotateY(0);}
 .card-value { transform: scale(0.9); transition: transform 100ms ease-in-out; }
 .card-front:hover .card-value { transform: scale(1);}
+.card.match .card-value { animation: dance 1s linear infinite 500ms; }
+@keyframes dance { 0%, 100% { transform: rotate(0); } 25% { transform: rotate(-30deg);}}
