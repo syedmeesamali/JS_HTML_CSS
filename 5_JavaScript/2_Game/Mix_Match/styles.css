@@ -14,7 +14,8 @@ html { min-height: 100vh; }
 .card-back { background-color: black; border-color: #FF6D00;}
 .overlay-text { position: fixed; top: 0; left: 0; right: 0; bottom: 0; display: flex; justify-content: center; align-items: center;
         z-index: 100; color: #FF6D00; font-family: fantasy; }
-.overlay-text.visible { display: flex; animation: overlay-grow 500ms forwards;}
+.overlay-text.visible { display: flex; flex-direction: column; animation: overlay-grow 500ms forwards;}
+.overlay-text-small { font-size: 0.3em;}
 .cob-web { position: absolute; width: 47px; height: 47px; transition: width 100ms ease-in-out, height 100ms ease-in-out; }
 .cob-web-top-left { transform: rotate(270deg); top: 0; left: 0; }
 .cob-web-top-right { top: 0; right: 0; }
@@ -29,5 +30,5 @@ html { min-height: 100vh; }
 .card-front:hover .card-value { transform: scale(1);}
 .card.match .card-value { animation: dance 1s linear infinite 500ms; }
 @keyframes dance { 0%, 100% { transform: rotate(0); } 25% { transform: rotate(-30deg);}}
-@keyframes .overlay-grow { from { background-color: rgba(0,0,0,0); font-size: 0; } to { background-color: rgba(0,0,0,0.8); 
+@keyframes overlay-grow { from { background-color: rgba(0,0,0,0); font-size: 0; } to { background-color: rgba(0,0,0,0.8); 
         font-size: 10em;}}
