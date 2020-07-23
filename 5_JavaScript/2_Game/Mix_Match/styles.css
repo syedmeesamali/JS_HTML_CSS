@@ -7,8 +7,8 @@ html { min-height: 100vh; }
         perspective: 500px; }
 .game-info-container { grid-column: 1 / -1; display: flex; justify-content: space-between;}
 .overlay-text { position: fixed; top: 0; left: 0; right: 0; bottom: 0; display: flex; justify-content: center; align-items: center;
-        z-index: 100; color: #FF6D00; font-family: fantasy; }
-.overlay-text.visible { display: flex; flex-direction: column; animation: overlay-grow 500ms forwards;}
+        z-index: 100; color: #FF6D00; font-family: fantasy; transition: background-color 500ms, font-size 500ms ; }
+.overlay-text.visible { display: flex; animation: overlay-grow 500ms forwards;}
 .overlay-text-small { font-size: 0.3em;}
 .cob-web { position: absolute; width: 47px; height: 47px; transition: width 100ms ease-in-out, height 100ms ease-in-out; }
 .cob-web-top-left { transform: rotate(270deg); top: 0; left: 0; }
