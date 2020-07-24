@@ -24,7 +24,23 @@ if(document.readyState === 'loading') {
 //Main document ready function
 function ready() {
         console.log("Dom loaded now!");
-        var overlays = Array.from(document.getElementsByClassName('overlay-text'));  //Create array from HTML elements
+        var clickBtn = document.getElementById("clickmeBtn");
+        
+        clickBtn.addEventListener('click', updateButton);
+
+        function updateButton() {
+                console.log("Button clicked");
+                let audioController = new AudioController();
+                audioController.startMusic();
+        }
+        const overLayTotal = document.getElementsByClassName('card');
+        overLayTotal.forEach((ele, index) => {
+                ele.addEventListener('click', (e) => {
+                        console.log(index, ele);
+                })
+        })
+        
+        var overlays = Array.from(overLayTotal);  //Create array from HTML elements
         var cards = Array.from(document.getElementsByClassName('card'));
         console.log(cards[0]);
         
