@@ -11,6 +11,10 @@ class AudioController {
         startMusic() {
                 this.bigMusic.play();           //Play the sound method
         }
+        stopMusic() {
+                this.bigMusic.pause();
+                this.bigMusic.currentTime = 0;
+        }
 }
 
 //Just the audio player playing only
@@ -31,6 +35,23 @@ function doStuff() {
                         overlay.classList.remove('visible');
                 })
         })
+
+        cards.forEach(card => {
+                card.addEventListener('click', () => {
+
+                })
+        })
         const myBtn = document.querySelector("button");
-        myBtn.addEventListener('click', audioPlayer);
+        let musicOff = true;
+        myBtn.addEventListener('click', () => {
+                if(musicOff === true) {
+                        let audioController = new AudioController();
+                        audioController.startMusic();   
+                        musicOff = false;
+                } else {
+                        let audioController = new AudioController();
+                        audioController.stopMusic();
+                        musicOff = true;
+                }
+        });
 }
