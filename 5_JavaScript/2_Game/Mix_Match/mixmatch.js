@@ -13,6 +13,7 @@ class AudioController {
         }
 }
 
+//Just the audio player playing only
 function audioPlayer() {
         console.log("Button clicked");
         let audioController = new AudioController();
@@ -23,24 +24,13 @@ function audioPlayer() {
 window.onload = doStuff;
 function doStuff() {
         console.log("Window content loaded");
+        let overlays = Array.from(document.getElementsByClassName('overlay-text'));
+        let cards = Array.from(document.getElementsByClassName('card'));
+        overlays.forEach(overlay => {
+                overlay.addEventListener('click', () => {
+                        overlay.classList.remove('visible');
+                })
+        })
         const myBtn = document.querySelector("button");
-
         myBtn.addEventListener('click', audioPlayer);
 }
-
-/*
-//Main document ready function
-function ready() {
-        console.log("Loaded Now !");
-        var myBtn = document.getElementById("myBtn");
-        console.log(myBtn);
-}
-
-
-//Make sure all assets loaded before we use our JS in the page
-if(document.readyState === 'loading') {
-        console.log("Loading ....");
-        document.addEventListener('DOMContentLoaded', ready());
-} else {
-        ready();
-} */

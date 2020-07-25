@@ -6,7 +6,7 @@ html { min-height: 100vh; }
 .game-container { display: grid; grid-template-columns: repeat(4, auto); grid-gap: 10px; margin: 50px; justify-content: center;
         perspective: 500px; }
 .game-info-container { grid-column: 1 / -1; display: flex; justify-content: space-between;}
-.overlay-text { position: fixed; top: 0; left: 0; right: 0; bottom: 0; display: flex; justify-content: center; align-items: center;
+.overlay-text { position: fixed; top: 0; left: 0; right: 0; bottom: 0; display: none; justify-content: center; align-items: center;
         z-index: 100; color: #FF6D00; font-family: fantasy; transition: background-color 500ms, font-size 500ms ; }
 .overlay-text.visible { display: flex; animation: overlay-grow 500ms forwards;}
 .overlay-text-small { font-size: 0.3em;}
