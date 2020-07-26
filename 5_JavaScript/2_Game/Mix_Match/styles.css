@@ -1,13 +1,15 @@
+@font-face { font-family: "Creepy"; src: url("Assets/Fonts/Creepy.woff") format("woff"), url("Assets/Fonts/Creepy.woff2") format("woff2"); }
+@font-face { font-family: "Lunacy"; src: url("Assets/Fonts/Lunacy.woff") format("woff"), url("Assets/Fonts/Lunacy.woff2") format("woff2"); }
 * { box-sizing:  border-box; }
 body { font-family: Arial, Helvetica, sans-serif; margin: 0; background: radial-gradient(orange,brown);}
-html { min-height: 100vh; }
+html { min-height: 100vh; font-family: Lunacy; }
 .page-title { color: blueviolet; font-family: sans-serif; font-weight: normal; text-align: center; font-size: 4em; }
 .game-info { color: blue; font-size: 3em; }
 .game-container { display: grid; grid-template-columns: repeat(4, auto); grid-gap: 10px; margin: 50px; justify-content: center;
         perspective: 500px; }
 .game-info-container { grid-column: 1 / -1; display: flex; justify-content: space-between;}
 .overlay-text { position: fixed; top: 0; left: 0; right: 0; bottom: 0; display: none; justify-content: center; align-items: center;
-        z-index: 100; color: #FF6D00; font-family: fantasy; transition: background-color 500ms, font-size 500ms ; }
+        z-index: 100; color: #FF6D00; font-family: creepy, serif; transition: background-color 500ms, font-size 500ms ; }
 .overlay-text.visible { display: flex; animation: overlay-grow 500ms forwards;}
 .overlay-text-small { font-size: 0.3em;}
 .cob-web { position: absolute; width: 47px; height: 47px; transition: width 100ms ease-in-out, height 100ms ease-in-out; }

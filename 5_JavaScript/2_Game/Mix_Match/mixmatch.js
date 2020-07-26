@@ -4,7 +4,7 @@ class AudioController {
                 this.flipAudio = new Audio('Assets/Audio/flip.wav');
                 this.matchSound = new Audio('Assets/Audio/match.wav');
                 this.victorySound = new Audio('Assets/Audio/victory.wav');
-                this.gameOver = new Audio('Assets/Audio/gameOver.wav');
+                this.gameOverSound = new Audio('Assets/Audio/gameOver.wav');
                 this.bigMusic.volume = 0.5;
                 this.bigMusic.loop = true;
         }
@@ -14,6 +14,20 @@ class AudioController {
         stopMusic() {
                 this.bigMusic.pause();
                 this.bigMusic.currentTime = 0;
+        }
+        flip() {
+                this.flipAudio.play();
+        }
+        match () {
+                this.matchSound.play();
+        }
+        victory() {
+                this.stopMusic();
+                this.victorySound.play();
+        }
+        gameOver() {
+                this.stopMusic();
+                this.gameOverSound.play();
         }
 }
 
@@ -38,7 +52,8 @@ function doStuff() {
 
         cards.forEach(card => {
                 card.addEventListener('click', () => {
-
+                        let audioController = new AudioController();
+                        audioController.flip();
                 })
         })
         const myBtn = document.querySelector("button");
