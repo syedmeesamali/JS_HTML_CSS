@@ -8,27 +8,17 @@ class AudioController {
                 this.bigMusic.volume = 0.5;
                 this.bigMusic.loop = true;
         }
-        startMusic() {
-                this.bigMusic.play();           //Play the sound method
-        }
+        startMusic() {   this.bigMusic.play();   }
         stopMusic() {
                 this.bigMusic.pause();
                 this.bigMusic.currentTime = 0;
         }
-        flip() {
-                this.flipAudio.play();
-        }
-        match () {
-                this.matchSound.play();
-        }
-        victory() {
-                this.stopMusic();
-                this.victorySound.play();
-        }
-        gameOver() {
-                this.stopMusic();
-                this.gameOverSound.play();
-        }
+        flip() {   this.flipAudio.play();      }
+        match () { this.matchSound.play();     }
+        victory() {       this.stopMusic();
+                          this.victorySound.play();   }
+        gameOver() {      this.stopMusic();
+                          this.gameOverSound.play();  }
 }
 
 //Just the audio player playing only
@@ -36,6 +26,23 @@ function audioPlayer() {
         console.log("Button clicked");
         let audioController = new AudioController();
         audioController.startMusic();
+}
+
+class MixOrMatch {
+        constructor(totalTime, Cards) {
+                this.cardsArray = cards;
+                this.totalTime = totalTime;
+                this.timeRemaining = totalTime;
+                this.timer = document.getElementById('time-remaining');
+                this.ticker = document.getElementById('flips');
+                this.audioController = new AudioController();
+        }
+        startGame() {
+                this.cardToCheck = null;
+                this.totalClicks = 0;
+                this.timeRemaining = this.totalTime;
+                this.matchedCards = [];
+        }
 }
 
 
