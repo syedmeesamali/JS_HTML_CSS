@@ -38,11 +38,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         //Reverse direction once hitting the wall
         this.update = function() {
-            if (this.x + this.radius > innerWidth || this.x - this.radius < 0) {
+            
+            /*if (this.x + this.radius > innerWidth || this.x - this.radius < 0) {
                 this.dx = -this.dx;
             } if (this.y + this.radius > innerHeight || this.y - this.radius < 0){
                 this.dy = -this.dy
-            } 
+            }*/
             this.x += this.dx;
             this.y += this.dy;
             
