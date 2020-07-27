@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let circleArray = [];
     //let counter = 0;
     //let circleCount = document.getElementById("circleCount");
-    /*
+    
     canvas.addEventListener('click', function(event) {
         //If there are no circles then can't check for the hit inside one
         if (circleArray.length != 0) {
@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
         circleArray.push(new Circle(x,y,dx,dy,radius));
         console.log("circleArray.length = " + circleArray.length);
         //circleCount.textContent = circleArray.length;
-    }) */
+    }) 
     
     function init() {
         for (var i=0; i<800; i++) {

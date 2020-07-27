@@ -7,7 +7,7 @@ body { font-family: Arial, Helvetica, sans-serif; margin: 0; background: radial-
 .card-face { position: absolute; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;
     border-radius: 12px; border-width: 2px; border-style: solid; backface-visibility: hidden; }
 .hidden { visibility: hidden;}
-.card-front { transform: rotateY(180deg); transform: scale(0.9); transition: transform 100ms ease-in-out; transform-style: preserve-3d; }
+.card-front { transform: rotateY(0); transform: scale(0.9); transition: transform 100ms ease-in-out; transform-style: preserve-3d; }
 .card-back { transform: rotateY(180deg); transition: transform 1s ease-in-out; transform-style: preserve-3d; }
-.card:hover .card-back { transform: rotateY(0); }
-.card:hover .card-front { transform: scale(1); }
+/*.card:hover .card-back { transform: rotateY(0); }*/
+.card:hover .card-back { transform: rotateY(0); backface-visibility: hidden; }
