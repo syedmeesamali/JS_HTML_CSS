@@ -42,6 +42,26 @@ class MixOrMatch {
                 this.totalClicks = 0;
                 this.timeRemaining = this.totalTime;
                 this.matchedCards = [];
+                this.busy = true;
+        }
+        flipCard(card) {
+                if(this.canFlipCard(card)) {
+                        this.audioController.flip();
+                        this.totalClicks++;
+                        this.ticker.innerText = this.totalClicks;
+                        card.classList.add('visible');
+                        //Main if statement and checks
+                }
+        }
+        shuffleCards() {
+                for (let i = this.cardsArray.length - 1; i > 0; i--) {
+                        let randIndex = Math.floor(Math.random() * (i + 1));
+                        this.cardsArray[i].style.order = i;
+                        this.cardsArray[i].style.order = randIndex;
+                }
+        }
+        canFlipCard(card) {
+                return true;
         }
 }
 
