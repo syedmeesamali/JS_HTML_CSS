@@ -43,6 +43,22 @@ class MixOrMatch {
                 this.timeRemaining = this.totalTime;
                 this.matchedCards = [];
                 this.busy = true;
+                setTimeout(() =>  {
+                        this.audioController.startMusic();
+                        this.shuffleCards();
+                        this.countdown = this.startCountDown();
+                        this.busy = false;
+                }, 500);
+                this.hideCards();
+                this.timer.innerText = this.timeRemaining;
+                this.ticker.innerText = this.totalClicks;
+
+        }
+        hideCards(){
+                this.cardsArray.forEach(card => {
+                        card.classList.remove('visible');
+                        card.classList.remove('matched');
+                })
         }
         flipCard(card) {
                 if(this.canFlipCard(card)) {
@@ -52,6 +68,20 @@ class MixOrMatch {
                         card.classList.add('visible');
                         //Main if statement and checks
                 }
+        }
+        gameOver() {
+                clearInterval(this.countdown);
+                this.audioController.gameOver();
+                document.getElementById('game-over-text').classList.add('visible');
+        }
+        startCountDown(){
+                return setInterval(() => {
+                        this.timeRemaining--;
+                        this.timer.innerText  =  this.timeRemaining;
+                        if(this.timeRemaining === 0) {
+                                this.gameOver();
+                        }
+                }, 1000);
         }
         shuffleCards() {
                 for (let i = this.cardsArray.length - 1; i > 0; i--) {
@@ -71,6 +101,7 @@ function doStuff() {
         console.log("Window content loaded");
         let overlays = Array.from(document.getElementsByClassName('overlay-text'));
         let cards = Array.from(document.getElementsByClassName('card'));
+        let game = new MixOrMatch(10, cards);
         overlays.forEach(overlay => {
                 overlay.addEventListener('click', () => {
                         overlay.classList.remove('visible');
