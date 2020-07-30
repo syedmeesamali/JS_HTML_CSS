@@ -1,13 +1,10 @@
 * { box-sizing:  border-box; }
 html {min-height: 100vh;}
 body { font-family: Arial, Helvetica, sans-serif; margin: 0; background: radial-gradient(orange,brown);}
-.container { display: grid; grid-template-columns: repeat(4, auto); grid-gap: 10px; margin: 50px; justify-content: center;
-    perspective: 500px; }
-.card { position: relative; height: 210px; width: 210px; overflow: hidden; }
+.page-title { color: yellow; font-family: sans-serif; font-weight: normal; text-align: center; font-size: 4em; }
+.container { display: grid; grid-template-columns: repeat(4, auto); grid-gap: 10px; margin: 50px; justify-content: center; }
+.card { position: relative; height: 210px; width: 210px; transition: transform 1s; transform-style: preserve-3d; }
 .card-face { position: absolute; width: 100%; height: 100%; display: flex; justify-content: center; align-items: center;
-    border-radius: 12px; border-width: 2px; border-style: solid; backface-visibility: hidden;}
-.hidden { visibility: hidden;}
+    backface-visibility: hidden;}
 .card-front { transform: rotateY(0); transition: transform 1s ease-in-out; transform-style: preserve-3d; }
 .card-back { transform: rotateY(180deg); transition: transform 1s ease-in-out; transform-style: preserve-3d; }
-/*.card:hover .card-back { transform: rotateY(0); }*/
-/*.card:hover .card-back { transform: rotateY(0); backface-visibility: hidden; } */

@@ -7,8 +7,13 @@ document.addEventListener('DOMContentLoaded', () => {
         let cards = Array.from(document.getElementsByClassName('card'));
         cards.forEach(card => {
                 card.addEventListener('click', () => {
-                    console.log("Card clicked"); 
-                    card.classList.toggle("card-back");
+                    if (!card.classList.contains('card-back')) {
+                        card.classList.remove('card-front');
+                        card.classList.add('card-back');
+                    } else {
+                        card.classList.add('card-front');
+                        card.classList.remove('card-back');
+                    }
                 })
         })
     } //End of do stuff function
