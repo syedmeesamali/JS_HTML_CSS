@@ -8,3 +8,4 @@ body { font-family: Arial, Helvetica, sans-serif; margin: 0; background: radial-
     backface-visibility: hidden;}
 .card-front { transform: rotateY(0); transition: transform 1s ease-in-out; transform-style: preserve-3d; }
 .card-back { transform: rotateY(180deg); transition: transform 1s ease-in-out; transform-style: preserve-3d; }
+@media (max-width: 600px) { .container { grid-template-columns: repeat(2, auto);}  }
