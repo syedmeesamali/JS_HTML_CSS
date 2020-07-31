@@ -9,6 +9,8 @@ read_db = "./read.db"
 db_ideas = "./ideas.db"
 db_done = "./done.db"
 db_mat = "./mat_pricing.db"
+form_data = "./form_data.db"
+
 app = Flask(__name__)
 
 @app.route('/savedetails', methods = ["POST", "GET"])
@@ -241,7 +243,7 @@ def token4():
 def token5():
     if request.method == "POST" or request.method == "GET":
         code5 = request.form["code5"]
-        if code5 == "shah":
+        if code5 == "shah1512":
             conn = sqlite3.connect(link_db)
             cur = conn.cursor()
             res = cur.execute("SELECT * FROM links")
@@ -294,6 +296,40 @@ def contact():
 @app.route('/bird')
 def bird():
     return render_template("bird.html")
+
+@app.route('/circles')
+def circles():
+    return render_template("animate.html")
+
+@app.route('/fruits')
+def fruits():
+    return render_template("letters.html")
+
+@app.route('/save_form', methods=['POST'])
+def save_form():
+    try:
+        Name = request.form.get('name')
+        Email = request.form.get('email')
+        Title = request.form.get('title')
+        Message = request.form.get('message')
+        timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+        conn = sqlite3.connect(form_data)
+        cur = conn.cursor()
+        cur.execute("INSERT INTO form_data (Name, Email, Title, Message, Date) VALUES(?, ?, ?, ?, ?)" , (Name, Email, Title, Message, timestamp))
+        conn.commit()
+        return jsonify({"success": True})
+    except:
+        conn.rollback()
+        return jsonify({"success": False})
+    conn.close()
+
+@app.route('/msgz', methods = ["POST", "GET"])
+def msgz():
+    if request.method == "POST" or request.method == "GET":
+        conn = sqlite3.connect(form_data)
+        cur = conn.cursor()
+        res = cur.execute("SELECT * FROM form_data")
+        return render_template("msgz.html", links = res)
 
 if __name__ == "__main__":
     app.run(debug=True)
