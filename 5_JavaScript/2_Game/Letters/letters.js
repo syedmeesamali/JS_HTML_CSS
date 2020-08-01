@@ -1,20 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {
-    console.log("Document loaded!");
     doStuff();
-    //window.onload = doStuff;
     function doStuff() {
-        console.log("Window content loaded");
-        let cards = Array.from(document.getElementsByClassName('card'));
+        let cards = Array.from(document.getElementsByClassName('card-face'));
         cards.forEach(card => {
                 card.addEventListener('click', () => {
-                    if (!card.classList.contains('card-back')) {
-                        card.classList.remove('card-front');
-                        card.classList.add('card-back');
+                    console.log("Card class:" + card.classList);
+                    if (card.classList.contains('visible')) {
+                        card.classList.remove('visible');
+                        card.classList.add('hidden');
+                        console.log("Card class:" + card.classList);
                     } else {
-                        card.classList.add('card-front');
-                        card.classList.remove('card-back');
-                    }
-                })
+                        card.classList.add("card-back","card-face", "visible");
+                        console.log("Card class:" + card.classList);
+                    } 
+                 })
         })
     } //End of do stuff function
 })
