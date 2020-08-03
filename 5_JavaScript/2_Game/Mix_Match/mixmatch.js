@@ -30,7 +30,7 @@ function audioPlayer() {
 
 class MixOrMatch {
         constructor(totalTime, Cards) {
-                this.cardsArray = cards;
+                this.cardsArray = Cards;
                 this.totalTime = totalTime;
                 this.timeRemaining = totalTime;
                 this.timer = document.getElementById('time-remaining');
@@ -101,10 +101,11 @@ function doStuff() {
         console.log("Window content loaded");
         let overlays = Array.from(document.getElementsByClassName('overlay-text'));
         let cards = Array.from(document.getElementsByClassName('card'));
-        let game = new MixOrMatch(10, cards);
+        let game = new MixOrMatch(50, cards);
         overlays.forEach(overlay => {
                 overlay.addEventListener('click', () => {
                         overlay.classList.remove('visible');
+                        game.startGame();
                 })
         })
 
@@ -112,6 +113,7 @@ function doStuff() {
                 card.addEventListener('click', () => {
                         let audioController = new AudioController();
                         audioController.flip();
+                        game.flipCard();
                 })
         })
         const myBtn = document.querySelector("button");
