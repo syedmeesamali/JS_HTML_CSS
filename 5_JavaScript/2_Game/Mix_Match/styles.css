@@ -31,6 +31,7 @@ html { min-height: 100vh; font-family: Lunacy; }
 .card-value { transform: scale(0.9); transition: transform 100ms ease-in-out; }
 .card-front:hover .card-value { transform: scale(1);}
 .card.match .card-value { animation: dance 1s linear infinite 500ms; }
+.card.matched .card-front .card-value { animation: dance 1s linear infinite 500ms; }
 @keyframes dance { 0%, 100% { transform: rotate(0); } 25% { transform: rotate(-30deg);}}
 @keyframes overlay-grow { from { background-color: rgba(0,0,0,0); font-size: 0; } to { background-color: rgba(0,0,0,0.8); 
         font-size: 10em;}}

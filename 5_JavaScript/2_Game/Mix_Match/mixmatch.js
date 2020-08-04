@@ -96,37 +96,26 @@ class MixOrMatch {
 }
 
 
-window.onload = doStuff;
-function doStuff() {
-        console.log("Window content loaded");
-        let overlays = Array.from(document.getElementsByClassName('overlay-text'));
-        let cards = Array.from(document.getElementsByClassName('card'));
-        let game = new MixOrMatch(50, cards);
-        overlays.forEach(overlay => {
-                overlay.addEventListener('click', () => {
-                        overlay.classList.remove('visible');
-                        game.startGame();
+document.addEventListener('DOMContentLoaded', () => {
+        doStuff();
+        function doStuff() {
+                console.log("Window content loaded");
+                let overlays = Array.from(document.getElementsByClassName('overlay-text'));
+                let cards = Array.from(document.getElementsByClassName('card'));
+                let game = new MixOrMatch(50, cards);
+                overlays.forEach(overlay => {
+                        overlay.addEventListener('click', () => {
+                                overlay.classList.remove('visible');
+                                game.startGame();
+                        });
+                });
+                cards.forEach(card => {
+                        card.addEventListener('click', () => {
+                                console.log("Card is clicked!");
+                                //let audioController = new AudioController();
+                                //audioController.flip();
+                                game.flipCard(card);
+                        })
                 })
-        })
-
-        cards.forEach(card => {
-                card.addEventListener('click', () => {
-                        let audioController = new AudioController();
-                        audioController.flip();
-                        game.flipCard();
-                })
-        })
-        const myBtn = document.querySelector("button");
-        let musicOff = true;
-        myBtn.addEventListener('click', () => {
-                if(musicOff === true) {
-                        let audioController = new AudioController();
-                        audioController.startMusic();   
-                        musicOff = false;
-                } else {
-                        let audioController = new AudioController();
-                        audioController.stopMusic();
-                        musicOff = true;
-                }
-        });
-}
+        }// End of doStuff function
+}) //End of main DOM loaded function
