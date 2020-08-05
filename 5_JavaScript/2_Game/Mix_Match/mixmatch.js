@@ -66,13 +66,32 @@ class MixOrMatch {
                         this.totalClicks++;
                         this.ticker.innerText = this.totalClicks;
                         card.classList.add('visible');
+                        if (this.cardToCheck)
+                                this.checkForCardMatch(card);
+                        else 
+                                this.cardToCheck = card;
                         //Main if statement and checks
                 }
+        }
+        checkForCardMatch(card) {
+                if(this.getCardType(card) === this.getCardType(this.cardToCheck))
+                        this.cardMatch(card);
+                else 
+                        this.cardMisMatch(card);
+        }
+        getCardType(card) {
+                return card.getElementsByClassName('card-value')[0].src;
+
         }
         gameOver() {
                 clearInterval(this.countdown);
                 this.audioController.gameOver();
                 document.getElementById('game-over-text').classList.add('visible');
+        }
+        victory() {
+                clearInterval(this.countdown);
+                this.audioController.victory();
+                document.getElementById('victory-text').classList.add('visible');
         }
         startCountDown(){
                 return setInterval(() => {
