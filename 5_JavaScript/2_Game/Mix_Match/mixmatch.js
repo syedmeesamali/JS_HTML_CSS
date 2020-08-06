@@ -79,9 +79,22 @@ class MixOrMatch {
                 else 
                         this.cardMisMatch(card);
         }
+        cardMatch(card1, card2) {
+                this.matchedCards.push(card1);
+                this.matchedCards.push(card2);
+                card1.classList.add('matched');
+                card2.classList.add('matched');
+                this.audioController.matchSound();
+                if (this.matchedCards.length === this.cardsArray) {
+                        this.victory();
+
+                }
+        }
+        cardMisMatch(card) {
+                return card.getElementsByClassName('card-value')[0].src;
+        }
         getCardType(card) {
                 return card.getElementsByClassName('card-value')[0].src;
-
         }
         gameOver() {
                 clearInterval(this.countdown);
@@ -114,7 +127,7 @@ class MixOrMatch {
         }
 }
 
-
+//Main event listener loop for the whole program
 document.addEventListener('DOMContentLoaded', () => {
         doStuff();
         function doStuff() {
