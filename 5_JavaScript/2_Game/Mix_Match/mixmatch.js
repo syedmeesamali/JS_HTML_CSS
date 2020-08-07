@@ -75,23 +75,29 @@ class MixOrMatch {
         }
         checkForCardMatch(card) {
                 if(this.getCardType(card) === this.getCardType(this.cardToCheck))
-                        this.cardMatch(card);
+                        this.cardMatch(card, this.cardToCheck);
                 else 
-                        this.cardMisMatch(card);
+                        this.cardMisMatch(card, this.cardToCheck);
+                this.cardToCheck = null;
         }
         cardMatch(card1, card2) {
                 this.matchedCards.push(card1);
                 this.matchedCards.push(card2);
                 card1.classList.add('matched');
                 card2.classList.add('matched');
-                this.audioController.matchSound();
+                this.audioController.match();
                 if (this.matchedCards.length === this.cardsArray) {
                         this.victory();
 
                 }
         }
         cardMisMatch(card) {
-                return card.getElementsByClassName('card-value')[0].src;
+                this.busy = true;
+                setTimeout(() => {
+                        card1.classList.remove('visible');
+                        card2.classList.remove('visible');
+                        this.busy = false;
+                }, 1000);
         }
         getCardType(card) {
                 return card.getElementsByClassName('card-value')[0].src;
