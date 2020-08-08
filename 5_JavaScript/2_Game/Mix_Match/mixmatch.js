@@ -70,15 +70,15 @@ class MixOrMatch {
                                 this.checkForCardMatch(card);
                         else 
                                 this.cardToCheck = card;
-                        //Main if statement and checks
                 }
-        }
+        } //End of flip-card
         checkForCardMatch(card) {
                 if(this.getCardType(card) === this.getCardType(this.cardToCheck))
                         this.cardMatch(card, this.cardToCheck);
                 else 
                         this.cardMisMatch(card, this.cardToCheck);
-                this.cardToCheck = null;
+                
+        this.cardToCheck = null;
         }
         cardMatch(card1, card2) {
                 this.matchedCards.push(card1);
@@ -91,7 +91,7 @@ class MixOrMatch {
 
                 }
         }
-        cardMisMatch(card) {
+        cardMisMatch(card1, card2) {
                 this.busy = true;
                 setTimeout(() => {
                         card1.classList.remove('visible');
@@ -129,7 +129,7 @@ class MixOrMatch {
                 }
         }
         canFlipCard(card) {
-                return true;
+                return !this.busy && !this.matchedCards.includes(card) && card !== this.cardToCheck;
         }
 }
 
