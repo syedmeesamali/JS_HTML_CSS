@@ -86,7 +86,8 @@ class MixOrMatch {
                 card1.classList.add('matched');
                 card2.classList.add('matched');
                 this.audioController.match();
-                if (this.matchedCards.length === this.cardsArray) {
+                console.log("Matched: " + this.matchedCards.length + " & CardsArray: " + this.cardsArray.length);
+                if (this.matchedCards.length === this.cardsArray.length) {
                         this.victory();
 
                 }
@@ -140,7 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 console.log("Window content loaded");
                 let overlays = Array.from(document.getElementsByClassName('overlay-text'));
                 let cards = Array.from(document.getElementsByClassName('card'));
-                let game = new MixOrMatch(50, cards);
+                let game = new MixOrMatch(40, cards);
                 overlays.forEach(overlay => {
                         overlay.addEventListener('click', () => {
                                 overlay.classList.remove('visible');
