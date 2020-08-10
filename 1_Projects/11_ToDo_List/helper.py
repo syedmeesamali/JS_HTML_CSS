@@ -21,3 +21,14 @@ def add_to_list(item):
     except Exception as e:
         print("Some error:", e)
         return None
+
+def get_all_items():
+    try:
+        conn = sqlite3.connect(database)
+        cur = conn.cursor()
+        cur.execute('SELECT * FROM items')
+        rows = cur.fetchall
+        return {"count": len(rows), "items": rows}
+    except Exception as e:
+        print('Error: ', e)
+        return None

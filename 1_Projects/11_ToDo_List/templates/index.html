@@ -1,20 +1,23 @@
 <!DOCTYPE html>
-<html>
+<!--This page is property of SYED MEESAM ALI-->
 <head>
-  <title> Main Database Page </title>
-  <style>
-  * {
-    font-family: Arial, Helvetica, sans-serif;
-  }
-  
-  
-  </style>
+    <title>Data Entry Page</title>
+<style>
+* { font-family: Arial, Helvetica, sans-serif; }
+body {  height: 100%; margin: 0; background:lightgoldenrodyellow; background-repeat: no-repeat; background-attachment: fixed; }
+</style>
 </head>
 <body>
-<h1><p>Select One from Below</p></h1>
-<a href="/add">Add Details</a><br><br>
-<a href="/view">View Details</a><br><br>
-<a href="/delete">Delete Details</a><br><br>
-
+<h1>To Do List</h1>
+<form action="/additems" method="POST">
+    <table>
+        <tr><td>Link ID:</td><td><input type="number" name="id" class="url-type"></td></tr>
+        <tr><td>Description:</td><td><input type="text" name="desc" class="url"></td></tr>
+        <tr><td>Link URL:</td><td><input type="text" name="linkurl" class="url"></td></tr>
+        <tr><td>Link Type:</td><td><input type="text" name="linktype" class="url-type"></td></tr>
+    </table>
+    <input type="submit" value="Submit">
+    </form>
+    <p><a href="/">Go back to homepage</a></p>
 </body>
 </html>
