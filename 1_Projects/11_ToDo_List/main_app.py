@@ -23,8 +23,7 @@ def add_item():
         response = Response("{'error': 'Item not found'")
         return response
     response = Response(json.dumps(res_data), mimetype='application/json')
-
-return response
+    return response
 
 if __name__ == "__main__":
     app.run()
