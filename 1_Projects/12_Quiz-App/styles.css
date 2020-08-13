@@ -1,2 +1,8 @@
-*, ::before, ::after { box-sizing: border-box; font-family: cursive; }
-body { padding: 0; margin: 0; display: flex; width: 100vw; height: 100vh; justify-content: center; align-content: center; }
+*, ::before, ::after { box-sizing: border-box; font-family: sans-serif; }
+:root { --hue-neutral: 200; --hue-wrong: 0; --hue-correct: 145; }
+body { padding: 0; margin: 0; display: flex; width: 100vw; 
+    height: 100vh; justify-content: center; align-content: center; }
+body.correct { --hue: var(--hue-correct) }
+body.wrong { --hue: var(--hue-wrong) }
+.container { width: 800px; max-width: 80%; background-color: white;
+ border-radius: 5px; padding: 10px; box-shadow: 0 0 10px 2px;}
