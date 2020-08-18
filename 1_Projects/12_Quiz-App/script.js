@@ -1,8 +1,7 @@
 const startButton = document.getElementById('start-btn');
 const qContainer = document.getElementById('question-container');
 const qElement = document.getElementById('question');
-const answer = document.getElementById('answer-buttons');
-
+const answerElement = document.getElementById('answer-buttons');
 
 let shuffleQuestions, currentIndex;
 
@@ -19,13 +18,27 @@ function startGame() {
 }
 
 function nextQuestion() {
+    resetState();       //Resets the answers and their state
     showQuestion();
 }
 
 //Show next question
 function showQuestion() {
-    qElement.innerText = questions.question;
-    console.log("Question answer: " + questions.answer);
+    qElement.innerText = questions[0].question;
+    questions[0].answer.forEach(answer => {
+        const button = document.createElement('button');
+        button.innerText = answer.text;
+        button.classList.add('btn');
+        if (answer.correct) {
+            button.dataset.correct = answer.correct;
+        }
+        button.addEventListener('click', selectAnswer);
+        answerElement.appendChild(button);        
+    })
+}
+
+function resetState() {
+    nex
 }
 
 function selectAnswer() {
