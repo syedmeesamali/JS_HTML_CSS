@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lnag="en">
+<head>
+  <meta char-set="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title> Infinite Scroll Page </title>
+  <style>
+    * {   font-family: Arial, Helvetica, sans-serif; }
+    body {  font-family: Arial, Helvetica, sans-serif;
+            height: 100%; width: 80%; margin: 0; background:gold;
+            background: -webkit-linear-gradient(yellow, #98FB98);
+            background: -webkit-linear-gradient(lightyellow, gold);
+            background-repeat: no-repeat; background-attachment: fixed;  }
+    table { border-collapse: collapse; }
+    td, th {  border: 2px solid blue; text-align: left; padding: 2px; word-wrap:break-word; }
+    </style>
+</head>
+<body>
+  <h1><p>Current Saved Links</p></h1><a href="/"><h3>Home Page</h3></a>
+    <h3><a href="/linkentry">Add a link</a></h3>
+    <h3><a href="/readlinks">Read Links</a></h3>
+    <table style="width:100%;">
+      <tr>
+        <th>Sr. #</th>
+        <th>Description </th>
+        <th>Link URL</th>
+        <th>Type</th>
+        <th>Date/Time</th>
+        <th>Status</th>
+        <th>Delete</th>
+      </tr>
+       {% for link in links %}
+       <tr>
+        <td style="text-align: center; width:5%;"> {{ link[0] }} </td>
+        <td style="text-align: left; width:20%;"> {{ link[1] }} </td>
+        <td style="width:20%;"><a href="{{ link[2] }}">{{ link[2] }}</a></td>
+        <td style="width:15%;"> {{ link[3] }} </td>
+        <td style="width:15%;"> {{ link[4] }} </td>
+        <td style="width:5%;">
+          <form action="/read/{{ link[0] }}" method="POST">
+            <input type="hidden" value="{{ link[0] }}"/>
+            <button id="w3-btn">READ</button>
+          </form>
+          <td style="width:5%;">
+            <form action="/delete/{{ link[0] }}" method="POST">
+              <input type="hidden" value="{{ link[0] }}"/>
+              <button id="w3-btn">DEL</button>
+            </form>
+        </td>
+       </tr>
+       {% endfor %}
+    </table>
+
+</body>
+</html>
