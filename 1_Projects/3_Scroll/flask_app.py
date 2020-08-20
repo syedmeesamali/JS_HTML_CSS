@@ -60,7 +60,7 @@ def delete(val):
 
 @app.route('/links')
 def links():
-    conn = sqlite3.connect(read_db)
+    conn = sqlite3.connect(link_db)
     cur = conn.cursor()
     res = cur.execute("SELECT * FROM links")
     return render_template("links.html", links = res)

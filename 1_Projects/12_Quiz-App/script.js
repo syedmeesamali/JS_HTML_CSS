@@ -37,14 +37,40 @@ function showQuestion() {
     })
 }
 
+//Reset status after each question
 function resetState() {
-    nex
+    nextButton.classList.add('hide');
+    while (answerElement.firstChild)
+        answerElement.removeChild
+    (answerElement.firstChild)
 }
 
-function selectAnswer() {
-
+//Select the correct answer
+function selectAnswer(e) {
+    const selectBtn = e.target
+    const correct = selectBtn.dataset.correct
+    setStatusClass(document.body, correct)
+    Array.from(answerElement.children).forEach(button => {
+        setStatusClass(button, button.dataset.correct)
+    })
 }
 
+//Set status of element
+function setStatusClass(element, correct) {
+    clearStatusClass(element)
+    if (correct) {
+        element.classList.add('correct');
+    } else {
+        element.classList.add('wrong');
+    }
+}
+
+function clearStatusClass(element) {
+    element.classList.remove('correct');
+    element.classList.remove('wrong');
+}
+
+//Array containing various questions
 const questions = [
     {
         question: 'What is 2 + 2? ',

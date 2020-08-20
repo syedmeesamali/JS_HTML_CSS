@@ -32,17 +32,17 @@
       </tr>
        {% for link in links %}
        <tr>
-        <td style="text-align: center; width:5%;"> {{ link[0] }} </td>
-        <td style="text-align: left; width:20%;"> {{ link[1] }} </td>
-        <td style="width:20%;"><a href="{{ link[2] }}">{{ link[2] }}</a></td>
-        <td style="width:15%;"> {{ link[3] }} </td>
-        <td style="width:15%;"> {{ link[4] }} </td>
-        <td style="width:5%;">
+        <td style="text-align: center; width: 40px;"> {{ link[0] }} </td>
+        <td style="text-align: left; width: 200px;"> {{ link[1] }} </td>
+        <td style="width: 300px;"><a href="{{ link[2] }}">{{ link[2] }}</a></td>
+        <td style="width: 15%;"> {{ link[3] }} </td>
+        <td style="width: 15%;"> {{ link[4] }} </td>
+        <td style="width: 5%;">
           <form action="/read/{{ link[0] }}" method="POST">
             <input type="hidden" value="{{ link[0] }}"/>
             <button id="w3-btn">READ</button>
           </form>
-          <td style="width:5%;">
+          <td style="width: 5%;">
             <form action="/delete/{{ link[0] }}" method="POST">
               <input type="hidden" value="{{ link[0] }}"/>
               <button id="w3-btn">DEL</button>
