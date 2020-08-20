@@ -1,5 +1,6 @@
 const startButton = document.getElementById('start-btn');
 const qContainer = document.getElementById('question-container');
+const nextBtn = document.getElementById('next-btn');
 const qElement = document.getElementById('question');
 const answerElement = document.getElementById('answer-buttons');
 
@@ -12,18 +13,19 @@ startButton.addEventListener('click', startGame);
 function startGame() {
     startButton.classList.add('hide');
     qContainer.classList.remove('hide');
-    shuffleQuestions = questions.sort(() => Math.random() - 0.5);
+    //shuffleQuestions = questions.sort(() => Math.random() - 0.5);
     currentIndex = 0;
     nextQuestion();
 }
 
 function nextQuestion() {
     resetState();       //Resets the answers and their state
-    showQuestion();
+    console.log("Questions question: " + questions[0].question);
+    showQuestion(questions);
 }
 
 //Show next question
-function showQuestion() {
+function showQuestion(questions) {
     qElement.innerText = questions[0].question;
     questions[0].answer.forEach(answer => {
         const button = document.createElement('button');
@@ -39,10 +41,9 @@ function showQuestion() {
 
 //Reset status after each question
 function resetState() {
-    nextButton.classList.add('hide');
+    nextBtn.classList.add('hide');
     while (answerElement.firstChild)
-        answerElement.removeChild
-    (answerElement.firstChild)
+        answerElement.removeChild(answerElement.firstChild)
 }
 
 //Select the correct answer
