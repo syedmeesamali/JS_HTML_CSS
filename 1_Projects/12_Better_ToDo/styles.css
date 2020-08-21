@@ -1,0 +1,5 @@
+*, ::before, ::after { box-sizing: border-box; font-family: sans-serif; }
+:root { --hue-neutral: 200; --hue-wrong: 0; --hue-correct: 145; }
+body { padding: 0; margin: 0; display: flex; width: 100vw; height: 100vh; justify-content: center; align-content: center; 
+background-color: hsl(var(--hue), 100%, 20%) }
+.hide { display: none;}
