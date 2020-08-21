@@ -8,6 +8,10 @@ let shuffleQuestions, currentIndex;
 
 
 startButton.addEventListener('click', startGame);
+nextBtn.addEventListener('click', () => {
+    currentIndex++;
+    nextQuestion();
+})
 
 //Start point of the game
 function startGame() {
@@ -54,6 +58,13 @@ function selectAnswer(e) {
     Array.from(answerElement.children).forEach(button => {
         setStatusClass(button, button.dataset.correct)
     })
+    if (questions.length > currentIndex + 1) { //If not last question
+        nextBtn.classList.remove('hide');
+    } else { 
+        startButton.innerText = 'RESTART';
+        startButton.classList.remove('hide');
+    }
+    
 }
 
 //Set status of element
@@ -73,11 +84,11 @@ function clearStatusClass(element) {
 
 //Array containing various questions
 const questions = [
-    {
-        question: 'What is 2 + 2? ',
-        answer: [
-            {  text: '4', correct: true }, 
-            {  text: '7', correct: false }
-        ]
-    }
+{ question: 'What is 2 + 2? ',
+  answer: [{text: '4', correct: true}, {text: '7', correct: false}, {text: '9', correct: false}, {text: '3', correct: false}] },
+  { question: 'What is 2 * 2? ',
+  answer: [{text: '4', correct: true}, {text: '7', correct: false}, {text: '9', correct: false}, {text: '3', correct: false}] },
+  { question: 'What is 2 - 2? ',
+  answer: [{text: '0', correct: true}, {text: '7', correct: false}, {text: '9', correct: false}, {text: '3', correct: false}] }
+
 ]
