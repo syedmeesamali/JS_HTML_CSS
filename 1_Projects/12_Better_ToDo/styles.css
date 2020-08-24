@@ -1,16 +1,17 @@
 *, ::before, ::after { box-sizing: border-box; font-family: inherit; }
 :root { --hue-neutral: 200; --hue-wrong: 0; --hue-correct: 145; 
    --clr-primary: rgb(55,112,199); --clr-light: #F4F4F4; --clr-dark: #133; --clr-warning: rgb(99, 36, 36); }
+
 body { margin: 0; font-weight: 300; font-size: 1.5rem; font-family: "Work Sans", sans-serif;
-background-color: var(--clr-primary); color: var(--clr-light); display: grid; grid: 
-"header header header header" auto
-"...... lists  active ......" auto /
-1fr minmax(100px, 300px)  minmax(250px, 500px)  1fr; }
-.title { grid-area: header;}
+    background-color: var(--clr-primary); color: var(--clr-light); display: grid; grid: 
+    "header header header header" auto
+    "...... lists  active ......" auto /
+    1fr minmax(100px, 300px)  minmax(250px, 500px)  1fr; }
 
+.title { grid-area: header; text-align: center; font-size: calc(7vw + 2rem); font-weight: 900;
+    color: rgba(0,0,0,0.1); margin: -0.3em 0 0.5em; }
 .all-tasks { grid-area: lists; }
-
+.task-list { font-size: 1.2rem; line-height: 1.7;}
 .todo-list { grid-area: active; }
-
 
 .hide { display: none;}
