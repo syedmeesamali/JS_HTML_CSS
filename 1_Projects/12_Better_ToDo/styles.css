@@ -11,7 +11,13 @@ body { margin: 0; font-weight: 300; font-size: 1.5rem; font-family: "Work Sans",
 .title { grid-area: header; text-align: center; font-size: calc(7vw + 2rem); font-weight: 900;
     color: rgba(0,0,0,0.1); margin: -0.3em 0 0.5em; }
 .all-tasks { grid-area: lists; }
-.task-list { font-size: 1.2rem; line-height: 1.7;}
+.task-list { font-size: 1.2rem; line-height: 1.7; list-style: circle; padding-left: 1.1em;}
+.active-list { font-weight: 700; letter-spacing: 2px;}
 .todo-list { grid-area: active; }
-
+form { display: flex; }
+.btn { cursor: pointer; }
+.new { background: transparent; border: 0; border-bottom: 1px solid currentColor; color: inherit; 
+    font-size: inherit; outline: none; transition: border-bottom 250ms ease-in; order: 2; }
+.new.list { font-size: 1.1rem; }
+.new:focus { border-bottom-width: 3px; }
 .hide { display: none;}
