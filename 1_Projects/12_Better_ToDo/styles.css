@@ -13,9 +13,15 @@ body { margin: 0; font-weight: 300; font-size: 1.5rem; font-family: "Work Sans",
 .all-tasks { grid-area: lists; }
 .task-list { font-size: 1.2rem; line-height: 1.7; list-style: circle; padding-left: 1.1em;}
 .active-list { font-weight: 700; letter-spacing: 2px;}
-.todo-list { grid-area: active; }
+.todo-list { --spacer: 1rem; grid-area: active; background: var(--clr-light); color: var(--clr-dark); }
+.todo-header { background: #E4E4E4; padding: var(--spacer); display: flex; align-content: center; justify-content: space-between; }
+.list-title { margin: 0; }
+.task-count { margin: 0; font-size: 1rem; }
+.todo-body { padding: var(--spacer); }
 form { display: flex; }
-.btn { cursor: pointer; }
+.btn { cursor: pointer; background: 0; border: 0; padding: 0; color: inherit; }
+.btn.list { font-size: 1.5rem; font-weight: 900; margin-right: 0.25rem; }
+.btn.list:hover { opacity: 0.5;}
 .new { background: transparent; border: 0; border-bottom: 1px solid currentColor; color: inherit; 
     font-size: inherit; outline: none; transition: border-bottom 250ms ease-in; order: 2; }
 .new.list { font-size: 1.1rem; }
