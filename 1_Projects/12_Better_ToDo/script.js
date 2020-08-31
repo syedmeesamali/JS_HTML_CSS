@@ -1,6 +1,8 @@
 const listContainer = document.querySelector('[data-lists]');
 const newListForm = document.querySelector('[data-new-list-form]');
 const newListInput = document.querySelector('[data-new-list-input]'); 
+const delListButton = document.querySelector('[data-delete-list-button]');
+
 
 //Using local storage to store the lists locally else keep the lists as empty
 const LOCAL_STORAGE_LIST_KEY = 'task.lists';
@@ -14,6 +16,12 @@ listContainer.addEventListener('click', e => {
         selectedListId = e.target.dataset.listId
         saveAndRender();
     }
+})
+
+delListButton.addEventListener('click', e => {
+    lists = lists.filter(list => list.id !== selectedListId);
+    selectedListId = null;
+    saveAndRender();
 })
 
 //Main submit form event listener
