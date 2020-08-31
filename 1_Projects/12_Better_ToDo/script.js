@@ -2,7 +2,10 @@ const listContainer = document.querySelector('[data-lists]');
 const newListForm = document.querySelector('[data-new-list-form]');
 const newListInput = document.querySelector('[data-new-list-input]'); 
 const delListButton = document.querySelector('[data-delete-list-button]');
-
+const listDisplayContainer = document.querySelector('[data-list-display-container]');
+const listTitleElement = document.querySelector('[data-list-title]');
+const listCountElement = document.querySelector('[data-list-count]');
+const tasksContainer = document.querySelector('[data-tasks]');
 
 //Using local storage to store the lists locally else keep the lists as empty
 const LOCAL_STORAGE_LIST_KEY = 'task.lists';
@@ -52,7 +55,19 @@ function save() {
 
 //Main render function for the overall program
 function render() {
-    clearElement(listContainer)
+    clearElement(listContainer);
+    renderLists();
+    
+    const selectedList = lists.find(list => list.id === selectedListId)
+    if (selectedListId == null) {
+        listDisplayContainer.style.display = 'none';
+    } else { 
+        listDisplayContainer.style.display = '';
+        listTitleElement.innerText = selectedList.name;
+    }
+}
+
+function renderLists() { 
     lists.forEach(list => {
         const listElement = document.createElement('li');
         listElement.dataset.listId = list.id;
