@@ -41,3 +41,5 @@ transition: transform 200ms ease-in-out; }
 [type="checkbox"]:checked + label .custom-checkbox {
     background: var(--clr-primary); border-color: var(--clr-primary); box-shadow: inset 0 0 0px 3px white; }
 [type="checkbox"]:checked + label { opacity: 0.5; }
+.delete-stuff { display: flex; justify-content: space-evenly; position: absolute; width: 100%; 
+    left: 0; bottom: 0px; color: var(--clr-light); size: 1.5em;}
