@@ -57,14 +57,23 @@ function save() {
 function render() {
     clearElement(listContainer);
     renderLists();
-    
     const selectedList = lists.find(list => list.id === selectedListId)
     if (selectedListId == null) {
         listDisplayContainer.style.display = 'none';
     } else { 
         listDisplayContainer.style.display = '';
         listTitleElement.innerText = selectedList.name;
+        renderTaskCount(selectedList);
     }
+}
+
+//Render count of balance tasks left
+function renderTaskCount(selectedList) {
+    const incompleteTasksCount = selectedList.tasks.filter(task => 
+        !task.complete).length;
+    const taskString = incompleteTasksCount === 1 ? "task": "tasks";
+    listCountElement.innerText = `${incompleteTasksCount} ${taskString} remaining!`;
+
 }
 
 function renderLists() { 
@@ -76,7 +85,6 @@ function renderLists() {
         if (list.id === selectedListId) {
             listElement.classList.add('active-list')
         }
-
         listContainer.appendChild(listElement);
     })
 }
