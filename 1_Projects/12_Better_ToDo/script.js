@@ -6,6 +6,7 @@ const listDisplayContainer = document.querySelector('[data-list-display-containe
 const listTitleElement = document.querySelector('[data-list-title]');
 const listCountElement = document.querySelector('[data-list-count]');
 const tasksContainer = document.querySelector('[data-tasks]');
+const taskTemplate = document.getElementById('task-template');
 
 //Using local storage to store the lists locally else keep the lists as empty
 const LOCAL_STORAGE_LIST_KEY = 'task.lists';
@@ -38,10 +39,12 @@ newListForm.addEventListener('submit', e => {
     saveAndRender();
 })
 
+//Create new task list with provided name
 function createList(name) {
     return { id: Date.now().toString(), name: name, tasks: [] };  //Return the object as a new list created based on name
 }
 
+//Save the list to local-storage and render it
 function saveAndRender() {
     save()
     render()
@@ -64,6 +67,8 @@ function render() {
         listDisplayContainer.style.display = '';
         listTitleElement.innerText = selectedList.name;
         renderTaskCount(selectedList);
+        clearElement(tasksContainer);
+        renderTasks(selectedList);
     }
 }
 
@@ -76,6 +81,21 @@ function renderTaskCount(selectedList) {
 
 }
 
+//Function to render the tasks
+function renderTasks(selectedList) {
+    selectedList.tasks.forEach(task => {
+        const taskElement = document.importNode(taskTemplate.content, true);
+        const checkbox = taskElement.querySelector('input');
+        checkbox.id = task.id;
+        checkbox.checked = task.complete;
+        const label = taskElement.querySelector('label');
+        label.htmlFor = task.id;
+        label.append(task.name);
+        tasksContainer.appendChild(taskElement);
+    })
+}
+
+//Render all the lists
 function renderLists() { 
     lists.forEach(list => {
         const listElement = document.createElement('li');
@@ -89,10 +109,11 @@ function renderLists() {
     })
 }
 
+//Clear any selected element
 function clearElement(element) {
     while(element.firstChild) {     //Check for first child and if any then remove
         element.removeChild(element.firstChild);
     }
 }
 
-render()
+render() //Just render the whole damn thing
