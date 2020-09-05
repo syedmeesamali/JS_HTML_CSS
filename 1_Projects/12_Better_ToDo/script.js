@@ -7,6 +7,9 @@ const listTitleElement = document.querySelector('[data-list-title]');
 const listCountElement = document.querySelector('[data-list-count]');
 const tasksContainer = document.querySelector('[data-tasks]');
 const taskTemplate = document.getElementById('task-template');
+const newTaskForm = document.querySelector('[data-new-task-form]');
+const newTaskInput = document.querySelector('[data-new-task-input]');
+
 
 //Using local storage to store the lists locally else keep the lists as empty
 const LOCAL_STORAGE_LIST_KEY = 'task.lists';
@@ -39,9 +42,27 @@ newListForm.addEventListener('submit', e => {
     saveAndRender();
 })
 
+//Create new task
+newTaskForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const taskName = newTaskInput.value;
+    if (taskName == null || taskName == '') return;
+    const task = createTask(taskName);
+    newTaskInput.value = null;
+    const selectedList = lists.find(list => list.id === selectedList);
+    selectedList.tasks.push(task);
+    saveAndRender();
+})
+
+
+//Create task function
+function createTask(name) {
+    return { id: Date.now().toString(), name: name, complete: false };
+}
+
 //Create new task list with provided name
 function createList(name) {
-    return { id: Date.now().toString(), name: name, tasks: [] };  //Return the object as a new list created based on name
+    return { id: Date.now().toString(), name: name, tasks: [] };
 }
 
 //Save the list to local-storage and render it
