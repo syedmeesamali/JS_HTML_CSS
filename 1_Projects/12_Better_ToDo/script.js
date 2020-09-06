@@ -9,6 +9,7 @@ const tasksContainer = document.querySelector('[data-tasks]');
 const taskTemplate = document.getElementById('task-template');
 const newTaskForm = document.querySelector('[data-new-task-form]');
 const newTaskInput = document.querySelector('[data-new-task-input]');
+const clearCompleteTask = document.querySelector('[clear-complete-task-button]');
 
 
 //Using local storage to store the lists locally else keep the lists as empty
@@ -31,7 +32,7 @@ tasksContainer.addEventListener('click', e => {
         const selectedTask = selectedList.tasks.find(task => task.id === e.target.id);
         selectedTask.complete = e.target.checked;
         save();
-        renderTaskCount();
+        renderTaskCount(selectedList);
     }
 })
 
@@ -59,10 +60,17 @@ newTaskForm.addEventListener('submit', e => {
     if (taskName == null || taskName == '') return;
     const task = createTask(taskName);
     newTaskInput.value = null;
-    const selectedList = lists.find(list => list.id === selectedList);
+    const selectedList = lists.find(list => list.id === selectedListId);
     selectedList.tasks.push(task);
     saveAndRender();
 })
+
+clearCompleteTask.addEventListener('click', e => {
+    const selectedList = lists.find(list => list.id === selectedListId);
+    selectedList.tasks = selectedList.tasks.filter(task => !task.complete);
+    saveAndRender();
+}) 
+
 
 
 //Create task function
