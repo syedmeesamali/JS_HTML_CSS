@@ -1,35 +1,31 @@
-const video = document.getElementById("video");
+navigator.getUserMedia = 
+    navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
 
-Promise.all([
-    faceapi.nets.tinyFaceDetector.loadFromUri('./models'),
-    faceapi.nets.faceLandmark68Net.loadFromUri('./models'),
-    faceapi.nets.faceRecognitionNet.loadFromUri('./models'),
-    faceapi.nets.faceExpressionNet.loadFromUri('./models')
-]).then(startVideo)
+const video = document.querySelector('#video');
+const canvas = document.querySelector('#canvas');
+const context = canvas.getContext('2d');
+const audio = document.querySelector('#audio');
+let model;
 
-function startVideo() {
-    navigator.getUserMedia(
-    {  video: {}  }, 
-    stream => video.srcObject = stream, 
-    err => console.error(err)
-    )
+handTrack.startVideo(video).then(status => {
+    if (status) {
+        navigator.getUserMedia({ video: {}}, stream => { 
+            video.srcObject = stream;
+            setInterval(runDetection, 1000);
+        }, err => console.error(err)) 
+    }
+})
+
+function runDetection() {
+    model.detect(video).then(predictions => {
+        //model.renderPredictions(predictions, canvas, context, video); //Will really slow down
+        if(predictions.length > 0) {
+            audio.play();
+        }
+    });
 }
 
-//Main event listener while the page is loaded
-video.addEventListener('play', () => {
-    const canvas = faceapi.createCanvasFromMedia(video);
-    document.body.append(canvas);
-    const displaySize = { width: video.width, height: video.height };
-    faceapi.matchDimensions(canvas, displaySize);
-    setInterval(async () => {
-        const detections = await faceapi.detectAllFaces(video, 
-            new faceapi.TinyFaceDetectorOptions()).withFaceLandmarks().withFaceExpressions();
-            const resizedDetections = faceapi.resizeResults(detections, displaySize);
-            canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
-            faceapi.draw.drawDetections(canvas, resizedDetections);
-            faceapi.draw.drawFaceLandmarks(canvas, resizedDetections);
-            faceapi.draw.drawFaceExpressions(canvas, resizedDetections);
-        }, 
-        
-        100) //Repeat every 100ms
-})
+
+handTrack.load().then(lmodel => {
+    model = lmodel;
+});

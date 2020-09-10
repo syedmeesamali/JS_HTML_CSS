@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="./hand.css" rel="stylesheet">
-    <script defer src="./face-api.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/handtrackjs@0.0.13/dist/handtrack.min.js"></script>
     <script defer src="./hand.js"></script>
-    <title>Face Tracking App</title>
+    <title>Hand Detection App</title>
 </head>
 <body>
+<audio src="./audio.m4a" id="audio"></audio>
 <video id="video" width="720" height="560" autoplay muted></video>
+<canvas id="canvas"></canvas>
 </body>
 </html>
