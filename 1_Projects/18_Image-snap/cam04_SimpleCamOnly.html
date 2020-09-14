@@ -1,0 +1,138 @@
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Hand Track Simple Most</title>
+</head>
+
+<body>
+<script src="https://cdn.jsdelivr.net/npm/handtrackjs/dist/handtrack.min.js"> </script>
+<canvas id="canvas"></canvas>
+<button onclick="toggleVideo()" id="trackbutton" type="button">Toggle Video</button>
+<video width="320" height="240" autoplay="autoplay" id="myvideo"></video>
+<div id="direction">--##--</div>
+
+<script type="text/javascript">
+
+const video = document.getElementById('myvideo');
+const canvas = document.getElementById('canvas');
+const dir = document.getElementById('direction');
+const context = canvas.getContext('2d');
+let trackButton = document.getElementById('trackbutton');
+
+let isVideo = false;
+let model = null;
+
+
+const modelParams = {
+  flipHorizontal: true,   // flip e.g for video 
+  imageScaleFactor: 0.5,  // reduce input image size for gains in speed.
+  maxNumBoxes: 2,        // maximum number of boxes to detect
+  iouThreshold: 0.5,      // ioU threshold for non-max suppression
+  scoreThreshold: 0.69,    // confidence threshold for predictions.
+}
+
+//Load the main model
+handTrack.load(modelParams).then(newModel => {
+    model = newModel;
+    trackButton.disabled = false;
+});
+
+//Start or stop the video
+function toggleVideo() {
+    if (!isVideo) {
+        console.log("Starting video..");
+        startVideo();
+    } else {
+      console.log("Stopping video..");
+        handTrack.stopVideo(video)
+        isVideo = false;
+        console.log("STopped!");
+    }
+}
+
+
+//Begin the main video
+function beginVideo() {
+    handTrack.startVideo(video).then(function(status) {
+      if(status) {
+        isVideo = true;
+        runDetection();
+      }
+    })
+}
+
+//Start the main video
+function startVideo() {
+    handTrack.startVideo(video).then(function (status) {
+        console.log("video started", status);
+        if (status) {
+            isVideo = true
+            runDetection()
+        } else {
+          console.log("Please enable video ......");
+        }
+    });
+}
+
+//Direction of movement
+const getDirection = predictions => {
+  let direction = ''
+  const p1x1 = parseInt(predictions[0].bbox[0])
+  const p1y1 = parseInt(predictions[0].bbox[1])
+  const p1x2 = parseInt(predictions[0].bbox[2])
+  const p1y2 = parseInt(predictions[0].bbox[3])
+  const [x, y] = [(p1x1 + p1x2) / 2, (p1y1 + p1y2) / 2] //center points for the hand
+
+  if (gestRecorded) {
+    ox = x
+    oy = y
+    gestRecorded = false
+  } else {
+    distx = x - ox
+    disty = y - oy
+    if (Math.abs(distx) > 10 || Math.abs(disty) > 10) {
+      gestRecorded = true
+      direction = Math.abs(distx) > Math.abs(disty) ? distx > 0  ? 'right' : 'left' : disty > 0 ? 'down' : 'up'
+    }
+  }
+  return direction
+}
+
+
+//Run the detection in browser
+function runDetection() {
+    model.detect(video).then(predictions => {
+            if (predictions.length >= 1) {
+                model.renderPredictions(predictions, canvas, context, video);    
+            }
+              
+      requestAnimationFrame(runDetection);
+    })
+}
+
+/*handTrack.load(modelParams).then(model => {
+  model.detect(img).then(predictions => {
+    console.log("Predictions: ", predictions);
+        if (predictions.length > 0.65) {
+            const x = predictions[0].bbox[0];
+            const y = predictions[0].bbox[1];
+            const width = predictions[0].bbox[2];
+            const height = predictions[0].bbox[3];
+        } 
+  });//End of model load
+}); //End of hand track
+
+var constraints = { audio: false, video: { width: 640, height: 480 } };
+navigator.mediaDevices.getUserMedia(constraints)
+.then(function(mediaStream) {
+  var video = document.querySelector('video');
+  video.srcObject = mediaStream;
+  video.onloadedmetadata = function(e) {  video.play();   };
+}).catch(function(err) { console.log(err.name + ": " + err.message); })*/
+
+</script>
+</body>
+</html>
