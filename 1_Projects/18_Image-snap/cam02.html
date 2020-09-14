@@ -23,14 +23,17 @@
 
 <script type="text/javascript">
 const video = document.querySelector("videoElement");
-if (navigator.mediaDevices.getUserMedia) {
-    navigator.mediaDevices.getUserMedia({ video: true })
-    .then(function (stream) {
-        video.srcObject = stream;
-    }).catch(function (err){
-        console.log("Some error ...... !");
-    })
-}
+var constraints = { audio: true, video: { width: 640, height: 480 } };
+
+navigator.mediaDevices.getUserMedia(constraints)
+.then(function(mediaStream) {
+  var video = document.querySelector('video');
+  video.srcObject = mediaStream;
+  video.onloadedmetadata = function(e) {
+    video.play();
+  };
+}).catch(function(err) { console.log(err.name + ": " + err.message); })
+
 </script>
 
 </body>
