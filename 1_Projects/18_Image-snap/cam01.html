@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+    html, body { margin: 0; padding: 0; height: 100%; width: 100%; }
+    button { width: 200px; background-color: black; color: white; font-size: 16px; border-radius: 30px; border: none;
+        padding: 15px 20px; text-align: center; box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2); position: fixed; 
+        bottom: 30px; left: calc(50% - 100px); }
+    </style>
+<title>Simple Camera Check</title>
+</head>
+<body>
+
+<video id="video" width="640" height="480" autoplay></video>
+<button id="snap">Snap Photo</button>
+<canvas id="canvas" width="640" height="480"></canvas>
+
+<script type="text/javascript">
+
+var canvas = document.getElementById('canvas');
+var video = document.getElementById('video');
+var context = canvas.getContext('2d');
+
+if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+    // Not adding `{ audio: true }` since we only want video now
+    navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
+        //video.src = window.URL.createObjectURL(stream);
+        video.srcObject = stream;
+        video.play();
+    });
+} else if(navigator.getUserMedia) { // Standard
+    navigator.getUserMedia({ video: true }, function(stream) {
+        video.src = stream;
+        video.play();
+    }, errBack);
+} else if(navigator.webkitGetUserMedia) { // WebKit-prefixed
+    navigator.webkitGetUserMedia({ video: true }, function(stream){
+        video.src = window.webkitURL.createObjectURL(stream);
+        video.play();
+    }, errBack);
+} else if(navigator.mozGetUserMedia) { // Mozilla-prefixed
+    navigator.mozGetUserMedia({ video: true }, function(stream){
+        video.srcObject = stream;
+        video.play();
+    }, errBack);
+}
+
+document.getElementById("snap").addEventListener("click", function() {
+	console.log("Clicked for snap");
+	context.drawImage(video, 0, 0, 640, 480);
+});
+</script>
+
+</body>
+</html>
