@@ -4,6 +4,11 @@
 <meta name="viewport"
       content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<style>
+.canvas2 { 
+  position: fixed;
+}
+</style>
 <title>Hand Track Simple Most</title>
 </head>
 
@@ -14,13 +19,36 @@
 <video width="320" height="240" autoplay="autoplay" id="myvideo"></video>
 <div id="direction">--##--</div>
 
-<script type="text/javascript">
+<canvas id="b" class="canvas2" width="1200" height="300"></canvas>
 
+<script type="text/javascript">
 const video = document.getElementById('myvideo');
 const canvas = document.getElementById('canvas');
+const b_canvas = document.getElementById('b');
+var brush = b_canvas.getContext('2d');
+
+//Make a rectangle with certain properties
+function makeRect(x,y,wid,ht,fillStyle) {
+        this.x = x; this.y = y; this.wid = wid; this.ht = ht;
+        brush.clearRect(x, y, wid, ht);
+        brush.beginPath();
+        brush.rect(x, y, wid, ht); //Draw the rectangle
+        brush.strokeStyle = 'blue'; 
+        brush.fillStyle = fillStyle;
+        brush.fill();
+    }
+
 const dir = document.getElementById('direction');
 const context = canvas.getContext('2d');
 let trackButton = document.getElementById('trackbutton');
+
+let [distx, disty] = [null, null]
+let [ox, oy] = [0, 0]
+let gestRecorded = true
+
+let distOld = -1
+let dif = 0
+let gestureCount = 0
 
 let isVideo = false;
 let model = null;
@@ -101,15 +129,32 @@ const getDirection = predictions => {
   return direction
 }
 
-
+x = 50; y = 50;
+makeRect(x, y, 200, 40, "red");    
 //Run the detection in browser
 function runDetection() {
-    model.detect(video).then(predictions => {
-            if (predictions.length >= 1) {
-                model.renderPredictions(predictions, canvas, context, video);    
+    model.detect(video).then(predictions => {        
+        if (predictions.length >= 1) {
+              dir.innerText = getDirection(predictions);
+              if (dir.innerText === "right") {
+                x = x + 20;
+                console.log("x value rightnow: " + x);
+                console.log("y value rightnow: " + y);
+                makeRect(x, y, x + 100, y - 10, "Blue");  
+              } else if (dir.innerText === "left") {
+                x = x - 20;
+                makeRect(x, y, x + 100, y - 10, "Blue");
+                console.log("x value left now: " + x);
+                console.log("y value rightnow: " + y);
+              }
+              model.renderPredictions(predictions, canvas, context, video);    
             }
-              
-      requestAnimationFrame(runDetection);
+      
+            if (isVideo) {
+                requestAnimationFrame(runDetection)
+            } else {
+              handTrack.stopVideo(video)
+            }
     })
 }
 
