@@ -19,7 +19,7 @@
 <video width="320" height="240" autoplay="autoplay" id="myvideo"></video>
 <div id="direction">--##--</div>
 
-<canvas id="b" class="canvas2" width="1200" height="300"></canvas>
+<canvas id="b" class="canvas2" width="1200" height="600"></canvas>
 
 <script type="text/javascript">
 const video = document.getElementById('myvideo');
@@ -30,7 +30,7 @@ var brush = b_canvas.getContext('2d');
 //Make a rectangle with certain properties
 function makeRect(x,y,wid,ht,fillStyle) {
         this.x = x; this.y = y; this.wid = wid; this.ht = ht;
-        brush.clearRect(x, y, wid, ht);
+        brush.clearRect(0, 0, b_canvas.width, b_canvas.height);
         brush.beginPath();
         brush.rect(x, y, wid, ht); //Draw the rectangle
         brush.strokeStyle = 'blue'; 
@@ -137,15 +137,13 @@ function runDetection() {
         if (predictions.length >= 1) {
               dir.innerText = getDirection(predictions);
               if (dir.innerText === "right") {
-                x = x + 20;
-                console.log("x value rightnow: " + x);
-                console.log("y value rightnow: " + y);
-                makeRect(x, y, x + 100, y - 10, "Blue");  
+                x = x + 50;
+                console.log("x: " + x + " , y is: " + y);
+                makeRect(x, y, 100, y - 10, "Blue");  
               } else if (dir.innerText === "left") {
-                x = x - 20;
-                makeRect(x, y, x + 100, y - 10, "Blue");
-                console.log("x value left now: " + x);
-                console.log("y value rightnow: " + y);
+                x = x - 50;
+                makeRect(x, y, 100, y - 10, "Blue");
+                console.log("x: " + x + " , y is: " + y);
               }
               model.renderPredictions(predictions, canvas, context, video);    
             }
