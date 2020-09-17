@@ -56,10 +56,10 @@ let model = null;
 
 const modelParams = {
   flipHorizontal: true,   // flip e.g for video 
-  imageScaleFactor: 0.5,  // reduce input image size for gains in speed.
-  maxNumBoxes: 2,        // maximum number of boxes to detect
-  iouThreshold: 0.5,      // ioU threshold for non-max suppression
-  scoreThreshold: 0.69,    // confidence threshold for predictions.
+  imageScaleFactor: 1.0,  // reduce input image size for gains in speed.
+  maxNumBoxes: 1,        // maximum number of boxes to detect
+  iouThreshold: 0.7,      // ioU threshold for non-max suppression
+  scoreThreshold: 0.75,    // confidence threshold for predictions.
 }
 
 //Load the main model
@@ -129,7 +129,7 @@ const getDirection = predictions => {
   return direction
 }
 
-x = 50; y = 50;
+x = 50; y = 150;
 makeRect(x, y, 200, 40, "red");    
 //Run the detection in browser
 function runDetection() {
@@ -139,10 +139,18 @@ function runDetection() {
               if (dir.innerText === "right") {
                 x = x + 50;
                 console.log("x: " + x + " , y is: " + y);
-                makeRect(x, y, 100, y - 10, "Blue");  
+                makeRect(x, y, 100, 50, "Blue");  
               } else if (dir.innerText === "left") {
                 x = x - 50;
-                makeRect(x, y, 100, y - 10, "Blue");
+                makeRect(x, y, 100, 50, "Blue");
+                console.log("x: " + x + " , y is: " + y);
+              } else if (dir.innerText === "up") {
+                y = y - 50;
+                makeRect(x, y, 100, 50, "Blue");
+                console.log("x: " + x + " , y is: " + y);
+              } else if (dir.innerText === "down"){
+                y = y + 50;
+                makeRect(x, y, 100, 50, "Blue");
                 console.log("x: " + x + " , y is: " + y);
               }
               model.renderPredictions(predictions, canvas, context, video);    
@@ -155,26 +163,6 @@ function runDetection() {
             }
     })
 }
-
-/*handTrack.load(modelParams).then(model => {
-  model.detect(img).then(predictions => {
-    console.log("Predictions: ", predictions);
-        if (predictions.length > 0.65) {
-            const x = predictions[0].bbox[0];
-            const y = predictions[0].bbox[1];
-            const width = predictions[0].bbox[2];
-            const height = predictions[0].bbox[3];
-        } 
-  });//End of model load
-}); //End of hand track
-
-var constraints = { audio: false, video: { width: 640, height: 480 } };
-navigator.mediaDevices.getUserMedia(constraints)
-.then(function(mediaStream) {
-  var video = document.querySelector('video');
-  video.srcObject = mediaStream;
-  video.onloadedmetadata = function(e) {  video.play();   };
-}).catch(function(err) { console.log(err.name + ": " + err.message); })*/
 
 </script>
 </body>
