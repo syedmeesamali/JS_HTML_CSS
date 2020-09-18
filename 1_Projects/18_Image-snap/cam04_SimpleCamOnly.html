@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
 <style>
 .canvas2 { 
-  position: fixed;
+  position: relative; top: 50px; left: 10px;
 }
 </style>
 <title>Hand Track Simple Most</title>
@@ -17,8 +17,6 @@
 <canvas id="canvas"></canvas>
 <button onclick="toggleVideo()" id="trackbutton" type="button">Toggle Video</button>
 <video width="320" height="240" autoplay="autoplay" id="myvideo"></video>
-<div id="direction">--##--</div>
-
 <canvas id="b" class="canvas2" width="1200" height="600"></canvas>
 
 <script type="text/javascript">
@@ -45,14 +43,11 @@ let trackButton = document.getElementById('trackbutton');
 let [distx, disty] = [null, null]
 let [ox, oy] = [0, 0]
 let gestRecorded = true
-
 let distOld = -1
 let dif = 0
 let gestureCount = 0
-
 let isVideo = false;
 let model = null;
-
 
 const modelParams = {
   flipHorizontal: true,   // flip e.g for video 
@@ -80,7 +75,6 @@ function toggleVideo() {
         console.log("STopped!");
     }
 }
-
 
 //Begin the main video
 function beginVideo() {
@@ -130,32 +124,46 @@ const getDirection = predictions => {
 }
 
 x = 50; y = 150;
-makeRect(x, y, 200, 40, "red");    
-//Run the detection in browser
+makeRect(x, y, 100, 50, "red");
+brush.font = "14pt sans-serif";
+brush.fillText("--Start Condition--", 50, 120);
 function runDetection() {
     model.detect(video).then(predictions => {        
         if (predictions.length >= 1) {
-              dir.innerText = getDirection(predictions);
-              if (dir.innerText === "right") {
-                x = x + 50;
-                console.log("x: " + x + " , y is: " + y);
-                makeRect(x, y, 100, 50, "Blue");  
-              } else if (dir.innerText === "left") {
-                x = x - 50;
-                makeRect(x, y, 100, 50, "Blue");
-                console.log("x: " + x + " , y is: " + y);
-              } else if (dir.innerText === "up") {
-                y = y - 50;
-                makeRect(x, y, 100, 50, "Blue");
-                console.log("x: " + x + " , y is: " + y);
-              } else if (dir.innerText === "down"){
-                y = y + 50;
-                makeRect(x, y, 100, 50, "Blue");
-                console.log("x: " + x + " , y is: " + y);
-              }
-              model.renderPredictions(predictions, canvas, context, video);    
+              //dir.innerText = getDirection(predictions);
+              var dir2 = getDirection(predictions);
+              switch(dir2) {
+                case "right":
+                  {
+                    x = x + 50;
+                    makeRect(x, y, 100, 50, "Blue");
+                    brush.fillText("Right --->", x, y);
+                    model.renderPredictions(predictions, canvas, context, video);
+                  } break;
+                  case "left":
+                  {
+                    x = x - 50;
+                    makeRect(x, y, 100, 50, "Blue");
+                    brush.fillText("<--- Left", x, y);
+                    model.renderPredictions(predictions, canvas, context, video);
+                  } break;
+                  case "up":
+                  {
+                    y = y - 50;
+                    makeRect(x, y, 100, 50, "Blue");
+                    brush.fillText("-- UP --", x, y);
+                    model.renderPredictions(predictions, canvas, context, video);
+                  } break;
+                  case "down":
+                  {
+                    y = y + 50;
+                    makeRect(x, y, 100, 50, "Blue");
+                    brush.fillText("-- DOWN --", x, y);
+                    model.renderPredictions(predictions, canvas, context, video);
+                  } break;
+                  
+                } //End of switch-case
             }
-      
             if (isVideo) {
                 requestAnimationFrame(runDetection)
             } else {
@@ -163,7 +171,6 @@ function runDetection() {
             }
     })
 }
-
 </script>
 </body>
 </html>
