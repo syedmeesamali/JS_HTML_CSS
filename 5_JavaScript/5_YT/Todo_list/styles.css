@@ -8,3 +8,7 @@ form input, form button {
 form button { color: #d88771; background: white; cursor: pointer; 
     transition: all 0.3s ease; }
 form button:hover { color: white; background: #d88771; }
+.todo-container { display: flex; justify-content: center; align-items: center; }
+.todo-list { min-width: 30%; list-style: none; }
+.todo { margin: 0.5rem; background: white; color: black; font-size: 1.5rem; display: flex; 
+        justify-content: space-between;}
