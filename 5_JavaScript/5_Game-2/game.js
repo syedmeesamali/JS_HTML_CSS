@@ -1,10 +1,28 @@
 document.addEventListener('DOMContentLoaded', () => {
         
         const canvas = document.getElementById('canvas');
-        const ctx = canvas.getContext('2d');
-        const player = {x: 50, y: 50}
+        var ctx = canvas.getContext('2d');
+        const player = {x: 50, y: 50, speed: 5};           //Object to save two players
+        const keyz = {ArrowRight: false, ArrowLeft: false, ArrowUp: false, ArrowDown: false};
         draw();
 
+        document.addEventListener('keydown', keyDownEvent);
+        document.addEventListener('keyup', keyUpEvent);
+        
+        function keyDownEvent(event) {
+                keyz[event.code] = true;
+        }
+
+        function keyUpEvent(event) {
+                keyz[event.code] = true;
+        }
+
+        function move(){
+                if(keyz.ArrowRight) {player.x += player.speed; } 
+                        else if (keyz.ArrowLeft) {player.x -= player.speed;} ;
+                if(keyz.ArrowUp) {player.y += player.speed;} 
+                        else if (keyz.ArrowDown) {player.x -= player.speed;} ;
+        }
         function draw() {
                 let output = `Pos x: ${player.x} y: ${player.y}`;
                 ctx.fillStyle = '#ff3525';
@@ -13,24 +31,16 @@ document.addEventListener('DOMContentLoaded', () => {
                 //ctx.textAlign = 'center';
                 ctx.fillStyle = 'red';
                 ctx.fillText(output, 100, 30);
-
-                //Draw a triangle
-                ctx.beginPath();
-                ctx.fillStyle = 'blue';
-                ctx.moveTo(100, 200);
-                ctx.lineTo(150, 250);
-                ctx.lineTo(150, 150);
-                ctx.fill();
-
-                ctx.beginPath();
-                ctx.arc(150, 75, 50, 0, 2 * Math.PI);
-                ctx.strokeStyle = 'yellow';
-                ctx.fill();
-                ctx.stroke();
-                
-        }
-        
-        
-        
-        
+                drawCircle();
+        }        
+    
+    //Draw central circle
+    function drawCircle() {
+        ctx.beginPath();
+        ctx.arc(canvas.width/2, canvas.height/2, 40, 0, Math.PI * 2, false);
+        ctx.strokeStyle = 'yellow'; //Border color
+        ctx.fillStyle = 'yellow'; //Filling color
+        ctx.fill();
+        ctx.stroke();
+    }
 }) //End of main DOM loaded function
