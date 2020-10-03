@@ -2,37 +2,49 @@ document.addEventListener('DOMContentLoaded', () => {
         
         const canvas = document.getElementById('canvas');
         var ctx = canvas.getContext('2d');
-        const player = {x: 50, y: 50, speed: 5};           //Object to save two players
-        const keyz = {ArrowRight: false, ArrowLeft: false, ArrowUp: false, ArrowDown: false};
+        const player1 = {x: 50, y: 50, speed: 5, width: 15, height: 100 };   //Player - 1 as object
+        const player2 = {x: 550, y: 50, speed: 5, width: 15, height: 100};   //Player - 2 as object
+        const keyz1 = {ArrowRight: false, ArrowLeft: false, ArrowUp: false, ArrowDown: false};
+        const keyz2 = {KeyD: false, KeyA: false, KeyW: false, KeyS: false};
         draw();
 
         document.addEventListener('keydown', keyDownEvent);
         document.addEventListener('keyup', keyUpEvent);
         
         function keyDownEvent(event) {
-                keyz[event.code] = true;
+                keyz1[event.code] = true;
+                keyz2[event.code] = true;
                 move();
         }
 
         function keyUpEvent(event) {
-                keyz[event.code] = false;
+                keyz1[event.code] = false;
+                keyz2[event.code] = false;
                 move();
         }
 
         function move(){
-                if(keyz.ArrowRight) {player.x += player.speed; } 
-                        else if (keyz.ArrowLeft) {player.x -= player.speed;};
-                if(keyz.ArrowUp) {player.y += player.speed;} 
-                        else if (keyz.ArrowDown) {player.y -= player.speed;};
-                        draw();
+                if(keyz1.ArrowRight) {player1.x += player1.speed; } 
+                        else if (keyz1.ArrowLeft) {player1.x -= player1.speed;};
+                if(keyz1.ArrowUp) {player1.y -= player1.speed;} 
+                        else if (keyz1.ArrowDown) {player1.y += player1.speed;};
+                if(keyz2.KeyD) {player2.x += player2.speed; } 
+                        else if (keyz2.KeyA) {player2.x -= player2.speed;};
+                if(keyz2.KeyW) {player2.y -= player2.speed;} 
+                        else if (keyz2.KeyS) {player2.y += player2.speed;};
+                draw();
         }
+
         function draw() {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
-                let output = `Pos x: ${player.x} y: ${player.y}`;
-                ctx.fillStyle = '#ff3525';
-                ctx.fillRect(player.x, player.y, 100, 100);
-                ctx.font = "24px serif";
-                ctx.textAlign = 'center';
+                let output = `x1: ${player1.x} y1: ${player1.y} ||| x2: ${player2.x} y2: ${player2.y}`;
+                ctx.fillStyle = 'blue';
+                ctx.fillRect(player1.x, player1.y, player1.width, player1.height);
+                ctx.fillStyle = 'red';
+                ctx.fillRect(player2.x, player2.y, player2.width, player2.height);
+
+                ctx.font = "18px serif";
+                ctx.textAlign = 'left';
                 ctx.fillStyle = 'red';
                 ctx.fillText(output, 100, 30);
                 //drawCircle();
