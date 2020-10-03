@@ -11,27 +11,31 @@ document.addEventListener('DOMContentLoaded', () => {
         
         function keyDownEvent(event) {
                 keyz[event.code] = true;
+                move();
         }
 
         function keyUpEvent(event) {
-                keyz[event.code] = true;
+                keyz[event.code] = false;
+                move();
         }
 
         function move(){
                 if(keyz.ArrowRight) {player.x += player.speed; } 
-                        else if (keyz.ArrowLeft) {player.x -= player.speed;} ;
+                        else if (keyz.ArrowLeft) {player.x -= player.speed;};
                 if(keyz.ArrowUp) {player.y += player.speed;} 
-                        else if (keyz.ArrowDown) {player.x -= player.speed;} ;
+                        else if (keyz.ArrowDown) {player.y -= player.speed;};
+                        draw();
         }
         function draw() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
                 let output = `Pos x: ${player.x} y: ${player.y}`;
                 ctx.fillStyle = '#ff3525';
                 ctx.fillRect(player.x, player.y, 100, 100);
                 ctx.font = "24px serif";
-                //ctx.textAlign = 'center';
+                ctx.textAlign = 'center';
                 ctx.fillStyle = 'red';
                 ctx.fillText(output, 100, 30);
-                drawCircle();
+                //drawCircle();
         }        
     
     //Draw central circle
