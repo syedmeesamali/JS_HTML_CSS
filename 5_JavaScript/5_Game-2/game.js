@@ -2,8 +2,8 @@ document.addEventListener('DOMContentLoaded', () => {
         
         const canvas = document.getElementById('canvas');
         var ctx = canvas.getContext('2d');
-        const player1 = {x: 50, y: 50, speed: 5, width: 15, height: 100 };   //Player - 1 as object
-        const player2 = {x: 550, y: 50, speed: 5, width: 15, height: 100};   //Player - 2 as object
+        const player1 = {x: 50, y: 50, speed: 5, width: 55, height: 100 };   //Player - 1 as object
+        const player2 = {x: 550, y: 50, speed: 5, width: 55, height: 100};   //Player - 2 as object
         const keyz1 = {ArrowRight: false, ArrowLeft: false, ArrowUp: false, ArrowDown: false};
         const keyz2 = {KeyD: false, KeyA: false, KeyW: false, KeyS: false};
         requestAnimationFrame(draw);
@@ -35,9 +35,19 @@ document.addEventListener('DOMContentLoaded', () => {
                // draw();
         }
 
+        //Check if the two rectangles are colliding with each other
+        function checkCollision(obj1, obj2) {
+                let val = obj1.x < obj2.x + obj2.width && obj1.x + obj1.width > obj2.x && 
+                obj1.y < obj2.y + obj2.height && obj1.y + obj1.height > obj2.y;
+                if (val) {
+                        console.log(val);
+                } return val;
+        }
+
         function draw() {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
                 move();
+                checkCollision(player1, player2);
                 let output = `x1: ${player1.x} y1: ${player1.y} ||| x2: ${player2.x} y2: ${player2.y}`;
                 ctx.fillStyle = 'blue';
                 ctx.fillRect(player1.x, player1.y, player1.width, player1.height);
