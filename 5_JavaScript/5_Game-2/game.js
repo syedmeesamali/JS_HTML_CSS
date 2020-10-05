@@ -3,8 +3,8 @@ document.addEventListener('DOMContentLoaded', () => {
         var ctx = canvas.getContext('2d');
         let speed = 5;
 
-        const player1 = {x: 50, y: 50, speed: 5, width: 55, height: 100 };   //Player - 1 as object
-        const player2 = {x: 550, y: 50, speed: 5, width: 55, height: 100};   //Player - 2 as object
+        const player1 = {x: 50, y: 50, speed: 5, width: 55, height: 300 };   //Player - 1 as object
+        const player2 = {x: 550, y: 50, speed: 5, width: 55, height: 300};   //Player - 2 as object
         const ball = {x: canvas.width / 2, y: canvas.height / 2, 
                 width: 10, height: 10, xs: speed, ys: -speed };   //Ball object between two players
 
@@ -45,7 +45,31 @@ document.addEventListener('DOMContentLoaded', () => {
                         ball.ys *= -1;  //Reverse ball direction
                 }
 
-               // draw();
+                //Player one is hit
+                if (checkCollision(ball, player1)) {
+                        ball.xs *= -1;
+                        let temp = ((player1.y + player1.height) / 2);
+                        let temp1 = ((ball.y + ball.height) / 2);
+                        if (temp < temp1) {
+                           ball.ys = speed;
+                        } else {
+                           ball.ys = -speed;
+                        }
+                }
+
+                //Player one is hit
+                if (checkCollision(ball, player2)) {
+                        ball.xs *= -1;
+                        let temp = ((player2.y + player2.height) / 2);
+                        let temp1 = ((ball.y + ball.height) / 2);
+                        if (temp < temp1) {
+                           ball.ys = speed;
+                        } else {
+                           ball.ys = -speed;
+                        }
+                }
+
+
         }
 
         //Check if the two rectangles are colliding with each other
