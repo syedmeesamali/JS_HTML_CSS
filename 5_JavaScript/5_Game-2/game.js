@@ -1,9 +1,13 @@
-document.addEventListener('DOMContentLoaded', () => {
-        
+document.addEventListener('DOMContentLoaded', () => {        
         const canvas = document.getElementById('canvas');
         var ctx = canvas.getContext('2d');
+        let speed = 5;
+
         const player1 = {x: 50, y: 50, speed: 5, width: 55, height: 100 };   //Player - 1 as object
         const player2 = {x: 550, y: 50, speed: 5, width: 55, height: 100};   //Player - 2 as object
+        const ball = {x: canvas.width / 2, y: canvas.height / 2, 
+                width: 10, height: 10, xs: speed, ys: -speed };   //Ball object between two players
+
         const keyz1 = {ArrowRight: false, ArrowLeft: false, ArrowUp: false, ArrowDown: false};
         const keyz2 = {KeyD: false, KeyA: false, KeyW: false, KeyS: false};
         requestAnimationFrame(draw);
@@ -32,6 +36,15 @@ document.addEventListener('DOMContentLoaded', () => {
                         else if (keyz2.KeyA) {player2.x -= player2.speed;};
                 if(keyz2.KeyW) {player2.y -= player2.speed;} 
                         else if (keyz2.KeyS) {player2.y += player2.speed;};
+                
+                ball.x += ball.xs;
+                ball.y += ball.ys;
+                if ((ball.x <  0 ||  ball.x > canvas.width)) {
+                        ball.xs *= -1;  //Reverse ball direction
+                } if ((ball.y <  0 ||  ball.y > canvas.height)) {
+                        ball.ys *= -1;  //Reverse ball direction
+                }
+
                // draw();
         }
 
@@ -53,6 +66,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 ctx.fillRect(player1.x, player1.y, player1.width, player1.height);
                 ctx.fillStyle = 'red';
                 ctx.fillRect(player2.x, player2.y, player2.width, player2.height);
+
+                ctx.fillStyle = 'white';                //Draw the ball
+                ctx.fillRect(ball.x, ball.y, ball.width, ball.height);
+
                 ctx.font = "18px serif";
                 ctx.textAlign = 'left';
                 ctx.fillStyle = 'red';
