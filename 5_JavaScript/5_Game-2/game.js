@@ -3,8 +3,12 @@ document.addEventListener('DOMContentLoaded', () => {
         var ctx = canvas.getContext('2d');
         let speed = 5;
 
-        const player1 = {x: 50, y: 50, speed: 5, width: 55, height: 300 };   //Player - 1 as object
-        const player2 = {x: 550, y: 50, speed: 5, width: 55, height: 300};   //Player - 2 as object
+        //Player-1 and 2 along with ball all initialized as objects with properties updated
+        //and modified as per the program requirements.
+        //Excellent object based OOP design
+
+        const player1 = {x: 50, y: 50, speed: 5, width: 35, height: 100, score: 0 };
+        const player2 = {x: 550, y: 50, speed: 5, width: 35, height: 100, score: 0 };
         const ball = {x: canvas.width / 2, y: canvas.height / 2, 
                 width: 10, height: 10, xs: speed, ys: -speed };   //Ball object between two players
 
@@ -27,6 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 //move();
         }
 
+        //This is the main move function which will move based on the keys pressed
         function move(){
                 if(keyz1.ArrowRight) {player1.x += player1.speed; } 
                         else if (keyz1.ArrowLeft) {player1.x -= player1.speed;};
@@ -39,6 +44,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 
                 ball.x += ball.xs;
                 ball.y += ball.ys;
+
+                if (ball.x < 0) {
+                        player2.score ++;
+                } 
+                if (ball.x > canvas.width) {
+                        player1.score ++;
+                }
+
                 if ((ball.x <  0 ||  ball.x > canvas.width)) {
                         ball.xs *= -1;  //Reverse ball direction
                 } if ((ball.y <  0 ||  ball.y > canvas.height)) {
@@ -57,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
                 }
 
-                //Player one is hit
+                //Player two is hit
                 if (checkCollision(ball, player2)) {
                         ball.xs *= -1;
                         let temp = ((player2.y + player2.height) / 2);
@@ -81,11 +94,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 } return val;
         }
 
+        //Main draw function including the requestAnimationFrame for faster and smoother experience
         function draw() {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
                 move();
                 checkCollision(player1, player2);
-                let output = `x1: ${player1.x} y1: ${player1.y} ||| x2: ${player2.x} y2: ${player2.y}`;
+                let output = `Player-1: ${player1.score}  v/s  Player-2: ${player2.score}`;
                 ctx.fillStyle = 'blue';
                 ctx.fillRect(player1.x, player1.y, player1.width, player1.height);
                 ctx.fillStyle = 'red';
@@ -94,9 +108,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 ctx.fillStyle = 'white';                //Draw the ball
                 ctx.fillRect(ball.x, ball.y, ball.width, ball.height);
 
-                ctx.font = "18px serif";
+                ctx.font = "18px arial";
                 ctx.textAlign = 'left';
-                ctx.fillStyle = 'red';
+                ctx.fillStyle = 'white';
                 ctx.fillText(output, 100, 30);
                 requestAnimationFrame(draw);
         }        
