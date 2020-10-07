@@ -31,6 +31,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 //move();
         }
 
+        function ballReset() {
+                ball.x = canvas.width / 2; 
+                ball.y = canvas.height / 2;
+                ball.width = 10; ball.height = 10; 
+                ball.xs = speed; ball.ys = -speed; 
+        }
+
         //This is the main move function which will move based on the keys pressed
         function move(){
                 if(keyz1.ArrowRight) {player1.x += player1.speed; } 
@@ -47,9 +54,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 if (ball.x < 0) {
                         player2.score ++;
+                        ballReset();    //Reset position to center of game screen
                 } 
                 if (ball.x > canvas.width) {
                         player1.score ++;
+                        ballReset();
                 }
 
                 if ((ball.x <  0 ||  ball.x > canvas.width)) {
