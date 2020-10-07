@@ -40,14 +40,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
         //This is the main move function which will move based on the keys pressed
         function move(){
-                if(keyz1.ArrowRight) {player1.x += player1.speed; } 
-                        else if (keyz1.ArrowLeft) {player1.x -= player1.speed;};
-                if(keyz1.ArrowUp) {player1.y -= player1.speed;} 
-                        else if (keyz1.ArrowDown) {player1.y += player1.speed;};
-                if(keyz2.KeyD) {player2.x += player2.speed; } 
-                        else if (keyz2.KeyA) {player2.x -= player2.speed;};
-                if(keyz2.KeyW) {player2.y -= player2.speed;} 
-                        else if (keyz2.KeyS) {player2.y += player2.speed;};
+                if(keyz1.ArrowRight && player1.x < ((canvas.width/2) - (player1.width/2)))
+                        {player1.x += player1.speed; }         
+                else if (keyz1.ArrowLeft && player1.x > 0) 
+                        {player1.x -= player1.speed;};
+                if(keyz1.ArrowUp && player1.y > 0) 
+                        {player1.y -= player1.speed;}
+                else if (keyz1.ArrowDown && player1.y < (canvas.height - player1.height))
+                        {player1.y += player1.speed;};
+                if(keyz2.KeyD && player2.x < ((canvas.width) - player2.width))
+                        {player2.x += player2.speed; } 
+                else if (keyz2.KeyA && player2.x > ((canvas.width/2) - (player2.width/2)))
+                        {player2.x -= player2.speed;};
+                if(keyz2.KeyW && player2.y > 0)
+                        {player2.y -= player2.speed;} 
+                else if (keyz2.KeyS && player2.y < (canvas.height - player2.height))
+                        {player2.y += player2.speed;};
                 
                 ball.x += ball.xs;
                 ball.y += ball.ys;
