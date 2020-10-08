@@ -8,7 +8,11 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.addEventListener('click', () => {
                 player1.score = 0;
                 player2.score = 0;
-                ball.ballReset();
+                ballReset();
+                player1.x = 50;
+                player2.x = canvas.width - (50 + player2.width);
+                player1.y = (canvas.height / 2) - (player1.height / 2);
+                player2.y = (canvas.height / 2) - (player2.height / 2);
         })
 
         document.body.prepend(div);
