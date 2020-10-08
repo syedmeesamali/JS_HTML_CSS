@@ -1,6 +1,19 @@
 document.addEventListener('DOMContentLoaded', () => {        
         const canvas = document.getElementById('canvas');
         var ctx = canvas.getContext('2d');
+        const btn = document.createElement('button');
+        const div = document.createElement('div');
+
+        btn.textContent = "Game Reset";
+        btn.addEventListener('click', () => {
+                player1.score = 0;
+                player2.score = 0;
+                ball.ballReset();
+        })
+
+        document.body.prepend(div);
+        div.append(btn);
+
         let speed = 5;
 
         //Player-1 and 2 along with ball all initialized as objects with properties updated
