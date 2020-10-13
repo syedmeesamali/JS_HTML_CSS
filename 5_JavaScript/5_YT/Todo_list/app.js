@@ -39,5 +39,18 @@ function addToDo(event) {
 
 //Function to delete or to check out an item
 function deleteCheck(e) {
-    console.log(e.target);
+    const item = e.target;
+    
+
+    //Delete the todo item
+    if (item.classList[0] === 'trash-btn') {
+        const todo = item.parentElement;
+        todo.remove();
+    }
+
+    //Delete the todo item
+    if (item.classList[0] === 'complete-btn') {
+        const todo = item.parentElement;
+        todo.classList.toggle('completed');
+    }
 }
