@@ -11,7 +11,6 @@ todoList.addEventListener('click', deleteCheck);
 //Functions
 function addToDo(event) { 
     event.preventDefault();         //Prevent form from submission
-    console.log("Hello there");
     const todoDiv = document.createElement('div');
     todoDiv.classList.add('todo');
     const newToDo = document.createElement('li');
