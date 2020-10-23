@@ -21,7 +21,9 @@ form button:hover { color: white; background: #d88771; }
 .completed { text-decoration: line-through; opacity: 0.5; }
 .fall { transform: translateY(8rem) rotateZ(20deg); opacity: 0; }
 select { -webkit-appearance: none; -moz-appearance: none; appearance: none; outline: none;
-    border: none; }
+    border: none; padding: 1rem; }
 .select { margin: 1rem; position: relative; overflow: hidden; }
 select { color: #ff6f47; width: 10rem; cursor: pointer; }
-.select::after { content: "\25BC"; position: absolute; background: #ff6f47; }
+.select::after { content: "\25BC"; position: absolute; background: #ff6f47; top: 0; right: 0; padding: 1rem;
+    pointer-events: none; transition: all 0.3s ease; }
+.select:hover::after { background: white; color: #ff6f47; }
