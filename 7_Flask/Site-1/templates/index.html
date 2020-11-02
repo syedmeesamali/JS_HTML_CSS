@@ -1,13 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles.css">
-    <title>Hosted From Flask</title>
-</head>
-<body>
-    <header>Flask Based</header>
-    
-</body>
-</html>
+{% extends "base.html" %}
+{% block title %} Index Page {% endblock %}
+{% block head %}
+{{ super() }}
+<style>
+    p {
+        color: blue; font-size: 2rem;
+    }
+</style>
+{% endblock %}
+
+<h1>Hi All ....... </h1> 
+<p>
+    <h2>My favorite fruits are: </h2> 
+    <ul>
+        {% for fruit in fruits %}
+        <li> {{ fruit }} </li>
+        {% endfor %}
+    </ul>
+</p>
