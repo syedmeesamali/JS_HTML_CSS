@@ -8,6 +8,10 @@
 </head>
 <body>
     <header>Flask Based</header>
-    
+    {% if name %}
+    <h1>Hello how are you doing {{ name }} ! </h1> 
+    {% else %}
+    <h1> Hi HOw are you ?? </h1>
+    {% endif %}
 </body>
 </html>
