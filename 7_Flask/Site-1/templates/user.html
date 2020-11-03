@@ -1,17 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./styles.css">
-    <title>Hosted From Flask</title>
-</head>
-<body>
-    <header>Flask Based</header>
-    {% if name %}
-    <h1>Hello how are you doing {{ name }} ! </h1> 
-    {% else %}
-    <h1> Hi HOw are you ?? </h1>
-    {% endif %}
-</body>
-</html>
+{% extends "base.html" %}
+{% block title %} User Template {% endblock %}
+
+{% block head %}
+{{ super() }}
+<style>
+    h1 {
+        font-size: 1.5rem; font-family: sans-serif; color: rebeccapurple;
+    }
+</style>
+{% endblock %}
+
+{% if name %}
+
+<h1>Hello how are you doing {{ name }} ! </h1> 
+
+{% else %}
+
+<h1> Hi HOw are you ?? </h1>
+
+{% endif %}
