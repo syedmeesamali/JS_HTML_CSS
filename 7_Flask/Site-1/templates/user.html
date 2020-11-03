@@ -4,11 +4,13 @@
 {% block head %}
 {{ super() }}
 <style>
-    h1 {
+    p, h1 {
         font-size: 1.5rem; font-family: sans-serif; color: rebeccapurple;
     }
 </style>
 {% endblock %}
+
+{% block body %}
 
 {% if name %}
 
@@ -19,3 +21,5 @@
 <h1> Hi HOw are you ?? </h1>
 
 {% endif %}
+
+{% endblock %}
