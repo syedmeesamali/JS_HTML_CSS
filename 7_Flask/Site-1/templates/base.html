@@ -1,19 +1,14 @@
-<html>
-<head> 
-    {% block head %}
-    <title> 
-        {% block title %} {% endblock %} Base Template 
-    </title>
-</head>
-    {% endblock %}
-<body>
-    {% block quote %}
-    <p>God is always watching over and helpful to you ..... </p> 
-    {% endblock %}
-    <!-- Below should be the main block which will be used as a placeholder -->
-    
-    {% block body %}
-    
-    {% endblock %}
-</body>
-</html>
+{% extends "bootstrap/base.html" %}
+
+{% block title %} My Base Template  {% endblock %} 
+
+{% block navbar %}
+<div class="navbar navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle Navigation</span>
+            </button>
+        </div>
+    </div>
+</div>
