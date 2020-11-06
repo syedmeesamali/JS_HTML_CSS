@@ -1,4 +1,4 @@
-from flask import request, Flask, render_template, make_response
+from flask import Flask, render_template
 from flask_bootstrap import Bootstrap
 app = Flask(__name__)       #Define the flask app thing
 bootstrap = Bootstrap(app)
