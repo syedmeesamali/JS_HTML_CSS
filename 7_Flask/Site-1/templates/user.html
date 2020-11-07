@@ -1,25 +1,9 @@
 {% extends "base.html" %}
 {% block title %} User Template {% endblock %}
 
-{% block head %}
-{{ super() }}
-<style>
-    p, h1 {
-        font-size: 1.5rem; font-family: sans-serif; color: rebeccapurple;
-    }
-</style>
-{% endblock %}
 
-{% block body %}
-
-{% if name %}
-
-<h1>Hello how are you doing {{ name }} ! </h1> 
-
-{% else %}
-
-<h1> Hi HOw are you ?? </h1>
-
-{% endif %}
-
+{% block page_content %}
+<div class="page-header">
+    <h1> Hello {{ name }}! </h1>
+</div>
 {% endblock %}

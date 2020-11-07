@@ -1,20 +1,8 @@
 {% extends "base.html" %}
 {% block title %} Index Page {% endblock %}
-{% block head %}
-{{ super() }}
-<style>
-    p {
-        color: blue; font-size: 2rem;
-    }
-</style>
-{% endblock %}
 
-<h1>Hi All ....... </h1> 
-<p>
-    <h2>My favorite fruits are: </h2> 
-    <ul>
-        {% for fruit in fruits %}
-        <li> {{ fruit }} </li>
-        {% endfor %}
-    </ul>
-</p>
+{% block page_content %}
+<div class="page_header">
+    <h1>Hello World !</h1>
+</div>
+{% endblock %}
