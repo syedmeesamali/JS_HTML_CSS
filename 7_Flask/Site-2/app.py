@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, request, url_for, redirect
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
@@ -28,9 +28,20 @@ def page_not_found(e):
 def page_not_found(e):
     return render_template("404.html"), 500
 
-@app.route('/')
+@app.route('/', methods = ['POST', 'GET'])
 def index():
-    return render_template('index.html')
+    if request.method == 'POST':
+        task_content = request.form['content']
+        new_task = ToDo(content = task_content)
+        try:
+            db.session.add(new_task)
+            db.session.commit()
+            return redirect('/')
+        except:
+            return "There was some error"
+    else:
+        tasks = ToDo.query.order_by(ToDo.date_created).all()
+        return render_template('index.html', tasks = tasks)
 
 @app.route('/about')
 def about():
