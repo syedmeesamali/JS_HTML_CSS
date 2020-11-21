@@ -43,6 +43,18 @@ def index():
         tasks = ToDo.query.order_by(ToDo.date_created).all()
         return render_template('index.html', tasks = tasks)
 
+@app.route('/delete/<int:id>')
+def delete(id):
+    task_to_delete = ToDo.query.get_or_404(id)
+
+    try:
+        db.session.delete(task_to_delete)
+        db.session.commit()
+        return redirect('/')
+    except:
+        return "There was some problem deleting that task!"
+
+
 @app.route('/about')
 def about():
     return '<h2>This is a URL shortener</h2>'
