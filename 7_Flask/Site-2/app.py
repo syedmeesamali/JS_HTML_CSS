@@ -55,6 +55,20 @@ def delete(id):
         return "There was some problem deleting that task!"
 
 
+@app.route('/update/<int:id>', methods = ['POST', 'GET'])
+def update(id):
+    task_to_update = ToDo.query.get_or_404(id)
+    
+    if request.method == 'POST':
+        task.content = request.form['content']
+        try:
+            db.session.commit()
+            return redirect('/')
+        except:
+            return "There was some problem deleting that task!"
+    else:
+        return render_template('update.html', task = task_to_update)
+
 @app.route('/about')
 def about():
     return '<h2>This is a URL shortener</h2>'
