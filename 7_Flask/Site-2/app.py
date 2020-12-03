@@ -10,6 +10,7 @@ bootstrap = Bootstrap(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
 db = SQLAlchemy(app)
 
+#Main class for addition, update and deletion of tasks
 class ToDo(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     content = db.Column(db.String(200), nullable = False)
@@ -69,9 +70,6 @@ def update(id):
     else:
         return render_template('update.html', task = task_to_update)
 
-@app.route('/about')
-def about():
-    return '<h2>This is a URL shortener</h2>'
 
 if __name__ == '__main__':
     app.run(debug=True)
