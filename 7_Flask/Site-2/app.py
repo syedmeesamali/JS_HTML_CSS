@@ -49,6 +49,14 @@ def index():
         tasks = ToDo.query.order_by(ToDo.date_created).all()
         return render_template('index.html', tasks = tasks)
 
+@app.route('/Completed', methods = ['POST', 'GET'])
+def completed():
+    if request.method == 'POST':
+        tasks = ToDo.query.order_by(ToDo.date_created).all()
+    else:
+        tasks = ToDo.query.order_by(ToDo.date_created).all()
+        return render_template('completed.html', tasks = tasks)
+
 @app.route('/delete/<int:id>')
 def delete(id):
     task_to_delete = ToDo.query.get_or_404(id)
