@@ -13,8 +13,8 @@ db = SQLAlchemy(app)
 #Main class for addition, update and deletion of tasks
 class User(db.Model):
     id = db.Column(db.Integer, primary_key = True)
-    username = db.Column(db.String(20), unique = True, nullable = False) 
-    email = db.Column(db.String(120), unique = True, nullable = False) 
+    username = db.Column(db.String(20), unique = True, nullable = False)
+    email = db.Column(db.String(120), unique = True, nullable = False)
 
 class ToDo(db.Model):
     id = db.Column(db.Integer, primary_key = True)
@@ -64,9 +64,8 @@ def delete(id):
 @app.route('/update/<int:id>', methods = ['POST', 'GET'])
 def update(id):
     task_to_update = ToDo.query.get_or_404(id)
-    
     if request.method == 'POST':
-        task.content = request.form['content']
+        task_to_update.content = request.form['content']
         try:
             db.session.commit()
             return redirect('/')
