@@ -3,13 +3,13 @@
 
 {% block page_content %}
 <div class="content">
-    <h1>Tasks Completed</h1>
+    <h1>Tasks Ongoing</h1>
     {% if tasks|length < 1 %}
-    <h4>There are no tasks. Create one at home page!</h4>
+    <h4>There are no tasks. Check in Homepage to create new.</h4>
     {% else %}
     <table class="table">
         <tr>
-            <th>Task Done</th>
+            <th>Ongoing Task</th>
             <th>Date Added</th>
         </tr>
         {% for task in tasks %}

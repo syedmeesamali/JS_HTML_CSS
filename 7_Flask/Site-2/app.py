@@ -15,6 +15,7 @@ class ToDo(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     content = db.Column(db.String(200), nullable = False)
     completed = db.Column(db.Boolean, default = False, nullable = False)
+    ongoing = db.Column(db.Boolean, default = False, nullable = False)
     date_created = db.Column(db.DateTime, default = datetime.utcnow)
 
     def __repr__(self):
@@ -53,6 +54,15 @@ def completed():
         tasks = ToDo.query.filter_by(completed = True).all()
         return render_template('completed.html', tasks = tasks)
 
+#Ongoing tasks to be shown - Display method
+@app.route('/Ongoing', methods = ['POST', 'GET'])
+def Ongoing():
+    if request.method == 'POST':
+        tasks = ToDo.query.filter_by(ongoing = True).all()
+    else:
+        tasks = ToDo.query.filter_by(ongoing = True).all()
+        return render_template('ongoing.html', tasks = tasks)
+
 #DELETE a task
 @app.route('/delete/<int:id>')
 def delete(id):
@@ -83,6 +93,17 @@ def update(id):
 def done(id):
     task_done = ToDo.query.get_or_404(id)           #Retrieve the task to be updated
     task_done.completed = True                      #Set the status to completed
+    try:
+        db.session.commit()
+        return redirect('/')
+    except:
+        return render_template("404.html")
+
+#Mark a task as ONGOING still ...
+@app.route('/current/<int:id>')
+def current(id):
+    task_done = ToDo.query.get_or_404(id)           #Retrieve the task to be updated
+    task_done.ongoing = True                      #Set the status to completed
     try:
         db.session.commit()
         return redirect('/')
