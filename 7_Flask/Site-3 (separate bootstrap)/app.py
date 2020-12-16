@@ -42,7 +42,7 @@ def index():
         except:
             return "There was some error"
     else:
-        tasks = ToDo.query.filter_by(ongoing = False).all()
+        tasks = ToDo.query.filter_by(ongoing = False, completed = False).all()
         return render_template('index.html', tasks = tasks)
 
 #Completed tasks to be shown - Display method
