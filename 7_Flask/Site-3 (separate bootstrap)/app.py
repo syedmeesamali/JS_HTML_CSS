@@ -63,7 +63,7 @@ def Ongoing():
         tasks = ToDo.query.filter_by(ongoing = True).all()
         return render_template('ongoing.html', tasks = tasks)
 
-#DELETE a task
+#DELETE a task from main page
 @app.route('/delete/<int:id>')
 def delete(id):
     task_to_delete = ToDo.query.get_or_404(id)
@@ -71,6 +71,28 @@ def delete(id):
         db.session.delete(task_to_delete)
         db.session.commit()
         return redirect('/')
+    except:
+        return "There was some problem deleting that task!"
+
+#DELETE a task from completed page
+@app.route('/delete_complete/<int:id>')
+def delete_complete(id):
+    task_to_delete = ToDo.query.get_or_404(id)
+    try:
+        db.session.delete(task_to_delete)
+        db.session.commit()
+        return redirect('/Completed')
+    except:
+        return "There was some problem deleting that task!"
+
+#DELETE a task from ongoing page
+@app.route('/delete_ongoing/<int:id>')
+def delete_ongoing(id):
+    task_to_delete = ToDo.query.get_or_404(id)
+    try:
+        db.session.delete(task_to_delete)
+        db.session.commit()
+        return redirect('/Ongoing')
     except:
         return "There was some problem deleting that task!"
 
@@ -88,14 +110,27 @@ def update(id):
     else:
         return render_template('update.html', task = task_to_update)
 
-#Mark a task as DONE
+#Mark a task as DONE from Main Page
 @app.route('/done/<int:id>')
 def done(id):
     task_done = ToDo.query.get_or_404(id)           #Retrieve the task to be updated
     task_done.completed = True                      #Set the status to completed
+    task_done.ongoing = False                       #Remove ongoing status
     try:
         db.session.commit()
         return redirect('/')
+    except:
+        return render_template("404.html")
+
+#Mark a task as DONE from Ongoing Tasks
+@app.route('/done_ongoing/<int:id>')
+def done_ongoing(id):
+    task_done = ToDo.query.get_or_404(id)           #Retrieve the task to be updated
+    task_done.ongoing = False                       #Remove ongoing status
+    task_done.completed = True                      #Set the status to completed
+    try:
+        db.session.commit()
+        return redirect('/Ongoing')
     except:
         return render_template("404.html")
 
@@ -103,10 +138,23 @@ def done(id):
 @app.route('/current/<int:id>')
 def current(id):
     task_done = ToDo.query.get_or_404(id)           #Retrieve the task to be updated
+    task_done.completed = False
     task_done.ongoing = True                      #Set the status to completed
     try:
         db.session.commit()
         return redirect('/')
+    except:
+        return render_template("404.html")
+
+#Mark a task as ONGOING from Completed List
+@app.route('/current_ongoing/<int:id>')
+def current_ongoing(id):
+    task_done = ToDo.query.get_or_404(id)           #Retrieve the task to be updated
+    task_done.ongoing = True                      #Set the status to completed
+    task_done.completed = False
+    try:
+        db.session.commit()
+        return redirect('/Completed')
     except:
         return render_template("404.html")
 

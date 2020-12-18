@@ -18,9 +18,9 @@
                 <td>{{ task.content }}</td>
                 <td>{{ task.date_created.date() }}</td>
                 <td>
-                    <a class="btn btn-danger" href="/delete/{{ task.id }}" role="button">Delete</a>
+                    <a class="btn btn-danger" href="/delete_ongoing/{{ task.id }}" role="button">Delete</a>
                     <a class="btn btn-info" href="/update/{{ task.id }}">Update</a>
-                    <a class="btn btn-success" href="/done/{{ task.id }}">Done</a>
+                    <a class="btn btn-success" href="/done_ongoing/{{ task.id }}">Completed</a>
                 </td>
             </tr>
         {% endfor %}
