@@ -7,11 +7,11 @@
     {% if tasks|length < 1 %}
     <h4>There are no tasks. Create one at home page!</h4>
     {% else %}
-    <table class="table">
+    <table class="table table-bordered">
         <tr>
-            <th>Task Done</th>
-            <th>Date Added</th>
-            <th>Action Update</th>
+            <th style="width: 60%">Task Done</th>
+            <th style="width: 15%">Date Added</th>
+            <th style="width: 25%">Action Update</th>
         </tr>
         {% for task in tasks %}
             <tr>

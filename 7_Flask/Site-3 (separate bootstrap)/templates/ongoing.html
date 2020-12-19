@@ -7,11 +7,11 @@
     {% if tasks|length < 1 %}
     <h4>There are no tasks. Check in Homepage to create new.</h4>
     {% else %}
-    <table class="table">
+    <table class="table table-bordered">
         <tr>
-            <th>Ongoing Task</th>
-            <th>Date Added</th>
-            <th>Action Update</th>
+            <th style="width: 50%">Ongoing Task</th>
+            <th style="width: 15%">Date Added</th>
+            <th style="width: 30%">Action Update</th>
         </tr>
         {% for task in tasks %}
             <tr>
