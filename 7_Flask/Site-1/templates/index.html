@@ -1,18 +1,22 @@
-{% extends "base.html" %}
-{% block title %} Index Page {% endblock %}
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
+<head>
+  <title> Home Page </title>
+  
+</head>
+<body>
+<div class="header"><h1>Simple API Page</h1></div>
 
-{% block page_content %}
-<h1> URL Shortener </h1>
-
-<form action="your-url">
-    <label for="url">Website URL</label>
-    <input type="url" name="url" value="" required>
-    <br>
-    <label for="cod">Short name</label>
-    <input type="text" name="code" value="" required>
-    <br>
-    <input type="submit" value="Shorten">
-</form>
-
-{% endblock %}
+<div class="footer">
+<p>Date and Time: <span id="datetime"></span></p>
+</div>
+<link href="http://api.auroras.live/v1/?type=embed&image=weather&lat=40.7813913&long=-73.976902">
+<script>
+var dt = new Date();
+document.getElementById("datetime").innerHTML = dt.toLocaleString();
+</script>
+</body>
+</html>
