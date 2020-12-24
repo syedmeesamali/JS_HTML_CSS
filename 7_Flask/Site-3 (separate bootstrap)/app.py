@@ -158,5 +158,18 @@ def current_ongoing(id):
     except:
         return render_template("404.html")
 
+#Imams
+@app.route('/imam')
+def imam():
+    return render_template('imam.html')
+
+@app.route('/Photos')
+def Photos():
+    return render_template('Photos.html')
+
+@app.route('/Sounds')
+def Sounds():
+    return render_template('Sounds.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
