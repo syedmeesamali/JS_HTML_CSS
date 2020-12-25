@@ -171,5 +171,10 @@ def Products():
 def Prices():
     return render_template('Prices.html')
 
+@app.route('/Login', methods = ['POST', 'GET'])
+def Login():
+    form = LoginForm(request.form)
+    return render_template('login.html', form = form)
+
 if __name__ == '__main__':
     app.run(debug=True)
