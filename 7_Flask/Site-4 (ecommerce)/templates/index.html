@@ -3,38 +3,19 @@
 
 {% block page_content %}
 <div class="content">
-    <h1>Task Master</h1>
-    {% if tasks|length < 1 %}
-    <h4>There are no tasks. Create one below!</h4>
-    {% else %}
+    <h1>My Online Product Store</h1>
+    
     <table class="table table-bordered">
         <thead class="table-info"></thead>
         <tbody>
         <tr>
-            <th style="width: 50%">Task</th>
-            <th style="width: 15%">Added</th>
-            <th style="width: 35%">Edit Action</th>
+            <th style="width: 30%">Product Name</th>
+            <th style="width: 30%">Description</th>
+            <th style="width: 25%">Price (General)</th>
+            <th style="width: 10%">Qty Available</th>
         </tr>
-        {% for task in tasks %}
-            <tr>
-                <td>{{ task.content }}</td>
-                <td>{{ task.date_created.date() }}</td>
-                <td>
-                    <a class="btn btn-danger" href="/delete/{{ task.id }}" role="button">Delete</a>
-                    <a class="btn btn-info" href="/update/{{ task.id }}">Update</a>
-                    <a class="btn btn-success" href="/done/{{ task.id }}">Done</a>
-                    <a class="btn btn-primary" href="/current/{{ task.id }}">Ongoing</a>
-                </td>
-            </tr>
-        {% endfor %}
+            <tr><td>Shirts (M)</td><td>Classic T-shirts</td><td>500 PHP</td><td>20 No's</td></tr>
     </tbody>
     </table>
-    {% endif %}
-    <form action="/" method="POST">
-        <input type="text" name="content" id="content">
-        <input type="submit" value="Add Task">
-    </form>
 </div>
-
-
 {% endblock %}
