@@ -29,9 +29,9 @@ def index():
 def Products():
     return render_template('Products.html')
 
-@app.route('/Prices')
-def Prices():
-    return render_template('Prices.html')
+@app.route('/Gallery')
+def Gallery():
+    return render_template('Gallery.html')
 
 @app.route('/Register', methods = ['POST', 'GET'])
 def Register():
