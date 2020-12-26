@@ -4,7 +4,7 @@
 {% block page_content %}
 
 <div class="container">
-    <div class="text-center h1 text-white bg-primary p-2">Register</div>
+    <div class="text-center h1 text-white bg-primary p-2">Registration Form</div>
     <form method="post" enctype="multipart/form-data">
         <div>
             {{ form.hidden_tag() }}
@@ -14,14 +14,28 @@
                     {{ form.username.label(class="form-control-label") }}
                     {{ form.username(class="form-control form-control-lg") }}
                 </div>
-
+                <div class="form-group">
+                    {{ form.email.label(class="form-control-label") }}
+                    {{ form.email(class="form-control form-control-lg") }}
+                </div>
+                <div class="form-group">
+                    {{ form.password.label(class="form-control-label") }}
+                    {{ form.password(class="form-control form-control-lg") }}
+                </div>
+                <div class="form-group">
+                    {{ form.confirm.label(class="form-control-label") }}
+                    {{ form.confirm(class="form-control form-control-lg") }}
+                </div>
+                <div class="form-group">
+                    {{ form.submit(class="btn btn-outline-info") }}
+                </div>
             </fieldset>
-            <input type="file" name="photo">
         </div>
-        <p>
-            <input type="submit" value="Register" class="btn btn-info mt-2">
-        </p>
     </form>
+</div>
+
+<div class="border-top pt-3">
+    
 </div>
 
 {% endblock %}

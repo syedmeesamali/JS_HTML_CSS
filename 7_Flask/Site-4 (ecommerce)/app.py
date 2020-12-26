@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, url_for, redirect
+from flask import Flask, render_template, request, url_for, redirect, flash, redirect
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from forms import RegistrationForm, LoginForm
@@ -33,9 +33,12 @@ def Products():
 def Prices():
     return render_template('Prices.html')
 
-@app.route('/Register')
+@app.route('/Register', methods = ['POST', 'GET'])
 def Register():
     form = RegistrationForm()
+    if form.validate_on_submit():
+        flash(f'Account created to {form.username.date}!', 'success')
+        return redirect(url_for('index'))
     return render_template('register.html', title='Register', form = form)
 
 @app.route('/Login', methods = ['POST', 'GET'])

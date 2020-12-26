@@ -4,19 +4,30 @@
 {% block page_content %}
 
 <div class="container">
-    {% from "_formhelpers.html" import render_field %}
-    <div class="text-center h1 text-white bg-primary p-2">Login</div>
+    <div class="text-center h1 text-white bg-primary p-2">Login Form</div>
     <form method="post" enctype="multipart/form-data">
         <div>
-            {{ render_field(form.email, class="form-control") }}
-            {{ render_field(form.password, class="form-control") }}
-            {{ render_field(form.confirm, class="form-control") }}
+            {{ form.hidden_tag() }}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Login Below</legend>
+                <div class="form-group">
+                    {{ form.email.label(class="form-control-label") }}
+                    {{ form.email(class="form-control form-control-lg") }}
+                </div>
+                <div class="form-group">
+                    {{ form.password.label(class="form-control-label") }}
+                    {{ form.password(class="form-control form-control-lg") }}
+                </div>
+                <div class="form-group">
+                    {{ form.submit(class="btn btn-outline-info") }}
+                </div>
+            </fieldset>
         </div>
-        <p>
-            <input type="submit" value="Login" class="btn btn-info mt-2">
-        </p>
     </form>
 </div>
 
+<div class="border-top pt-3">
+    
+</div>
 
 {% endblock %}
