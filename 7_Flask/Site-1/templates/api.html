@@ -8,56 +8,37 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous"> 
 </head>
 <body>
-  <script type="text/javascript" src="https://files.coinmarketcap.com/static/widget/currency.js"></script>
-  <div class="coinmarketcap-currency-widget" data-currencyid="6892" data-base="USD"></div>
-  <div class="header"><h1>Random Movies</h1></div>
+  
+<div class="header"><h1>My API Connection</h1></div>
 <div id="root">
     <div class="container">
     </div>
 </div>
 
-<div class="footer"><p>Date and Time: <span id="datetime"></span></p></div>
 <script>
-var dt = new Date();
-document.getElementById("datetime").innerHTML = dt.toLocaleString();
-
-//Start of the main api related code is all below
 const app = document.getElementById('root')
-
 const container = document.createElement('div')
 container.setAttribute('class', 'container')
 app.appendChild(container)
-
 var request = new XMLHttpRequest()
-request.open('GET', 'https://ghibliapi.herokuapp.com/films', true)
+request.open('GET', 'https://api.sunrise-sunset.org/json?lat=36.7201600&lng=-4.4203400', true)
 request.onload = function () {
-  // Begin accessing JSON data here
   var data = JSON.parse(this.response)
   if (request.status >= 200 && request.status < 400) {
-    data.forEach((movie) => {
       const card = document.createElement('div')
-      card.setAttribute('class', 'card')
-
       const h1 = document.createElement('h1')
-      h1.textContent = movie.title
-
       const p = document.createElement('p')
-      movie.description = movie.description.substring(0, 300)
-      p.textContent = `${movie.description}...`
-
+      p.textContent = `${data.results.day_length}`
       container.appendChild(card)
       card.appendChild(h1)
       card.appendChild(p)
-    })
   } else {
     const errorMessage = document.createElement('marquee')
     errorMessage.textContent = `Gah, it's not working!`
     app.appendChild(errorMessage)
   }
 }
-
 request.send()
-
 </script>
 </body>
 </html>
