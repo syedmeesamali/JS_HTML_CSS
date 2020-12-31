@@ -37,7 +37,7 @@ def Gallery():
 def Register():
     form = RegistrationForm()
     if form.validate_on_submit():
-        flash(f'Account created to {form.username.date}!', 'success')
+        flash(f'Account created for {form.username.data}!', 'success')
         return redirect(url_for('index'))
     return render_template('register.html', title='Register', form = form)
 
