@@ -1,6 +1,5 @@
 {% extends "base.html" %}
 {% block title %} Index Page {% endblock %}
-
 {% block page_content %}
 
 <div class="container">
@@ -35,7 +34,9 @@
 </div>
 
 <div class="border-top pt-3">
-    
+    <small class="text-muted">
+        Already have an account? <a class="ml-2" href="{{ url_for('Login') }}">Sign In</a>
+    </small>
 </div>
 
 {% endblock %}
