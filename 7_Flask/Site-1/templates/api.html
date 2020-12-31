@@ -10,12 +10,18 @@
 <body>
   
 <div class="header"><h1>My API Connection</h1></div>
+<input class="btn btn-primary" type="button" value="Input" id="get_api">
 <div id="root">
     <div class="container">
     </div>
 </div>
 
 <script>
+const btn = document.getElementById('get_api')
+btn.addEventListener('click', getAPI())
+
+function getAPI()
+{
 const app = document.getElementById('root')
 const container = document.createElement('div')
 container.setAttribute('class', 'container')
@@ -39,6 +45,9 @@ request.onload = function () {
   }
 }
 request.send()
+}
+
 </script>
+<img src="robot.gif">
 </body>
 </html>
