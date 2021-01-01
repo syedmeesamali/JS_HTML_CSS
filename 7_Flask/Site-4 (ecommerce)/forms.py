@@ -3,21 +3,15 @@ from wtforms import BooleanField, StringField, PasswordField, validators, Submit
 from wtforms.validators import DataRequired, Length, Email
 
 class RegistrationForm(FlaskForm):
-    name = StringField('Name', [validators.length(min = 4, max = 25)])
-    username = StringField('Username', [validators.length(min = 4, max = 25)])
-    email = StringField('Email Address', [validators.length(min = 6, max = 35), validators.Email()])
-    password = PasswordField('New Password', [
-        validators.DataRequired(), 
-        validators.EqualTo('confirm', message = 'Passwords must match')
-    ])
-    confirm = PasswordField('Repeat Password')
+    username = StringField('Username', validators = [DataRequired(), Length(min = 4, max = 20)])
+    email = StringField('Email', validators = [DataRequired(), Email()])
+    password = PasswordField('Password', validators = [DataRequired()])
+    confirm = PasswordField('Confirm Password', validators = [DataRequired()])
     submit =  SubmitField('Sign Up')
 
 class LoginForm(FlaskForm):
-    email = StringField('Email Address', [validators.length(min = 6, max = 35), validators.Email()])
-    password = PasswordField('New Password', [
-        validators.DataRequired(), 
-        validators.EqualTo('confirm', message = 'Passwords must match')
-    ])
+    email = StringField('Email', validators = [DataRequired(), Email()])
+    password = PasswordField('Password', validators = [DataRequired()])
+    remember = BooleanField('Remember Me')
     submit =  SubmitField('Login')
 
