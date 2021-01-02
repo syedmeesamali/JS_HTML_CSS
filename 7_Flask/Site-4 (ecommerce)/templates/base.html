@@ -12,16 +12,16 @@
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/">My Store</a>
+      <a class="navbar-brand" href="{{ url_for('index') }}">My Store</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#myNav">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="myNav">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item"><a class="nav-link" href="/Products">Products</a></li>
-              <li class="nav-item"><a class="nav-link" href="/Gallery">Gallery</a></li>
-              <li class="nav-item"><a class="nav-link" href="/Register">Register</a></li>
-              <li class="nav-item"><a class="nav-link" href="/Login">Login</a></li>
+              <li class="nav-item"><a class="nav-link" href="{{ url_for('Products') }}">Products</a></li>
+              <li class="nav-item"><a class="nav-link" href="{{ url_for('Gallery') }}">Gallery</a></li>
+              <li class="nav-item"><a class="nav-link" href="{{ url_for('Register') }}">Register</a></li>
+              <li class="nav-item"><a class="nav-link" href="{{ url_for('Login') }}">Login</a></li>
         </ul>
       </div>
     </div>
