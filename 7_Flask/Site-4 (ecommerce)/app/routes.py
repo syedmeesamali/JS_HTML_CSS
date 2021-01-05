@@ -1,4 +1,7 @@
-from models import User, Post
+from flask import render_template, request, url_for, redirect, flash, redirect
+from app import app
+from app.models import User, Post
+from app.forms import RegistrationForm, LoginForm
 
 @app.errorhandler(404)
 def page_not_found(e):

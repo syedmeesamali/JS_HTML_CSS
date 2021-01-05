@@ -1,7 +1,6 @@
-from flask import Flask, render_template, request, url_for, redirect, flash, redirect
+from flask import Flask
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
-from forms import RegistrationForm, LoginForm
 import sqlite3
 
 app = Flask(__name__)       #Define the flask app thing
