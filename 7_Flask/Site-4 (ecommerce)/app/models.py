@@ -1,4 +1,4 @@
-from __main__ import db                 #Will avoid confusion with the circular import problem
+from app import db                 #Will avoid confusion with the circular import problem
 from datetime import datetime
 
 class User(db.Model):

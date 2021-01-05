@@ -1,4 +1,4 @@
-
+from models import User, Post
 
 @app.errorhandler(404)
 def page_not_found(e):
