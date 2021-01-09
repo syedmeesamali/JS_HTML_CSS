@@ -2,6 +2,7 @@ from flask import render_template, request, url_for, redirect, flash, redirect
 from app import app, db, bcrypt
 from app.models import User, Post
 from app.forms import RegistrationForm, LoginForm
+from flask_login import login_user, current_user, logout_user
 
 @app.errorhandler(404)
 def page_not_found(e):
@@ -26,6 +27,8 @@ def Gallery():
 
 @app.route('/Register', methods = ['POST', 'GET'])
 def Register():
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
     form = RegistrationForm()
     if form.validate_on_submit():
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
@@ -38,11 +41,19 @@ def Register():
 
 @app.route('/Login', methods = ['POST', 'GET'])
 def Login():
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
     form = LoginForm()
     if form.validate_on_submit():
-        if form.email.data == 'admin@blog.com' and form.password.data == 'password':
-            flash(f"You have successfully logged in!", 'success')
+        user = User.query.filter_by(email = form.email.data).first()
+        if user and bcrypt.check_password_hash(user.password, form.password.data):
+            login_user(user, remember = form.remember.data)
             return redirect(url_for('index'))
         else:
-            flash(f"Login unsuccessful! Please check username and password", 'danger')
+            flash("Login unsuccessful! Please check email and password", 'danger')
     return render_template('login.html',  title='Login', form = form)
+
+@app.route('/Logout')
+def Logout():
+    logout_user()
+    return redirect(url_for('index'))
