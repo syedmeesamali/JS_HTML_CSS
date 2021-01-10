@@ -17,6 +17,7 @@ class ToDo(db.Model):
     completed = db.Column(db.Boolean, default = False, nullable = False)
     ongoing = db.Column(db.Boolean, default = False, nullable = False)
     date_created = db.Column(db.DateTime, default = datetime.utcnow)
+    date_done = db.Column(db.DateTime)
 
     def __repr__(self):
         return '<Task %r>' % self.id
@@ -116,6 +117,7 @@ def done(id):
     task_done = ToDo.query.get_or_404(id)           #Retrieve the task to be updated
     task_done.completed = True                      #Set the status to completed
     task_done.ongoing = False                       #Remove ongoing status
+    task_done.date_done = datetime.utcnow()
     try:
         db.session.commit()
         return redirect('/')
@@ -128,6 +130,7 @@ def done_ongoing(id):
     task_done = ToDo.query.get_or_404(id)           #Retrieve the task to be updated
     task_done.ongoing = False                       #Remove ongoing status
     task_done.completed = True                      #Set the status to completed
+    task_done.date_done = datetime.utcnow()         #Time the task was completed
     try:
         db.session.commit()
         return redirect('/Ongoing')
