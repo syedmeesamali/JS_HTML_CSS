@@ -11,7 +11,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///work.db'
 db = SQLAlchemy(app)
 
 #Class to define the model for TODO list 
-class Work_Log(db.Model):
+class work(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     project_name = db.Column(db.String(50), nullable = False)
     location = db.Column(db.String(20), nullable = False)
@@ -39,7 +39,7 @@ def page_not_found(e):
 def index():
     if request.method == 'POST':
         task_content = request.form['content']
-        new_task = Work_Log(content = task_content)
+        new_task = work(content = task_content)
         try:
             db.session.add(new_task)
             db.session.commit()
@@ -47,31 +47,31 @@ def index():
         except:
             return "There was some error"
     else:
-        tasks = ToDo.query.filter_by(ongoing = False, completed = False).all()
+        tasks = work.query.filter_by(ongoing = False, completed = False).all()
         return render_template('index.html', tasks = tasks)
 
 #Completed tasks to be shown - Display method
 @app.route('/Completed', methods = ['POST', 'GET'])
 def completed():
     if request.method == 'POST':
-        tasks = ToDo.query.filter_by(completed = True).all()
+        tasks = work.query.filter_by(completed = True).all()
     else:
-        tasks = ToDo.query.filter_by(completed = True).all()
+        tasks = work.query.filter_by(completed = True).all()
         return render_template('completed.html', tasks = tasks)
 
 #Ongoing tasks to be shown - Display method
 @app.route('/Ongoing', methods = ['POST', 'GET'])
 def Ongoing():
     if request.method == 'POST':
-        tasks = ToDo.query.filter_by(ongoing = True).all()
+        tasks = work.query.filter_by(ongoing = True).all()
     else:
-        tasks = ToDo.query.filter_by(ongoing = True).all()
+        tasks = work.query.filter_by(ongoing = True).all()
         return render_template('ongoing.html', tasks = tasks)
 
 #DELETE a task from main page
 @app.route('/delete/<int:id>')
 def delete(id):
-    task_to_delete = ToDo.query.get_or_404(id)
+    task_to_delete = work.query.get_or_404(id)
     try:
         db.session.delete(task_to_delete)
         db.session.commit()
@@ -82,7 +82,7 @@ def delete(id):
 #DELETE a task from completed page
 @app.route('/delete_complete/<int:id>')
 def delete_complete(id):
-    task_to_delete = ToDo.query.get_or_404(id)
+    task_to_delete = work.query.get_or_404(id)
     try:
         db.session.delete(task_to_delete)
         db.session.commit()
@@ -93,7 +93,7 @@ def delete_complete(id):
 #DELETE a task from ongoing page
 @app.route('/delete_ongoing/<int:id>')
 def delete_ongoing(id):
-    task_to_delete = ToDo.query.get_or_404(id)
+    task_to_delete = work.query.get_or_404(id)
     try:
         db.session.delete(task_to_delete)
         db.session.commit()
@@ -104,7 +104,7 @@ def delete_ongoing(id):
 #UPDATE a task
 @app.route('/update/<int:id>', methods = ['POST', 'GET'])
 def update(id):
-    task_to_update = ToDo.query.get_or_404(id)
+    task_to_update = work.query.get_or_404(id)
     if request.method == 'POST':
         task_to_update.content = request.form['content']
         try:
@@ -118,7 +118,7 @@ def update(id):
 #Mark a task as DONE from Main Page
 @app.route('/done/<int:id>')
 def done(id):
-    task_done = ToDo.query.get_or_404(id)           #Retrieve the task to be updated
+    task_done = work.query.get_or_404(id)           #Retrieve the task to be updated
     task_done.completed = True                      #Set the status to completed
     task_done.ongoing = False                       #Remove ongoing status
     task_done.date_done = datetime.utcnow()
@@ -131,7 +131,7 @@ def done(id):
 #Mark a task as DONE from Ongoing Tasks
 @app.route('/done_ongoing/<int:id>')
 def done_ongoing(id):
-    task_done = ToDo.query.get_or_404(id)           #Retrieve the task to be updated
+    task_done = work.query.get_or_404(id)           #Retrieve the task to be updated
     task_done.ongoing = False                       #Remove ongoing status
     task_done.completed = True                      #Set the status to completed
     task_done.date_done = datetime.utcnow()         #Time the task was completed
@@ -144,7 +144,7 @@ def done_ongoing(id):
 #Mark a task as ONGOING still ...
 @app.route('/current/<int:id>')
 def current(id):
-    task_done = ToDo.query.get_or_404(id)           #Retrieve the task to be updated
+    task_done = work.query.get_or_404(id)           #Retrieve the task to be updated
     task_done.completed = False
     task_done.ongoing = True                      #Set the status to completed
     try:
@@ -156,7 +156,7 @@ def current(id):
 #Mark a task as ONGOING from Completed List
 @app.route('/current_ongoing/<int:id>')
 def current_ongoing(id):
-    task_done = ToDo.query.get_or_404(id)           #Retrieve the task to be updated
+    task_done = work.query.get_or_404(id)           #Retrieve the task to be updated
     task_done.ongoing = True                      #Set the status to completed
     task_done.completed = False
     try:
