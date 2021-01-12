@@ -7,7 +7,7 @@ import sqlite3
 app = Flask(__name__)       #Define the flask app thing
 bootstrap = Bootstrap(app)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///tasks.db'
 db = SQLAlchemy(app)
 
 #Class to define the model for TODO list 
@@ -16,8 +16,8 @@ class ToDo(db.Model):
     content = db.Column(db.String(200), nullable = False)
     completed = db.Column(db.Boolean, default = False, nullable = False)
     ongoing = db.Column(db.Boolean, default = False, nullable = False)
-    date_created = db.Column(db.DateTime, default = datetime.utcnow)
-    date_done = db.Column(db.DateTime)
+    date_created = db.Column(db.Date, default = datetime.utcnow)
+    date_done = db.Column(db.Date)
 
     def __repr__(self):
         return '<Task %r>' % self.id
