@@ -1,30 +1,40 @@
 {% extends "base.html" %}
-{% block title %} Index Page {% endblock %}
+{% block title %} Work-DB Home {% endblock %}
 
 {% block page_content %}
 <div class="content">
     <h1>Work Log - Homepage</h1>
-       
-
     <table class="table table-bordered">
         <thead class="table-info"></thead>
         <tbody>
+        <!-- Main Row ||| Using only one header row to add all stuff -->
         <tr>
             <th style="width: 10%">Id </th>
-            <th style="width: 20%">Project Name
+            <th style="width: 15%">Project Name </th>
+            <th style="width: 15%">Activity </th>
+            <th style="width: 10%">Location </th>
+            <th style="width: 10%">Status </th>
+            <th style="width: 40%">Remarks </th>
+        </tr>
+            <tr>
+            <td>
+                <h3>ID</h3>
+            </td>
+        
+            <td>
                 <form autocomplete="off" action="#">
-                    <div class="autocomplete" style="width:400px;">
+                    <div class="autocomplete">
                         <input id="myInput" type="text" name="myCountry" placeholder="Project Name">
                     </div>
                 </form>
-            </th>
-            <th style="width: 20%">Activity<br>
-                    
+            </td>
+            
+            <td>
                 <div class="btn-group">
-                    <button type="button" id="for-dropdown" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-expanded="false">
+                    <button type="button"  id="pro-dropdown" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-expanded="false">
                     Select Here
                     </button>
-                    <div class="dropdown-menu">
+                    <div class="dropdown-menu" id="pro-menu">
                         <a class="dropdown-item" href="#">BOQ</a>
                         <a class="dropdown-item" href="#">DRAWING</a>
                         <a class="dropdown-item" href="#">EMAIL</a>
@@ -49,28 +59,42 @@
                         <a class="dropdown-item" href="#">TECHNICAL SUBMITTAL</a>
                     </div>
                 </div>
-            </th>
-            <th style="width: 20%">Location<br>
+            </td>
+            
+
+            <td>
                 <div class="btn-group">
-                <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <button type="button"  id="loc-dropdown" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Location
                 </button>
-                <div class="dropdown-menu">
+                <div class="dropdown-menu" id="loc-menu">
                   <a class="dropdown-item" href="#">Dubai</a>
                   <a class="dropdown-item" href="#">AbuDhabi</a>
                   <a class="dropdown-item" href="#">Sharjah</a>
+                  <a class="dropdown-item" href="#">Qatar</a>
+                  <a class="dropdown-item" href="#">Bahrain</a>
+                  <a class="dropdown-item" href="#">KSA</a>
+                  <a class="dropdown-item" href="#">Kuwait</a>
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="#">Operations</a>
                 </div>
                </div>
-        </th>
-        </tr>
+            </td>
+        
+            <td>
+                <a class="btn btn-danger btn-sm" href="#" role="button">Delete</a>
+                <a class="btn btn-info btn-sm" href="#">Ongoing</a>
+                <a class="btn btn-success btn-sm" href="#">Completed</a>
+            </td>
+            <td>
+                <div class="input-group">
+                        <textarea class="form-control"></textarea>
+                </div>
+            </td>
+    </tr>
     </tbody>
     </tbody>
     </table>
-    <form action="/" method="POST">
-        <input type="submit" value="Add Task">
-    </form>
 </div>
 <script src="../static/autocomplete.js"></script>
 {% endblock %}

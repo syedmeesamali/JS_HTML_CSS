@@ -1,10 +1,21 @@
-var dropdown = document.getElementById('for-dropdown');
-document.querySelectorAll('.dropdown-menu').forEach(function(e) {
-    e.addEventListener('click', (e) => {
-      console.log(e.target.innerHTML);
-      dropdown.innerText = e.target.innerHTML;
-    })
+var pro_down = document.getElementById('pro-dropdown');     //This is a button element
+var loc_down = document.getElementById('loc-dropdown');     //This is a button element
+const projects = document.querySelectorAll("[id='pro-menu']");    //Any array now
+const locations = document.querySelectorAll("[id='loc-menu']");    //Any array now
+
+//Superb work-around using ID for MULTIPLE elements
+projects.forEach(function(e) {
+  e.addEventListener('click', (e) => {
+    pro_down.innerText = e.target.innerHTML;
+  })
 })
+
+locations.forEach(function(e) {
+  e.addEventListener('click', (e) => {
+    loc_down.innerText = e.target.innerHTML;
+  })
+})
+
 
 //Auto-complete function to fill in the names of various projects
 function autocomplete(inp, arr) {
