@@ -1,6 +1,9 @@
-document.querySelector('#for-dropdown').addEventListener('click', (e) => {
-    console.log("Value clicked");
-    console.log(e.target.parentElement.lastChild);
+var dropdown = document.getElementById('for-dropdown');
+document.querySelectorAll('.dropdown-menu').forEach(function(e) {
+    e.addEventListener('click', (e) => {
+      console.log(e.target.innerHTML);
+      dropdown.innerText = e.target.innerHTML;
+    })
 })
 
 //Auto-complete function to fill in the names of various projects
