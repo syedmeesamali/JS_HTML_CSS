@@ -1,0 +1,88 @@
+<html>
+<title>index</title>
+<head>
+<style>
+* {
+    font-family: Arial;
+    box-sizing: border-box;
+}
+
+html, body, section {
+    height: 100%;
+}
+body {
+    text-align: left;
+}
+
+h1 {
+    color: orangered;
+}
+.split {
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+}
+
+.left {
+    background: lightgoldenrodyellow;
+    padding: 1 rem;
+    flex: 1;
+}
+
+.right {
+    background: lightgoldenrodyellow;
+    padding: 1 rem;
+    flex: 1;
+}
+
+.main_container {
+    display: flex;
+}
+
+input[type=text] {
+    border-style: solid;
+    border-bottom: 2px solid red;
+    background-color:yellow;
+}
+label {
+    display: inline-block;
+    width: 210px;
+    text-align: left;
+    background-color:lime;
+}
+
+.container {
+	  text-align: left;
+	  overflow: hidden;
+	  width: 100%;
+	  margin: 0 auto;
+      display: table;
+      padding: 0 0 8em 0;
+}    
+</style>    
+
+<h1>Data Collection App</h1></head>
+<body>
+    <div class="split left">
+    <form class="container validate-form" action="{{url_for('success')}}" method="POST">
+            <label for="height">Enter your height (cm):</label>
+            <br><div class="validate-input" data-validate="Name is required">
+					<input type="text" name="height" placeholder="Height (cm)">
+            </div>
+            <br><br>
+            <label for="weight">Enter your weight (Kg):</label>
+            <br><div class="validate-input" data-validate="Name is required">
+					<input type="text" name="weight" placeholder="Weight (Kg)">
+            </div>
+            <br><br>
+            <label for="sex">Your sex (male / female):</label>
+            <br><div class="validate-input" data-validate="Name is required">
+					<input type="text" name="sex" placeholder="Sex (m/f)">
+			</div>
+            <br><br>
+            <button type="submit"><span>Submit Data</span></button>
+    </form>
+</div>
+    <h3>Please enter your data in the form fields above and then press the submit button. Thanks !</h3>
+</body>
+</html>

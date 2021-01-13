@@ -1,0 +1,21 @@
+<!DOCTYPE hmtl>
+    <head>
+        <title><h1>Main page of Names</h1></title>
+        <style>
+        .body {
+            text-align: center;
+        }
+        </style>
+    </head>
+
+<body>
+    <ul>
+        {% for name in names %}
+         <li>  {{ name }} </li>
+         {% endfor %}
+    </ul>
+
+<a href="{{ url_for('more') }}">Go to more page..</a>
+    
+</body>
+</hmtl>

@@ -136,7 +136,7 @@ function autocomplete(inp, arr) {
   "Hussain Darwaish Bldg", "T2 Greens", "Elite-2 and 6", "Premmier Inn", "Barsha Pond Hotel", "Wasl Tower", "Deira Waterfront", 
   "Burjuman Mall", "Das Island_Emdad", "Mai Dubai", "HSBC Bank", "Damac Akoya", "Yas Mall", "DIB Deira", "Dubai Creek Cove", 
   "Sky Villa_Amesco", "Switching Station_L&T", "Meydan One (Salini Impregillo)", "Lilian Tower RCC Walls", "City Land Mall Beams", 
-  "ME DO RE JLT", "Wafi Mall", "Lacasa Tecom Building", "King Faisal Hospital - KSA", "Police Academy AUH", "Villa on Palm", 
+  "MEDORE JLT", "Wafi Mall", "Lacasa Tecom Building", "King Faisal Hospital - KSA", "Police Academy AUH", "Villa on Palm", 
   "JBR Hospital", "Bloom Tower JVC", "Al-Tayer Building", "Al-Dana 2 Building", "Deira City Center", "Dovronbek", "Circle Mall JVC", 
   "GEMS Cambridge Sharjah", "ORASCOM Reem Island", "Khamis Al Qubsi", "Reem Plaza Riyadh", "Royal Continental", "PPI Coring 3rd floor", 
   "Deira Waterfront Repairs", "DEWA Jebel Ali Repairs", "Khansaheb Villa", "Al-Hazami JVC Project", "Crowne Plaza Complex", 
