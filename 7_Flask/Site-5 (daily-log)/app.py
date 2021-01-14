@@ -20,8 +20,8 @@ class work(db.Model):
     completed = db.Column(db.Boolean, default = False, nullable = False)
     ongoing = db.Column(db.Boolean, default = False, nullable = False)
     remarks = db.Column(db.String(300))
-    date_created = db.Column(db.DateTime, default = datetime.utcnow)
-    date_update = db.Column(db.DateTime)
+    date_created = db.Column(db.Date, default = datetime.utcnow)
+    date_update = db.Column(db.Date)
 
     def __repr__(self):
         return '<Task %r>' % self.id
