@@ -3,12 +3,105 @@
 
 {% block page_content %}
 <div class="content">
-    <h1>Update Task</h1>
-    <form action="/update/{{ task.id }}" method="POST">
-        <input type="text" name="content" id="content" value="{{ task.content }}">
-        <input type="submit" value="Update Task">
-    </form>
+
+<h1>Work Log - Homepage</h1>
+
+<!-- All action inside the form tag to get the data from the form itself -->
+<form action="/update/{{ task.id }}" method="POST">
+    <table class="table table-bordered">
+        <thead class="table-info"></thead>
+        <tbody>
+        <tr>
+            <th style="width: 10%">Id </th>
+            <th style="width: 15%">Project Name </th>
+            <th style="width: 15%">Activity </th>
+            <th style="width: 10%">Location </th>
+            <th style="width: 10%">Status </th>
+            <th style="width: 40%">Remarks </th>
+        </tr>
+            <tr>
+            <td>
+                <h3>{{ task.id }}</h3>
+            </td>
+        
+            <td>
+                
+                    <div class="autocomplete">
+                        <input id="myInput" type="text" name="myCountry" placeholder="{{ task.project_name }}">
+                    </div>
+                
+            </td>
+            
+            <td>
+                <div class="btn-group">
+                    <button type="button"  id="pro-dropdown" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-expanded="false">
+                    {{ task.activity }}
+                    </button>
+                    <div class="dropdown-menu" id="pro-menu">
+                        <a class="dropdown-item" href="#">BOQ</a>
+                        <a class="dropdown-item" href="#">DRAWING</a>
+                        <a class="dropdown-item" href="#">EMAIL</a>
+                        <a class="dropdown-item" href="#">FOLLOW-UP</a>
+                        <a class="dropdown-item" href="#">INFORMATION</a>
+                        <a class="dropdown-item" href="#">INVOICE</a>
+                        <a class="dropdown-item" href="#">LETTER</a>
+                        <a class="dropdown-item" href="#">MEETING_CLIENT</a>
+                        <a class="dropdown-item" href="#">MEETING_CONSULTANT</a>
+                        <a class="dropdown-item" href="#">MEETING_INTERNAL</a>
+                        <a class="dropdown-item" href="#">MEETING_SUPPLIER</a>
+                        <a class="dropdown-item" href="#">METHOD STATEMENT</a>
+                        <a class="dropdown-item" href="#">QUOTATION</a>
+                        <a class="dropdown-item" href="#">REPORT</a>
+                        <a class="dropdown-item" href="#">SCHEDULE</a>
+                        <a class="dropdown-item" href="#">SITE SURVEY</a>
+                        <a class="dropdown-item" href="#">SITE VISIT</a>
+                        <a class="dropdown-item" href="#">SITE WORKS</a>
+                        <a class="dropdown-item" href="#">STORE VISIT</a>
+                        <a class="dropdown-item" href="#">SUPPLIER_QTN</a>
+                        <a class="dropdown-item" href="#">TECHNICAL REPORT</a>
+                        <a class="dropdown-item" href="#">TECHNICAL SUBMITTAL</a>
+                    </div>
+                </div>
+            </td>
+            
+
+            <td>
+                <div class="btn-group">
+                <button type="button"  id="loc-dropdown" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{ task.location }}
+                </button>
+                <div class="dropdown-menu" id="loc-menu">
+                  <a class="dropdown-item" href="#">Dubai</a>
+                  <a class="dropdown-item" href="#">AbuDhabi</a>
+                  <a class="dropdown-item" href="#">Sharjah</a>
+                  <a class="dropdown-item" href="#">Qatar</a>
+                  <a class="dropdown-item" href="#">Bahrain</a>
+                  <a class="dropdown-item" href="#">KSA</a>
+                  <a class="dropdown-item" href="#">Kuwait</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="dropdown-item" href="#">Operations</a>
+                </div>
+               </div>
+            </td>
+        
+            <td>
+                <a class="btn btn-danger btn-sm" href="#" role="button">Delete</a>
+                <a class="btn btn-info btn-sm" href="#">Ongoing</a>
+                <a class="btn btn-success btn-sm" href="#">Completed</a>
+            </td>
+            <td>
+                <div class="input-group">
+                        <textarea id="remarks" class="form-control">{{ task.remarks }}</textarea>
+                </div>
+            </td>
+    </tr>
+    </tbody>
+    </tbody>
+    </table>
+
+    <input type="submit" value="Update Task">
+</form> 
 </div>
 
-
+<script src="../static/autocomplete.js"></script>
 {% endblock %}

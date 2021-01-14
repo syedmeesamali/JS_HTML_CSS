@@ -9,20 +9,26 @@
     {% else %}
     <table class="table table-bordered">
         <tr>
-            <th style="width: 50%">Task Done</th>
+            <th style="width: 5%">Task ID</th>
+            <th style="width: 20%">Project Name</th>
+            <th style="width: 15%">Activity</th>
+            <th style="width: 30%">Remarks</th>
             <th style="width: 10%">Date Added</th>
             <th style="width: 10%">Date Done</th>
-            <th style="width: 30%">Action Update</th>
+            <th style="width: 20%">Action Update</th>
         </tr>
         {% for task in tasks %}
             <tr>
+                <td>{{ task.id }}</td>
                 <td>{{ task.project_name }}</td>
+                <td>{{ task.activity }}</td>
+                <td>{{ task.remarks }}</td>
                 <td>{{ task.date_created }}</td>
-                <td>{{ task.date_done }}</td>
+                <td>{{ task.date_update }}</td>
                 <td>
-                    <a class="btn btn-danger" href="/delete_complete/{{ task.id }}" role="button">Delete</a>
-                    <a class="btn btn-info" href="/update/{{ task.id }}">Update</a>
-                    <a class="btn btn-primary" href="/current_ongoing/{{ task.id }}">Ongoing</a>
+                    <a class="btn btn-danger btn-sm" href="/delete_complete/{{ task.id }}" role="button">Delete</a>
+                    <a class="btn btn-info btn-sm" href="/update/{{ task.id }}">Update</a>
+                    <a class="btn btn-primary btn-sm" href="/current_ongoing/{{ task.id }}">Ongoing</a>
                 </td>
             </tr>
         {% endfor %}
