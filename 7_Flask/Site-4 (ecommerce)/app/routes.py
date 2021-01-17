@@ -1,3 +1,5 @@
+import os
+import secrets
 from flask import render_template, request, url_for, redirect, flash, redirect
 from app import app, db, bcrypt
 from app.models import User, Post
@@ -59,11 +61,21 @@ def Logout():
     logout_user()
     return redirect(url_for('index'))
 
+
+#Special save picture function
+def save_picture(form_picture):
+    random_hex = secrets.token_hex(8)
+    _, f_ext = os.path.splitext(form_picture)
+    picture_fn = random_hex + f_ext
+    picture_path = os.path.join(app.root_path, 'static/profile_pics', picture_fn)
+
 @app.route('/Account', methods = ['POST', 'GET'])
 @login_required
 def Account():
     form = UpdateAccountForm()
     if form.validate_on_submit():
+        if form.picture.data:
+
         current_user.username = form.username.data
         current_user.email = form.email.data
         db.session.commit()
