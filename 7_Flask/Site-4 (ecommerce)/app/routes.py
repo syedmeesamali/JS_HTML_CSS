@@ -4,7 +4,7 @@ from PIL import Image
 from flask import render_template, request, url_for, redirect, flash, redirect
 from app import app, db, bcrypt
 from app.models import User, Post
-from app.forms import RegistrationForm, LoginForm, UpdateAccountForm
+from app.forms import RegistrationForm, LoginForm, UpdateAccountForm, PostForm
 from flask_login import login_user, current_user, logout_user, login_required
 
 @app.errorhandler(404)
@@ -94,7 +94,10 @@ def Account():
     image_file = url_for('static', filename = 'profile_pics/' + current_user.image_file)
     return render_template('account.html',  title='Account', image_file = image_file, form = form)
 
-@app.route("/post/new")
+@app.route('/post/new', methods = ['POST', 'GET'])
 @login_required
 def new_post():
-    return render_template('create_new.html', title = 'New post')
+    form = PostForm()
+    if form.validate_on_submit():
+        flash(f'Your post has been created successfully', 'success')
+    return render_template('create_new.html', title = 'New post', form = form)
