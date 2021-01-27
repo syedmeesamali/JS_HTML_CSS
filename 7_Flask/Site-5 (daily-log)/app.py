@@ -37,18 +37,8 @@ def page_not_found(e):
 #Main display page
 @app.route('/', methods = ['POST', 'GET'])
 def index():
-    if request.method == 'POST':
-        task_content = request.form['content']
-        new_task = work(content = task_content)
-        try:
-            db.session.add(new_task)
-            db.session.commit()
-            return redirect('/')
-        except:
-            return "There was some error"
-    else:
-        tasks = work.query.filter_by(ongoing = False, completed = False).all()
-        return render_template('index.html', tasks = tasks)
+    tasks = work.query.filter_by(ongoing = False, completed = False).all()
+    return render_template('index.html', tasks = tasks)
 
 #Completed tasks to be shown - Display method
 @app.route('/Completed', methods = ['POST', 'GET'])
@@ -67,6 +57,24 @@ def Ongoing():
     else:
         tasks = work.query.filter_by(ongoing = True).all()
         return render_template('ongoing.html', tasks = tasks)
+
+#New task entry
+@app.route('/Ongoing/<int:id>', methods = ['POST', 'GET'])
+def New_Ongoing(id):
+    task_new_ongoing = work.query.get_or_404(id)
+    if request.method == 'POST':
+        task_new_ongoing.project_name = request.form['myInput']
+        task_new_ongoing.remarks = request.form['remarks']
+        task_new_ongoing.activity = request.form['pro-dropdown']
+        task_new_ongoing.location = request.form['loc-dropdown']
+        try:
+            db.session.commit()
+            return redirect('/')
+        except:
+            return "There was some problem updating that task!"
+    else:
+        tasks = work.query.filter_by(completed = True).all()
+        return render_template('index.html', tasks = tasks)
 
 #DELETE a task from main page
 @app.route('/delete/<int:id>')
