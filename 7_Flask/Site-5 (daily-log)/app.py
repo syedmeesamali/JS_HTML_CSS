@@ -59,22 +59,44 @@ def Ongoing():
         return render_template('ongoing.html', tasks = tasks)
 
 #New task entry
-@app.route('/Ongoing/<int:id>', methods = ['POST', 'GET'])
-def New_Ongoing(id):
-    task_new_ongoing = work.query.get_or_404(id)
+@app.route('/Add_Ongoing', methods = ['POST', 'GET'])
+def New_Ongoing():
     if request.method == 'POST':
-        task_new_ongoing.project_name = request.form['myInput']
-        task_new_ongoing.remarks = request.form['remarks']
-        task_new_ongoing.activity = request.form['pro-dropdown']
-        task_new_ongoing.location = request.form['loc-dropdown']
+        project_name1 = request.form['myInput']
+        remarks1 = request.form['remarks']
+        activity1 = request.form['pro-dropdown']
+        location1 = request.form['loc-dropdown']
+        task_ongoing_add = work(project_name = project_name1, activity = activity1, location = location1, 
+            remarks = remarks1)
         try:
+            db.session.add(task_ongoing_add)
             db.session.commit()
             return redirect('/')
         except:
             return "There was some problem updating that task!"
     else:
-        tasks = work.query.filter_by(completed = True).all()
-        return render_template('index.html', tasks = tasks)
+        return render_template('index.html')
+
+#New task entry
+@app.route('/Add_Completed', methods = ['POST', 'GET'])
+def New_Completed():
+    if request.method == 'POST':
+        project_name1 = request.form['myInput']
+        remarks1 = request.form['remarks']
+        activity1 = request.form['pro-dropdown']
+        location1 = request.form['loc-dropdown']
+        task_ongoing_add = work(project_name = project_name1, activity = activity1, location = location1, 
+            remarks = remarks1)
+        try:
+            db.session.add(task_ongoing_add)
+            db.session.commit()
+            return redirect('/')
+        except:
+            return "There was some problem updating that task!"
+    else:
+        return render_template('index.html')
+
+
 
 #DELETE a task from main page
 @app.route('/delete/<int:id>')
