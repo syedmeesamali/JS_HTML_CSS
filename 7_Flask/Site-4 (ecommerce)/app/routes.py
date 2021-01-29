@@ -100,4 +100,5 @@ def new_post():
     form = PostForm()
     if form.validate_on_submit():
         flash(f'Your post has been created successfully', 'success')
+        return redirect(url_for('index'))
     return render_template('create_new.html', title = 'New post', form = form)
