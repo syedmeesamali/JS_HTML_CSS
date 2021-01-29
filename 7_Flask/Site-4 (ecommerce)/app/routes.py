@@ -18,7 +18,8 @@ def page_not_found(e):
 #Main display page
 @app.route('/')
 def index():
-    return render_template('index.html')
+    posts = Post.query.all()
+    return render_template('index.html', posts = posts)
 
 @app.route('/Products')
 def Products():
@@ -99,6 +100,9 @@ def Account():
 def new_post():
     form = PostForm()
     if form.validate_on_submit():
+        post = Post(title = form.title.data, content = form.content.data, author = current_user)
+        db.session.add(post)
+        db.session.commit()
         flash(f'Your post has been created successfully', 'success')
         return redirect(url_for('index'))
     return render_template('create_new.html', title = 'New post', form = form)

@@ -3,19 +3,18 @@
 
 {% block page_content %}
 <div class="content">
-    <h1>My Online Product Store</h1>
-    
-    <table class="table table-bordered">
-        <thead class="table-info"></thead>
-        <tbody>
-        <tr>
-            <th style="width: 30%">Product Name</th>
-            <th style="width: 30%">Description</th>
-            <th style="width: 25%">Price (General)</th>
-            <th style="width: 10%">Qty Available</th>
-        </tr>
-            <tr><td>Shirts (M)</td><td>Classic T-shirts</td><td>500 PHP</td><td>20 No's</td></tr>
-    </tbody>
-    </table>
+
+{% for post in posts %}
+    <article class="media content-section">
+        <img class="rounded-circle article-img" src="{{ url_for('static', filename='profile_pics/' + post.author.image_file) }}">
+        <div class="media-body">
+            <div class="article-metadata">
+                <a class="mr-2" href="#"> {{ post.author.username }}</a>
+                <small class="text-muted">{{ post.date_posted.strftime('%Y-%m-%d') }}</small>
+            </div>
+            <h2><a class="article-title" href="#">{{ post.title }} </a></h2>
+            <p class="article-content"> {{ post.content }} </p>
+        </div>
+{% endfor %}
 </div>
 {% endblock %}
