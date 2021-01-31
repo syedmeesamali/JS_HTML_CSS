@@ -60,7 +60,7 @@ def Ongoing():
 
 #New task entry
 @app.route('/Add_Ongoing', methods = ['POST', 'GET'])
-def New_Ongoing():
+def Add_Ongoing():
     if request.method == 'POST':
         project_name1 = request.form['myInput']
         remarks1 = request.form['remarks']
@@ -79,14 +79,15 @@ def New_Ongoing():
 
 #New task entry
 @app.route('/Add_Completed', methods = ['POST', 'GET'])
-def New_Completed():
+def Add_Done():
     if request.method == 'POST':
         project_name1 = request.form['myInput']
         remarks1 = request.form['remarks']
         activity1 = request.form['pro-dropdown']
         location1 = request.form['loc-dropdown']
-        task_ongoing_add = work(project_name = project_name1, activity = activity1, location = location1, 
-            remarks = remarks1)
+        created_on = date.utcnow()
+        task_ongoing_add = work(project_name = project_name1, location = location1, hlink = '//', activity = activity1,  
+            completed = 0, ongoing = 1, remarks = remarks1, date_created = created_on)
         try:
             db.session.add(task_ongoing_add)
             db.session.commit()
