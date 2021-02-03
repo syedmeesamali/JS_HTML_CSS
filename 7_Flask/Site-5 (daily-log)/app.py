@@ -62,10 +62,10 @@ def Ongoing():
 @app.route('/Add_Ongoing', methods = ['POST', 'GET'])
 def Add_Ongoing():
     if request.method == 'POST':
-        project_name1 = request.form['myInput']
-        remarks1 = request.form['remarks']
-        activity1 = request.form['pro-dropdown']
-        location1 = request.form['loc-dropdown']
+        project_name = request.form['myInput']
+        remarks = request.form['remarks']
+        activity = request.form['pro-dropdown']
+        location = request.form['loc-dropdown']
         task_ongoing_add = work(project_name = project_name1, activity = activity1, location = location1, 
             remarks = remarks1)
         try:
