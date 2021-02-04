@@ -137,7 +137,7 @@ def delete_ongoing(id):
 def update(id):
     task_to_update = work.query.get_or_404(id)
     if request.method == 'POST':
-        task_to_update.project_name = request.form['myInput']
+        task_to_update.project_name = request.form['myCountry']
         task_to_update.remarks = request.form['remarks']
         task_to_update.activity = request.form['pro-dropdown']
         task_to_update.location = request.form['loc-dropdown']

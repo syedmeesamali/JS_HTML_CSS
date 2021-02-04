@@ -22,7 +22,7 @@
             </td>
         
             <td>
-                <form autocomplete="off" action="#">
+                <form autocomplete="off" action="#" id="input_form">
                     <div class="autocomplete">
                         <input id="myInput" type="text" name="myCountry" placeholder="Project Name">
                     </div>
@@ -86,9 +86,9 @@
                 <a class="btn btn-success btn-sm" href="/Add_Completed">Add Completed</a>
             </td>
             <td>
-                <div class="input-group">
-                        <textarea id="remarks" class="form-control"></textarea>
-                </div>
+                    <div class="input-group">
+                            <textarea name="remarks" class="form-control" form="input_form"></textarea>
+                    </div>
             </td>
     </tr>
     </tbody>
