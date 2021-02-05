@@ -1,255 +1,152 @@
 from flask import *
+from flask_bootstrap import Bootstrap
+from flask_sqlalchemy import SQLAlchemy
+from flask_bcrypt import Bcrypt
+from flask_login import LoginManager, UserMixin, login_user, current_user, logout_user, login_required
+
 import sqlite3
 import os
 from datetime import datetime
 
-database = "./coring.db"
+from flask_wtf import FlaskForm
+from flask_login import current_user
+from flask_wtf.file import FileField, FileAllowed
+from wtforms import BooleanField, StringField, PasswordField, validators, SubmitField, TextAreaField
+from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
+
 link_db = "./links.db"
-read_db = "./read.db"
-db_ideas = "./ideas.db"
 db_done = "./done.db"
 db_mat = "./mat_pricing.db"
 form_data = "./form_data.db"
+app = Flask(__name__)       #Define the flask app thing
+bootstrap = Bootstrap(app)
 
-app = Flask(__name__)
+app.config['SECRET_KEY'] = 'my_rand_secret_key_here'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
+db = SQLAlchemy(app)
+bcrypt = Bcrypt(app)
+login_manager = LoginManager(app)
+login_manager.login_view = 'Login'
+login_manager.login_message_category = 'info'
 
-@app.route('/savedetails', methods = ["POST", "GET"])
-def savedetails():
-    msg = "msg"
-    if request.method == "POST":
-        try:
-            pname = request.form["project"]
-            year = request.form["year"]
-            cores = request.form["core"]
-            Qty = request.form["quantity"]
-            price = request.form["price"]
-            conn = sqlite3.connect(database)
-            cur = conn.cursor()
-            cur.execute("INSERT INTO projects (pname, year, cores, Qty, price) VALUES(?, ?, ?, ?, ?)" , (pname, year, cores, Qty, price))
-            conn.commit()
-            msg = "Data Entered Successfully!"
-        except:
-            conn.rollback()
-            msg = "Sorry can't update the database..."
-        finally:
-            return render_template("success.html", msg = msg)
-            conn.close()
-    return render_template("index.html")
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
 
-@app.route('/savelinks', methods = ["POST", "GET"])
-def savelinks():
-    msg = "msg"
-    if request.method == "POST":
-        try:
-            id = request.form["id"]
-            desc = request.form["desc"]
-            linkurl = request.form["linkurl"]
-            linktype = request.form["linktype"]
-            conn = sqlite3.connect(link_db)
-            cur = conn.cursor()
-            timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-            cur.execute("INSERT INTO links (ID, Desc, linkUrl, linkType, added) VALUES(?, ?, ?, ?, ?)" , (id, desc, linkurl, linktype, timestamp))
-            conn.commit()
-            msg = "Data Entered Successfully!"
-        except:
-            conn.rollback()
-            msg = "Sorry couldn't update the database..."
-        finally:
-            return render_template("success.html", msg = msg)
-            conn.close()
-    return render_template("index.html")
+#Class to define the model for TODO list 
+class User(db.Model, UserMixin):
+    id = db.Column(db.Integer, primary_key = True)
+    username = db.Column(db.String(20), unique = True, nullable = False)
+    email = db.Column(db.String(120), unique = True, nullable = False)
+    password = db.Column(db.String(60), nullable = False)
+    def __repr__(self):
+        return f"User('{self.username}', '{self.email}')"
+    def __repr__(self):
+        return '<Task %r>' % self.id
 
-@app.route('/saveideas', methods = ["POST", "GET"])
-def saveideas():
-    msg = "msg"
-    if request.method == "POST":
-        try:
-            ID = request.form["id"]
-            desc = request.form["desc"]
-            Type = request.form["type"]
-            timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-            conn = sqlite3.connect(db_ideas)
-            cur = conn.cursor()
-            cur.execute("INSERT INTO ideas (ID, Desc, Type, Date) VALUES(?, ?, ?, ?)" , (ID, desc, Type, timestamp))
-            conn.commit()
-            msg = "Data Entered Successfully!"
-        except:
-            conn.rollback()
-            msg = "Sorry couldn't update the database..."
-        finally:
-            return render_template("success.html", msg = msg)
-            conn.close()
-    return render_template("index.html")
 
-@app.route('/ideasdone')
-def ideasdone():
-    conn = sqlite3.connect(db_done)
-    cur = conn.cursor()
-    res = cur.execute("SELECT * FROM ideasdone")
-    return render_template("ideasdone.html", links = res)
+class RegistrationForm(FlaskForm):
+    username = StringField('Username', validators = [DataRequired(), Length(min = 4, max = 20)])
+    email = StringField('Email', validators = [DataRequired(), Email()])
+    password = PasswordField('Password', validators = [DataRequired()])
+    confirm = PasswordField('Confirm Password', validators = [DataRequired(), EqualTo('password')])
+    submit =  SubmitField('Sign Up')
+    #Default username validation
+    def validate_username(self, username):
+        user = User.query.filter_by(username = username.data).first()
+        if user:
+            raise ValidationError('The username is taken. Please choose a different one.')
+    #Default email validation
+    def validate_email(self, email):
+        user = User.query.filter_by(email = email.data).first()
+        if user:
+            raise ValidationError('The email is taken. Please choose a different one.')
 
-@app.route('/done/<int:val>', methods = ["POST", "GET"])
-def done(val):
-    if request.method == "POST":
-        msg = "msg"
-        try:
-            conn = sqlite3.connect(db_ideas)
-            conn2 = sqlite3.connect(db_done)
-            cur = conn.cursor()
-            cur1 = conn2.cursor()
-            cur.execute("SELECT ID FROM ideas WHERE ID = ?", (val,))
-            id = cur.fetchone()[0]
-            cur.execute("SELECT Desc FROM ideas WHERE ID = ?", (val,))
-            desc = cur.fetchone()[0]
-            cur.execute("SELECT Type FROM ideas WHERE ID = ?", (val,))
-            Type = cur.fetchone()[0]
-            cur.execute("SELECT Date FROM ideas WHERE ID = ?", (val,))
-            Date = cur.fetchone()[0]
-            timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-            cur1.execute("INSERT INTO ideasdone (ID, Desc, Type, strt, ending) VALUES(?, ?, ?, ?, ?)" , (id, desc, Type, Date, timestamp))
-            cur.execute("DELETE FROM ideas WHERE ID = ?", (val,))
-            conn2.commit()
-            conn.commit()
-            msg = "Data Entered Successfully!"
-        except:
-            conn.rollback()
-            conn2.rollback()
-            msg = "Couldn't update the databases.....!"
-        finally:
-            return render_template("success.html", msg = msg)
-            conn.close()
-            conn2.close()
-    return render_template("index.html")
+class LoginForm(FlaskForm):
+    email = StringField('Email', validators = [DataRequired(), Email()])
+    password = PasswordField('Password', validators = [DataRequired()])
+    remember = BooleanField('Remember Me')
+    submit =  SubmitField('Login')
 
-@app.route('/read/<int:val>', methods = ["POST", "GET"])
-def read(val):
-    if request.method == "POST":
-        msg = "msg"
-        try:
-            conn = sqlite3.connect(link_db)
-            conn2 = sqlite3.connect(read_db)
-            cur = conn.cursor()
-            cur1 = conn2.cursor()
-            cur.execute("SELECT ID FROM links WHERE ID = ?", (val,))
-            id = cur.fetchone()[0]
-            cur.execute("SELECT Desc FROM links WHERE ID = ?", (val,))
-            Desc = cur.fetchone()[0]
-            cur.execute("SELECT linkUrl FROM links WHERE ID = ?", (val,))
-            linkUrl = cur.fetchone()[0]
-            cur.execute("SELECT linkType FROM links WHERE ID = ?", (val,))
-            linkType = cur.fetchone()[0]
-            cur.execute("SELECT added FROM links WHERE ID = ?", (val,))
-            Date = cur.fetchone()[0]
-            timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-            cur1.execute("INSERT INTO read (ID, desc, url, type, added, read) VALUES(?, ?, ?, ?, ?, ?)" , (id, Desc, linkUrl, linkType, Date, timestamp))
-            cur.execute("DELETE FROM links WHERE ID = ?", (val,))
-            conn2.commit()
-            conn.commit()
-            msg = "Data Entered Successfully!"
-        except:
-            conn.rollback()
-            conn2.rollback()
-            msg = "Couldn't update the databases.....!"
-        finally:
-            return render_template("success.html", msg = msg)
-            conn.close()
 
-@app.route('/delete/<int:val>', methods = ["POST", "GET"])
-def delete(val):
-    if request.method == "POST":
-        msg = "msg"
-        try:
-            conn = sqlite3.connect(link_db)
-            cur = conn.cursor()
-            cur.execute("DELETE FROM links WHERE ID = ?", (val,))
-            conn.commit()
-            msg = "Data Deleted Successfully!"
-        except:
-            conn.rollback()
-            msg = "Couldn't update the databases.....!"
-        finally:
-            return render_template("success.html", msg = msg)
-            conn.close()
+class UpdateAccountForm(FlaskForm):
+    username = StringField('Username', validators = [DataRequired(), Length(min = 4, max = 20)])
+    email = StringField('Email', validators = [DataRequired(), Email()])
+    picture = FileField('Update profile picture', validators = [FileAllowed(['jpg', 'png'])])
+    submit =  SubmitField('Update')
+    
+    def validate_username(self, username):
+        if username.data != current_user.username:
+            user = User.query.filter_by(username = username.data).first()
+            if user:
+                raise ValidationError('The username is taken. Please choose a different one.')
+    #Default email validation
+    def validate_email(self, email):
+        if email.data != current_user.email:
+            user = User.query.filter_by(email = email.data).first()
+            if user:
+                raise ValidationError('The email is taken. Please choose a different one.')
 
-@app.route('/entry')
-def entry():
-    conn = sqlite3.connect(database)
-    cur = conn.cursor()
-    res = cur.execute("SELECT * FROM cores")
-    return render_template("entry2.html", users = res)
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template("404.html"), 404
 
-@app.route('/sort', methods = ["POST", "GET"])
-def sort():
-    if request.method == "POST":
-        try:
-            conn = sqlite3.connect(database)
-            cur = conn.cursor()
-            res = cur.execute("SELECT * FROM cores ORDER BY total DESC")
-        except:
-            return render_template("entry2.html", users = res)
-        finally:
-            return render_template("entry2.html", users = res)
+@app.errorhandler(500)
+def page_not_found(e):
+    return render_template("404.html"), 500
 
-@app.route('/links')
-def links():
-    return render_template("code5.html")
+@app.route('/Register', methods = ['POST', 'GET'])
+def Register():
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
+    form = RegistrationForm()
+    if form.validate_on_submit():
+        hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
+        user = User(username = form.username.data, email = form.email.data, password = hashed_password)
+        db.session.add(user)
+        db.session.commit()
+        flash("Your account has been created! You can now login", 'success')
+        return redirect(url_for('Login'))
+    return render_template('register.html', title='Register', form = form)
 
-@app.route('/ideaentry')
-def ideaentry():
-    return render_template("ideaentry.html")
+@app.route('/Login', methods = ['POST', 'GET'])
+def Login():
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
+    form = LoginForm()
+    if form.validate_on_submit():
+        user = User.query.filter_by(email = form.email.data).first()
+        if user and bcrypt.check_password_hash(user.password, form.password.data):
+            login_user(user, remember = form.remember.data)
+            next_page = request.args.get('next')
+            return redirect(next_page) if next_page else redirect(url_for('index'))
+        else:
+            flash("Login unsuccessful! Please check email and password", 'danger')
+    return render_template('login.html',  title='Login', form = form)
 
-@app.route('/readlinks')
-def readlinks():
-    conn = sqlite3.connect(read_db)
-    cur = conn.cursor()
-    res = cur.execute("SELECT * FROM read")
-    return render_template("readlinks.html", links = res)
+@app.route('/Logout')
+def Logout():
+    logout_user()
+    return redirect(url_for('index'))
+
+@app.route('/Account', methods = ['POST', 'GET'])
+@login_required
+def Account():
+    form = UpdateAccountForm()
+    if form.validate_on_submit():
+        current_user.username = form.username.data
+        current_user.email = form.email.data
+        db.session.commit()
+        flash('Your account has been successfully updated', 'success')
+        return(redirect(url_for('Account')))
+    elif request.method == 'GET':
+        form.username.data = current_user.username
+        form.email.data = current_user.email
+    return render_template('account.html',  title='Account', form = form)
 
 @app.route('/')
 def index():
     return render_template("index.html")
-
-@app.route('/token1', methods = ["POST", "GET"])
-def token1():
-    if request.method == "POST" or request.method == "GET":
-        code1 = request.form["code1"]
-        if code1 == "meesam":
-            conn = sqlite3.connect(db_ideas)
-            cur = conn.cursor()
-            res = cur.execute("SELECT * FROM ideas")
-            return render_template("ideas.html", links = res)
-        else:
-            return render_template("code1.html")
-
-@app.route('/token2', methods = ["POST", "GET"])
-def token2():
-    if request.method == "POST" or request.method == "GET":
-        code2 = request.form["code2"]
-        if code2 == "ccl123":
-            return render_template("entry.html")
-        else:
-            return render_template("code2.html")
-
-@app.route('/token4', methods = ["POST", "GET"])
-def token4():
-    if request.method == "POST" or request.method == "GET":
-        code4 = request.form["code4"]
-        if code4 == "shahg":
-            return render_template("linkentry.html")
-        else:
-            return render_template("code4.html")
-
-@app.route('/token5', methods = ["POST", "GET"])
-def token5():
-    if request.method == "POST" or request.method == "GET":
-        code5 = request.form["code5"]
-        if code5 == "shah1512":
-            conn = sqlite3.connect(link_db)
-            cur = conn.cursor()
-            res = cur.execute("SELECT * FROM links")
-            return render_template("links.html", links = res)
-        else:
-            return render_template("code5.html")
 
 counter = 0
 @app.route('/aboutme')
@@ -257,14 +154,6 @@ def aboutme():
     global counter
     counter = counter + 1
     return render_template("intro.html", count = counter)
-
-@app.route('/coring')
-def coring():
-    return render_template("code2.html")
-
-@app.route('/ideas')
-def ideas():
-    return render_template("code1.html")
 
 @app.route('/mat_calc')
 def mat():
@@ -275,19 +164,6 @@ def mat():
     cur = conn.cursor()
     res = cur.execute("SELECT * FROM prices")
     return render_template("mat_calc.html", image1 = file1, image2 = file2, image3 = file3, items = res)
-
-@app.route('/draw')
-def draw():
-    filesrc = os.path.join('static','draw2.js')
-    return render_template("draw.html", filesrc1 = filesrc)
-
-@app.route('/entry2')
-def entry2():
-    return render_template("code3.html")
-
-@app.route('/linkentry')
-def linkentry():
-    return render_template("code4.html")
 
 @app.route('/contact')
 def contact():
@@ -300,10 +176,6 @@ def bird():
 @app.route('/circles')
 def circles():
     return render_template("animate.html")
-
-@app.route('/fruits')
-def fruits():
-    return render_template("letters.html")
 
 @app.route('/save_form', methods=['POST'])
 def save_form():
