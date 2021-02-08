@@ -24,47 +24,46 @@
                 <h3>{{ task.id }}</h3>
             </td>
         
+            <!--Project Name to be added from Auto-fill -->
             <td>
-                
                     <div class="autocomplete">
                         <input id="myInput" type="text" name="myCountry" placeholder="{{ task.project_name }}">
                     </div>
-                
             </td>
-            
+            <!--Action or activity type-->
             <td>
                 <div class="btn-group">
                     <button type="button"  id="pro-dropdown" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-expanded="false">
                     {{ task.activity }}
                     </button>
                     <div class="dropdown-menu" id="pro-menu">
-                        <a class="dropdown-item" href="#">BOQ</a>
-                        <a class="dropdown-item" href="#">DRAWING</a>
-                        <a class="dropdown-item" href="#">EMAIL</a>
-                        <a class="dropdown-item" href="#">FOLLOW-UP</a>
-                        <a class="dropdown-item" href="#">INFORMATION</a>
-                        <a class="dropdown-item" href="#">INVOICE</a>
-                        <a class="dropdown-item" href="#">LETTER</a>
-                        <a class="dropdown-item" href="#">MEETING_CLIENT</a>
-                        <a class="dropdown-item" href="#">MEETING_CONSULTANT</a>
-                        <a class="dropdown-item" href="#">MEETING_INTERNAL</a>
-                        <a class="dropdown-item" href="#">MEETING_SUPPLIER</a>
-                        <a class="dropdown-item" href="#">METHOD STATEMENT</a>
-                        <a class="dropdown-item" href="#">QUOTATION</a>
-                        <a class="dropdown-item" href="#">REPORT</a>
-                        <a class="dropdown-item" href="#">SCHEDULE</a>
-                        <a class="dropdown-item" href="#">SITE SURVEY</a>
-                        <a class="dropdown-item" href="#">SITE VISIT</a>
-                        <a class="dropdown-item" href="#">SITE WORKS</a>
-                        <a class="dropdown-item" href="#">STORE VISIT</a>
-                        <a class="dropdown-item" href="#">SUPPLIER_QTN</a>
-                        <a class="dropdown-item" href="#">TECHNICAL REPORT</a>
-                        <a class="dropdown-item" href="#">TECHNICAL SUBMITTAL</a>
+                        <a class="dropdown-item" href="#" value="BOQ">BOQ</a>
+                        <a class="dropdown-item" href="#" value="DRAWING">DRAWING</a>
+                        <a class="dropdown-item" href="#" value="EMAIL">EMAIL</a>
+                        <a class="dropdown-item" href="#" value="FOLLOW-UP">FOLLOW-UP</a>
+                        <a class="dropdown-item" href="#" value="INFORMATION">INFORMATION</a>
+                        <a class="dropdown-item" href="#" value="INVOICE">INVOICE</a>
+                        <a class="dropdown-item" href="#" value="LETTER">LETTER</a>
+                        <a class="dropdown-item" href="#" value="MEETING_CLIENT">MEETING_CLIENT</a>
+                        <a class="dropdown-item" href="#" value="MEETING_CONSULTANT">MEETING_CONSULTANT</a>
+                        <a class="dropdown-item" href="#" value="MEETING_INTERNAL">MEETING_INTERNAL</a>
+                        <a class="dropdown-item" href="#" value="MEETING_SUPPLIER">MEETING_SUPPLIER</a>
+                        <a class="dropdown-item" href="#" value="METHOD STATEMENT">METHOD STATEMENT</a>
+                        <a class="dropdown-item" href="#" value="QUOTATION">QUOTATION</a>
+                        <a class="dropdown-item" href="#" value="REPORT">REPORT</a>
+                        <a class="dropdown-item" href="#" value="SCHEDULE">SCHEDULE</a>
+                        <a class="dropdown-item" href="#" value="SITE SURVEY">SITE SURVEY</a>
+                        <a class="dropdown-item" href="#" value="SITE VISIT">SITE VISIT</a>
+                        <a class="dropdown-item" href="#" value="SITE WORKS">SITE WORKS</a>
+                        <a class="dropdown-item" href="#" value="STORE VISIT">STORE VISIT</a>
+                        <a class="dropdown-item" href="#" value="SUPPLIER_QTN">SUPPLIER_QTN</a>
+                        <a class="dropdown-item" href="#" value="TECHNICAL REPORT">TECHNICAL REPORT</a>
+                        <a class="dropdown-item" href="#" value="TECHNICAL SUBMITTAL">TECHNICAL SUBMITTAL</a>
                     </div>
                 </div>
             </td>
             
-
+            <!--Location options-->
             <td>
                 <div class="btn-group">
                 <button type="button"  id="loc-dropdown" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -83,16 +82,19 @@
                 </div>
                </div>
             </td>
-        
+            <!--Action buttons-->
             <td>
                 <a class="btn btn-danger btn-sm" href="#" role="button">Delete</a>
                 <a class="btn btn-info btn-sm" href="#">Ongoing</a>
                 <a class="btn btn-success btn-sm" href="#">Completed</a>
             </td>
+            <!--Remarks input area-->
             <td>
-                <div class="input-group">
-                        <textarea id="remarks" class="form-control">{{ task.remarks }}</textarea>
-                </div>
+                <form autocomplete="off" action="#" id="remarks_form">
+                    <div class="autocomplete">
+                        <input id="remarks" type="text" name="remarks" placeholder="{{ task.remarks }}" size="50">
+                    </div>
+                </form>
             </td>
     </tr>
     </tbody>

@@ -4,6 +4,13 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import sqlite3
 
+from flask_wtf import FlaskForm
+from flask_login import current_user
+from flask_wtf.file import FileField, FileAllowed
+from wtforms import BooleanField, StringField, PasswordField, validators, SubmitField, TextAreaField
+from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
+
+
 app = Flask(__name__)       #Define the flask app thing
 bootstrap = Bootstrap(app)
 

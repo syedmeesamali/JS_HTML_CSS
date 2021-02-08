@@ -86,9 +86,11 @@
                 <a class="btn btn-success btn-sm" href="/Add_Completed">Add Completed</a>
             </td>
             <td>
-                    <div class="input-group">
-                            <textarea name="remarks" class="form-control" form="input_form"></textarea>
+                <form autocomplete="off" action="#" id="remarks_form">
+                    <div class="autocomplete">
+                        <input id="remarks" type="text" name="remarks" placeholder="Remarks" size="50">
                     </div>
+                </form>
             </td>
     </tr>
     </tbody>
