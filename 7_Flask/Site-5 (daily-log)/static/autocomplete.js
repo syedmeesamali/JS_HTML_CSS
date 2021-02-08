@@ -1,10 +1,10 @@
-var pro_down = document.getElementById('pro-dropdown');     //This is a button element
+/*var pro_down = document.getElementById('pro-dropdown');     //This is a button element
 var loc_down = document.getElementById('loc-dropdown');     //This is a button element
-const projects = document.querySelectorAll("[id='pro-menu']");    //Any array now
+const activities = document.querySelectorAll("[id='pro-menu']");    //Any array now
 const locations = document.querySelectorAll("[id='loc-menu']");    //Any array now
 
 //Superb work-around using ID for MULTIPLE elements
-projects.forEach(function(e) {
+activities.forEach(function(e) {
   e.addEventListener('click', (e) => {
     pro_down.innerText = e.target.innerHTML;
   })
@@ -14,8 +14,7 @@ locations.forEach(function(e) {
   e.addEventListener('click', (e) => {
     loc_down.innerText = e.target.innerHTML;
   })
-})
-
+}) */
 
 //Auto-complete function to fill in the names of various projects
 function autocomplete(inp, arr) {
@@ -116,7 +115,7 @@ function autocomplete(inp, arr) {
   }
   
 //List of current projects in a specific fashion
-  var countries = ["CCL GULF OFFICE", "CCL QATAR OFFICE", "Churchill Towers", "Kempinski Hotel", "North Gate Mall", "Tiara Hotel Tower", 
+  var projects = ["CCL GULF OFFICE", "CCL QATAR OFFICE", "Churchill Towers", "Kempinski Hotel", "North Gate Mall", "Tiara Hotel Tower", 
   "Viva bahriya - Pearl", "Prime Business Center", "OPERATIONS", "Latifa Tower", "Dubai Mall", "Lilian Tower", "DicoTech", 
   "Business Development", "ECC", "Marina 101", "Emirates NBD", "Naeem Mall", "Tiara Pkg-4", "KIZAD", "Dr. Riadh Hospital (Core wall)", 
   "Damac Heights", "Ghazi Warehouse", "Burj Daman", "Paragon Bay Mall", "Jafza Building 17", "Al-Shaali Building", "Amesco", 
@@ -153,6 +152,15 @@ function autocomplete(inp, arr) {
   "Jumeirah Villa Design Infinity", "Sharjah Mosque", "WOW Yas Mall", "Creek Rise Tower", "Wafi Column Repairs", 
   "Day To Day Mall Transemirates", "Sterling East", "Barsha Villa", "ASGC Pump Airport", "Oud Metha Project"];
 
+//List of activities
+var activity = ["BOQ","DRAWING","EMAIL","FOLLOW-UP","INFORMATION","INVOICE",
+  "LETTER","MEETING_CLIENT","MEETING_CONSULTANT","MEETING_INTERNAL","MEETING_SUPPLIER",
+  "METHOD STATEMENT","QUOTATION","REPORT","SCHEDULE","SITE SURVEY","SITE VISIT","SITE WORKS",
+  "STORE VISIT","SUPPLIER_QTN","TECHNICAL REPORT","TECHNICAL SUBMITTAL"];
+
+//List of locations
+var locations = ["Dubai","Abu Dhabi","Sharjah","Fujairah","Ras Al-Khaimah","Qatar", "KSA", "Bahrain", "Kuwait"];
+
   /*An array containing all the country names in the world:
   var countries = ["Afghanistan","Albania","Algeria","Andorra","Angola","Anguilla",
   "Antigua & Barbuda","Argentina","Armenia","Aruba","Australia","Austria","Azerbaijan",
@@ -180,4 +188,6 @@ function autocomplete(inp, arr) {
   "Vatican City","Venezuela","Vietnam","Virgin Islands (US)","Yemen","Zambia","Zimbabwe"];
   */
   /*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
-  autocomplete(document.getElementById("myInput"), countries);
+  autocomplete(document.getElementById("myInput"), projects);
+  autocomplete(document.getElementById("myActivity"), activity);
+  autocomplete(document.getElementById("myLocation"), locations);

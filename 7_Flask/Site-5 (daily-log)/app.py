@@ -145,12 +145,12 @@ def update(id):
     task_to_update = work.query.get_or_404(id)
     if request.method == 'POST':
         task_to_update.project_name = request.form['myCountry']
+        task_to_update.location = request.form['myLocation']
+        task_to_update.activity = request.form['myActivity']
         task_to_update.remarks = request.form['remarks']
-        task_to_update.activity = request.form['pro-dropdown']
-        task_to_update.location = request.form['loc-dropdown']
         try:
             db.session.commit()
-            return redirect('/')
+            return redirect('/Ongoing')
         except:
             return "There was some problem updating that task!"
     else:

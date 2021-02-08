@@ -11,18 +11,20 @@
     <table class="table table-bordered">
         <thead class="table-info"></thead>
         <tbody>
-        <tr>
-            <th style="width: 10%">Id </th>
-            <th style="width: 15%">Project Name </th>
-            <th style="width: 15%">Activity </th>
-            <th style="width: 10%">Location </th>
-            <th style="width: 10%">Status </th>
-            <th style="width: 40%">Remarks </th>
-        </tr>
             <tr>
-            <td>
-                <h3>{{ task.id }}</h3>
-            </td>
+                <th style="width: 10%">Id </th>
+                <th style="width: 15%">Project Name </th>
+                <th style="width: 15%">Activity </th>
+                <th style="width: 10%">Location </th>
+                <th style="width: 10%">Status </th>
+                <th style="width: 40%">Remarks </th>
+            </tr>
+            
+            <!--Rows from the actual database -->
+            <tr>
+                <td>
+                    <h3>{{ task.id }}</h3>
+                </td>
         
             <!--Project Name to be added from Auto-fill -->
             <td>
@@ -32,55 +34,16 @@
             </td>
             <!--Action or activity type-->
             <td>
-                <div class="btn-group">
-                    <button type="button"  id="pro-dropdown" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-expanded="false">
-                    {{ task.activity }}
-                    </button>
-                    <div class="dropdown-menu" id="pro-menu">
-                        <a class="dropdown-item" href="#" value="BOQ">BOQ</a>
-                        <a class="dropdown-item" href="#" value="DRAWING">DRAWING</a>
-                        <a class="dropdown-item" href="#" value="EMAIL">EMAIL</a>
-                        <a class="dropdown-item" href="#" value="FOLLOW-UP">FOLLOW-UP</a>
-                        <a class="dropdown-item" href="#" value="INFORMATION">INFORMATION</a>
-                        <a class="dropdown-item" href="#" value="INVOICE">INVOICE</a>
-                        <a class="dropdown-item" href="#" value="LETTER">LETTER</a>
-                        <a class="dropdown-item" href="#" value="MEETING_CLIENT">MEETING_CLIENT</a>
-                        <a class="dropdown-item" href="#" value="MEETING_CONSULTANT">MEETING_CONSULTANT</a>
-                        <a class="dropdown-item" href="#" value="MEETING_INTERNAL">MEETING_INTERNAL</a>
-                        <a class="dropdown-item" href="#" value="MEETING_SUPPLIER">MEETING_SUPPLIER</a>
-                        <a class="dropdown-item" href="#" value="METHOD STATEMENT">METHOD STATEMENT</a>
-                        <a class="dropdown-item" href="#" value="QUOTATION">QUOTATION</a>
-                        <a class="dropdown-item" href="#" value="REPORT">REPORT</a>
-                        <a class="dropdown-item" href="#" value="SCHEDULE">SCHEDULE</a>
-                        <a class="dropdown-item" href="#" value="SITE SURVEY">SITE SURVEY</a>
-                        <a class="dropdown-item" href="#" value="SITE VISIT">SITE VISIT</a>
-                        <a class="dropdown-item" href="#" value="SITE WORKS">SITE WORKS</a>
-                        <a class="dropdown-item" href="#" value="STORE VISIT">STORE VISIT</a>
-                        <a class="dropdown-item" href="#" value="SUPPLIER_QTN">SUPPLIER_QTN</a>
-                        <a class="dropdown-item" href="#" value="TECHNICAL REPORT">TECHNICAL REPORT</a>
-                        <a class="dropdown-item" href="#" value="TECHNICAL SUBMITTAL">TECHNICAL SUBMITTAL</a>
-                    </div>
+                <div class="autocomplete">
+                    <input id="myActivity" type="text" name="myActivity" placeholder="{{ task.activity }}">
                 </div>
             </td>
             
             <!--Location options-->
             <td>
-                <div class="btn-group">
-                <button type="button"  id="loc-dropdown" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                {{ task.location }}
-                </button>
-                <div class="dropdown-menu" id="loc-menu">
-                  <a class="dropdown-item" href="#">Dubai</a>
-                  <a class="dropdown-item" href="#">AbuDhabi</a>
-                  <a class="dropdown-item" href="#">Sharjah</a>
-                  <a class="dropdown-item" href="#">Qatar</a>
-                  <a class="dropdown-item" href="#">Bahrain</a>
-                  <a class="dropdown-item" href="#">KSA</a>
-                  <a class="dropdown-item" href="#">Kuwait</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">Operations</a>
+                <div class="autocomplete">
+                    <input id="myLocation" type="text" name="myLocation" placeholder="{{ task.location }}">
                 </div>
-               </div>
             </td>
             <!--Action buttons-->
             <td>
@@ -92,7 +55,7 @@
             <td>
                 <form autocomplete="off" action="#" id="remarks_form">
                     <div class="autocomplete">
-                        <input id="remarks" type="text" name="remarks" placeholder="{{ task.remarks }}" size="50">
+                        <input id="remarks" type="text" name="remarks" placeholder="{{ task.remarks }}" size="30">
                     </div>
                 </form>
             </td>
