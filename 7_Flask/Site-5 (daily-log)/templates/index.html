@@ -13,14 +13,14 @@
             <th style="width: 15%">Project Name </th>
             <th style="width: 15%">Activity </th>
             <th style="width: 10%">Location </th>
-            <th style="width: 10%">Status </th>
-            <th style="width: 40%">Remarks </th>
+            <th style="width: 15%">Status </th>
+            <th style="width: 35%">Remarks </th>
         </tr>
             <tr>
             <td>
                 <h3>ID</h3>
             </td>
-        
+            <!--Project Name to be added from Auto-fill -->
             <td>
                 <form autocomplete="off" action="#" id="input_form">
                     <div class="autocomplete">
@@ -29,68 +29,32 @@
                 </form>
             </td>
             
-            <td>
-                <div class="btn-group">
-                    <button type="button"  id="pro-dropdown" class="btn btn-primary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-expanded="false">
-                    Select Here
-                    </button>
-                    <div class="dropdown-menu" id="pro-menu">
-                        <a class="dropdown-item" href="#">BOQ</a>
-                        <a class="dropdown-item" href="#">DRAWING</a>
-                        <a class="dropdown-item" href="#">EMAIL</a>
-                        <a class="dropdown-item" href="#">FOLLOW-UP</a>
-                        <a class="dropdown-item" href="#">INFORMATION</a>
-                        <a class="dropdown-item" href="#">INVOICE</a>
-                        <a class="dropdown-item" href="#">LETTER</a>
-                        <a class="dropdown-item" href="#">MEETING_CLIENT</a>
-                        <a class="dropdown-item" href="#">MEETING_CONSULTANT</a>
-                        <a class="dropdown-item" href="#">MEETING_INTERNAL</a>
-                        <a class="dropdown-item" href="#">MEETING_SUPPLIER</a>
-                        <a class="dropdown-item" href="#">METHOD STATEMENT</a>
-                        <a class="dropdown-item" href="#">QUOTATION</a>
-                        <a class="dropdown-item" href="#">REPORT</a>
-                        <a class="dropdown-item" href="#">SCHEDULE</a>
-                        <a class="dropdown-item" href="#">SITE SURVEY</a>
-                        <a class="dropdown-item" href="#">SITE VISIT</a>
-                        <a class="dropdown-item" href="#">SITE WORKS</a>
-                        <a class="dropdown-item" href="#">STORE VISIT</a>
-                        <a class="dropdown-item" href="#">SUPPLIER_QTN</a>
-                        <a class="dropdown-item" href="#">TECHNICAL REPORT</a>
-                        <a class="dropdown-item" href="#">TECHNICAL SUBMITTAL</a>
-                    </div>
+             <!--Action or activity type-->
+             <td>
+                <div class="autocomplete">
+                    <input id="myActivity" type="text" name="myActivity" placeholder="Activity">
                 </div>
             </td>
-            
 
+            <!--Location options-->
             <td>
-                <div class="btn-group">
-                <button type="button"  id="loc-dropdown" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Location
-                </button>
-                <div class="dropdown-menu" id="loc-menu">
-                  <a class="dropdown-item" href="#">Dubai</a>
-                  <a class="dropdown-item" href="#">AbuDhabi</a>
-                  <a class="dropdown-item" href="#">Sharjah</a>
-                  <a class="dropdown-item" href="#">Qatar</a>
-                  <a class="dropdown-item" href="#">Bahrain</a>
-                  <a class="dropdown-item" href="#">KSA</a>
-                  <a class="dropdown-item" href="#">Kuwait</a>
-                  <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">Operations</a>
+                <div class="autocomplete">
+                    <input id="myLocation" type="text" name="myLocation" placeholder="Location">
                 </div>
-               </div>
-            </td>
-        
+            </td>        
+            
+            <!--Action buttons-->
             <td>
-                <a class="btn btn-info btn-sm" href="/Add_Ongoing">Add Ongoing</a>
-                <a class="btn btn-success btn-sm" href="/Add_Completed">Add Completed</a>
+                <a class="btn btn-info btn-sm" href="/Add_Ongoing">Add</a>
             </td>
+
+            <!--Remarks input area-->
             <td>
-                <form autocomplete="off" action="#" id="remarks_form">
-                    <div class="autocomplete">
-                        <input id="remarks" type="text" name="remarks" placeholder="Remarks" size="50">
-                    </div>
-                </form>
+            <form autocomplete="off" action="#" id="remarks_form">
+                <div class="autocomplete">
+                    <input id="remarks" type="text" name="remarks" placeholder="Remarks" size="50">
+                </div>
+            </form>
             </td>
     </tr>
     </tbody>
