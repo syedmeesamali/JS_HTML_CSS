@@ -13,8 +13,8 @@
             <th style="width: 15%">Project Name </th>
             <th style="width: 15%">Activity </th>
             <th style="width: 10%">Location </th>
-            <th style="width: 15%">Status </th>
             <th style="width: 35%">Remarks </th>
+            <th style="width: 15%">Action </th>
         </tr>
             <tr>
             <td>
@@ -43,19 +43,20 @@
                 </div>
             </td>        
             
+            <!--Remarks input area-->
+            <td>
+                <form autocomplete="off" action="#" id="remarks_form">
+                    <div class="autocomplete">
+                        <input id="remarks" type="text" name="remarks" placeholder="Remarks" size="50">
+                    </div>
+                </form>
+                </td>
+
             <!--Action buttons-->
             <td>
                 <a class="btn btn-info btn-sm" href="/Add_Ongoing">Add</a>
             </td>
-
-            <!--Remarks input area-->
-            <td>
-            <form autocomplete="off" action="#" id="remarks_form">
-                <div class="autocomplete">
-                    <input id="remarks" type="text" name="remarks" placeholder="Remarks" size="50">
-                </div>
-            </form>
-            </td>
+            
     </tr>
     </tbody>
     </tbody>

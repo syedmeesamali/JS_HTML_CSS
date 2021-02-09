@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, url_for, redirect
+from flask import Flask, render_template, request, url_for, redirect, flash
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
@@ -128,9 +128,11 @@ def update(id):
         task_to_update.remarks = request.form['remarks']
         try:
             db.session.commit()
+            flash("Task has been updated successfully!", 'success')
             return redirect('/Ongoing')
         except:
             return "There was some problem updating that task!"
+            flash("Some error occurred!", 'danger')
     else:
         return render_template('update.html', task = task_to_update)
 

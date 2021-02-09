@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block title %} Index Page {% endblock %}
+
+{% block page_content %}
+<div class="content">
+
+<h1>Details for the project {{ task.project_name }}</h1>
+
+<!-- All action inside the form tag to get the data from the form itself -->
+<form action="/update/{{ task.id }}" method="POST">
+    <table class="table table-bordered">
+        <thead class="table-info"></thead>
+        <tbody>
+            <tr>
+                <th style="width: 10%">Id </th>
+                <th style="width: 15%">Project Name </th>
+                <th style="width: 15%">Activity </th>
+                <th style="width: 10%">Location </th>
+                <th style="width: 10%">Status </th>
+                <th style="width: 40%">Remarks </th>
+            </tr>
+            
+            <!--Rows from the actual database -->
+            <tr>
+                <td>
+                    <h3>{{ task.id }}</h3>
+                </td>
+        
+            <!--Project Name to be added from Auto-fill -->
+            <td>
+                    <div class="autocomplete">
+                        <input id="myInput" type="text" name="myCountry" placeholder="{{ task.project_name }}">
+                    </div>
+            </td>
+            <!--Action or activity type-->
+            <td>
+                <div class="autocomplete">
+                    <input id="myActivity" type="text" name="myActivity" placeholder="{{ task.activity }}">
+                </div>
+            </td>
+            
+            <!--Location options-->
+            <td>
+                <div class="autocomplete">
+                    <input id="myLocation" type="text" name="myLocation" placeholder="{{ task.location }}">
+                </div>
+            </td>
+            <!--Action buttons-->
+            <td>
+                <a class="btn btn-danger btn-sm" href="#" role="button">Delete</a>
+                <a class="btn btn-info btn-sm" href="#">Ongoing</a>
+                <a class="btn btn-success btn-sm" href="#">Completed</a>
+            </td>
+            <!--Remarks input area-->
+            <td>
+                <form autocomplete="off" action="#" id="remarks_form">
+                    <div class="autocomplete">
+                        <input id="remarks" type="text" name="remarks" placeholder="{{ task.remarks }}" size="30">
+                    </div>
+                </form>
+            </td>
+    </tr>
+    </tbody>
+    </tbody>
+    </table>
+
+    <input type="submit" value="Update Task">
+</form> 
+</div>
+
+<script src="../static/autocomplete.js"></script>
+{% endblock %}
