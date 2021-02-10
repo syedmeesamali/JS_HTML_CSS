@@ -111,8 +111,6 @@ def Register():
 
 @app.route('/Login', methods = ['POST', 'GET'])
 def Login():
-    if current_user.is_authenticated:
-        return redirect(url_for('index'))
     form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(email = form.email.data).first()

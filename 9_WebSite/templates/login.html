@@ -4,7 +4,6 @@
 {% block page_content %}
 
 <div class="container">
-    <div class="text-center h1 text-white bg-primary p-2">Login Form</div>
     <form method="post" enctype="multipart/form-data">
         <div>
             {{ form.hidden_tag() }}
@@ -49,12 +48,6 @@
             </small>
         </div>
     </form>
-</div>
-
-<div class="border-top pt-3">
-    <small class="text-muted">
-        Need an account? <a class="ml-2" href="{{ url_for('Register') }}">Sign Up Now</a>
-    </small>
 </div>
 
 {% endblock %}
