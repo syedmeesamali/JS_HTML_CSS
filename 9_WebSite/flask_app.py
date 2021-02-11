@@ -131,6 +131,11 @@ def mat():
 def contact():
     return render_template("contact.html")
 
+@app.route('/Links')
+@login_required
+def Links():
+    return render_template("links.html")
+
 @app.route('/bird')
 def bird():
     return render_template("bird.html")

@@ -30,7 +30,7 @@
                <div id="mobile_sec">
                <div class="mobile"><i class="fa fa-bars"></i><i class="fa fa-times"></i></div>
                 <div class="menumobile">
-                    <!-- \\ Begin Navigation \\ -->
+                    
                     <nav class="Navigation">
                         <ul>
                             <li class="active">
@@ -41,10 +41,17 @@
                               <a href="#services">Services</a>
                               <span class="menu-item-bg"></span>
                             </li>
+                            {% if current_user.is_authenticated %}
+                            <li>
+                                <a href="{{ url_for('Links') }}">Links</a>
+                                <span class="menu-item-bg"></span>
+                            </li>
+                            {% else %}
                             <li>
                                 <a href="{{ url_for('Login') }}">Login</a>
                                 <span class="menu-item-bg"></span>
                             </li>
+                            {% endif %}
                             <li>
                                 <a href="#contact">Contact</a>
                                 <span class="menu-item-bg"></span>
