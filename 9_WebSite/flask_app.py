@@ -36,7 +36,6 @@ def load_user(user_id):
 #Class to define the model for TODO list 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key = True)
-    username = db.Column(db.String(20), unique = True, nullable = False)
     email = db.Column(db.String(120), unique = True, nullable = False)
     password = db.Column(db.String(60), nullable = False)
     def __repr__(self):
@@ -46,7 +45,6 @@ class User(db.Model, UserMixin):
 
 
 class RegistrationForm(FlaskForm):
-    username = StringField('Username', validators = [DataRequired(), Length(min = 4, max = 20)])
     email = StringField('Email', validators = [DataRequired(), Email()])
     password = PasswordField('Password', validators = [DataRequired()])
     confirm = PasswordField('Confirm Password', validators = [DataRequired(), EqualTo('password')])
@@ -67,25 +65,6 @@ class LoginForm(FlaskForm):
     password = PasswordField('Password', validators = [DataRequired()])
     remember = BooleanField('Remember Me')
     submit =  SubmitField('Login')
-
-
-class UpdateAccountForm(FlaskForm):
-    username = StringField('Username', validators = [DataRequired(), Length(min = 4, max = 20)])
-    email = StringField('Email', validators = [DataRequired(), Email()])
-    picture = FileField('Update profile picture', validators = [FileAllowed(['jpg', 'png'])])
-    submit =  SubmitField('Update')
-    
-    def validate_username(self, username):
-        if username.data != current_user.username:
-            user = User.query.filter_by(username = username.data).first()
-            if user:
-                raise ValidationError('The username is taken. Please choose a different one.')
-    #Default email validation
-    def validate_email(self, email):
-        if email.data != current_user.email:
-            user = User.query.filter_by(email = email.data).first()
-            if user:
-                raise ValidationError('The email is taken. Please choose a different one.')
 
 @app.errorhandler(404)
 def page_not_found(e):
@@ -126,21 +105,6 @@ def Login():
 def Logout():
     logout_user()
     return redirect(url_for('index'))
-
-@app.route('/Account', methods = ['POST', 'GET'])
-@login_required
-def Account():
-    form = UpdateAccountForm()
-    if form.validate_on_submit():
-        current_user.username = form.username.data
-        current_user.email = form.email.data
-        db.session.commit()
-        flash('Your account has been successfully updated', 'success')
-        return(redirect(url_for('Account')))
-    elif request.method == 'GET':
-        form.username.data = current_user.username
-        form.email.data = current_user.email
-    return render_template('account.html',  title='Account', form = form)
 
 @app.route('/')
 def index():
