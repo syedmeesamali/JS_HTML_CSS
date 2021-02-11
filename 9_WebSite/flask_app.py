@@ -43,7 +43,6 @@ class User(db.Model, UserMixin):
     def __repr__(self):
         return '<Task %r>' % self.id
 
-
 class RegistrationForm(FlaskForm):
     email = StringField('Email', validators = [DataRequired(), Email()])
     password = PasswordField('Password', validators = [DataRequired()])
@@ -127,14 +126,23 @@ def mat():
     res = cur.execute("SELECT * FROM prices")
     return render_template("mat_calc.html", image1 = file1, image2 = file2, image3 = file3, items = res)
 
-@app.route('/contact')
-def contact():
-    return render_template("contact.html")
 
 @app.route('/Links')
 @login_required
 def Links():
-    return render_template("links.html")
+    conn = sqlite3.connect(link_db)
+    cur = conn.cursor()
+    res = cur.execute("SELECT * FROM links")
+    return render_template("links.html", links = res)
+
+@app.route('/linkentry')
+@login_required
+def Linkentry():
+    return render_template("linkentry.html")
+
+@app.route('/readlinks')
+def Read_Links():
+    return render_template("readlinks.html")
 
 @app.route('/bird')
 def bird():
