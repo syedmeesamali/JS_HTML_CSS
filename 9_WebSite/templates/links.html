@@ -2,36 +2,33 @@
 {% block title %} Index Page {% endblock %}
 
 {% block page_content %}
-    <table>
-      <tr>
-          <th width="4%">Sr. #</th>
-          <th width="20%">Description </th>
-          <th width="20%">Link URL</th>
-          <th width="15%">Type</th>
-          <th width="10%">Date/Time</th>
-          <th width="5%">Status</th>
-          <th width="5%">Delete</th>
-      </tr>
+<div class="content">
+  <table class="table table-bordered">
+      <thead>
+        <tr class="d-flex">
+            <th class="col-1">Sr. #</th>
+            <th class="col-3">Description </th>
+            <th class="col-4">Link URL</th>
+            <th class="col-2">Type</th>
+            <th class="col-2">Date/Time</th>
+            <th class="col-1">Status</th>
+        </tr>
+      </thead>
+      <tbody>
        {% for link in links %}
-       <tr>
-        <td style="text-align: center;"> {{ link[0] }} </td>
-        <td> {{ link[1] }} </td>
-        <td><a href="{{ link[1] }}">{{ link[2] }}</a></td>
-        <td> {{ link[3] }} </td>
-        <td> {{ link[4] }} </td>
-        <td>
-          <form action="/read/{{ link[0] }}" method="POST">
-            <input type="hidden" value="{{ link[0] }}"/>
-            <button id="w3-btn">READ</button>
-          </form> 
-          <td>
-            <form action="/delete/{{ link[0] }}" method="POST">
-              <input type="hidden" value="{{ link[0] }}"/>
-              <button id="w3-btn">DEL</button>
-            </form> 
+       <tr class="d-flex">
+        <td class="col-1"> {{ link[0] }} </td>
+        <td class="col-3"> {{ link[1] }} </td>
+        <td class="col-4"><a href="{{ link[1] }}">{{ link[2] }}</a></td>
+        <td class="col-2"> {{ link[3] }} </td>
+        <td class="col-2"> {{ link[4] }} </td>
+        <td class="col-1">
+          <a class="btn btn-danger btn-sm" href="/delete/{{ link[0] }}" role="button">Delete</a>
+          <a class="btn btn-info btn-sm" href="/read/{{ link[0] }}">Read</a>
         </td>
        </tr>
+      </tbody>
        {% endfor %}
     </table>
-    
+  </div>  
 {% endblock %}
