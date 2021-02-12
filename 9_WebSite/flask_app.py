@@ -39,7 +39,19 @@ class User(db.Model, UserMixin):
     email = db.Column(db.String(120), unique = True, nullable = False)
     password = db.Column(db.String(60), nullable = False)
     def __repr__(self):
-        return f"User('{self.username}', '{self.email}')"
+        return f"User('{self.email}')"
+    def __repr__(self):
+        return '<Task %r>' % self.id
+
+#ORM model for the links
+class links(db.Model):
+    id = db.Column(db.Integer, primary_key = True)
+    link_name = db.Column(db.String(50), nullable = False)
+    link_url = db.Column(db.String(20), nullable = False)
+    link_type = db.Column(db.Boolean, default = False, nullable = False)
+    date_created = db.Column(db.Date, default = datetime.utcnow)
+    date_read = db.Column(db.Date)
+
     def __repr__(self):
         return '<Task %r>' % self.id
 

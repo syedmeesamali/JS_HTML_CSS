@@ -1,0 +1,204 @@
+ID,link_name,link_url,link_type,read,date_created,date_read,
+1,Flask Views App as a Reference,https://github.com/rohitchormale/cookiecutter-flask,Python,0,2019-11-12,2021-02-12,2019-11-12
+2,Cartoon intro to DNS over HTTPS,https://hacks.mozilla.org/2018/05/a-cartoon-intro-to-dns-over-https/,Networking,0,2019-11-10,2021-02-12,2019-11-10
+3,FRP Coding,https://futureofcoding.org/essays/dctp.html,Coding,0,2019-11-10,2021-02-12,2019-11-10
+4,GitHub super goodies Collection,https://github.com/rsapkf/goodies,References,0,2019-11-10,2021-02-12,2019-11-10
+5,"An always-available, online-capable Raspberry Pi in your pocket",https://justinmiller.io/posts/2019/09/21/pi-gadget/,Embedded,0,2019-11-10,2021-02-12,2019-11-10
+6,Programming in 1969,https://www.ilikebigbits.com/2019_07_08_programming_in_1969.html,Coding,0,2019-11-10,2021-02-12,2019-11-10
+7,A Multi-Person Brain-to-Brain Interface for Direct Collaboration Between Brains,https://www.nature.com/articles/s41598-019-41895-7,Science,0,2019-11-10,2021-02-12,2019-11-10
+8,A Machine Learning Guide to HTM (Hierarchical Temporal Memory),https://numenta.com/blog/2019/10/24/machine-learning-guide-to-htm,AI,0,2019-11-10,2021-02-12,2019-11-10
+9,Faster CSS layouts,https://hacks.mozilla.org/2019/10/faster-layouts-with-css-grid-and-subgrid/,CSS,0,2019-11-10,2021-02-12,2019-11-10
+10,Quantum Computing in Rust Part # 1,https://walther.guru/blog/impl-quantum-part-1/,Quantum,0,2019-11-10,2021-02-12,2019-11-10
+11,Great collection of tools for robotics in C++ and Python,https://github.com/Ly0n/awesome-robotic-tooling/blob/master/README.md,Robotics,0,2019-11-10,2021-02-12,2019-11-10
+12,Introducing SafeLife: Safety Benchmarks for Reinforcement Learning,https://www.partnershiponai.org/safelife/,AI,0,2019-12-11,2021-02-12,2019-12-11
+13,"1,300 Free Online Courses from Top Universities",http://www.openculture.com/freeonlinecourses,Courses,0,2019-11-10,2021-02-12,2019-11-10
+14,PostGRES Via RESTFUL API,postgrest.org/en/v6.0/,Database,0,2019-11-10,2021-02-12,2019-11-10
+15,pastebin scraper,https://github.com/dmuhs/pastebin-scraper,Web,0,2019-11-10,2021-02-12,2019-11-10
+16,Embedded Systems Projects,https://www.theengineeringprojects.com/,Embedded,0,2019-11-12,2021-02-12,2019-11-12
+17,C# full application development video,https://www.youtube.com/watch?v=eBY1HHDe7NE,C#,0,2019-12-12,2021-02-12,2019-12-12
+18,TensorFlow Models Deployment with AutoML,https://medium.com/tensorflow/build-and-deploy-tensorflow-js-models-with-the-power-of-automl-1985b8985083,ML,0,2019-11-12,2021-02-12,2019-11-12
+19,API end to end testing with Docker,https://fire.ci/blog/api-end-to-end-testing-with-docker/,Docker,0,2019-11-12,2021-02-12,2019-11-12
+20,Visual Wake Words with TensorFlow Lite Micro,https://medium.com/tensorflow/visual-wake-words-with-tensorflow-lite-micro-8578e59ea6f9,ML,0,2019-11-10,2021-02-12,2019-11-10
+21,DRAW.IO,https://github.com/jgraph/drawio/blob/master/README.md,Draw,0,2019-11-12,2021-02-12,2019-11-12
+22,1 Bit RAM using Transistors,https://avrillion.com/stf/363/How-to-Build-1-Bit-of-RAM-Using-Transistors,Embedded,0,2020-04-08,2021-02-12,2020-04-08
+23,Bandwidth Checker BOT,https://github.com/healeycodes/bandwidth-checker,BOT,0,2019-11-13,2021-02-12,2019-11-13
+24,Hand drawn type graphs,https://sketchviz.com/new,Drawing,0,2019-11-13,2021-02-12,2019-11-13
+25,"Announcing the Bytecode Alliance: Building a secure by default, composable future for WebAssembly",https://hacks.mozilla.org/2019/11/announcing-the-bytecode-alliance/,WebAssembly,0,2019-11-13,2021-02-12,2019-11-13
+26,Selenium Based Website Tour,https://github.com/seleniumbase/SeleniumBase/blob/master/examples/tour_examples/ReadMe.md,Automation,0,2019-11-14,2021-02-12,2019-11-14
+27,Differentiable Programming,https://github.com/apple/swift/blob/master/docs/DifferentiableProgramming.md,Maths,0,2019-11-14,2021-02-12,2019-11-14
+28,Natural disaster detection with Keras and Deep Learning,https://www.pyimagesearch.com/2019/11/11/detecting-natural-disasters-with-keras-and-deep-learning/,ML,0,2019-11-15,2021-02-12,2019-11-15
+29,Race Bar Charts,https://observablehq.com/@d3/bar-chart-race-explained,Python,0,2019-11-15,2021-02-12,2019-11-15
+30,Coding Machines,https://www.teamten.com/lawrence/writings/coding-machines/,Programming,0,2019-12-13,2021-02-12,2019-12-13
+31,In Defense of Utility of CSS,https://frontstuff.io/in-defense-of-utility-first-css,CSS,0,2019-11-17,2021-02-12,2019-11-17
+32,Hacking Neural Networks,https://github.com/Kayzaks/HackingNeuralNetworks/blob/master/README.md,AI,0,2019-11-17,2021-02-12,2019-11-17
+33,Effectively Using Matplotlib,https://pbpython.com/effective-matplotlib.html,Python,0,2019-11-17,2021-02-12,2019-11-17
+34,The perfect programming language,https://cygni.se/the-perfect-programming-language/,Programming,0,2019-11-17,2021-02-12,2019-11-17
+35,State-of-the-art Natural Language Processing for TensorFlow 2.0 and PyTorch,https://github.com/huggingface/transformers,ML,0,2019-11-20,2021-02-12,2019-11-20
+36,Google Sycamore Processor,https://medium.com/@jonathan_hui/quantum-supremacy-google-sycamore-processor-6f30073a17fa,ML,0,2019-11-21,2021-02-12,2019-11-21
+37,Command Line Rust,https://rust-lang-nursery.github.io/cli-wg/,Rust,0,2019-11-23,2021-02-12,2019-11-23
+38,MS REST API Guidelines,https://github.com/microsoft/api-guidelines/blob/master/Guidelines.md,REST,0,2019-11-23,2021-02-12,2019-11-23
+39,The Digital Antiquarian,https://www.filfre.net/2019/11/new-tricks-for-an-old-z-machine-part-3-a-renaissance-is-nigh/,References,0,2019-11-23,2021-02-12,2019-11-23
+40,Minimum Programming Language,http://akkartik.name/post/mu-2019-2,Languages,0,2019-11-23,2021-02-12,2019-11-23
+41,Rust Error Handling,https://blog.yoshuawuyts.com/error-handling-survey/,Rust,0,2019-11-23,2021-02-12,2019-11-23
+42,Deep Learning with PyTorch,https://pytorch.org/deep-learning-with-pytorch,ML,0,2019-11-23,2021-02-12,2019-11-23
+43,Writing a Simple Garbage Collector in C,http://maplant.com/gc.html,C,0,2019-12-16,2021-02-12,2019-12-16
+44,12 Common Mistakes and Missed Optimization Opportunities in SQL,https://hakibenita.com/sql-dos-and-donts,SQL,0,2019-11-23,2021-02-12,2019-11-23
+45,Cheap and simple pen plotter,https://divio-brachiograph.readthedocs-hosted.com/,Embedded,0,2019-11-24,2021-02-12,2019-11-24
+46,"Microsoft's ""Love"" of Linux",pedrocr.pt/text/microsofts-love-of-linux/,Linux,0,2019-11-26,2021-02-12,2019-11-26
+47,EasyDB - No server required,https://easydb.io/,Database,0,2019-11-26,2021-02-12,2019-11-26
+48,Practice Hacking Skills,https://thehacktoday.com/22-hacking-sites-ctfs-and-wargames-to-practice-your-hacking-skills/,Hacking,0,2019-11-26,2021-02-12,2019-11-26
+49,Private Mail Server,https://www.c0ffee.net/blog/mail-server-guide/,Mail,0,2019-11-26,2021-02-12,2019-11-26
+50,Working of BTC Core,https://www.youtube.com/watch?v=2OeUaSvz4T8&feature=em-lbcastemail,BTC,0,2019-12-15,2021-02-12,2019-12-15
+51,Find usernames across browsers,https://elody.com/scenario/plan/16/?tab=enduser,Social,0,2019-12-01,2021-02-12,2019-12-01
+52,Calculus Explained with pics and gifs ,https://0a.io/chapter1/calculus-explained.html,Calculus,0,2019-12-01,2021-02-12,2019-12-01
+53,Neural Theory of Everything,https://opentheory.net/2019/11/neural-annealing-toward-a-neural-theory-of-everything/,AI,0,2019-12-01,2021-02-12,2019-12-01
+54,WebJack,https://webjack.io/,Arduino,0,2019-12-16,2021-02-12,2019-12-16
+55,Deep Learning by Anime,https://github.com/deeppomf/DeepLearningAnimePapers,ML,0,2019-12-03,2021-02-12,2019-12-03
+56,Matrix calculus for deep learning,https://explained.ai/matrix-calculus/index.html,ML,0,2019-12-03,2021-02-12,2019-12-03
+57,Overview of Crypography,https://www.garykessler.net/library/crypto.html,Cyber-security,0,2019-12-03,2021-02-12,2019-12-03
+58,C# resources github,https://github.com/kozross/awesome-c,CSharp,0,2019-12-03,2021-02-12,2019-12-03
+59,CSS animations,https://dev.to/devmount/learn-css-animation-by-creating-pure-css-loaders-3lm6,CSS,0,2019-12-07,2021-02-12,2019-12-07
+60,Artificial neural networks (ANN) in C,https://github.com/codeplea/genann,ANN,0,2019-12-07,2021-02-12,2019-12-07
+61,Practical approach to machine learning,https://practicalai.me/,ML,0,2019-12-08,2021-02-12,2019-12-08
+62,Quadcopter programming,https://timakro.de/archive/,Embedded,0,2019-12-08,2021-02-12,2019-12-08
+63,The Untold History of Arduino,https://arduinohistory.github.io/,Arduino,0,2019-12-16,2021-02-12,2019-12-16
+64,Machine Learning That’s Light Enough for an Arduino,https://spectrum.ieee.org/geek-life/hands-on/machine-learning-thats-light-enough-for-an-arduino,Arduino,0,2019-12-16,2021-02-12,2019-12-16
+65,Top 10 finalists in the 2019 Contest,http://illusionoftheyear.com/cat/top-10-finalists/2019/,Illusions,0,2019-12-16,2021-02-12,2019-12-16
+66,Python news,https://news.python.sc/,Python,0,2019-12-19,2021-02-12,2019-12-19
+67,Arduino Radar,https://www.instructables.com/id/Arduino-Radar-1/,Arduino,0,2019-12-19,2021-02-12,2019-12-19
+68,Control DIY DC Motor Car via Web,https://www.hackster.io/iot_lover/control-diy-dc-motor-car-via-web-b66b06,Arduino,0,2019-12-19,2021-02-12,2019-12-19
+69,NASA API,https://api.nasa.gov/,API,0,2020-05-14,2021-02-12,2020-05-14
+70,Computation theory of mind,https://plato.stanford.edu/entries/computational-mind/,Mind,0,2019-12-19,2021-02-12,2019-12-19
+71,Nano neurons in JS,https://github.com/trekhleb/nano-neuron,ML,0,2019-12-19,2021-02-12,2019-12-19
+72,Neural network zoo,https://www.asimovinstitute.org/neural-network-zoo/,ML,0,2019-12-19,2021-02-12,2019-12-19
+73,“Don’t Try”: The Philosophy of the Hardworking Charles Bukowski,http://www.openculture.com/2019/12/dont-try-the-philosophy-of-the-hardworking-charles-bukowski.html,Philosophy,0,2019-12-19,2021-02-12,2019-12-19
+74,Coding Game C,https://www.codingame.com/playgrounds/14589/how-to-play-with-pointers-in-c/pointer-and-array,Coding,0,2019-12-19,2021-02-12,2019-12-19
+75,Arduino Sensor Kit Explained,https://www.instructables.com/id/Arduino-37-in-1-Sensors-Kit-Explained/,Arduino,0,2019-12-21,2021-02-12,2019-12-21
+76,Open source illustrations,https://undraw.co/,Illustrations,0,2019-12-23,2021-02-12,2019-12-23
+77,A Thought Experiment: Using the ECS Pattern Outside of Game Engines,http://adventures.michaelfbryan.com/posts/ecs-outside-of-games/,Rust,0,2019-12-28,2021-02-12,2019-12-28
+78,7 GUIs as Tasks,https://eugenkiss.github.io/7guis/tasks,GUI,0,2019-12-28,2021-02-12,2019-12-28
+79,Best networking guides,https://www.redhat.com/sysadmin/networking-guides,Networking,0,2019-12-28,2021-02-12,2019-12-28
+80,Open source ICONS,https://github.com/coreui/coreui-icons/tree/1.0.0,Icons,0,2019-12-28,2021-02-12,2019-12-28
+81,8-Bit breadboard computer,https://easyeda.com/MarioBertelli/progettoesame2018,Computers,0,2019-12-29,2021-02-12,2019-12-29
+82,How to Think,https://meaningness.com/metablog/how-to-think,Thinking,0,2019-12-31,2021-02-12,2019-12-31
+83,Computer Architecture,https://www.bottomupcs.com/chapter02.xhtml,Computers,0,2019-12-31,2021-02-12,2019-12-31
+84,Minimal pixel editor in Rust,https://rx.cloudhead.io/,Rust,0,2019-12-31,2021-02-12,2019-12-31
+85,Rise of Architectural Cult,https://inference-review.com/article/the-rise-of-the-architectural-cult,Architecture,0,2019-12-31,2021-02-12,2019-12-31
+86,Source Code Linking: Merging C Headers into Rust Modules,https://immunant.com/blog/2019/12/header_merging/,Rust,0,2019-12-31,2021-02-12,2019-12-31
+87,C Is Not a Low-level Language,https://queue.acm.org/detail.cfm?id=3212479,C,0,2019-12-31,2021-02-12,2019-12-31
+88,Eigenmorality,https://www.scottaaronson.com/blog/?p=1820,Morality,0,2019-12-31,2021-02-12,2019-12-31
+89,Python web scraping,https://medium.com/@guesswhoitsdaxu/save-yourself-and-your-boss-some-hair-automating-company-information-search-with-web-scraping-c0fafce3ecb,Python,0,2019-12-31,2021-02-12,2019-12-31
+90,Spectrum software free,http://www.spectrum-soft.com/download/download.shtm,Electronics,0,2020-01-21,2021-02-12,2020-01-21
+91,Build decentralized network,https://ouroboros.rocks/,Decentralized,0,2020-01-21,2021-02-12,2020-01-21
+92,Raspberry Pi VPN Server,https://www.electromaker.io/tutorial/blog/raspberry-pi-vpn-server,Raspberry,0,2020-01-21,2021-02-12,2020-01-21
+93,Great podcasts,https://news.ycombinator.com/item?id=22092900,Podcasts,0,2020-02-10,2021-02-12,2020-02-10
+94,SQL Analytics,https://www.holistics.io/blog/the-rise-of-sql-based-data-modeling-and-dataops/,SQL,0,2020-02-10,2021-02-12,2020-02-10
+95,CSharp Reference Videos,https://dotnet.microsoft.com/learn/videos,CSharp,0,2020-02-10,2021-02-12,2020-02-10
+96,I2C Complete,https://interrupt.memfault.com/blog/i2c-in-a-nutshell,Embedded,0,2020-02-10,2021-02-12,2020-02-10
+97,Flask Mega Tutorial,https://blog.miguelgrinberg.com/post/the-flask-mega-tutorial-part-viii-followers-contacts-and-friends,Flask,0,2020-03-26,2021-02-12,2020-03-26
+98,Deep Learning,https://theaisummer.com/Deep-Learning-Algorithms/,AI,0,2020-03-05,2021-02-12,2020-03-05
+99,Open source P2P sharing,https://d7y.io/en-us/,P2P,0,2020-04-14,2021-02-12,2020-04-14
+100,LISP tutorial in one page,https://leanpub.com/progalgs/read,LISP,0,2020-04-16,2021-02-12,2020-04-16
+101,Good Apps,https://medium.com/luminesce/6-apps-to-help-you-thrive-in-2020-40bb287f5ad5,Good Apps,0,2020-04-20,2021-02-12,2020-04-20
+102,Lightweight assembler,http://www.keystone-engine.org/,Assembly,0,2020-04-27,2021-02-12,2020-04-27
+103,Great Intermediate Level Books - PDF,https://goalkicker.com/,Books,0,2020-04-22,2021-02-12,2020-04-22
+104,Forms,https://www.the-art-of-web.com/html/html5-form-validation/,Forms,0,2020-04-22,2021-02-12,2020-04-22
+105,Python testing,https://www.patricksoftwareblog.com/testing-a-flask-application-using-pytest/,PyTest,0,2020-04-22,2021-02-12,2020-04-22
+106,TCP / IP Tutorial,https://tools.ietf.org/html/rfc1180,TCP/IP,0,2020-04-29,2021-02-12,2020-04-29
+107,Building Abstractions with Functions,https://wizardforcel.gitbooks.io/sicp-in-python/content/0.html,Python,0,2020-05-03,2021-02-12,2020-05-03
+108,How does a TCP Reset Attack work?,https://robertheaton.com/2020/04/27/how-does-a-tcp-reset-attack-work/,TCP/IP,0,2020-05-03,2021-02-12,2020-05-03
+109,Database schema templates,https://drawsql.app/templates,SQL,0,2020-05-03,2021-02-12,2020-05-03
+110,Why We Need DevOps for ML Data,https://tecton.ai/blog/devops-ml-data/,ML,0,2020-05-03,2021-02-12,2020-05-03
+111,Intel Management Engine (ME) Issues,https://libreboot.org/faq.html#intelme,Security,0,2020-05-03,2021-02-12,2020-05-03
+112,Best Medium-Hard Data Analyst SQL Interview Questions  ,https://quip.com/2gwZArKuWk7W,SQL,0,2020-05-03,2021-02-12,2020-05-03
+113,Freelance AI Engineer,http://masatohagiwara.net/202002-my-first-year-as-a-freelance-ai-engineer.html,AI,0,2020-05-03,2021-02-12,2020-05-03
+114,ReGex One Book,https://refrf.shreyasminocha.me/book/,Regex,0,2020-05-03,2021-02-12,2020-05-03
+115,Software Bugs,http://beza1e1.tuxen.de/lore/tubes.html,Bugs,0,2020-05-04,2021-02-12,2020-05-04
+116,High-performance cross-platform Video Processing Python framework powerpacked with unique trailblazing features,https://github.com/abhiTronix/vidgear/tree/master,Python,0,2020-05-04,2021-02-12,2020-05-04
+117,Free desktop Accounting,https://frappebooks.com/,Accounting,0,2020-05-08,2021-02-12,2020-05-08
+118,50+ free tools and resources to create awesome user interfaces,https://dev.to/davidepacilio/50-free-tools-and-resources-to-create-awesome-user-interfaces-1c1b,UX/UI,0,2020-05-14,2021-02-12,2020-05-14
+119,SQL Police Department,https://sqlpd.com/,SQL,0,2020-05-14,2021-02-12,2020-05-14
+120,jQuery Reference,http://youmightnotneedjquery.com/,jQuery,0,2020-05-14,2021-02-12,2020-05-14
+121,Super simple 3D Printed Drone,https://www.instructables.com/id/Super-Simple-3D-Printed-Drone-Build/,3D Printing,0,2020-05-16,2021-02-12,2020-05-16
+122,VS Code Drawing integration,https://github.com/hediet/vscode-drawio,VScode,0,2020-05-16,2021-02-12,2020-05-16
+123,Web Recorder,https://webrecorder.io/,Web,0,2020-05-16,2021-02-12,2020-05-16
+124,Scan your PDf,https://www.scanyourpdf.com/,Scan,0,2020-05-16,2021-02-12,2020-05-16
+125,AI Art,https://artbreeder.com/,AI,0,2020-05-16,2021-02-12,2020-05-16
+126,IT solutions website specimen,https://sprint-loop.com/,IT,0,2020-05-17,2021-02-12,2020-05-17
+127,https://github.com/chinmaynehate/Venom,Venom Quadropod,Robotics,0,2020-05-27,2021-02-12,2020-05-27
+128,Online IDE,https://github.blog/2020-05-26-code-in-the-browser-with-github-classroom/,IDE,0,2020-05-27,2021-02-12,2020-05-27
+129,Laser FAQs,https://www.repairfaq.org/sam/lasersam.htm,LASERS,0,2020-05-27,2021-02-12,2020-05-27
+130,Tetris in C,https://github.com/brenns10/tetris,C,0,2020-05-27,2021-02-12,2020-05-27
+131,Portable C and C++ development,https://github.com/skeeto/w64devkit,C/C++,0,2020-05-27,2021-02-12,2020-05-27
+132,Try Linux,https://www.trylinux.today/,Linux,0,2020-05-27,2021-02-12,2020-05-27
+133,Real Time Image Animation,https://github.com/anandpawara/Real_Time_Image_Animation,AI,0,2020-06-04,2021-02-12,2020-06-04
+134,Github for classes,https://classroom.github.com/,Github,0,2020-06-04,2021-02-12,2020-06-04
+135,Kanboard,https://kanboard.org/,Kanboard,0,2020-06-04,2021-02-12,2020-06-04
+136,Plain Twitter,https://plaintweet.com/,Twitter,0,2020-06-04,2021-02-12,2020-06-04
+137,An Embedded Computer Vision & Machine Learning Library,https://sod.pixlab.io/,AI,0,2020-06-04,2021-02-12,2020-06-04
+138,A Complete 4-Year Course Plan for an Artificial Intelligence Undergraduate Degree,https://www.mihaileric.com/posts/complete-artificial-intelligence-undergraduate-course-plan/,AI,0,2020-06-04,2021-02-12,2020-06-04
+139,Hypermodern Python,https://cjolowicz.github.io/posts/hypermodern-python-01-setup/,Python,0,2020-06-04,2021-02-12,2020-06-04
+140,TrashEmail,https://github.com/r0hi7/Trashemail,Email,0,2020-06-04,2021-02-12,2020-06-04
+141,Simple Ledger,https://news.ycombinator.com/item?id=23353970,Ledger,0,2020-06-04,2021-02-12,2020-06-04
+142,8008 Die Photos,http://www.righto.com/2016/12/die-photos-and-analysis-of_24.html,Processor,0,2020-06-04,2021-02-12,2020-06-04
+143,WebTorrent Workshop,https://webtorrent.github.io/workshop/,Torrent,0,2020-06-04,2021-02-12,2020-06-04
+144,Radio Guy Letter,https://www.gutenberg.org/files/30688/30688-h/30688-h.htm,Radio,0,2020-06-04,2021-02-12,2020-06-04
+145,Spaceship Generator in Python Blender,https://github.com/a1studmuffin/SpaceshipGenerator,Python,0,2020-06-04,2021-02-12,2020-06-04
+146,Push to Talk,https://www.squawk.to/,Communications,0,2020-06-04,2021-02-12,2020-06-04
+147,C Internals In-depth,http://www.avabodh.com/cin/cin.html,C,0,2020-06-04,2021-02-12,2020-06-04
+148,Acme: A research framework for reinforcement learning,https://github.com/deepmind/acme,AI,0,2020-06-04,2021-02-12,2020-06-04
+149,How do you organise your files and folders?,https://news.ycombinator.com/item?id=23404900,Computers,0,2020-06-04,2021-02-12,2020-06-04
+150,P2P using WebRTC,https://developer.mozilla.org/en-US/docs/Web/Guide/API/WebRTC/Peer-to-peer_communications_with_WebRTC,P2P,0,2020-06-07,2021-02-12,2020-06-07
+151,Deep fake videos,https://myvoiceyourface.com/?1,AI,0,2020-06-07,2021-02-12,2020-06-07
+152,Create Website,https://zyro.com/,Websites,0,2020-06-07,2021-02-12,2020-06-07
+153,Make Projects,https://makezine.com/2012/08/24/555-timer-weekend-projects/,Electrical,0,2020-06-07,2021-02-12,2020-06-07
+154,Linux Kernel,https://makelinux.github.io/kernel/map/,Linux,0,2020-06-11,2021-02-12,2020-06-11
+155,Signs of Life,https://l-o-o-s-e-d.net/signs-of-life,Life,0,2020-06-11,2021-02-12,2020-06-11
+156,Encrypted File Storage,https://blog.cloudflare.com/utahfs/,Encryption,0,2020-06-11,2021-02-12,2020-06-11
+157,Tablets Touch Screen,https://github.com/H-M-H/Weylus,Tablets,0,2020-06-11,2021-02-12,2020-06-11
+158,Microship - About microchips,https://microship.com/,Microchips,0,2020-06-11,2021-02-12,2020-06-11
+159,CS 330: Deep Multi-Task and Meta Learning,https://cs330.stanford.edu/,AI,0,2020-06-11,2021-02-12,2020-06-11
+160,Free Art Stuff - CSS and Graphics,https://nodesign.dev/,CSS,0,2020-06-11,2021-02-12,2020-06-11
+161,"Tensorflow on edge, or – Building a “smart” security camera with a Raspberry Pi",https://chollinger.com/blog/2019/12/tensorflow-on-edge-or-building-a-smart-security-camera-with-a-raspberry-pi/,AI,0,2020-06-23,2021-02-12,2020-06-23
+162,Learn OS Kernel,https://s-matyukevich.github.io/raspberry-pi-os/,Raspberry Pi,0,2020-06-28,2021-02-12,2020-06-28
+163,Logic Stuff Online,https://logic.ly/demo,Electronics,0,2020-06-23,2021-02-12,2020-06-23
+164,Extract pictures from links,https://extract.pics/,Pictures,0,2020-06-29,2021-02-12,2020-06-29
+165,White box cartoonization,https://github.com/SystemErrorWang/White-box-Cartoonization,AI,0,2020-07-04,2021-02-12,2020-07-04
+166,Parallax using JS,https://github.com/munrocket/parallax-effect,JS,0,2020-07-04,2021-02-12,2020-07-04
+167,Kinematics,https://github.com/diegomacario/Dyna-Kinematics,Kinematics,0,2020-07-17,2021-02-12,2020-07-17
+168,Simone Computer Page,https://simone.computer/#/,Computers,0,2020-07-17,2021-02-12,2020-07-17
+169,LOOPY understanding tool,https://ncase.me/loopy/,Loopy,0,2020-07-17,2021-02-12,2020-07-17
+170,Easy OCR,https://github.com/JaidedAI/EasyOCR,OCR,0,2020-07-17,2021-02-12,2020-07-17
+171,Combine all data packages into ONE,https://beepb00p.xyz/hpi.html,Python,0,2020-07-17,2021-02-12,2020-07-17
+172,Paint XP,https://chowderman.github.io/xp-paint.html,Paint-XP,0,2020-07-17,2021-02-12,2020-07-17
+173,Can phone model,https://www.mikekohn.net/micro/tin_can_phone_modem.php,Modem,0,2020-07-17,2021-02-12,2020-07-17
+174,Computer Vision Pre-trained Models,https://github.com/balavenkatesh3322/CV-pretrained-model,Computer Vision,0,2020-07-17,2021-02-12,2020-07-17
+175,Old school FONTS,https://int10h.org/oldschool-pc-fonts/fontlist/,FONTS,0,2020-07-17,2021-02-12,2020-07-17
+176,CSS important points,https://cssfordesigners.com/articles/things-i-wish-id-known-about-css,CSS,0,2020-07-17,2021-02-12,2020-07-17
+177,"TensorFlow, Keras and deep learning, without a PhD",https://codelabs.developers.google.com/codelabs/cloud-tensorflow-mnist/,ML,0,2020-07-17,2021-02-12,2020-07-17
+178,Webcam eye tracking,https://webgazer.cs.brown.edu/,Webcam,0,2020-07-17,2021-02-12,2020-07-17
+179,Snorkel AI: Putting Data First in ML Development ,https://www.snorkel.ai/07-14-2020-snorkel-ai-launch.html,AI,0,2020-07-17,2021-02-12,2020-07-17
+180,How SHA-2 Works Step-By-Step (SHA-256),https://qvault.io/2020/07/08/how-sha-2-works-step-by-step-sha-256/,SHA-2,0,2020-07-17,2021-02-12,2020-07-17
+181,High Performance Programming in Julia Language,https://devblogs.nvidia.com/gpu-computing-julia-programming-language/,Julia,0,2019-11-10,2021-02-12,
+182,Free book on algorithms,https://dev.to/brandonskerritt/a-free-ebook-on-greedy-algorithms-divide-conquer-and-dynamic-programming-1712,Algorithms,0,2019-11-10,2021-02-12,
+183,A Multi-Person Brain-to-Brain Interface for Direct Collaboration Between Brains,https://www.nature.com/articles/s41598-019-41895-7,Science,0,2019-11-10,2021-02-12,
+184,Faster CSS layouts,https://hacks.mozilla.org/2019/10/faster-layouts-with-css-grid-and-subgrid/,CSS,0,2019-11-10,2021-02-12,
+185,Economists on the Run,https://foreignpolicy.com/2019/10/22/economists-globalization-trade-paul-krugman-china/,Economy,0,2019-11-10,2021-02-12,
+186,AI game using Neural Networks,https://github.com/victorqribeiro/aimAndShoot/blob/master/README.md,AI,0,2019-11-10,2021-02-12,
+187,Windows 32 API Programming,http://www.winprog.org/tutorial/start.html,Win32,0,2019-11-10,2021-02-12,
+188,AI Poetry,https://www.gwern.net/GPT-2,AI,0,2019-11-10,2021-02-12,
+189,Next 50 years of Databases,https://www.cs.cmu.edu/~pavlo/blog/2015/09/the-next-50-years-of-databases.html,Databases,0,2019-11-10,2021-02-12,
+190,Agha Panahian Email Address,panahian.en@gmail.com,IRI,0,2019-11-13,2021-02-12,
+191,Post Woman,https://dev.to/liyasthomas/i-created-postwoman-an-online-open-source-api-request-builder-41md,Web,0,2019-11-17,2021-02-12,
+192,The perfect programming language,https://cygni.se/the-perfect-programming-language/,Programming,0,2019-11-17,2021-02-12,
+193,State-of-the-art Natural Language Processing for TensorFlow 2.0 and PyTorch,https://github.com/huggingface/transformers,ML,0,2019-11-20,2021-02-12,
+194,Trading BOT,https://www.tradientblog.com/2019/11/lessons-learned-building-an-ml-trading-system-that-turned-5k-into-200k/,BOT,0,2019-11-30,2021-02-12,
+195,Searchable Drop-Down in Excel VBA,https://www.youtube.com/watch?v=srTteYoqcJs,VBA,0,2019-11-30,2021-02-12,
+196,Mail in a box,https://mailinabox.email/,Emails,0,2019-12-01,2021-02-12,
+197,Consequential Code Software History,https://slate.com/technology/2019/10/consequential-computer-code-software-history.html,Coding,0,2019-12-05,2021-02-12,
+198,ECommerce,https://www.ecommerceceo.com/open-source-ecommerce/,ECommerce,0,2020-03-30,2021-02-12,
+199,EPPlus tutorial with CSharp,https://riptutorial.com/epplus,CSharp,0,2020-02-10,2021-02-12,
+200,Bypass all the paywalls,https://github.com/magnolia1234/bypass-paywalls-firefox-clean,ByPass,0,2020-03-05,2021-02-12,
+201,8008 Die Photos,http://www.righto.com/2016/12/die-photos-and-analysis-of_24.html,Processor,0,2020-06-04,2021-02-12,
+202,Make Projects,https://makezine.com/2012/08/24/555-timer-weekend-projects/,Electrical,0,2020-06-07,2021-02-12,
+203,Old school FONTS,https://int10h.org/oldschool-pc-fonts/fontlist/,FONTS,0,2020-07-17,2021-02-12,

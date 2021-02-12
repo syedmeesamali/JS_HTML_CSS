@@ -2,27 +2,27 @@
 {% block title %} Index Page {% endblock %}
 
 {% block page_content %}
-<div class="content">
+<div class="container-fluid">
   <table class="table table-bordered">
       <thead>
-        <tr class="d-flex">
-            <th class="col-1">Sr. #</th>
-            <th class="col-3">Description </th>
-            <th class="col-4">Link URL</th>
-            <th class="col-2">Type</th>
-            <th class="col-2">Date/Time</th>
-            <th class="col-1">Status</th>
+        <tr class="row">
+            <th class="col-sm-1">Sr. #</th>
+            <th class="col-sm-2">Description </th>
+            <th class="col-sm-4">Link URL</th>
+            <th class="col-sm-2">Type</th>
+            <th class="col-sm-2">Date/Time</th>
+            <th class="col-sm-1">Status</th>
         </tr>
       </thead>
       <tbody>
        {% for link in links %}
-       <tr class="d-flex">
-        <td class="col-1"> {{ link[0] }} </td>
-        <td class="col-3"> {{ link[1] }} </td>
-        <td class="col-4"><a href="{{ link[1] }}">{{ link[2] }}</a></td>
-        <td class="col-2"> {{ link[3] }} </td>
-        <td class="col-2"> {{ link[4] }} </td>
-        <td class="col-1">
+       <tr class="row">
+        <td class="col-sm-1"> {{ link[0] }} </td>
+        <td style="word-break: break-all" class="col-sm-2"> {{ link[1] }} </td>
+        <td style="word-break: break-all" class="col-sm-4"><a href="{{ link[2] }}">{{ link[2] }}</a></td>
+        <td class="col-sm-2"> {{ link[3] }} </td>
+        <td class="col-sm-2"> {{ link[4] }} </td>
+        <td class="col-sm-1">
           <a class="btn btn-danger btn-sm" href="/delete/{{ link[0] }}" role="button">Delete</a>
           <a class="btn btn-info btn-sm" href="/read/{{ link[0] }}">Read</a>
         </td>
