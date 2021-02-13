@@ -46,9 +46,10 @@ class User(db.Model, UserMixin):
 #ORM model for the links
 class links(db.Model):
     id = db.Column(db.Integer, primary_key = True)
-    link_name = db.Column(db.String(50), nullable = False)
-    link_url = db.Column(db.String(20), nullable = False)
-    link_type = db.Column(db.Boolean, default = False, nullable = False)
+    link_name = db.Column(db.String(100), nullable = False)
+    link_url = db.Column(db.String(200), nullable = False)
+    link_type = db.Column(db.String(40), nullable = False)
+    read = db.Column(db.Boolean, default = False, nullable = False)
     date_created = db.Column(db.Date, default = datetime.utcnow)
     date_read = db.Column(db.Date)
 
@@ -138,14 +139,18 @@ def mat():
     res = cur.execute("SELECT * FROM prices")
     return render_template("mat_calc.html", image1 = file1, image2 = file2, image3 = file3, items = res)
 
-
 @app.route('/Links')
 @login_required
 def Links():
-    conn = sqlite3.connect(link_db)
-    cur = conn.cursor()
-    res = cur.execute("SELECT * FROM links")
-    return render_template("links.html", links = res)
+    mylinks = links.query.filter_by(read = False).all()
+    return render_template("links.html", links = mylinks)
+
+#Posts on a specific category as filtered ones - 
+#Really advanced for me and excellent function to use and deploy
+@app.route('/Links/<string:type>')
+def type_links(type):
+    type_links = links.query.filter_by(link_type = type).all()
+    return render_template('type_links.html', type_links = type_links, type_title = type)
 
 @app.route('/linkentry')
 @login_required
