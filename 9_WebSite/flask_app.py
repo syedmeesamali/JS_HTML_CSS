@@ -158,8 +158,10 @@ def Linkentry():
     return render_template("linkentry.html")
 
 @app.route('/readlinks')
+@login_required
 def Read_Links():
-    return render_template("readlinks.html")
+    mylinks = links.query.filter_by(read = True).all()
+    return render_template("links.html", links = mylinks)
 
 @app.route('/bird')
 def bird():

@@ -1,60 +1,31 @@
-<!doctype html>
-<!--This page is property of SYED MEESAM ALI-->
-<head>
-    <title>Links Read</title>
+{% extends "base.html" %}
+{% block title %} Links Read {% endblock %}
 
-<style>
-* {
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-body {
-        font-family: Arial, Helvetica, sans-serif;
-        height: 100%;
-        margin: 0;
-        background:gold;
-        background: -webkit-linear-gradient(yellow, #98FB98);
-        background: -webkit-linear-gradient(green, gold);
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-}
-
-table {
-    border-collapse: collapse;
-    width: 90%;
-  }
-
-  td, th {
-    border: 1px solid whitesmoke;
-    text-align: left;
-    padding: 4px;
-  }
-  
-</style>
-
-</head>
-<body>
-    <h1><p>Links Read Already</p></h1><a href="/"><h3>Home Page</h3></a>
-    <a href="/links"><h3>Links Page</h3></a>
-    <table>
-      <tr>
-        <th>Sr. #</th>
-        <th>Description </th>
-        <th>Link URL</th>
-        <th>Type</th>
-        <th>Added</th>
-        <th>Read</th>
-      </tr>
+{% block page_content %}
+<div class="container-fluid">
+  <table class="table table-bordered">
+      <thead>
+        <tr class="row">
+            <th class="col-sm-1">Sr. #</th>
+            <th class="col-sm-2">Description </th>
+            <th class="col-sm-4">Link URL</th>
+            <th class="col-sm-2">Type</th>
+            <th class="col-sm-2">Date Added</th>
+            <th class="col-sm-1">Date Read</th>
+        </tr>
+      </thead>
+      <tbody>
        {% for link in links %}
-       <tr>
-        <td width="5%" style="text-align: center;"> {{ loop.index }} </td>
-        <td width="30%"> {{ link[1] }} </td>
-        <td width="25%"><a href="{{ link[2] }}">{{ link[2] }}</a></td>
-        <td width="10%"> {{ link[3] }} </td>
-        <td width="10%"> {{ link[4] }} </td>
-        <td width="10%"> {{ link[5] }} </td>
+       <tr class="row">
+        <td class="col-sm-1"> {{ link.id }} </td>
+        <td style="word-break: break-all" class="col-sm-2"> {{ link.link_name }} </td>
+        <td style="word-break: break-all" class="col-sm-4"><a href="{{ link[2] }}">{{ link.link_url }}</a></td>
+        <td class="col-sm-2"> <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{{ url_for('type_links', type = link.link_type ) }}">{{ link.link_type }}</a> </td>
+        <td class="col-sm-2"> {{ link.date_created }} </td>
+        <td class="col-sm-2"> {{ link.date_read }} </td>
        </tr>
+      </tbody>
        {% endfor %}
     </table>
-</body>
-</html>
+  </div>  
+{% endblock %}
