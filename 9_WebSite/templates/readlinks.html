@@ -6,12 +6,12 @@
   <table class="table table-bordered">
       <thead>
         <tr class="row">
-            <th class="col-sm-1">Sr. #</th>
+            <th class="col-sm-1">ID</th>
             <th class="col-sm-2">Description </th>
-            <th class="col-sm-4">Link URL</th>
+            <th class="col-sm-3">URL</th>
             <th class="col-sm-2">Type</th>
             <th class="col-sm-2">Date Added</th>
-            <th class="col-sm-1">Date Read</th>
+            <th class="col-sm-2">Date Read</th>
         </tr>
       </thead>
       <tbody>
@@ -19,10 +19,10 @@
        <tr class="row">
         <td class="col-sm-1"> {{ link.id }} </td>
         <td style="word-break: break-all" class="col-sm-2"> {{ link.link_name }} </td>
-        <td style="word-break: break-all" class="col-sm-4"><a href="{{ link[2] }}">{{ link.link_url }}</a></td>
+        <td style="word-break: break-all" class="col-sm-3"><a href="{{ link[2] }}">{{ link.link_url }}</a></td>
         <td class="col-sm-2"> <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{{ url_for('type_links', type = link.link_type ) }}">{{ link.link_type }}</a> </td>
-        <td class="col-sm-2"> {{ link.date_created }} </td>
-        <td class="col-sm-2"> {{ link.date_read }} </td>
+        <td style="word-break: break-all" class="col-sm-2"> {{ link.date_created }} </td>
+        <td style="word-break: break-all" class="col-sm-2"> {{ link.date_read }} </td>
        </tr>
       </tbody>
        {% endfor %}

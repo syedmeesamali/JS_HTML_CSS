@@ -14,10 +14,6 @@ from flask_wtf.file import FileField, FileAllowed
 from wtforms import BooleanField, StringField, PasswordField, validators, SubmitField, TextAreaField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 
-link_db = "./links.db"
-db_done = "./done.db"
-db_mat = "./mat_pricing.db"
-form_data = "./form_data.db"
 app = Flask(__name__)       #Define the flask app thing
 bootstrap = Bootstrap(app)
 
@@ -129,16 +125,6 @@ def aboutme():
     counter = counter + 1
     return render_template("intro.html", count = counter)
 
-@app.route('/mat_calc')
-def mat():
-    file1 = os.path.join('static','main1.png')
-    file2 = os.path.join('static','main2.gif')
-    file3 = os.path.join('static','main3.gif')
-    conn = sqlite3.connect(db_mat)
-    cur = conn.cursor()
-    res = cur.execute("SELECT * FROM prices")
-    return render_template("mat_calc.html", image1 = file1, image2 = file2, image3 = file3, items = res)
-
 @app.route('/Links')
 @login_required
 def Links():
@@ -161,7 +147,19 @@ def Linkentry():
 @login_required
 def Read_Links():
     mylinks = links.query.filter_by(read = True).all()
-    return render_template("links.html", links = mylinks)
+    return render_template("readlinks.html", links = mylinks)
+
+#Mark a link as read
+@app.route('/read/<int:id>')
+def read(id):
+    link_read = links.query.get_or_404(id)              #Retrieve the link to mark as read
+    link_read.read = True                               #Set the status to read
+    link_read.date_read = datetime.utcnow()
+    try:
+        db.session.commit()
+        return redirect('/readlinks')
+    except:
+        return render_template("404.html")
 
 @app.route('/bird')
 def bird():
