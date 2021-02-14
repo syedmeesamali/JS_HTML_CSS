@@ -153,7 +153,7 @@ def done(id):
 @app.route('/task/<string:project_name>')
 def task_project(project_name):
     task_list = work.query.filter_by(project_name = project_name).all()
-    return render_template("task_list.html", tasks = tasks, task_title = project_name)
+    return render_template("task_list.html", tasks = task_list, task_title = project_name)
 
 #Mark a task as DONE from Ongoing Tasks
 @app.route('/done_ongoing/<int:id>')
