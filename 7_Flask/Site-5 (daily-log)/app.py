@@ -51,7 +51,7 @@ def index():
 @app.route('/Completed', methods = ['POST', 'GET'])
 def completed():
     if request.method == 'POST':
-        tasks = work.query.order_by(Post.date_posted.desc()).filter_by(completed = True).all()
+        tasks = work.query.order_by(work.date_update.desc()).filter_by(completed = True).all()
     else:
         tasks = work.query.filter_by(completed = True).all()
         return render_template('completed.html', tasks = tasks)
@@ -148,6 +148,12 @@ def done(id):
         return redirect('/')
     except:
         return render_template("404.html")
+
+#Mark a task as DONE from Main Page
+@app.route('/task/<string:project_name>')
+def task_project(project_name):
+    task_list = work.query.filter_by(project_name = project_name).all()
+    return render_template("task_list.html", tasks = tasks, task_title = project_name)
 
 #Mark a task as DONE from Ongoing Tasks
 @app.route('/done_ongoing/<int:id>')

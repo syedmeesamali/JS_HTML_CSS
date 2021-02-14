@@ -20,7 +20,7 @@
         {% for task in tasks %}
             <tr>
                 <td>{{ task.id }}</td>
-                <td class="col-sm-2"> <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{{ url_for('task_project', type = task.project_name ) }}">{{ task.project_name }}</a> </td>
+                <td>{{ task.project_name }}</a> </td>
                 <td>{{ task.activity }}</td>
                 <td>{{ task.remarks }}</td>
                 <td>{{ task.date_created }}</td>
