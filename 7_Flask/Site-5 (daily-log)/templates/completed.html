@@ -2,30 +2,30 @@
 {% block title %} Index Page {% endblock %}
 
 {% block page_content %}
-<div class="content">
+<div class="container-fluid">
     <h1>Tasks Completed</h1>
     {% if tasks|length < 1 %}
     <h4>There are no tasks. Create one at home page!</h4>
     {% else %}
     <table class="table table-bordered">
-        <tr>
-            <th style="width: 5%">Task ID</th>
-            <th style="width: 20%">Project Name</th>
-            <th style="width: 15%">Activity</th>
-            <th style="width: 20%">Remarks</th>
-            <th style="width: 15%">Date Added</th>
-            <th style="width: 15%">Date Done</th>
-            <th style="width: 20%">Action Update</th>
+        <tr class="row">
+            <th class="col-sm-1">Task ID</th>
+            <th class="col-sm-2">Project Name</th>
+            <th class="col-sm-2">Activity</th>
+            <th class="col-sm-2">Remarks</th>
+            <th class="col-sm-2">Date Added</th>
+            <th class="col-sm-2">Date Done</th>
+            <th class="col-sm-1">Action Update</th>
         </tr>
         {% for task in tasks %}
-            <tr>
-                <td>{{ task.id }}</td>
+            <tr class="row">
+                <td class="col-sm-1">{{ task.id }}</td>
                 <td class="col-sm-2"> <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{{ url_for('task_project', project_name = task.project_name ) }}">{{ task.project_name }}</a> </td>
-                <td>{{ task.activity }}</td>
-                <td>{{ task.remarks }}</td>
-                <td>{{ task.date_created }}</td>
-                <td>{{ task.date_update }}</td>
-                <td>
+                <td class="col-sm-2">{{ task.activity }}</td>
+                <td class="col-sm-2">{{ task.remarks }}</td>
+                <td class="col-sm-2">{{ task.date_created }}</td>
+                <td class="col-sm-2">{{ task.date_update }}</td>
+                <td class="col-sm-1">
                     <a class="btn btn-danger btn-sm" href="/delete_complete/{{ task.id }}" role="button">Delete</a>
                     <a class="btn btn-info btn-sm" href="/update/{{ task.id }}">Update</a>
                     <a class="btn btn-primary btn-sm" href="/current_ongoing/{{ task.id }}">Ongoing</a>

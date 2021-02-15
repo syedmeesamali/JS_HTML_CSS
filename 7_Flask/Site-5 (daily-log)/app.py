@@ -128,11 +128,9 @@ def update(id):
         task_to_update.remarks = request.form['remarks']
         try:
             db.session.commit()
-            flash("Task has been updated successfully!", 'success')
             return redirect('/Ongoing')
         except:
             return "There was some problem updating that task!"
-            flash("Some error occurred!", 'danger')
     else:
         return render_template('update.html', task = task_to_update)
 
