@@ -117,7 +117,7 @@ def Logout():
 @app.route('/')
 def index():
     return render_template("index.html")
-
+ 
 counter = 0
 @app.route('/aboutme')
 def aboutme():
@@ -138,10 +138,22 @@ def type_links(type):
     type_links = links.query.filter_by(link_type = type).all()
     return render_template('type_links.html', type_links = type_links, type_title = type)
 
-@app.route('/linkentry')
-@login_required
-def Linkentry():
-    return render_template("linkentry.html")
+#New link entry
+@app.route('/Add_Link', methods = ['POST', 'GET'])
+def Add_Link():
+    if request.method == 'POST':
+        link_name = request.form['myLink_name']
+        link_url = request.form['myUrl']
+        link_type = request.form['myLinkType']
+        add_link = links(link_name = link_name, link_url = link_url, link_type = link_type)
+        try:
+            db.session.add(add_link)
+            db.session.commit()
+            return redirect('/Links')
+        except:
+            return "There was some problem updating that task!"
+    else:
+        return render_template('Links.html')
 
 @app.route('/readlinks')
 @login_required
