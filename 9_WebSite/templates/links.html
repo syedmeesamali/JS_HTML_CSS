@@ -2,6 +2,7 @@
 {% block title %} Links Page {% endblock %}
 
 {% block page_content %}
+<script src="../static/js/links.js?u={{ last_updated }}"></script>
 <div class="container-fluid">
   <table class="table table-bordered">
       <thead>
@@ -34,29 +35,28 @@
 <table class="table table-bordered">
   <tbody>
   <tr class="row">
-  
   <td style="word-break: break-all" class="col-sm-1"> ID </td>
-  <td style="word-break: break-all" class="col-sm-2">
-    <form action="#"> 
-      <input id="myLink_name" type="text" name="myLink_name" placeholder="Link Name">
-    </form>
-  </td>
-  <td style="word-break: break-all" class="col-sm-4">
-    <form action="#"> 
-      <input id="myUrl" type="text" name="myUrl" placeholder="URL">
-    </form>
-  </td>
-  <td class="col-sm-2">
-    <form action="#">
-      <input id="myLinkType" type="text" name="myLinkType" placeholder="Type">
-    </form>
-  </td>
-  <td class="col-sm-2">Date</td>
-  <td class="col-sm-1">
-    <a class="btn btn-warning btn-sm" href="/read/">Add</a>
-  </td>
-  </form>
-  </tr>
+  
+  <form id="links_form" action="Add_Link" method="POST">
+    <fieldset>
+      <td style="word-break: break-all" class="col-sm-2">
+        <input id="myLink_name" type="text" name="myLink_name" placeholder="Link Name">
+      </td>
+      <td style="word-break: break-all" class="col-sm-4">
+        <input id="myUrl" type="text" name="myUrl" placeholder="URL">    
+      </td>
+      <td class="col-sm-2">
+        <input id="myLinkType" type="text" name="myLinkType" placeholder="Type">
+      </td>
+
+          <!--Below will be added automatically by the db engine-->
+          <td class="col-sm-2">Date</td>
+          <td class="col-sm-1">
+            <input type="submit" value="Add" class="btn btn-warning btn-sm">
+          </td>
+        </fieldset>
+      </form>
+    </tr>
   </tbody>
 </table>
 

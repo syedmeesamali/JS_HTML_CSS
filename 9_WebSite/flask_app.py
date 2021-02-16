@@ -139,21 +139,19 @@ def type_links(type):
     return render_template('type_links.html', type_links = type_links, type_title = type)
 
 #New link entry
-@app.route('/Add_Link', methods = ['POST', 'GET'])
+@app.route('/Add_Link', methods = ['POST'])
 def Add_Link():
-    if request.method == 'POST':
-        link_name = request.form['myLink_name']
-        link_url = request.form['myUrl']
-        link_type = request.form['myLinkType']
-        add_link = links(link_name = link_name, link_url = link_url, link_type = link_type)
-        try:
-            db.session.add(add_link)
-            db.session.commit()
-            return redirect('/Links')
-        except:
-            return "There was some problem updating that task!"
-    else:
-        return render_template('Links.html')
+    try:
+        link_name1 = request.form.get('name')
+        link_url1 = request.form.get('url')
+        link_type1 = request.form.get('type')
+        add_link = links(link_name = link_name1, link_url = link_url1, link_type = link_type1)
+        db.session.add(add_link)
+        db.session.commit()
+        return jsonify({"success": True})
+    except:
+        return jsonify({"success": False})
+    return render_template('links.html')
 
 @app.route('/readlinks')
 @login_required
