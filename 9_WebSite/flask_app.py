@@ -151,7 +151,7 @@ def Add_Link():
         return jsonify({"success": True})
     except:
         return jsonify({"success": False})
-    return render_template('links.html')
+    return redirect('/links')
 
 @app.route('/readlinks')
 @login_required
@@ -170,6 +170,18 @@ def read(id):
         return redirect('/readlinks')
     except:
         return render_template("404.html")
+
+#Mark a link as read
+@app.route('/delete/<int:id>')
+def delete(id):
+    del_link = links.query.get_or_404(id)              #Retrieve the link to mark as read
+    try:
+        db.session.delete(del_link)
+        db.session.commit()
+        return redirect('/readlinks')
+    except:
+        return render_template("404.html")
+
 
 @app.route('/bird')
 def bird():
