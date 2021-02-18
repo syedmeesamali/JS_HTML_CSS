@@ -2,8 +2,13 @@
 {% block title %} Links Page {% endblock %}
 
 {% block page_content %}
-<script src="../static/js/links.js?u={{ last_updated }}"></script>
+<!--<script src="../static/js/links.js?u={{ last_updated }}"></script>-->
 <div class="container-fluid">
+  
+<form class="form-group mt-2 mb-3" action="{{ url_for('Add') }}">
+    <input type="submit" value="Add New Link" class="btn btn-warning btn-sm">
+</form>
+  
   <table class="table table-bordered">
       <thead>
         <tr class="row">
@@ -32,33 +37,8 @@
        {% endfor %}
     </table>
 
-<table class="table table-bordered">
-  <tbody>
-  <tr class="row">
-  <td style="word-break: break-all" class="col-sm-1"> ID </td>
-  
-  <form id="links_form" action="Add_Link" method="POST">
-    <fieldset>
-      <td style="word-break: break-all" class="col-sm-2">
-        <input id="myLink_name" type="text" name="myLink_name" placeholder="Link Name">
-      </td>
-      <td style="word-break: break-all" class="col-sm-4">
-        <input id="myUrl" type="text" name="myUrl" placeholder="URL">    
-      </td>
-      <td class="col-sm-2">
-        <input id="myLinkType" type="text" name="myLinkType" placeholder="Type">
-      </td>
 
-          <!--Below will be added automatically by the db engine-->
-          <td class="col-sm-2">Date</td>
-          <td class="col-sm-1">
-            <input type="submit" value="Add" class="btn btn-warning btn-sm">
-          </td>
-        </fieldset>
-      </form>
-    </tr>
-  </tbody>
-</table>
 
+    
 </div>
 {% endblock %}

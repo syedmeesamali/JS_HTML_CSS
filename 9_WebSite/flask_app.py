@@ -128,30 +128,37 @@ def aboutme():
 @app.route('/Links')
 @login_required
 def Links():
-    mylinks = links.query.filter_by(read = False).all()
+    mylinks = links.query.order_by(links.id.desc()).filter_by(read = False).all()
     return render_template("links.html", links = mylinks)
+
+@app.route('/Add')
+def Add():
+    return render_template("add_link.html")
 
 #Posts on a specific category as filtered ones - 
 #Really advanced for me and excellent function to use and deploy
 @app.route('/Links/<string:type>')
 def type_links(type):
     type_links = links.query.filter_by(link_type = type).all()
+    #tasks = work.query.order_by(work.date_update.desc()).filter_by(completed = True).all()
     return render_template('type_links.html', type_links = type_links, type_title = type)
 
 #New link entry
 @app.route('/Add_Link', methods = ['POST'])
 def Add_Link():
-    try:
-        link_name1 = request.form.get('name')
-        link_url1 = request.form.get('url')
-        link_type1 = request.form.get('type')
-        add_link = links(link_name = link_name1, link_url = link_url1, link_type = link_type1)
-        db.session.add(add_link)
-        db.session.commit()
-        return jsonify({"success": True})
-    except:
-        return jsonify({"success": False})
-    return redirect('/links')
+    if request.method == 'POST':
+        link_name1 = request.form['myInput']
+        link_url1 = request.form['remarks']
+        link_type1 = request.form['pro-dropdown']
+        link_to_add = links(link_name = link_name1, link_url = link_url1, link_type = link_type1)
+        try:
+            db.session.add(link_to_add)
+            db.session.commit()
+            return redirect('/add_link')
+        except:
+            return "There was some problem updating that link!"
+    else:
+        return render_template('add_link.html')
 
 @app.route('/readlinks')
 @login_required
@@ -178,7 +185,7 @@ def delete(id):
     try:
         db.session.delete(del_link)
         db.session.commit()
-        return redirect('/readlinks')
+        return redirect('/links')
     except:
         return render_template("404.html")
 
