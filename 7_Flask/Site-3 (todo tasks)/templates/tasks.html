@@ -21,7 +21,6 @@
                 <td>{{ task.date_created }}</td>
                 <td>
                     <a class="btn btn-danger" href="/delete/{{ task.id }}" role="button">Delete</a>
-                    <a class="btn btn-info" href="/update/{{ task.id }}">Update</a>
                     <a class="btn btn-success" href="/done/{{ task.id }}">Done</a>
                     <a class="btn btn-primary" href="/current/{{ task.id }}">Ongoing</a>
                 </td>
@@ -30,8 +29,8 @@
     </tbody>
     </table>
     {% endif %}
-    <form action="/" method="POST">
-        <input type="text" name="content" id="content">
+    <form action="/add_task" method="POST">
+        <input type="text" name="content" id="content" size="150">
         <input type="submit" value="Add Task">
     </form>
 </div>

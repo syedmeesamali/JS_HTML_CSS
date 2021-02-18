@@ -5,7 +5,7 @@
 <div class="content">
     <h1>Update Task</h1>
     <form action="/update/{{ task.id }}" method="POST">
-        <input type="text" name="content" id="content" value="{{ task.content }}">
+        <input type="text" name="content" id="content" size="150" value="{{ task.content }}">
         <input type="submit" value="Update Task">
     </form>
 </div>
