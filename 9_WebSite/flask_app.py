@@ -144,17 +144,17 @@ def type_links(type):
     return render_template('type_links.html', type_links = type_links, type_title = type)
 
 #New link entry
-@app.route('/Add_Link', methods = ['POST'])
+@app.route('/Add_Link', methods = ['POST', 'GET'])
 def Add_Link():
     if request.method == 'POST':
-        link_name1 = request.form['myInput']
-        link_url1 = request.form['remarks']
-        link_type1 = request.form['pro-dropdown']
+        link_name1 = request.form['url_name']
+        link_url1 = request.form['url_value']
+        link_type1 = request.form['url_type']
         link_to_add = links(link_name = link_name1, link_url = link_url1, link_type = link_type1)
         try:
             db.session.add(link_to_add)
             db.session.commit()
-            return redirect('/add_link')
+            return redirect('/Links')
         except:
             return "There was some problem updating that link!"
     else:
@@ -185,7 +185,7 @@ def delete(id):
     try:
         db.session.delete(del_link)
         db.session.commit()
-        return redirect('/links')
+        return redirect('/Links')
     except:
         return render_template("404.html")
 
