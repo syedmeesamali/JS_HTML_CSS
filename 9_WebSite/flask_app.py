@@ -52,22 +52,6 @@ class links(db.Model):
     def __repr__(self):
         return '<Task %r>' % self.id
 
-class RegistrationForm(FlaskForm):
-    email = StringField('Email', validators = [DataRequired(), Email()])
-    password = PasswordField('Password', validators = [DataRequired()])
-    confirm = PasswordField('Confirm Password', validators = [DataRequired(), EqualTo('password')])
-    submit =  SubmitField('Sign Up')
-    #Default username validation
-    def validate_username(self, username):
-        user = User.query.filter_by(username = username.data).first()
-        if user:
-            raise ValidationError('The username is taken. Please choose a different one.')
-    #Default email validation
-    def validate_email(self, email):
-        user = User.query.filter_by(email = email.data).first()
-        if user:
-            raise ValidationError('The email is taken. Please choose a different one.')
-
 class LoginForm(FlaskForm):
     email = StringField('Email', validators = [DataRequired(), Email()])
     password = PasswordField('Password', validators = [DataRequired()])
@@ -194,9 +178,9 @@ def delete(id):
 def bird():
     return render_template("bird.html")
 
-@app.route('/circles')
-def circles():
-    return render_template("animate.html")
+@app.route('/mat_calc')
+def material():
+    return render_template("mat-calc.html")
 
 @app.route('/save_form', methods=['POST'])
 def save_form():
