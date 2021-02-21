@@ -24,10 +24,6 @@ login_manager = LoginManager(app)
 login_manager.login_view = 'Login'
 login_manager.login_message_category = 'info'
 
-@login_manager.user_loader
-def load_user(user_id):
-    return User.query.get(int(user_id))
-
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key = True)
     email = db.Column(db.String(120), unique = True, nullable = False)
@@ -54,6 +50,11 @@ class LoginForm(FlaskForm):
     password = PasswordField('Password', validators = [DataRequired()])
     remember = BooleanField('Remember Me')
     submit =  SubmitField('Login')
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
+
 
 @app.errorhandler(404)
 def page_not_found(e):
