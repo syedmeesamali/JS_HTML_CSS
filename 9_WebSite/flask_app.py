@@ -178,6 +178,10 @@ def delete(id):
 def bird():
     return render_template("bird.html")
 
+@app.route('/draw')
+def draw():
+    return render_template("draw.html")
+
 @app.route('/mat_calc')
 def material():
     return render_template("mat-calc.html")

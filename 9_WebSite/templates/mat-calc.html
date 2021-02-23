@@ -2,20 +2,15 @@
 {% block title %} Index Page {% endblock %}
 
 {% block page_content %}
-<div class="content">
+<div class="container">
 <h2>Material Calculation for Various Strengthening Materials</h2>
-<h3>1. Calculation for Anchoring Epoxy</h3>
-
-<div class="input-group mb-2">
-<label class="input-group-text" for="inputGroupSelect01">Options</label>
-<select class="form-select mt-2 mb-2" aria-label="Default select example" id="anchoring-epoxy">
+<h4>1. Calculation for Anchoring Epoxy</h4>
+<div id="options" class="row col-md-2">
+<select class="form-select mt-2 mb-2 col-md-2" aria-label="Default select example" id="anchoring-epoxy">
     <option selected value="300ml">300ml Sachet</option>
     <option value="500ml">500ml Sachet</option>
     <option value="conmix">Conmix</option>
 </select>
-</div>
-
-
 <label for="dia">Diameter of bar:</label> 
 <input id="dia" pattern="[0-9]*" type="text" placeholder="Enter dia."><br> <br>
 <label for="depth">Depth of Anchor (mm):</label> 
@@ -26,6 +21,8 @@
 <input id="drill_nos" pattern="[0-9]*" type="text" placeholder="# of anchors"> <br><br>
 <button class="block" id="eCalculate">Calculate</button>
 Anchoring material required: <span id="result">00 ml </span> </p>
+</div>
+
 
 <h3>2. Calculation for Micro-Concrete</h3>
 <form>

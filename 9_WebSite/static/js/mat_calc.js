@@ -1,11 +1,8 @@
 
 
 
-
-
-
-$(document).ready(function(){
-    
+/*Old jQuery based code
+$(document).ready(function(){    
     $("#eCalculate").click(function(){
             //Check which sachet type is selected to update the result value
             //alert($(this).val());
@@ -123,6 +120,5 @@ $(document).ready(function(){
                 $('#jreq').text(result + " [25Kg] Bags")
             }
     }); // End of Jacketing Function
-
-
 });
+*/
