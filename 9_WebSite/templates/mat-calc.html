@@ -5,8 +5,9 @@
 <div class="container">
 
 <h2>Material Calculation for Various Strengthening Materials</h2>
-<h4 class="p-2 bg-info mt-2 mb-2 col-md-6">1. Calculation for Anchoring Epoxy</h4>
 
+<!--Anchoring epoxy part-->
+<h4 class="p-2 bg-info mt-2 mb-2 col-md-6">1. Calculation for Anchoring Epoxy</h4>
 <div id="options" class="row col-md-3">
 <select class="bg-secondary text-warning form-select mt-2 mb-2 font-weight-bold" aria-label="Default select example" id="anchoring">
     <option selected value="300ml">300ml Sachet</option>
@@ -14,81 +15,78 @@
     <option value="conmix">Conmix</option>
 </select>
 </div>
-<h5 class="text-primary mt-2 col-md-4">Diameter of bar: </h5>
-<input class="text-primary col-md-3" id="dia" pattern="[0-9]*" type="text" placeholder="Enter dia.">
-<h5 class="text-primary mt-2 col-md-4">Depth of Anchor (mm):</h5>
-<input class="text-primary col-md-3" id="depth" pattern="[0-9]*" type="text" placeholder="Usually 10 times dia.">
-<h5 class="text-primary mt-2 col-md-4">Width of Drilling:</h5>
-<input class="text-primary col-md-3" id="hole_width" pattern="[0-9]*" type="text" placeholder="Dia. + 4mm usually">
-<h5 class="text-primary mt-2 col-md-4">Number of Anchors:</h5>
+
+<form action="javascript:void(0);" class="form-inline">
+<label for="dia" class="text-primary mt-2 col-md-3"><h5>Diameter of bar: </h5></label>
+<input class="text-primary col-md-3" id="dia" pattern="[0-9]*" type="text" placeholder="Enter dia."><br>
+<label for="depth" class="text-primary mt-2 col-md-3"><h5>Depth of Anchor (mm):</h5></label>
+<input class="text-primary col-md-3" id="depth" pattern="[0-9]*" type="text" placeholder="Usually 10 times dia."><br>
+<label for="hole_width" class="text-primary mt-2 col-md-3"><h5>Width of Drilling:</h5></label>
+<input class="text-primary col-md-3" id="hole_width" pattern="[0-9]*" type="text" placeholder="Dia. + 4mm usually"><br>
+<label for="drill_nos" class="text-primary mt-2 col-md-3"><h5>Number of Anchors:</h5></label>
 <input class="text-primary col-md-3" id="drill_nos" pattern="[0-9]*" type="text" placeholder="# of anchors"><br>
 <button class="p-2 btn btn-warning mt-2 mb-2" id="eCalculate">Calculate</button>
-Anchoring material required: <span id="result">00 ml </span>
-
-
-<h4 class="p-2 bg-info mt-2 mb-2 col-md-6">2. Calculation for Micro-Concrete</h4>
-<div id="options-2" class="row col-md-3">
-<select name="choose_one" id="micro">
-    <option value="25kg">25 Kg Bags</option>
-    <option value="50kg">50 Kg Bags</option>
-</select>
-<label for="slab_a">Area in SQM:</label> 
-<input id="slab_a" pattern="[0-9]*" type="text" placeholder="Area (sqm)">
-<label for="slab_t">Thickness of Pour (mm):</label> 
-<input id="slab_t" pattern="[0-9]*" type="text" placeholder="Thickness (mm)">
-<button class="btn btn-warning mt-2 mb-2" id="mCalculate">Calculate</button>
-<p>
-Bags required: <span id="result_bags">00 Bags </span> </p>
-</div>
-
-<h3>3. Calculation for CFRP Quantities</h3>
-<form>
-        <select name="choose_two">
-            <option value="S512">S512 Strips</option>
-            <option value="S1012">S1012 Strips</option>
-            <option value="530C">530C Wrap</option>
-        </select>
+<span class="bg-danger text-warning font-weight-bold col-md-3" id="result" style="display:none;">00 ml </span>
 </form>
-<img src="{{ image3 }}" alt="Third Image" width="300" height="200">
-<p>
-<label for="len">Total Length (m):</label> 
-<input id="len" pattern="[0-9]*" type="text" placeholder="Length (m)"><br> <br>
-<button class="block" id="cCalculate">Calculate</button>
-<p>
-Epoxy Sikadur 30-LP required: <span id="epoxy1">00 6Kg Set </span> </p>
-<p>Epoxy Sikadur 300 required: <span id="epoxy2">00 30Kg Set </span> </p>
-<p>Epoxy Sikadur 330 required: <span id="epoxy3">00 5Kg Set </span> </p>
-<p>Fire-protection 2-hr material (Sikacrete 213F) required: 
-    <br><span id="fire1">00 25Kg Bags </span> </p>
-<p>
-   <br>
-    <h3>4. Concrete Jacketing</h3>
-    <form>
-        <select name="choose_three">
-            <option value="100mm">100mm</option>
-            <option value="150mm">150mm</option>
-            <option value="200mm">200mm</option>
-        </select>
-    </form>
-    <img src="{{ image4 }}" alt="Jacketing" width="300" height="200">
-    <p>
-    <label for="iwid">Initial Width (mm):</label>
-    <input id="iwid" pattern="[0-9]*" type="text" placeholder="Width (mm)"><br> <br>
-    <label for="ilen">Initial Length (mm):</label>
-    <input id="ilen" pattern="[0-9]*" type="text" placeholder="Length (mm)"><br> <br>
-    <label for="ht">Height (mm):</label>
-    <input id="ht" pattern="[0-9]*" type="text" placeholder="Height (mm)"><br> <br>
-    <label for="nos">Quantity (No's):</label>
-    <input id="nos" pattern="[0-9]*" type="text" placeholder="No's"><br> <br>
-    <button class="block" id="jCalculate">Calculate</button>
-    <p>
-        <p>Total Micro-Concrete Quantity: <span id="jreq1">00 m3 </span> </p>
-        <p>Total Micro-Concrete material required: 
-        <br><span id="jreq">00 25Kg Bags </span> </p>
-    <p>
+
+<!--Microconcrete details-->
+<h4 class="p-2 bg-info mt-2 mb-2 col-md-6">2. Calculation for Micro-Concrete</h4>
+<div id="options" class="row col-md-3">
+<select class="bg-secondary text-warning form-select mt-2 mb-2 font-weight-bold" aria-label="Default select example" id="micro">
+    <option selected value="25 Kg">25 Kg</option>
+    <option value="50 Kg">50 Kg</option>
+</select>
+</div>
+<form action="javascript:void(0);" class="form-inline">
+    <label for="area" class="text-primary mt-2 col-md-3"><h5>Area in Sqm: </h5></label>
+    <input class="text-primary col-md-3" id="slab_area" pattern="[0-9]*" type="text" placeholder="Area (m2)"><br>
+    <label for="thick" class="text-primary mt-2 col-md-3"><h5>Thickness (mm):</h5></label>
+    <input class="text-primary col-md-3" id="slab_depth" pattern="[0-9]*" type="text" placeholder="Thickness (mm)"><br>
+    <button class="p-2 btn btn-warning mt-2 mb-2" id="cCalculate">Calculate</button>
+    <span class="bg-danger text-warning font-weight-bold col-md-3" id="result_vol" style="display:none;">Kgs </span>
+</form>
+
+<!--CFRP-->
+<h4 class="p-2 bg-info mt-2 mb-2 col-md-4">3. CFRP Calculations</h4>
+<div id="options" class="row col-md-3">
+    <select class="bg-secondary text-warning form-select mt-2 mb-2 font-weight-bold" aria-label="Default select example" id="CFRP">
+        <option selected value="S512">S512 Strips</option>
+        <option value="S1012">S1012 Strips</option>
+        <option value="530C">530C Wrapping</option>
+    </select>
+</div>
+        
+<form action="javascript:void(0);" class="form-inline">
+    <label for="area" class="text-primary mt-2 col-md-3"><h5>Total Length (m): </h5></label>
+    <input class="text-primary col-md-3" id="cfrp_len" pattern="[0-9]*" type="text" placeholder="Length (m)"><br>
+    <button class="p-2 btn btn-warning mt-2 mb-2" id="fCalculate">Calculate</button>
+    <span class="bg-danger text-warning font-weight-bold col-md-3" id="result_cfrp" style="display:none;">Kgs </span>
+</form>
+
+<!--Column jacketing-->
+<h4 class="p-2 bg-info mt-2 mb-2 col-md-4">4. Column Jacketing</h4>
+<div id="options" class="row col-md-3">
+    <select class="bg-secondary text-warning form-select mt-2 mb-2 font-weight-bold" aria-label="Default select example" id="Jacketing">
+        <option selected value="100mm">100mm</option>
+        <option value="150mm">150mm</option>
+        <option value="200mm">200mm</option>
+    </select>
 </div>
 
-</script>
+<form action="javascript:void(0);" class="form-inline">
+    <label for="area" class="text-primary mt-2 col-md-3"><h5>Initial Width (mm): </h5></label>
+    <input class="text-primary col-md-3" id="iwid" pattern="[0-9]*" type="text" placeholder="Width (mm)"><br>
+    <label for="area" class="text-primary mt-2 col-md-3"><h5>Initial Length (mm): </h5></label>
+    <input class="text-primary col-md-3" id="ilen" pattern="[0-9]*" type="text" placeholder="Length (mm)"><br>
+    <label for="area" class="text-primary mt-2 col-md-3"><h5>Height (mm): </h5></label>
+    <input class="text-primary col-md-3" id="idepth" pattern="[0-9]*" type="text" placeholder="Height (mm)"><br>
+    <label for="area" class="text-primary mt-2 col-md-3"><h5>Qtn (No's): </h5></label>
+    <input class="text-primary col-md-3" id="col_nos" pattern="[0-9]*" type="text" placeholder="No's"><br>
+    <button class="p-2 btn btn-warning mt-2 mb-2" id="jCalculate">Calculate</button>
+    <span class="bg-danger text-warning font-weight-bold col-md-3" id="result_jacket" style="display:none;">Kgs </span>
+</form>
+
+
 <script src="../static/js/mat_calc.js"></script>
 </div>
 

@@ -1,4 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {    
+    
+    //Just checking to see if result can be made to disappear after a time so user keeps updated value only
+    //const divResult = document.querySelector('#result');
+    
+    
+    //Main Calculate function for the anchoring-epoxy material button
     document.querySelector('#eCalculate').onclick = () => 
     {
         var epoxy = document.getElementById("anchoring");
@@ -9,53 +15,71 @@ document.addEventListener('DOMContentLoaded', () => {
         var drill_nos = document.getElementById("drill_nos").value;
         var annular = (Math.PI*((hole_width/2)**2))*depth;
         var rebar_vol = (Math.PI*((dia/2)**2))*depth;
-        if (sachet == "500ml Sachet")
+        if (sachet == "300ml Sachet")
         {
-            var result = ((((annular-rebar_vol)/(Math.pow(10,6)))*drill_nos)/0.5)*1.25;
+            var result = ((((annular-rebar_vol)/(Math.pow(10,6)))*drill_nos)/0.3)*1.50;
             result = result.toFixed(2);
-            document.querySelector("#result").innerHTML = result + " [500ml] sachets"
+            document.querySelector("#result").style.display = 'block';
+            document.querySelector("#result").innerHTML = result + " [300ml] sachets required"
             console.log("Correct selection; Result is: " + result);
+            setTimeout(() => {
+                document.querySelector("#result").style.display = 'none';
+            }, 4000);
+            
+        } else if (sachet == "500ml Sachet")
+        {
+            var result = ((((annular-rebar_vol)/(Math.pow(10,6)))*drill_nos)/0.5)*1.50;
+            result = result.toFixed(2);
+            document.querySelector("#result").style.display = 'block';
+            document.querySelector("#result").innerHTML = result + " [500ml] sachets required"
+            setTimeout(() => {
+                document.querySelector("#result").style.display = 'none';
+            }, 4000);
+        } else 
+        {
+            var result = ((((annular-rebar_vol)/(Math.pow(10,6)))*drill_nos)/3.0)*1.50;
+            result = result.toFixed(2);
+            document.querySelector("#result").style.display = 'block';
+            document.querySelector("#result").innerHTML = result + " [3 Ltr] sets required"
+            setTimeout(() => {
+                document.querySelector("#result").style.display = 'none';
+            }, 4000);
         }
-    }
-  });
+    }//End of calculation for anchoring - epoxy
 
-/*const activities = document.querySelectorAll("anchoring");
-    activities.forEach(function(e) {
-        e.addEventListener('click', (e) => {
-          console.log("Value is : " + e.target.innerHTML);
-        })
-      })
-      */
-    
+    document.querySelector('#cCalculate').onclick = () => 
+    {
+        var bags = document.getElementById("micro");
+        var bags_val = bags.options[bags.selectedIndex].innerText;
+        var slab_area = document.getElementById("slab_area").value;
+        var slab_depth = document.getElementById("slab_depth").value;
+        if (bags_val == "25 Kg")
+        {
+            var result_vol = slab_area * (slab_depth / 1000) * 115 ;
+            result_vol = result_vol.toFixed(0);
+            document.querySelector("#result_vol").style.display = 'block';
+            document.querySelector("#result_vol").innerHTML = result_vol + " [25 Kg] bags required"
+            setTimeout(() => {
+                document.querySelector("#result_vol").style.display = 'none';
+            }, 4000);
+            
+        } else 
+        {
+            var result_vol = slab_area * (slab_depth / 1000) * 58 ;
+            result_vol = result_vol.toFixed(0);
+            document.querySelector("#result_vol").style.display = 'block';
+            document.querySelector("#result_vol").innerHTML = result_vol + " [50 Kg] bags required"
+            setTimeout(() => {
+                document.querySelector("#result_vol").style.display = 'none';
+            }, 4000);
+        }
+    }//End of calculation for anchoring - epoxy
+
+
+  });
 
 
 /*Old jQuery based code
-$(document).ready(function(){    
-    $("#eCalculate").click(function(){
-            //Check which sachet type is selected to update the result value
-            //alert($(this).val());
-            var sachet = $("select[name='choose']").val();
-                var dia = $('#dia').val();
-                var depth = $('#depth').val();
-                var hole_width = $('#hole_width').val();
-                var drill_nos = $('#drill_nos').val();
-                var annular = (Math.PI*((hole_width/2)**2))*depth;
-                var rebar_vol = (Math.PI*((dia/2)**2))*depth;
-            if (sachet == "500ml") {
-                var result = ((((annular-rebar_vol)/(Math.pow(10,6)))*drill_nos)/0.5)*1.25;
-                result = result.toFixed(2);
-                $('#result').text(result+" [500ml] sachets")
-            } else if (sachet == "300ml") {
-                var result = ((((annular-rebar_vol)/(Math.pow(10,6)))*drill_nos)/0.3)*1.25;
-                result = result.toFixed(2);
-                $('#result').text(result+" [300ml] sachets")
-            } else {
-                var result = (((((annular-rebar_vol)/(Math.pow(10,6)))*drill_nos))/3)*1.25;
-                result = result.toFixed(2);
-                $('#result').text(result+" [3 Ltr] Sets")
-            }
-
-    }); // End of anchoring epoxy function
 
     $("#mCalculate").click(function(){
             //Check which sachet type is selected to update the result value
