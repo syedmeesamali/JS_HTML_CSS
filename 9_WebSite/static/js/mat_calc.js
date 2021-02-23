@@ -1,4 +1,32 @@
+document.addEventListener('DOMContentLoaded', () => {    
+    document.querySelector('#eCalculate').onclick = () => 
+    {
+        var epoxy = document.getElementById("anchoring");
+        var sachet = epoxy.options[epoxy.selectedIndex].innerText;
+        var dia = document.getElementById("dia").value;
+        var depth = document.getElementById("depth").value;
+        var hole_width = document.getElementById("hole_width").value;
+        var drill_nos = document.getElementById("drill_nos").value;
+        var annular = (Math.PI*((hole_width/2)**2))*depth;
+        var rebar_vol = (Math.PI*((dia/2)**2))*depth;
+        if (sachet == "500ml Sachet")
+        {
+            var result = ((((annular-rebar_vol)/(Math.pow(10,6)))*drill_nos)/0.5)*1.25;
+            result = result.toFixed(2);
+            document.querySelector("#result").innerHTML = result + " [500ml] sachets"
+            console.log("Correct selection; Result is: " + result);
+        }
+    }
+  });
 
+/*const activities = document.querySelectorAll("anchoring");
+    activities.forEach(function(e) {
+        e.addEventListener('click', (e) => {
+          console.log("Value is : " + e.target.innerHTML);
+        })
+      })
+      */
+    
 
 
 /*Old jQuery based code

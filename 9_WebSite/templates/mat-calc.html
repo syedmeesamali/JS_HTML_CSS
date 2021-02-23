@@ -3,43 +3,43 @@
 
 {% block page_content %}
 <div class="container">
+
 <h2>Material Calculation for Various Strengthening Materials</h2>
-<h4>1. Calculation for Anchoring Epoxy</h4>
-<div id="options" class="row col-md-2">
-<select class="form-select mt-2 mb-2 col-md-2" aria-label="Default select example" id="anchoring-epoxy">
+<h4 class="p-2 bg-info mt-2 mb-2 col-md-6">1. Calculation for Anchoring Epoxy</h4>
+
+<div id="options" class="row col-md-3">
+<select class="bg-secondary text-warning form-select mt-2 mb-2 font-weight-bold" aria-label="Default select example" id="anchoring">
     <option selected value="300ml">300ml Sachet</option>
     <option value="500ml">500ml Sachet</option>
     <option value="conmix">Conmix</option>
 </select>
-<label for="dia">Diameter of bar:</label> 
-<input id="dia" pattern="[0-9]*" type="text" placeholder="Enter dia."><br> <br>
-<label for="depth">Depth of Anchor (mm):</label> 
-<input id="depth" pattern="[0-9]*" type="text" placeholder="Usually 10 times dia.">  <br><br>
-<label for="hole_width">Width of Drilling:</label> 
-<input id="hole_width" pattern="[0-9]*" type="text" placeholder="Dia. + 4mm usually"> <br><br>
-<label for="drill_nos">Number of Anchors:</label> 
-<input id="drill_nos" pattern="[0-9]*" type="text" placeholder="# of anchors"> <br><br>
-<button class="block" id="eCalculate">Calculate</button>
-Anchoring material required: <span id="result">00 ml </span> </p>
 </div>
+<h5 class="text-primary mt-2 col-md-4">Diameter of bar: </h5>
+<input class="text-primary col-md-3" id="dia" pattern="[0-9]*" type="text" placeholder="Enter dia.">
+<h5 class="text-primary mt-2 col-md-4">Depth of Anchor (mm):</h5>
+<input class="text-primary col-md-3" id="depth" pattern="[0-9]*" type="text" placeholder="Usually 10 times dia.">
+<h5 class="text-primary mt-2 col-md-4">Width of Drilling:</h5>
+<input class="text-primary col-md-3" id="hole_width" pattern="[0-9]*" type="text" placeholder="Dia. + 4mm usually">
+<h5 class="text-primary mt-2 col-md-4">Number of Anchors:</h5>
+<input class="text-primary col-md-3" id="drill_nos" pattern="[0-9]*" type="text" placeholder="# of anchors"><br>
+<button class="p-2 btn btn-warning mt-2 mb-2" id="eCalculate">Calculate</button>
+Anchoring material required: <span id="result">00 ml </span>
 
 
-<h3>2. Calculation for Micro-Concrete</h3>
-<form>
-        <select name="choose_one">
-            <option value="25kg">25 Kg Bags</option>
-            <option value="50kg">50 Kg Bags</option>
-        </select>
-</form>
-<img src="{{ image2 }}" alt="Second Image"  width="300" height="300">
-<p>
+<h4 class="p-2 bg-info mt-2 mb-2 col-md-6">2. Calculation for Micro-Concrete</h4>
+<div id="options-2" class="row col-md-3">
+<select name="choose_one" id="micro">
+    <option value="25kg">25 Kg Bags</option>
+    <option value="50kg">50 Kg Bags</option>
+</select>
 <label for="slab_a">Area in SQM:</label> 
-<input id="slab_a" pattern="[0-9]*" type="text" placeholder="Area (sqm)"><br> <br>
+<input id="slab_a" pattern="[0-9]*" type="text" placeholder="Area (sqm)">
 <label for="slab_t">Thickness of Pour (mm):</label> 
-<input id="slab_t" pattern="[0-9]*" type="text" placeholder="Thickness (mm)">  <br><br>
-<button class="block" id="mCalculate">Calculate</button>
+<input id="slab_t" pattern="[0-9]*" type="text" placeholder="Thickness (mm)">
+<button class="btn btn-warning mt-2 mb-2" id="mCalculate">Calculate</button>
 <p>
 Bags required: <span id="result_bags">00 Bags </span> </p>
+</div>
 
 <h3>3. Calculation for CFRP Quantities</h3>
 <form>
