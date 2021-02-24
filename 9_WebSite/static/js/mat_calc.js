@@ -1,9 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {    
     
-    //Just checking to see if result can be made to disappear after a time so user keeps updated value only
-    //const divResult = document.querySelector('#result');
-    
-    
     //Main Calculate function for the anchoring-epoxy material button
     document.querySelector('#eCalculate').onclick = () => 
     {
@@ -47,6 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }//End of calculation for anchoring - epoxy
 
+    //Main Calculate function for the micro-concrete material calculation
     document.querySelector('#cCalculate').onclick = () => 
     {
         var bags = document.getElementById("micro");
@@ -73,104 +70,99 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.querySelector("#result_vol").style.display = 'none';
             }, 4000);
         }
-    }//End of calculation for anchoring - epoxy
+    }//End of micro
 
+    //Main Calculate function for CFRP calculation
+    document.querySelector('#fCalculate').onclick = () => 
+    {
+        var cfrp = document.getElementById("CFRP");
+        var cfrp_val = cfrp.options[cfrp.selectedIndex].innerText;
+        var cfrp_len = document.getElementById("cfrp_len").value;
+        if (cfrp_val == "S512 Strips")
+        {
+            var result_ep = (cfrp_len / 25);
+            var result_fire = (cfrp_len / 15);
+            result_ep = result_ep.toFixed(0);
+            result_fire = result_fire.toFixed(0);
+            document.querySelector("#result_cfrp").style.display = 'block';
+            document.querySelector("#result_cfrp").innerHTML = result_ep + " set epoxy, " + result_fire + " bags 213f" 
+            setTimeout(() => {
+                document.querySelector("#result_cfrp").style.display = 'none';
+            }, 6000);
+            
+        } else if (cfrp_val == "S1012 Strips")
+        {
+            var result_ep = (cfrp_len / 20);
+            var result_fire = (cfrp_len / 10);
+            result_ep = result_ep.toFixed(0);
+            result_fire = result_fire.toFixed(0);
+            document.querySelector("#result_cfrp").style.display = 'block';
+            document.querySelector("#result_cfrp").innerHTML = result_ep + " set epoxy, " + result_fire + " bags 213f" 
+            setTimeout(() => {
+                document.querySelector("#result_cfrp").style.display = 'none';
+            }, 6000);
+        } else
+        {
+            var result_ep2 = (cfrp_len / 75);
+            var result_ep3 = (cfrp_len / 2.5);
+            var result_fire = (cfrp_len / 8);
+            result_ep2 = result_ep2.toFixed(0);
+            result_ep3 = result_ep3.toFixed(0);
+            result_fire = result_fire.toFixed(0);
+            document.querySelector("#result_cfrp").style.display = 'block';
+            document.querySelector("#result_cfrp").innerHTML = result_ep2 + " [30Kg] 300 epoxy, " + result_ep2 
+                                            + " [5Kg] 330 epoxy, " + result_fire + " bags 213f" 
+            setTimeout(() => {
+                document.querySelector("#result_cfrp").style.display = 'none';
+            }, 6000);
+        }
+    }//End of CFRP
 
-  });
+    //Main Calculate function for Jacketing calculations
+    document.querySelector('#jCalculate').onclick = () => 
+    {
+        var jacket = document.getElementById("Jacketing");
+        var jacket_val = jacket.options[jacket.selectedIndex].innerText;
+        var iwid = document.getElementById("iwid").value;
+        var ilen = document.getElementById("ilen").value;
+        var idepth = document.getElementById("idepth").value;
+        var col_nos = document.getElementById("col_nos").value;
+        iwid = iwid / 1000; ilen = ilen / 1000; idepth = idepth / 1000;     //mm to m
+        if (jacket_val == "100mm")
+        {
+            var result_m3 = (((ilen + 0.2) * (iwid + 0.2)) - (ilen * iwid)) * idepth * col_nos;
+            result_bags = 115 * result_m3;
+            result_m3 = result_m3.toFixed(2);
+            result_bags = result_bags.toFixed(0);
+            document.querySelector("#result_jacket").style.display = 'block';
+            document.querySelector("#result_jacket").innerHTML = result_m3 + " m3, " + result_bags + " [25Kg] bags" 
+            setTimeout(() => {
+                document.querySelector("#result_jacket").style.display = 'none';
+            }, 6000);
+            
+        } else if (jacket_val == "150mm")
+        {
+            var result_m3 = (((ilen + 0.3) * (iwid + 0.3)) - (ilen * iwid)) * idepth * col_nos;
+            result_bags = 115 * result_m3;
+            result_m3 = result_m3.toFixed(2);
+            result_bags = result_bags.toFixed(0);
+            document.querySelector("#result_jacket").style.display = 'block';
+            document.querySelector("#result_jacket").innerHTML = result_m3 + " m3, " + result_bags + " [25Kg] bags" 
+            setTimeout(() => {
+                document.querySelector("#result_jacket").style.display = 'none';
+            }, 6000);
+        } else
+        {
+            var result_m3 = (((ilen + 0.4) * (iwid + 0.4)) - (ilen * iwid)) * idepth * col_nos;
+            result_bags = 115 * result_m3;
+            result_m3 = result_m3.toFixed(2);
+            result_bags = result_bags.toFixed(0);
+            document.querySelector("#result_jacket").style.display = 'block';
+            document.querySelector("#result_jacket").innerHTML = result_m3 + " m3, " + result_bags + " [25Kg] bags" 
+            setTimeout(() => {
+                document.querySelector("#result_jacket").style.display = 'none';
+            }, 6000);
+        }
+    }
 
-
-/*Old jQuery based code
-
-    $("#mCalculate").click(function(){
-            //Check which sachet type is selected to update the result value
-            //alert($(this).val());
-            var baggage = $("select[name='choose_one']").val();
-                var areaslab = $('#slab_a').val();
-                var thickness = $('#slab_t').val();
-            if (baggage == "25kg") {
-                var result_vol = areaslab * (thickness / 1000) * 115 ;
-                result_vol = result_vol.toFixed(0);
-                $('#result_bags').text(result_vol+" [25Kg] Bags")
-            } else {
-                var result_vol = areaslab * (thickness / 1000) * 58 ;
-                result_vol = result_vol.toFixed(0);
-                $('#result_bags').text(result_vol+" [50Kg] Bags")
-            }
-
-    }); // End of anchoring epoxy function
-
-
-    $("#cCalculate").click(function(){
-            //Check which sachet type is selected to update the result value
-            //alert($(this).val());
-            var mat_type = $("select[name='choose_two']").val();
-                var length = $('#len').val();
-            if (mat_type == "S512") {
-                var result_ep = (length / 25);
-                var result_fr = (length / 15);
-                result_ep = result_ep.toFixed(0);
-                result_fr = result_fr.toFixed(0);
-                $('#epoxy1').text(result_ep + " [6Kg] Sets")
-                $('#epoxy2').text("[Not Required]")
-                $('#epoxy3').text("[Not Required]")
-                $('#fire1').text(result_fr + " [25Kg] Bags")
-            } else if (mat_type == "S1012") {
-                var result_ep = (length / 20);
-                var result_fr = (length / 10);
-                result_ep = result_ep.toFixed(0);
-                result_fr = result_fr.toFixed(0);
-                $('#epoxy1').text(result_ep + " [6Kg] Sets")
-                $('#epoxy2').text("[Not Required]")
-                $('#epoxy3').text("[Not Required]")
-                $('#fire1').text(result_fr + " [25Kg] Bags")
-            } else {
-                var result_ep1 = (length / 10);
-                var result_ep2 = (length / 75);
-                var result_ep3 = (length / 2.5);
-                var result_fr = (length / 8);
-                result_ep1 = result_ep1.toFixed(0);
-                result_ep2 = result_ep2.toFixed(0);
-                result_ep3 = result_ep3.toFixed(0);
-                result_fr = result_fr.toFixed(0);
-                $('#epoxy1').text("[Not Required]")
-                $('#epoxy2').text(result_ep2 + " [30Kg] Sets")
-                $('#epoxy3').text(result_ep3 + " [5Kg] Sets")
-                $('#fire1').text(result_fr + " [25Kg] Bags")
-            }
-
-    }); // End of CFRP Calculation Function
-
-    //Start of JACKETING Calculation portion
-    $("#jCalculate").click(function(){
-            var j_type = $("select[name='choose_three']").val();
-            console.log("Value is: " + j_type);
-            var length = $('#ilen').val() / 1000;
-            var width = $('#iwid').val() / 1000;
-            var height = $('#ht').val() / 1000;
-            var nos = $('#nos').val();
-
-            if (j_type == "100mm") {
-                var result1 = (((length + 0.2) * (width + 0.2)) - (length * width)) * height * nos;
-                result = 115 * result1;
-                result1 = result1.toFixed(2);
-                result = result.toFixed(0);
-                $('#jreq1').text(result1 + " m3")
-                $('#jreq').text(result + " [25Kg] Bags")
-            } else if (j_type == "150mm") {
-                var result1 = (((length + 0.3) * (width + 0.3)) - (length * width)) * height * nos;
-                result = 115 * result1;
-                result1 = result1.toFixed(2);
-                result = result.toFixed(0);
-                $('#jreq1').text(result1 + " m3")
-                $('#jreq').text(result + " [25Kg] Bags")
-            } else {
-                var result1 = (((length + 0.4) * (width + 0.4)) - (length * width)) * height * nos;
-                result = 115 * result1;
-                result1 = result1.toFixed(2);
-                result = result.toFixed(0);
-                $('#jreq1').text(result1 + " m3")
-                $('#jreq').text(result + " [25Kg] Bags")
-            }
-    }); // End of Jacketing Function
 });
-*/
