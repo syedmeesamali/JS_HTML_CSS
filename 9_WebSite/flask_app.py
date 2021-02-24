@@ -52,6 +52,18 @@ class links(db.Model):
     def __repr__(self):
         return '<Task %r>' % self.id
 
+class materials(db.Model):
+    id = db.Column(db.Integer, primary_key = True)
+    material_name = db.Column(db.String(60), nullable = False)
+    material_type = db.Column(db.String(100), nullable = False)
+    material_supplier = db.Column(db.String(40), nullable = False)
+    material_pkg = db.Column(db.String(40), nullable = False)
+    mat_price = db.Column(db.String(40), nullable = False)
+    mat_date = db.Column(db.Date)
+
+    def __repr__(self):
+        return '<Task %r>' % self.id
+
 class LoginForm(FlaskForm):
     email = StringField('Email', validators = [DataRequired(), Email()])
     password = PasswordField('Password', validators = [DataRequired()])
@@ -188,15 +200,16 @@ def material():
 
 @app.route('/prices')
 def Prices():
-    return render_template("draw.html")
+    prices = materials.query.all()
+    return render_template("prices.html", prices = prices)
 
 @app.route('/boq')
 def BOQ():
-    return render_template("draw.html")
+    return render_template("boq.html")
 
 @app.route('/bbs')
 def BBS():
-    return render_template("draw.html")
+    return render_template("bbs.html")
 
 @app.route('/save_form', methods=['POST'])
 def save_form():
