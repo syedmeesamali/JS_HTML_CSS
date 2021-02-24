@@ -186,6 +186,18 @@ def draw():
 def material():
     return render_template("mat-calc.html")
 
+@app.route('/prices')
+def Prices():
+    return render_template("draw.html")
+
+@app.route('/boq')
+def BOQ():
+    return render_template("draw.html")
+
+@app.route('/bbs')
+def BBS():
+    return render_template("draw.html")
+
 @app.route('/save_form', methods=['POST'])
 def save_form():
     try:
