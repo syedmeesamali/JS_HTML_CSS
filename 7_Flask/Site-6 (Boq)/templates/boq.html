@@ -8,24 +8,65 @@
         <tbody>
         <tr class="row">
             <th class="col-sm-1">Sr. #</th>
-            <th class="col-sm-3">Description</th>
-            <th class="col-sm-2">Units</th>
+            <th class="col-sm-4">Description</th>
+            <th class="col-sm-1">Units</th>
             <th class="col-sm-1">Qty</th>
-            <th class="col-sm-1">Price (AED)</th>
-            <th class="col-sm-2">Total (AED)</th>
+            <th class="col-sm-2">Price (AED)</th>
+            <th class="col-sm-3">Total (AED)</th>
         </tr>
-        <!--{% for price in prices %}
-            <tr class="row">
-                <td class="col-sm-1 text-center">{{ price.id }}</td>
-                <td class="col-sm-3">{{ price.material_name }}</td>
-                <td class="col-sm-2">{{ price.material_type }}</td>
-                <td class="col-sm-1">{{ price.material_supplier }}</td>
-                <td class="col-sm-2 text-center">{{ price.material_pkg }}</td>
-                <td class="text-primary col-sm-2 text-center">{{ price.mat_date }}</td>
-            </tr>
-        {% endfor %}-->
+        <!--Item # 1-->
+        <tr class="row">
+            <td class="col-sm-1 text-center">1</td>
+            <td class="col-sm-4">Cutting Works</td>
+            <td class="col-sm-1"><input id="unit_val1" size="4" type="text" placeholder="Unit"></td>
+            <td class="col-sm-1"><input id="qty_val1" size="4" type="text" placeholder="Qty"></td>
+            <td class="col-sm-2"><input class="text-danger" id="price_val1" size="5" type="text" placeholder="Cost"></td>
+            <td class="col-sm-3"><span class="bg-danger text-warning" id="result1">Total</span></td>
+        </tr>
+        <!--Item # 2-->
+        <tr class="row">
+            <td class="col-sm-1 text-center">2</td>
+            <td class="col-sm-4">Chipping Works (edges of cut area)</td>
+            <td class="col-sm-1"><input id="unit_val2" size="4" type="text" placeholder="Unit"></td>
+            <td class="col-sm-1"><input id="qty_val2" size="4" type="text" placeholder="Qty"></td>
+            <td class="col-sm-2"><input class="text-danger" id="price_val2" size="5" type="text" placeholder="Cost"></td>
+            <td class="col-sm-3"><span class="bg-danger text-warning" id="result2">Total</span></td>
+        </tr>
+        <!--Item # 3-->
+        <tr class="row">
+            <td class="col-sm-1 text-center">3</td>
+            <td class="col-sm-4">Rebar as weight (Kgs)</td>
+            <td class="col-sm-1"><input id="unit_val3" size="4" type="text" placeholder="Unit"></td>
+            <td class="col-sm-1"><input id="qty_val3" size="4" type="text" placeholder="Qty"></td>
+            <td class="col-sm-2"><input class="text-danger" id="price_val3" size="5" type="text" placeholder="Cost"></td>
+            <td class="col-sm-3"><span class="bg-danger text-warning" id="result3">Total</span></td>
+        </tr>
+        <!--Item # 4-->
+        <tr class="row">
+            <td class="col-sm-1 text-center">4</td>
+            <td class="col-sm-4">Anchoring Epoxy (RE-500)</td>
+            <td class="col-sm-1"><input id="unit_val4" size="4" type="text" placeholder="Unit"></td>
+            <td class="col-sm-1"><input id="qty_val4" size="4" type="text" placeholder="Qty"></td>
+            <td class="col-sm-2"><input class="text-danger" id="price_val4" size="5" type="text" placeholder="Cost"></td>
+            <td class="col-sm-3"><span class="bg-danger text-warning" id="result4">Total</span></td>
+        </tr>
+        <!--Item # 5-->
+        <tr class="row">
+            <td class="col-sm-1 text-center">5</td>
+            <td class="col-sm-4">Micro-concrete material</td>
+            <td class="col-sm-1"><input id="unit_val5" size="4" type="text" placeholder="Unit"></td>
+            <td class="col-sm-1"><input id="qty_val5" size="4" type="text" placeholder="Qty"></td>
+            <td class="col-sm-2"><input class="text-danger" id="price_val5" size="5" type="text" placeholder="Cost"></td>
+            <td class="col-sm-3"><span class="bg-danger text-warning" id="result5">Total</span></td>
+        </tr>
+        <tr class="row">
+            <td class="col-sm-9 text-end">Total Amount (AED):</td>
+            <td class="col-sm-3"><span class="bg-danger text-warning" id="final_result">Final</span></td>
+        </tr>
     </tbody>
     </table>
-   
+
+    <button class="p-2 btn btn-warning mt-2 mb-2" id="eCalculate">Calculate</button>
+<script src="../static/js/boq_calc.js"></script>
 </div>
 {% endblock %}

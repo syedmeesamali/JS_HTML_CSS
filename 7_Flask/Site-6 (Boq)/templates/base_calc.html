@@ -19,15 +19,10 @@
       </button>
       <div class="collapse navbar-collapse" id="myNav">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              {% if current_user.is_authenticated %}
-              <li class="nav-item"><a class="nav-link" href="{{ url_for('draw') }}">Free Draw</a></li>
-              <li class="nav-item"><a class="nav-link" href="{{ url_for('Logout') }}">Logout</a></li>
-              {% else %}
               <li class="nav-item"><a class="nav-link" href="{{ url_for('Prices') }}">Prices</a></li>
-              <li class="nav-item"><a class="nav-link" href="{{ url_for('BOQ') }}">BOQ</a></li>
-              <li class="nav-item"><a class="nav-link" href="{{ url_for('BBS') }}">BBS</a></li>
+              <li class="nav-item"><a class="nav-link" href="{{ url_for('boq') }}">BOQ</a></li>
+              <li class="nav-item"><a class="nav-link" href="{{ url_for('bbs') }}">BBS</a></li>
               <li class="nav-item"><a class="nav-link" href="{{ url_for('draw') }}">Free Draw</a></li>
-              {% endif %}
         </ul>
       </div>
     </div>

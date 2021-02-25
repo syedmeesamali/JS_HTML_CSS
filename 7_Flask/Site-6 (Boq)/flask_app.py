@@ -47,10 +47,8 @@ class materials(db.Model):
     material_pkg = db.Column(db.String(40), nullable = False)
     mat_price = db.Column(db.String(40), nullable = False)
     mat_date = db.Column(db.Date)
-
     def __repr__(self):
         return '<Task %r>' % self.id
-
 class LoginForm(FlaskForm):
     email = StringField('Email', validators = [DataRequired(), Email()])
     password = PasswordField('Password', validators = [DataRequired()])
@@ -78,15 +76,14 @@ def Login():
             flash("Login unsuccessful! Please check email and password", 'danger')
     return render_template('login.html',  title='Login', form = form)
 
-@app.route('/Logout')
-def Logout():
-    logout_user()
-    return redirect(url_for('index'))
-
 @app.route('/')
 def index():
     return render_template("mat-calc.html")
- 
+
+@app.route('/boq')
+def boq():
+    return render_template("boq.html")
+
 @app.route('/bird')
 def bird():
     return render_template("bird.html")
@@ -104,13 +101,9 @@ def Prices():
     prices = materials.query.all()
     return render_template("prices.html", prices = prices)
 
-@app.route('/boq')
-def BOQ():
-    return render_template("boq.html")
-
 @app.route('/bbs')
-def BBS():
+def bbs():
     return render_template("bbs.html")
 
 if __name__ == "__main__":
-    app.run()
+    app.run(debug=True)
