@@ -1,0 +1,31 @@
+{% extends "base_calc.html" %}
+{% block title %} Index Page {% endblock %}
+
+{% block page_content %}
+<div class="container-fluid">
+    <table class="table table-bordered">
+        <thead class="table-info"></thead>
+        <tbody>
+        <tr class="row">
+            <th class="col-sm-1">Sr. #</th>
+            <th class="col-sm-3">Description</th>
+            <th class="col-sm-2">Units</th>
+            <th class="col-sm-1">Qty</th>
+            <th class="col-sm-1">Price (AED)</th>
+            <th class="col-sm-2">Total (AED)</th>
+        </tr>
+        <!--{% for price in prices %}
+            <tr class="row">
+                <td class="col-sm-1 text-center">{{ price.id }}</td>
+                <td class="col-sm-3">{{ price.material_name }}</td>
+                <td class="col-sm-2">{{ price.material_type }}</td>
+                <td class="col-sm-1">{{ price.material_supplier }}</td>
+                <td class="col-sm-2 text-center">{{ price.material_pkg }}</td>
+                <td class="text-primary col-sm-2 text-center">{{ price.mat_date }}</td>
+            </tr>
+        {% endfor %}-->
+    </tbody>
+    </table>
+   
+</div>
+{% endblock %}

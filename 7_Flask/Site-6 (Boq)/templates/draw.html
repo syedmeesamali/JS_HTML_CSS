@@ -1,0 +1,35 @@
+{% extends "base_calc.html" %}
+{% block title %} Index Page {% endblock %}
+
+{% block page_content %}
+<div class="container">
+  <title> SVG Animation </title>
+</head>
+  <div class="container">
+    <h1>Drawing Canvas</h1> 
+    <div id="options" class="row col-md-2">
+      <select id="color-picker" class="mt-2 mb-2">
+        <option value="black">Black</option>
+        <option value="red">Red</option>
+        <option value="blue">Blue</option>
+        <option value="green">Green</option>
+      </select>
+      <select id="thickness"  class="mt-2">
+        <option value=1>1</option>
+        <option value=2>2</option>
+        <option value=3>3</option>
+        <option value=4 selected>4</option>
+        <option value=5>5</option>
+        <option value=6>6</option>
+        <option value=7>7</option>
+      </select>
+      <button class="btn btn-danger mt-2 mb-2" id="erase">Erase All</button>
+    </div>
+  </div>
+<svg id="draw">
+</svg>
+<script src="https://d3js.org/d3.v5.min.js"></script>
+<script src="../static/js/draw2.js"></script>
+</div>
+
+{% endblock %}

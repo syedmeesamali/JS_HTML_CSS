@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %} Index Page {% endblock %}
+{% block page_content %}
+<div class="content">
+    <h1>Add New Link</h1>
+    <table class="table table-bordered">
+        <thead>
+            <tr class="row">
+                <th class="col-sm-3">Url Name </th>
+                <th class="col-sm-5">Url </th>
+                <th class="col-sm-3">Type </th>
+                <th class="col-sm-1">Action </th>
+            </tr>
+        </thead>
+        <tbody>
+        <form action="{{ url_for('Add_Link') }}" method="post" id="url_input_form" enctype="multipart/form-data">
+        <tr class="row">
+            <td class="col-sm-3"><input id="url_name" type="text" name="url_name" placeholder="Name"></td>
+            <td class="col-sm-5"><input id="url_value" type="text" name="url_value" placeholder="URL link"></td>
+            <td class="col-sm-3"><input id="url_type" type="text" name="url_type" placeholder="Type"></td>
+            <td class="col-sm-1"><input id="submit_vals" class="btn btn-warning btn-sm" type="submit"></td>
+        </tr>
+        </form>
+    </tbody>
+</table>
+</div>
+
+{% endblock %}

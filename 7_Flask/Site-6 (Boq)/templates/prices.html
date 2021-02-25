@@ -1,0 +1,39 @@
+{% extends "base_calc.html" %}
+{% block title %} Index Page {% endblock %}
+
+{% block page_content %}
+<div class="container-fluid">
+
+    <h1>Material Price List</h1>
+    {% if prices|length < 1 %}
+    <h4>There are no tasks. Create one below!</h4>
+    {% else %}
+    <table class="table table-bordered">
+        <thead class="table-info"></thead>
+        <tbody>
+        <tr class="row">
+            <th class="col-sm-1">Sr. #</th>
+            <th class="col-sm-3">Material Name</th>
+            <th class="col-sm-2">Material Type</th>
+            <th class="col-sm-1">Material Supplier</th>
+            <th class="col-sm-2">Package</th>
+            <th class="col-sm-1">Price (AED)</th>
+            <th class="col-sm-2">Date</th>
+        </tr>
+        {% for price in prices %}
+            <tr class="row">
+                <td class="col-sm-1 text-center">{{ price.id }}</td>
+                <td class="col-sm-3">{{ price.material_name }}</td>
+                <td class="col-sm-2">{{ price.material_type }}</td>
+                <td class="col-sm-1">{{ price.material_supplier }}</td>
+                <td class="col-sm-2 text-center">{{ price.material_pkg }}</td>
+                <td class="text-danger col-sm-1 font-weight-bold text-end">{{ price.mat_price }}</td>
+                <td class="text-primary col-sm-2 text-center">{{ price.mat_date }}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+    {% endif %}
+    
+</div>
+{% endblock %}

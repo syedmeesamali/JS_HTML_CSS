@@ -1,0 +1,40 @@
+﻿Id,material_name,material_type,material_supplier,material_pkg,mat_price,mat_date
+1,Sikadur 31-CF,"Patching repairs, cracks",Sika,6 Kg, 110.00 ,2017-03-28
+2,Sikadur 52-LP,Injection,Sika,4 Kg Kit, 200.00 ,2017-03-28
+3,Sikacrete-113 PP,Micro-concrete,Sika,25 Kg, 21.50 ,2017-03-29
+4,Sikacrete Gunit-103,Shotcrete,Sika,25 Kg, 22.50 ,2017-03-29
+5,Sikacrete 114 AE,Micro-concrete,Sika,40 Kg, 34.00 ,2016-08-26
+6,Sika Ferrogard-903,Anti-corrosion primer,Sika,200 Ltr Drum," 2,100.00 ",2016-08-26
+7,SikaWrap-300C,CFRP Wrapping,Sika,100m Roll," 6,000.00 ",2017-05-01
+8,Sikadur-330,Epoxy adhesive,Sika,5 Kg Kit, 312.00 ,2017-05-01
+9,SikaWrap FX 50C,CFRP Wrapping,Sika,25m Roll, 980.00 ,2017-05-01
+10,SikaGrout Cable PT,Grouting,Sika,25 Kg, 55.00 ,2015-05-07
+11,Sika Ferrogard-903 Plus,Anti-corrosion primer,Sika,200 Ltr Drum," 1,700.00 ",2019-11-06
+12,Sikagard-720 Epocem,Surface Sealing,Sika,21 Kg, 168.00 ,2019-11-06
+13,Sikatop Armatec-110 EC,Bonding Primer,Sika,20 Kg, 154.00 ,2019-11-06
+14,Sikacrete-113 PP,Micro-concrete,Sika,40 Kg, 22.00 ,2019-11-06
+15,SikaWrap-600C,CFRP Wrapping,Sika,50m Roll," 3,350.00 ",2018-02-20
+16,Sikadur-300,CFRP adhesive,Sika,30 Kg Kit," 1,507.00 ",2018-02-20
+17,Sikadur-330,CFRP adhesive,Sika,5 Kg Kit, 286.00 ,2018-02-20
+18,Sika CarboDur S-512,CFRP Plates,Sika,100m Roll," 5,600.00 ",2017-06-29
+19,Sika CarboDur S-1012,CFRP Plates,Sika,100m Roll," 8,200.00 ",2016-10-31
+20,Sikacrete-213 F,Fire-protection plaster,Sika,25 Kg Bag, 100.00 ,2017-06-29
+21,Sikadur-41 SG,Patching mortar,Sika,12 Kg Kit, 127.00 ,2017-01-03
+22,Sikagard 550-W Elastic,Epoxy coating,Sika,20 Kg Pail, 280.00 ,2017-01-03
+23,Sikadur-41 CF Slow,Patching mortar,Sika,12 Kg Kit, 127.00 ,2017-01-11
+24,Sikadur-42 MP Slow,Epoxy grouting,Sika,28 Kg Kit, 185.00 ,2017-01-11
+25,Sika CarboDur BC Rods,CFRP Rods,Sika,12m Rod, 912.00 ,2016-10-19
+26,Sikadur-30 LP,Epoxy,Sika,6 Kg, 135.00 ,2020-01-05
+27,Sika MonoTop HSF,Cementitious,Sika,25 Kg, 22.00 ,2021-01-10
+28,Sika Injection-101RC,Polyurethane,Sika,20 Ltr, 980.00 ,2021-02-20
+29,Sika Injection-201RC,Polyurethane,Sika,20 Ltr, 850.00 ,2021-02-20
+30,Recon FCE,"Patching repairs, cracks",Conmix,5 Ltr, 102.00 ,2017-03-28
+31,Recon LVE,Injection,Conmix,6 Ltr, 210.00 ,2017-03-28
+32,Recon MC40,Micro-concrete,Conmix,25 Kg, 13.00 ,2017-03-29
+33,Nitocote EP405,Epoxy,Fosroc,4 Ltr, 120.00 ,2021-02-20
+34,Nitofill UR63,Polyurethane,Fosroc,1 Ltr, 55.00 ,2021-02-20
+35,Nitofill WS60,Polyurethane,Fosroc,1 Ltr, 55.00 ,2021-02-20
+36,Renderoc Plug,Cementitious,Fosroc,10 Kg, 115.00 ,2021-02-20
+37,Hilti RE-100HC,Epoxy,Hilti,Box (12 pc x 580), 792.00 ,2021-02-20
+38,Renderoc LAXtra,Cementitious,Fosroc,25 Kg, 13.50 ,2021-02-20
+39,Hilti RE-500 V3,Epoxy,Hilti,500 ml sachet, 80.00 ,2021-02-20
