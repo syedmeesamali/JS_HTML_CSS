@@ -4,7 +4,7 @@ from PIL import Image
 from flask import render_template, request, url_for, redirect, flash, redirect, abort
 from app import app, db, bcrypt
 from app.models import User, Post
-from app.forms import RegistrationForm, LoginForm, UpdateAccountForm, PostForm
+from app.forms import RegistrationForm, LoginForm, UpdateAccountForm, PostForm, RequestResetForm, ResetPasswordForm
 from flask_login import login_user, current_user, logout_user, login_required
 
 @app.errorhandler(404)
@@ -155,3 +155,8 @@ def user_posts(username):
         .order_by(Post.date_posted.desc())\
         .paginate(page = page, per_page = 4)
     return render_template('user_posts.html', posts = posts, user = user)
+
+
+@app.route('/reset_password', methods = ['POST', 'GET'])
+def reset_request():
+    
