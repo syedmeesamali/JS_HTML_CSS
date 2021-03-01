@@ -159,4 +159,7 @@ def user_posts(username):
 
 @app.route('/reset_password', methods = ['POST', 'GET'])
 def reset_request():
-    
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
+    form = RequestResetForm()
+    return render_template('reset_request.html', title = 'Reset Password', form = form)
