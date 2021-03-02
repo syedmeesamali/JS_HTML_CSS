@@ -156,10 +156,22 @@ def user_posts(username):
         .paginate(page = page, per_page = 4)
     return render_template('user_posts.html', posts = posts, user = user)
 
-
+#Reset password route
 @app.route('/reset_password', methods = ['POST', 'GET'])
 def reset_request():
     if current_user.is_authenticated:
         return redirect(url_for('index'))
     form = RequestResetForm()
     return render_template('reset_request.html', title = 'Reset Password', form = form)
+
+#Route to take care of the password reset token
+@app.route('/reset_password/<token>', methods = ['POST', 'GET'])
+def reset_token(token):
+    if current_user.is_authenticated:
+        return redirect(url_for('index'))
+    user = User.verify_reset_token(token)
+    if user is None:
+        flash('That is an invalid or expired token!', 'warning')
+        return redirect(url_for('reset_request'))
+    form  = ResetPasswordForm()
+    return render_template('reset_token.html', title = 'Reset Password', form = form)
