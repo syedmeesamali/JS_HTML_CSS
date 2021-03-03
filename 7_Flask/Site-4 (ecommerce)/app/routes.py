@@ -162,7 +162,16 @@ def reset_request():
     if current_user.is_authenticated:
         return redirect(url_for('index'))
     form = RequestResetForm()
+    if form.validate_on_submit():
+        user = User.query.filter_by(email = form.email.data).first()
+        send_reset_email(user)
+        flash('An Email has been sent with instructions to reset your password!', 'info')
+        return redirect(url_for('index'))
     return render_template('reset_request.html', title = 'Reset Password', form = form)
+
+#Reset email sending function
+def send_reset_email(user):
+    pass
 
 #Route to take care of the password reset token
 @app.route('/reset_password/<token>', methods = ['POST', 'GET'])
