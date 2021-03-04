@@ -172,12 +172,12 @@ def reset_request():
 #Reset email sending function
 def send_reset_email(user):
     token = user.get_reset_token()
-    msg = Message('Password reset request', sender = 'noreply@sender.com',
-            recipients = [user.email])
+    msg = Message('Password reset request', sender = 'meeghou8689@gmail.com', recipients = [user.email])
     msg.body = f'''To reset your password, visit the following link:
     {url_for('reset_token', token = token, _external = True)}
     If you did not made this request, then please ignore this email and no changes will take place.
     '''
+    mail.send(msg)
 
 #Route to take care of the password reset token
 @app.route('/reset_password/<token>', methods = ['POST', 'GET'])
