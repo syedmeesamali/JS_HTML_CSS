@@ -6,6 +6,7 @@ from app import app, db, bcrypt
 from app.models import User, Post
 from app.forms import RegistrationForm, LoginForm, UpdateAccountForm, PostForm, RequestResetForm, ResetPasswordForm
 from flask_login import login_user, current_user, logout_user, login_required
+from flask_mail import Mail, Message
 
 @app.errorhandler(404)
 def page_not_found(e):
