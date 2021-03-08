@@ -6,6 +6,7 @@ from app import app, db, bcrypt
 from app.models import User, Post
 from app.forms import RegistrationForm, LoginForm, UpdateAccountForm, PostForm, RequestResetForm, ResetPasswordForm
 from flask_login import login_user, current_user, logout_user, login_required
+from flask_mail import Mail, Message
 
 @app.errorhandler(404)
 def page_not_found(e):
@@ -162,7 +163,22 @@ def reset_request():
     if current_user.is_authenticated:
         return redirect(url_for('index'))
     form = RequestResetForm()
+    if form.validate_on_submit():
+        user = User.query.filter_by(email = form.email.data).first()
+        send_reset_email(user)
+        flash('An Email has been sent with instructions to reset your password!', 'info')
+        return redirect(url_for('index'))
     return render_template('reset_request.html', title = 'Reset Password', form = form)
+
+#Reset email sending function
+def send_reset_email(user):
+    token = user.get_reset_token()
+    msg = Message('Password reset request', sender = 'meeghou8689@gmail.com', recipients = [user.email])
+    msg.body = f'''To reset your password, visit the following link:
+    {url_for('reset_token', token = token, _external = True)}
+    If you did not made this request, then please ignore this email and no changes will take place.
+    '''
+    mail.send(msg)
 
 #Route to take care of the password reset token
 @app.route('/reset_password/<token>', methods = ['POST', 'GET'])
@@ -174,4 +190,10 @@ def reset_token(token):
         flash('That is an invalid or expired token!', 'warning')
         return redirect(url_for('reset_request'))
     form  = ResetPasswordForm()
+    if form.validate_on_submit():
+        hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
+        user.password = hashed_password
+        db.session.commit()
+        flash("Your password has been updated! You can now login", 'success')
+        return redirect(url_for('Login'))
     return render_template('reset_token.html', title = 'Reset Password', form = form)
