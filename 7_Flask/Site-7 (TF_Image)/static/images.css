@@ -24,3 +24,16 @@ section {
   .image-loaded .image-section {
     display: block;
   }
+
+  .loading .loader {
+    display: block;
+  }
+  
+  .loader {
+    display: none;
+  }
+  
+  .loading .image-section,
+  .loading .file-section {
+    display: none;
+  }
