@@ -231,6 +231,11 @@ def current_ongoing(id):
 def imam():
     return render_template('imam.html')
 
+#Imams
+@app.route('/imam/kazim')
+def kazim():
+    return render_template('kazim.html')
+
 @app.route('/Photos')
 def Photos():
     return render_template('Photos.html')
