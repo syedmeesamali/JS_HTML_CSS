@@ -35,6 +35,10 @@ def page_not_found(e):
 def home():
     return render_template('index.html')
 
+#Main display page
+@app.route('/market')
+def market():
+    return render_template('market.html', item_name = 'iPhone')
 
 if __name__ == '__main__':
     app.run(debug=True)
