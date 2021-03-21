@@ -32,12 +32,13 @@ def page_not_found(e):
 
 #Main display page
 @app.route('/')
+@app.route('/home')
 def home():
     return render_template('index.html')
 
 #Main display page
 @app.route('/market')
-def market():
+def market_page():
     return render_template('market.html', item_name = 'iPhone')
 
 if __name__ == '__main__':

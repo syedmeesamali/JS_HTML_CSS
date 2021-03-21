@@ -4,7 +4,21 @@
 {% block page_content %}
 <div class="content">
 <h2>Main Market Page</h2>
-<p>{{ item_name }}</p>    
+<table class="table table-hover table-dark">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Col-2</th>
+            <th scope="col">Col-3</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Value for ID</td>
+            <td>Value for ID2</td>
+            <td>Value for ID3</td>
+        </tr>
+    </tbody>
+</table>
 </div>
-
 {% endblock %}
