@@ -165,4 +165,68 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+//Main Calculate function for rebar calculations
+document.querySelector('#rCalculate').onclick = () => 
+{
+    var rebars = document.getElementById("rebars");
+    var rebar_val = rebars.options[rebars.selectedIndex].innerText;
+    var rebar_len = document.getElementById("rebar_len").value;
+    if (rebar_val == "10mm")
+    {
+        var result_rebar = rebar_len * 0.617;
+        result_rebar = result_rebar.toFixed(0);
+        document.querySelector("#result_rebar").style.display = 'block';
+        document.querySelector("#result_rebar").innerHTML = result_rebar + " [Kg]" 
+        setTimeout(() => {
+            document.querySelector("#result_rebar").style.display = 'none';
+        }, 6000);
+    } else if (rebar_val == "12mm")
+    {
+        var result_rebar = rebar_len * 0.89;
+        result_rebar = result_rebar.toFixed(0);
+        document.querySelector("#result_rebar").style.display = 'block';
+        document.querySelector("#result_rebar").innerHTML = result_rebar + " [Kg]" 
+        setTimeout(() => {
+            document.querySelector("#result_rebar").style.display = 'none';
+        }, 6000);
+    } else if (rebar_val == "16mm")
+    {
+        var result_rebar = rebar_len * 1.58;
+        result_rebar = result_rebar.toFixed(0);
+        document.querySelector("#result_rebar").style.display = 'block';
+        document.querySelector("#result_rebar").innerHTML = result_rebar + " [Kg]" 
+        setTimeout(() => {
+            document.querySelector("#result_rebar").style.display = 'none';
+        }, 6000);
+    } else if (rebar_val == "20mm")
+    {
+        var result_rebar = rebar_len * 2.47;
+        result_rebar = result_rebar.toFixed(0);
+        document.querySelector("#result_rebar").style.display = 'block';
+        document.querySelector("#result_rebar").innerHTML = result_rebar + " [Kg]" 
+        setTimeout(() => {
+            document.querySelector("#result_rebar").style.display = 'none';
+        }, 6000);
+    } else if (rebar_val == "25mm")
+    {
+        var result_rebar = rebar_len * 3.85;
+        result_rebar = result_rebar.toFixed(0);
+        document.querySelector("#result_rebar").style.display = 'block';
+        document.querySelector("#result_rebar").innerHTML = result_rebar + " [Kg]" 
+        setTimeout(() => {
+            document.querySelector("#result_rebar").style.display = 'none';
+        }, 6000);
+    } else
+    {
+        var result_rebar = rebar_len * 6.31;
+        result_rebar = result_rebar.toFixed(0);
+        document.querySelector("#result_rebar").style.display = 'block';
+        document.querySelector("#result_rebar").innerHTML = result_rebar + " [Kg]" 
+        setTimeout(() => {
+            document.querySelector("#result_rebar").style.display = 'none';
+        }, 6000);
+    }
+} //End of rebar calculation
+
+
 });

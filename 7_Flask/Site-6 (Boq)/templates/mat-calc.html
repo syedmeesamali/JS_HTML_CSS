@@ -86,6 +86,26 @@
     <span class="bg-danger text-warning font-weight-bold col-md-3" id="result_jacket" style="display:none;">Kgs </span>
 </form>
 
+<!--Rebar Calculation-->
+<h4 class="p-2 bg-info mt-2 mb-2 col-md-4">5. Rebar Weights</h4>
+<div id="options" class="row col-md-3">
+    <select class="bg-secondary text-warning form-select mt-2 mb-2 font-weight-bold" aria-label="Default select example" id="rebars">
+        <option selected value="10mm">10mm</option>
+        <option value="12mm">12mm</option>
+        <option value="16mm">16mm</option>
+        <option value="20mm">20mm</option>
+        <option value="25mm">25mm</option>
+        <option value="32mm">32mm</option>
+    </select>
+</div>
+
+<form action="javascript:void(0);" class="form-inline">
+    <label for="area" class="text-primary mt-2 col-md-3"><h5>Rebar Length (m): </h5></label>
+    <input class="text-primary col-md-3" id="rebar_len" pattern="[0-9]*" type="text" placeholder="Rebar (m)"><br>
+    <button class="p-2 btn btn-warning mt-2 mb-2" id="rCalculate">Calculate</button>
+    <span class="bg-danger text-warning font-weight-bold col-md-3" id="result_rebar" style="display:none;">Kgs </span>
+</form>
+
 
 <script src="../static/js/mat_calc.js"></script>
 </div>
