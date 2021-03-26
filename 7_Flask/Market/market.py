@@ -17,7 +17,7 @@ app = Flask(__name__)       #Define the flask app thing
 bootstrap = Bootstrap(app)
 
 app.config['SECRET_KEY'] = 'my_rand_secret_key_here_too'
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///tasks.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///market.db'
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 
@@ -28,7 +28,8 @@ class Item(db.Model):
     barcode = db.Column(db.String(length=12), nullable=False, unique=True)
     description = db.Column(db.String(length=1024), nullable=False, unique=True)
 
-
+    def __repr__(self):
+        return f'Item {self.name}'
 
 @app.errorhandler(404)
 def page_not_found(e):
@@ -47,11 +48,7 @@ def home():
 #Main display page
 @app.route('/market')
 def market_page():
-    items = [
-        {'id': 1, 'name': 'iphone', 'barcode': '343423423', 'price': 580},
-        {'id': 2, 'name': 'Laptop', 'barcode': '343423234233', 'price': 880},
-        {'id': 3, 'name': 'Keyboard', 'barcode': '353564623423', 'price': 80},
-    ]
+    items = Item.query.all()
     return render_template('market.html', items = items)
 
 if __name__ == '__main__':
