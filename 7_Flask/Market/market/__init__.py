@@ -16,7 +16,7 @@ from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationE
 app = Flask(__name__)       #Define the flask app thing
 bootstrap = Bootstrap(app)
 
-app.config['SECRET_KEY'] = 'my_rand_secret_key_here_too'
+app.config['SECRET_KEY'] = '67b413b72a910f4016505b3e'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///market.db'
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
