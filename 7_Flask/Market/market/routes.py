@@ -33,7 +33,7 @@ def register_page():
         db.session.add(user_to_create)
         db.session.commit()
         return redirect(url_for('market_page'))
-    if form.errors != {}:
+    if form.errors != {}:                   #Check if errors dictionary is empty or not
         for err_msg in form.errors.values():
             flash(f'There was an error: {err_msg}', category='danger')
     return render_template('register.html', form = form)
