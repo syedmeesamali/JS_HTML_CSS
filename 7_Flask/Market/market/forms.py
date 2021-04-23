@@ -11,14 +11,14 @@ class RegisterForm(FlaskForm):
             raise ValidationError('Username already exists! Please try a different name.')
     
     #Validation of email address if it already exists or not
-    def validate_email(self, email_check):
-        email = User.query.filter_by(email = email_check.data).first()
-        if email:
+    def validate_email(self, email_address_check):
+        email_address = User.query.filter_by(email_address = email_address_check.data).first()
+        if email_address:
             raise ValidationError('Email already exists! Please try a different email.')
 
     username = StringField(label='User Name: ', validators=[Length(min=2, max=30), DataRequired()])
-    email = StringField(label='Email: ', validators=[Email(), DataRequired()])
-    password1 = PasswordField(label='Password: ', validators=[Length(min=3, max=20), DataRequired()])
+    email_address = StringField(label='Email: ', validators=[Email(), DataRequired()])
+    password1 = PasswordField(label='Password: ', validators=[Length(min=3), DataRequired()])
     password2 = PasswordField(label='Confirm Password: ', validators=[EqualTo('password1')])
     submit = SubmitField(label='Create Account')
 
