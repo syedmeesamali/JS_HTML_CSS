@@ -2,7 +2,7 @@ from market import app
 from flask import render_template, redirect, url_for, flash
 from market.models import Item, User
 from market.forms import RegisterForm
-from market import db
+from market import db, bcrypt
 
 @app.errorhandler(404)
 def page_not_found(e):
@@ -29,9 +29,10 @@ def market_page():
 def register_page():
     form = RegisterForm()
     if form.validate_on_submit():
+        hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
         user_to_create = User(username = form.username.data, 
-                        email_address = form.email_address.data, 
-                        hash_password = form.password1.data)
+                        email = form.email.data, 
+                        password = hashed_password)
         db.session.add(user_to_create)
         db.session.commit()
         return redirect(url_for('market_page'))
