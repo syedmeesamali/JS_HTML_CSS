@@ -20,5 +20,6 @@ app.config['SECRET_KEY'] = '67b413b72a910f4016505b3e'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///market.db'
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
+login_manager = LoginManager(app)
 
 from market import routes

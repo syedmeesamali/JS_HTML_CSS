@@ -3,5 +3,25 @@
 
 {% block content %}
 <div class="container">
+    <form method="POST" class="form-register" style="color: white;">
+        {{ form.hidden_tag() }}
+    <h1 class="h3 mb-3 font-weight-normal">
+        Login below
+    </h1><br>
+        <div class="form-group">
+        {{ form.username.label() }}
+        {{ form.username(class="form-control", placeholder = "User Name") }}
+        </div>
+        {{ form.password.label() }}
+        {{ form.password(class="form-control", placeholder = "Password") }}
 
+        {{ form.submit(class="btn btn-lg btn-block btn-primary") }}
+
+        <div class="checkbox mb-3">
+            <h6>Do not have an account?</h6>
+            <a class="btn btn-sm btn-secondary" href="{{ url_for('register_page') }}">Register</a>
+        </div>
+
+    </form>
+</div>
 {% endblock %}
