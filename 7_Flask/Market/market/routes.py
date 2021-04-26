@@ -49,7 +49,7 @@ def login_page():
     form = LoginForm()
     if form.validate_on_submit():
         attempted_user = User.query.filter_by(username=form.username.data).first()
-        if attempted_user and attempted_user.check_password(attempted_password = form.password.data):
+        if attempted_user and bcrypt.check_password_hash(attempted_user.password, form.password.data):
             login_user(attempted_user)
             flash(f'Successfully logged in as: {attempted_user.username}', category='success')
             return redirect(url_for('market_page'))

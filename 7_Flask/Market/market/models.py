@@ -17,13 +17,6 @@ class User(db.Model, UserMixin):
     budget = db.Column(db.Integer, nullable=False, default = 1000)
     items = db.relationship('Item', backref = 'owned_user', lazy=True)
 
-    @property
-    def password(self):
-        return self.password
-
-    def check_password(self, attempted_password):
-        return bcrypt.check_password_hash(self.password_hash, attempted_password)
-
 #Main item model
 class Item(db.Model):
     __tablename__ = 'item'
