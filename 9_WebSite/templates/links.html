@@ -25,7 +25,7 @@
        <tr class="row">
         <td class="col-sm-1"> {{ link.id }} </td>
         <td style="word-break: break-all" class="col-sm-2"> {{ link.link_name }} </td>
-        <td style="word-break: break-all" class="col-sm-4"><a href="{{ link[2] }}">{{ link.link_url }}</a></td>
+        <td style="word-break: break-all" class="col-sm-4"><a href="{{ link.link_url }}">{{ link.link_url }}</a></td>
         <td class="col-sm-2"> <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{{ url_for('type_links', type = link.link_type ) }}">{{ link.link_type }}</a> </td>
         <td class="col-sm-2"> {{ link.date_created }} </td>
         <td class="col-sm-1">

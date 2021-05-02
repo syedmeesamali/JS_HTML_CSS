@@ -5,7 +5,6 @@ from flask_bcrypt import Bcrypt
 from flask_login import LoginManager, UserMixin, login_user, current_user, logout_user, login_required
 
 import sqlite3
-import os
 from datetime import datetime
 
 from flask_wtf import FlaskForm
@@ -29,15 +28,12 @@ login_manager.login_message_category = 'info'
 def load_user(user_id):
     return User.query.get(int(user_id))
 
-#Class to define the model for TODO list 
+#Class to define the model for TODO list
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key = True)
     email = db.Column(db.String(120), unique = True, nullable = False)
     password = db.Column(db.String(60), nullable = False)
-    def __repr__(self):
-        return f"User('{self.email}')"
-    def __repr__(self):
-        return '<Task %r>' % self.id
+
 
 #ORM model for the links
 class links(db.Model):
@@ -49,20 +45,21 @@ class links(db.Model):
     date_created = db.Column(db.Date, default = datetime.utcnow)
     date_read = db.Column(db.Date)
 
-    def __repr__(self):
-        return '<Task %r>' % self.id
-
-class materials(db.Model):
-    id = db.Column(db.Integer, primary_key = True)
-    material_name = db.Column(db.String(60), nullable = False)
-    material_type = db.Column(db.String(100), nullable = False)
-    material_supplier = db.Column(db.String(40), nullable = False)
-    material_pkg = db.Column(db.String(40), nullable = False)
-    mat_price = db.Column(db.String(40), nullable = False)
-    mat_date = db.Column(db.Date)
-
-    def __repr__(self):
-        return '<Task %r>' % self.id
+class RegistrationForm(FlaskForm):
+    email = StringField('Email', validators = [DataRequired(), Email()])
+    password = PasswordField('Password', validators = [DataRequired()])
+    confirm = PasswordField('Confirm Password', validators = [DataRequired(), EqualTo('password')])
+    submit =  SubmitField('Sign Up')
+    #Default username validation
+    def validate_username(self, username):
+        user = User.query.filter_by(username = username.data).first()
+        if user:
+            raise ValidationError('The username is taken. Please choose a different one.')
+    #Default email validation
+    def validate_email(self, email):
+        user = User.query.filter_by(email = email.data).first()
+        if user:
+            raise ValidationError('The email is taken. Please choose a different one.')
 
 class LoginForm(FlaskForm):
     email = StringField('Email', validators = [DataRequired(), Email()])
@@ -88,7 +85,7 @@ def Register():
         user = User(username = form.username.data, email = form.email.data, password = hashed_password)
         db.session.add(user)
         db.session.commit()
-        flash("Your account has been created! You can now login", 'success')
+        flash(f"Your account has been created! You can now login", 'success')
         return redirect(url_for('Login'))
     return render_template('register.html', title='Register', form = form)
 
@@ -113,7 +110,7 @@ def Logout():
 @app.route('/')
 def index():
     return render_template("index.html")
- 
+
 counter = 0
 @app.route('/aboutme')
 def aboutme():
@@ -127,11 +124,21 @@ def Links():
     mylinks = links.query.order_by(links.id.desc()).filter_by(read = False).all()
     return render_template("links.html", links = mylinks)
 
+@app.route('/_Links')
+def Links2():
+    mylinks = links.query.order_by(links.id.desc()).filter_by(read = False).all()
+    return render_template("links.html", links = mylinks)
+
+@app.route('/readlinks')
+def Read_Links():
+    mylinks = links.query.filter_by(read = True).all()
+    return render_template("readlinks.html", links = mylinks)
+
 @app.route('/Add')
 def Add():
     return render_template("add_link.html")
 
-#Posts on a specific category as filtered ones - 
+#Posts on a specific category as filtered ones -
 #Really advanced for me and excellent function to use and deploy
 @app.route('/Links/<string:type>')
 def type_links(type):
@@ -150,17 +157,13 @@ def Add_Link():
         try:
             db.session.add(link_to_add)
             db.session.commit()
-            return redirect('/Links')
+            return redirect('/_Links')
         except:
             return "There was some problem updating that link!"
     else:
         return render_template('add_link.html')
 
-@app.route('/readlinks')
-@login_required
-def Read_Links():
-    mylinks = links.query.filter_by(read = True).all()
-    return render_template("readlinks.html", links = mylinks)
+
 
 #Mark a link as read
 @app.route('/read/<int:id>')
@@ -190,26 +193,9 @@ def delete(id):
 def bird():
     return render_template("bird.html")
 
-@app.route('/draw')
-def draw():
-    return render_template("draw.html")
-
-@app.route('/mat_calc')
-def material():
-    return render_template("mat-calc.html")
-
-@app.route('/prices')
-def Prices():
-    prices = materials.query.all()
-    return render_template("prices.html", prices = prices)
-
-@app.route('/boq')
-def BOQ():
-    return render_template("boq.html")
-
-@app.route('/bbs')
-def BBS():
-    return render_template("bbs.html")
+@app.route('/circles')
+def circles():
+    return render_template("animate.html")
 
 @app.route('/save_form', methods=['POST'])
 def save_form():
