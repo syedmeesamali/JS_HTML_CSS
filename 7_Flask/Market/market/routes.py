@@ -37,6 +37,8 @@ def register_page():
                         password = hashed_password)
         db.session.add(user_to_create)
         db.session.commit()
+        login_user(user_to_create)
+        flash(f'Registered Successfully! Logged in as: {user_to_create.username}', category='success')
         return redirect(url_for('market_page'))
     if form.errors != {}:                   #Check if errors dictionary is empty or not
         for err_msg in form.errors.values():
