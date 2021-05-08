@@ -1,10 +1,15 @@
 {% extends "base.html" %}
-{% block title %} Market Page {% endblock %}
+{% block title %} 
+Market Page 
+{% endblock %}
 {% block content %}
-<h2>Main Market Page</h2>
-<div class="row">
-   <div class="col-12">
-      <table class="table table-hover table-dark">
+{% include 'includes/items_modal.html' %}
+<div class="row" style="margin-top: 20px; margin-left: 20px;">
+   <div class="col-8">
+        <h2>Available items on the market</h2>
+        <p>Click on any of the items to start buying!</p>
+        <br>
+        <table class="table table-hover table-dark">
          <thead>
             <tr>
                <th scope="col">ID</th>
@@ -22,13 +27,22 @@
                <td>{{ item.barcode }}</td>
                <td>{{ item.price }}$</td>
                <td>
-                  <button class="btn btn-outline btn-info">More Info</button>
+                  <button class="btn btn-outline btn-info" data-toggle="modal" data-target="#exampleModal">More Info</button>
                   <button class="btn btn-outline btn-success">Buy Item</button>
                </td>
             </tr>
             {% endfor %}
          </tbody>
       </table>
+   </div><!--End of col-md-8 class -->
+    
+   
+   <div class="col-4">
+    <h2>Owned Items</h2>
+    <p>Click on any item to put it back on the Market</p>
    </div>
-</div>
+
+
+</div><!--End of row-div class -->
+
 {% endblock %}

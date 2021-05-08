@@ -51,24 +51,24 @@
       <div class="row">
          <div class="col-md-6">
             {% with messages = get_flashed_messages(with_categories = true) %}
-            {% if messages %}
-            {% for category, message in messages %}
-            <div class="alert alert-{{ category }}">
-               <button type="button" class="m1-2 mb-2 close" data-dismiss="alert" aria-label="Close">
-               <span aria-hidden="true">&times;</span>
-               </button>
-               {{ message }}
-            </div>
-            {% endfor %}
-            {% endif %}
+              {% if messages %}
+                {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                  <button type="button" class="m1-2 mb-2 close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                  </button>
+                  {{ message }}
+                </div>
+                {% endfor %}
+              {% endif %}
             {% endwith %}
+          </div> 
             {% block content %} 
             <div class="container">
                {% block page_content %}
                {% endblock %}
             </div>
             {% endblock %}
-         </div>
       </div>
       </div>
    </main>
