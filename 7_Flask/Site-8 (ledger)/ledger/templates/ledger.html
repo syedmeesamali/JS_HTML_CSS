@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block title %} 
+Market Page 
+{% endblock %}
+{% block content %}
+
+<div class="row" style="margin-top: 20px; margin-left: 20px;">
+   <div class="col-8">
+        <h2>Main Items in Ledger</h2>
+        <p>Click on any of the items to start buying!</p>
+        <br>
+        <table class="table table-hover table-dark">
+         <thead>
+            <tr>
+               <th scope="col">Coin</th>
+               <th scope="col">Action</th>
+               <th scope="col">Price</th>
+               <th scope="col">Currency</th>
+               <th scope="col">Balance</th>
+            </tr>
+         </thead>
+         <tbody>
+            {% for item in items %}
+            {% include 'includes/items_modal.html' %}
+            <tr>
+               <td>{{ item.id }}</td>
+               <td>{{ item.name }}</td>
+               <td>{{ item.barcode }}</td>
+               <td>{{ item.price }}$</td>
+               <td>
+                  <button class="btn btn-outline btn-info" data-toggle="modal" data-target="#exampleModal-{{ item.id }}">More Info</button>
+                  <button class="btn btn-outline btn-success" data-toggle="modal" data-target="#purchaseConfirm-{{ item.id }}">Buy Item</button>
+               </td>
+            </tr>
+            {% endfor %}
+         </tbody>
+      </table>
+   </div><!--End of col-md-8 class -->
+    
+   
+   <div class="col-4">
+    <h2>Observations</h2>
+    <p>Below coins are under observation</p>
+   </div>
+
+
+</div><!--End of row-div class -->
+
+{% endblock %}

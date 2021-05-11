@@ -1,0 +1,50 @@
+<style>
+.modal-content {
+    background-color: #212121;
+}
+
+</style>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal-{{ item.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{ item.name }}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          {{ item.description }}
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  
+<!-- Modal Purchase -->
+<div class="modal fade" id="purchaseConfirm-{{ item.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{ item.name }}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form method="POST">
+                {{ purchase_form.hidden_tag() }}
+                <h4 class="text-center">Are you sure you want to purchase {{ item.name }} for {{ item.price }}$ ?</h4>
+                <br>
+                <h6 class="text-center">By clicking purchase, you will purchase this item!
+                <br><br> {{ purchase_form.submit(class="btn btn-outline-success btn-block") }}</h6>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
