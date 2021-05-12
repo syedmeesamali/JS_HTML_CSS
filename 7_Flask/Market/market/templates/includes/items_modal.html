@@ -39,7 +39,9 @@
                 <h4 class="text-center">Are you sure you want to purchase {{ item.name }} for {{ item.price }}$ ?</h4>
                 <br>
                 <h6 class="text-center">By clicking purchase, you will purchase this item!
-                <br><br> {{ purchase_form.submit(class="btn btn-outline-success btn-block") }}</h6>
+                <br><br> 
+                <input id="purchased_item" name="purchased_item" type="hidden" value="{{ item.name }}">
+                {{ purchase_form.submit(class="btn btn-outline-success btn-block") }}</h6>
           </form>
         </div>
         <div class="modal-footer">

@@ -20,11 +20,14 @@ def home():
     return render_template('index.html')
 
 #Main market page
-@app.route('/market')
+@app.route('/market', methods = ['GET', 'POST'])
 @login_required
 def market_page():
     purchase_form = PurchaseForm()
+    if purchase_form.validate_on_submit():
+        print(purchase_form['purchased_item'])
     items = Item.query.all()
+
     return render_template('market.html', items = items, purchase_form = purchase_form)
 
 #Registration
