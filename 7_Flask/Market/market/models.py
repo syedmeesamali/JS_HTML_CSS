@@ -23,6 +23,9 @@ class User(db.Model, UserMixin):
             return f'{str(self.budget)[:-3]},{str(self.budget)[-3:]}$'
         else:
             return f'{self.budget}$'
+    
+    def can_purchase(self, item_obj):
+        return self.budget >= item_obj.price
 
 #Main item model
 class Item(db.Model):
