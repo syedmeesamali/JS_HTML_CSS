@@ -38,3 +38,9 @@ class Item(db.Model):
     owner = db.Column(db.Integer, db.ForeignKey('user.id'))
     def __repr__(self):
         return f'Item {self.name}'
+    
+    def buy(self, user):
+        self.owner = user.id
+        user.budget -= self.price               #Deduct from user's budget
+        db.session.commit()
+        
