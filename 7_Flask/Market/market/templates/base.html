@@ -17,11 +17,36 @@
 						<li><a href="{{ url_for('home') }}">BEST SELLERS</a></li>
 						<li><a href="{{ url_for('home') }}">THE BLOG</a></li>
 					</ul>
-					<ul>
-						<li><a href="{{ url_for('home') }}">About us</a></li>
-						<li><a href="{{ url_for('home') }}">My Collection</a></li>
-						<li><a href="{{ url_for('login_page') }}">Login</a></li>
+					{% if current_user.is_authenticated %}
+					<ul class="navbar-nav">
+					   <li class="nav-item">
+						  <a class="nav-link" style="color: lawngreen; font-weight: bold;">
+						  <img src="../static/img/coins.svg" width="30" height="25" alt="my image" />
+						  {{ current_user.prettier_budget }}
+						  </a>
+					   </li>
+					   <li class="nav-item">
+						  <a class="nav-link">Welcome {{ current_user.username }}</a>
+					   </li>
+					   <li class="nav-item">
+						  <a class="nav-link" href="{{ url_for('logout_page') }}">Logout</a> 
+					   </li>
 					</ul>
+					{% else %}
+					<ul class="navbar-nav">
+					   <li class="nav-item">
+						  <a class="nav-link" href="{{ url_for('login_page') }}">Login</a>
+					   </li>
+					   <li class="nav-item">
+						  <a class="nav-link" href="{{ url_for('register_page') }}">Register</a>
+					   </li>
+					</ul>
+					{% endif %}
+					
+					
+					
+					
+					
 				</div>
 				<form action="" class="search">
 					<input type="text" value="search" onblur="this.value=!this.value?'search':this.value;" onfocus="this.select()" onclick="this.value='';"/>
