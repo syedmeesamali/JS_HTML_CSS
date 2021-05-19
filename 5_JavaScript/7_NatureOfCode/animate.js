@@ -121,14 +121,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     init(); //First main initialization
     
-    //Remove the circles after 2 seconds interval
-    /*setInterval(popCircle, 1000);
-    function popCircle() {
-        if (circleArray.length != 0) {
-            circleArray.pop(Math.floor(Math.random() * circleArray.length));
-        }
-    }*/
-
     //Main animate function
     function animate(){
         requestAnimationFrame(animate);
