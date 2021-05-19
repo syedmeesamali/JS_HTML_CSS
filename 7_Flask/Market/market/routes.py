@@ -83,7 +83,7 @@ def login_page():
         if attempted_user and bcrypt.check_password_hash(attempted_user.password, form.password.data):
             login_user(attempted_user)
             flash(f'Successfully logged in as: {attempted_user.username}', category='success')
-            return redirect(url_for('market_page'))
+            return redirect(url_for('home'))
         else:
             flash(f'Username and/or password does not match', category='danger')
     return render_template('login.html', form=form)
