@@ -19,6 +19,10 @@ def page_not_found(e):
 def home():
     return render_template('index.html')
 
+@app.route('/accessories')
+def accessories():
+    return render_template('accessories.html')
+
 #Main market page
 @app.route('/market', methods = ['GET', 'POST'])
 @login_required

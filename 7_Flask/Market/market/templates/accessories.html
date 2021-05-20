@@ -1,21 +1,10 @@
-<!DOCTYPE html>
-<!-- Website template by freewebsitetemplates.com -->
-<html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-		<title>Her Designs</title>
-		<link rel="stylesheet" href="css/style.css" type="text/css" />
-		<!--[if IE 6]>
-			<link rel="stylesheet" href="css/ie6.css" type="text/css" />
-		<![endif]-->
-		<!--[if IE 7]>
-			<link rel="stylesheet" href="css/ie7.css" type="text/css" />
-		<![endif]-->
-	</head>
-	<body>
+{% extends 'base.html' %}
+{% block title %} Home Page {% endblock %}
+{% block content %}
+<div class="container">
 		<div class="header">
 			<div>
-				<a href="index.html" id="logo"><img src="images/logo.gif" alt="logo"/></a>
+				<a href="index.html" id="logo"><img src="../static/img/logo.gif" alt="logo"/></a>
 				<div class="navigation">
 					<ul class="first">
 						<li class="first"><a href="jewelry.html">ON SALE</a></li>
@@ -78,7 +67,7 @@
 			</div>
 			<div class="content">
 				<div class="figure">
-					<img src="images/accesory.jpg" alt=""/>
+					<img src="../static/img/accesory.jpg" alt=""/>
 				</div>
 				<div class="products">
 					<div class="paging">
@@ -110,25 +99,25 @@
 					</div>
 					<ul>
 						<li class="first">
-							<a href="#"><img src="images/bath-set.jpg" alt=""/></a>
+							<a href="#"><img src="../static/img/bath-set.jpg" alt=""/></a>
 							<h4>Bath Set</h4>
 							<p>dolor sit amet</p>
 							<span>US$28.00 ~PHP1,210.44</span>
 						</li>
 						<li>
-							<a href="#"><img src="images/blusher-brush.jpg" alt=""/></a>
+							<a href="#"><img src="../static/img/blusher-brush.jpg" alt=""/></a>
 							<h4>Blusher Blush</h4>
 							<p>dolor sit amet</p>
 							<span>US$28.00 ~PHP1,210.44</span>
 						</li>
 						<li>
-							<a href="#"><img src="images/fine-curler.jpg" alt=""/></a>
+							<a href="#"><img src="../static/img/fine-curler.jpg" alt=""/></a>
 							<h4>Fine Curler</h4>
 							<p>dolor sit amet</p>
 							<span>US$28.00 ~PHP1,210.44</span>
 						</li>
 						<li>
-							<a href="#"><img src="images/chick-brush.jpg" alt=""/></a>
+							<a href="#"><img src="../static/img/chick-brush.jpg" alt=""/></a>
 							<h4>Chick Brush</h4>
 							<p>dolor sit amet</p>
 							<span>US$28.00 ~PHP1,210.44</span>
@@ -136,25 +125,25 @@
 					</ul>
 					<ul>
 						<li class="first">
-							<a href="#"><img src="images/eyebrow-comb.jpg" alt=""/></a>
+							<a href="#"><img src="../static/img/eyebrow-comb.jpg" alt=""/></a>
 							<h4>Eyebrow Comb</h4>
 							<p>dolor sit amet</p>
 							<span>US$28.00 ~PHP1,210.44</span>
 						</li>
 						<li>
-							<a href="#"><img src="images/beauty-box.jpg" alt=""/></a>
+							<a href="#"><img src="../static/img/beauty-box.jpg" alt=""/></a>
 							<h4>Beauty Box</h4>
 							<p>dolor sit amet</p>
 							<span>US$28.00 ~PHP1,210.44</span>
 						</li>
 						<li>
-							<a href="#"><img src="images/comb-set.jpg" alt=""/></a>
+							<a href="#"><img src="../static/img/comb-set.jpg" alt=""/></a>
 							<h4>Comb Set</h4>
 							<p>dolor sit amet</p>
 							<span>US$28.00 ~PHP1,210.44</span>
 						</li>
 						<li>
-							<a href="#"><img src="images/ep-sharpener.jpg" alt=""/></a>
+							<a href="#"><img src="../static/img/ep-sharpener.jpg" alt=""/></a>
 							<h4>Ep Sharpener</h4>
 							<p>dolor sit amet</p>
 							<span>US$28.00 ~PHP1,210.44</span>
@@ -190,8 +179,4 @@
 				</div>
 			</div>
 		</div>
-		<div class="footer">
-			<p>&#169; 2011 Herdesigns. All Rights Reserved.</p>
-		</div>
-	</body>
-</html>
+{% endblock %}

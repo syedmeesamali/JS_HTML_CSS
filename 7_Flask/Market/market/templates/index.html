@@ -2,20 +2,22 @@
 {% block title %} Home Page {% endblock %}
 {% block content %}
 <div class="container">
-	<div class="featured">
-		<a href="{{ url_for('register_page') }}"><img src="../static/img/advertisement.jpg" alt=""/></a>
-		<div class="gallery">
-			<a href="{{ url_for('home') }}"><img src="../static/img/aurora.jpg" alt=""/></a>
-			<ul class="first">
-				<li><a href="{{ url_for('home') }}"><img src="../static/img/summer-collection.jpg" alt=""/></a></li>
-				<li><a href="{{ url_for('home') }}"><img src="../static/img/beach-bride.jpg" alt=""/></a></li>
-				<li><a href="{{ url_for('home') }}"><img src="../static/img/motherhood-apparel.jpg" alt=""/></a></li>
-			</ul>
-			<ul>
-				<li><a href="{{ url_for('home') }}"><img src="../static/img/fashionable.jpg" alt=""/></a></li>
-				<li><a href="{{ url_for('home') }}"><img src="../static/img/accessories.jpg" alt=""/></a></li>
-				<li><a href="{{ url_for('home') }}"><img src="../static/img/skin-perfect.jpg" alt=""/></a></li>
-			</ul>
+	<div class="body">
+		<div class="featured">
+			<a href="{{ url_for('register_page') }}"><img src="../static/img/advertisement.jpg" alt=""/></a>
+			<div class="gallery">
+				<a href="{{ url_for('home') }}"><img src="../static/img/aurora.jpg" alt=""/></a>
+				<ul class="first">
+					<li><a href="{{ url_for('home') }}"><img src="../static/img/summer-collection.jpg" alt=""/></a></li>
+					<li><a href="{{ url_for('home') }}"><img src="../static/img/beach-bride.jpg" alt=""/></a></li>
+					<li><a href="{{ url_for('home') }}"><img src="../static/img/motherhood-apparel.jpg" alt=""/></a></li>
+				</ul>
+				<ul>
+					<li><a href="{{ url_for('home') }}"><img src="../static/img/fashionable.jpg" alt=""/></a></li>
+					<li><a href="{{ url_for('home') }}"><img src="../static/img/accessories.jpg" alt=""/></a></li>
+					<li><a href="{{ url_for('home') }}"><img src="../static/img/skin-perfect.jpg" alt=""/></a></li>
+				</ul>
+			</div>
 		</div>
 	</div>
 	<div class="article">
