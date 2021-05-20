@@ -4,19 +4,45 @@ document.addEventListener('DOMContentLoaded', () => {
     var brush = canvas.getContext("2d");
     innerWidth = 400;
     innerHeight = 400;
-    x = 50; y = 50;
+    x = 50;             //Circle center co-ordinates
+    y = 50;
+    x_vel = 100;        //Speed in x-direction
+    y_vel = 100;        //Speed in y-direction
   
-    //Array circles
-    function makeCircles() {
-        //brush.beginPath();
-        brush.strokeStyle = 'red';
-        brush.arc(x, y, 40, 0, 2 * Math.PI, true);
-        brush.stroke();
+    //Random rgba color
+    function rgbaColor() {
+        let randNumber = "#";
+        for (var i=0; i<6; i++) {
+        randNumber += colors[Math.floor(Math.random() * 15)]; }
+        return randNumber; 
     }
+
+    //Circle as an object 
+    function Circle(x, y, dx, dy, radius) {
+        this.x = x;
+        this.y = y;
+        this.dx = dx;
+        this.dy = dy;
+        this.radius = radius;
+        this.color = rgbaColor();
+        this.draw = function () {
+            brush.beginPath();
+            brush.arc(this.x, this.y, this.radius, 0, 2 * Math.PI, false); //2 * Pi is the angle of full circle
+            brush.strokeStyle = this.color; 
+            brush.fillStyle = this.color;
+            brush.fill();
+            brush.stroke();
+        }
+        this.update = function() { 
+            this.draw();
+            console.log("Inside update!")
+        }
+    } //End of circle Object with functions
     
     //Main event listener
     canvas.addEventListener('click', function(event) {
-        x += 50; y += 50;
-        makeCircles();
+        circ_1 = new Circle(x, y, x_vel, y_vel, radius = 50);
+        circ_1.draw();
+        console.log("Circle 1 = ", circ_1);
         })
 }) //End of main
