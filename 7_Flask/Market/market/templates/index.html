@@ -1,8 +1,22 @@
 {% extends 'base.html' %}
 {% block title %} Home Page {% endblock %}
 {% block content %}
+
 <div class="container">
 	<div class="body">
+		<div class="header">
+			<div id="navigation">
+				<ul>
+					<li class="selected"><a href="{{ url_for('home') }}">Home</a></li>
+					<li><a href="{{ url_for('home') }}">New Arrival</a></li>
+					<li><a href="{{ url_for('home') }}">Apparel</a></li>
+					<li><a href="{{ url_for('home') }}">Beauty Care</a></li>
+					<li><a href="{{ url_for('home') }}">Shoes</a></li>
+					<li><a href="{{ url_for('accessories') }}">Accessories</a></li>
+					<li><a href="{{ url_for('home') }}">Jewelry</a></li>
+				</ul>
+			</div>
+		</div> 
 		<div class="featured">
 			<a href="{{ url_for('register_page') }}"><img src="../static/img/advertisement.jpg" alt=""/></a>
 			<div class="gallery">
@@ -18,8 +32,10 @@
 					<li><a href="{{ url_for('home') }}"><img src="../static/img/skin-perfect.jpg" alt=""/></a></li>
 				</ul>
 			</div>
-		</div>
+		</div>	<!-- end of featured -->
+		</div><!-- end of navigation -->
 	</div>
+
 	<div class="article">
 		<div class="first">
 			<h3>Please Read</h3>
@@ -41,6 +57,7 @@
 			<a href="#" id="comments">Comments</a>
 			<a href="http://www.flickr.com/freewebsitetemplates/" id="flickr">Flickr</a>
 		</div>
-	</div>
+	</div><!-- END OF ARTICLE -->
+
 </div><!--End of main website container-->
 {% endblock %}
