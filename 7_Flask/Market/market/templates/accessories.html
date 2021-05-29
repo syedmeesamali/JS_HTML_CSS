@@ -2,19 +2,22 @@
 {% block title %} Home Page {% endblock %}
 {% block content %}
 <div class="container">
-		<div class="header">
-			<div id="navigation">
-				<ul>
-					<li><a href="{{ url_for('home') }}">Home</a></li>
-					<li><a href="new_arrival.html">New Arrival</a></li>
-					<li><a href="apparel.html">Apparel</a></li>
-					<li><a href="beauty_care.html">Beauty Care</a></li>
-					<li><a href="shoes.html">Shoes</a></li>
-					<li class="selected"><a href="accessories.html">Accessories</a></li>
-					<li><a href="jewelry.html">Jewelry</a></li>
-				</ul>
-			</div>
-		</div> 
+		<!--START OF HEADER BAR -->
+	<div class="header">
+		<div id="navigation">
+			<ul>
+				<li><a href="{{ url_for('home') }}">Home</a></li>
+				<li><a href="{{ url_for('new_arrival') }}">New Arrival</a></li>
+				<li><a href="{{ url_for('apparel') }}">Apparel</a></li>
+				<li><a href="{{ url_for('beauty_care') }}">Beauty Care</a></li>
+				<li><a href="{{ url_for('shoes') }}">Shoes</a></li>
+				<li class="selected"><a href="{{ url_for('accessories') }}">Accessories</a></li>
+				<li><a href="{{ url_for('jewelry') }}">Jewelry</a></li>
+			</ul>
+		</div>
+	</div> 
+	<!--END OF HEADER BAR -->
+
 		<div class="body">
 			<div class="sidebar">
 				<div class="first">

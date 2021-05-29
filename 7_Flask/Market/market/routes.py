@@ -23,6 +23,26 @@ def home():
 def accessories():
     return render_template('accessories.html')
 
+@app.route('/new_arrival')
+def new_arrival():
+    return render_template('new_arrival.html')
+
+@app.route('/shoes')
+def shoes():
+    return render_template('shoes.html')
+
+@app.route('/jewelry')
+def jewelry():
+    return render_template('jewelry.html')
+
+@app.route('/beauty_care')
+def beauty_care():
+    return render_template('beauty_care.html')
+
+@app.route('/apparel')
+def apparel():
+    return render_template('apparel.html')
+
 #Main market page
 @app.route('/market', methods = ['GET', 'POST'])
 @login_required
