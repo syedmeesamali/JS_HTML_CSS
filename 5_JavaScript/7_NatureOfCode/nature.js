@@ -60,7 +60,6 @@ document.addEventListener("DOMContentLoaded", () => {
       if (this.y + this.radius > innerHeight || this.y - this.radius < 0)
             this.dy = -this.dy;
       this.draw();
-      console.log("Inside update!");
     };
   } //End of circle Object with functions
 
