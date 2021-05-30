@@ -4,10 +4,10 @@ document.addEventListener("DOMContentLoaded", () => {
   var brush = canvas.getContext("2d");
   innerWidth = 400;
   innerHeight = 400;
-  x = 50; //Circle center co-ordinates
-  y = 50; //Use CTRL + SHIFT + L to select all y ; Nice learning today
-  x_vel = 5; //Speed in x-direction
-  y_vel = 5; //Speed in y-direction
+  x = 40; //Circle center co-ordinates
+  y = 40; //Use CTRL + SHIFT + L to select all y ; Nice learning today
+  x_vel = 0.3; //Speed in x-direction
+  y_vel = 0.3; //Speed in y-direction
 
   //Random rgba color
   function rgbaColor() {
@@ -17,6 +17,24 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     return randNumber;
   }
+
+  class Rectangle {
+    constructor(height, width) {
+      this.height = height;
+      this.width = width;
+    }
+
+    //Getter function for class
+    get area() {
+      return this.calcArea();
+    }
+
+    //Method
+    calcArea() {
+      return this.height * this.width;
+    }
+  }
+
 
   //Circle as an object
   function Circle(x, y, dx, dy, radius) {
@@ -48,7 +66,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   //Main event listener
   canvas.addEventListener("click", function (event) {
-    circ_1 = new Circle(x, y, x_vel, y_vel, (radius = 50));
+    circ_1 = new Circle(x, y, x_vel, y_vel, (radius = 40));
     console.log("Circle 1 = ", circ_1);
   });
 
