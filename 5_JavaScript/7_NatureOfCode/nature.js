@@ -18,23 +18,61 @@ document.addEventListener("DOMContentLoaded", () => {
     return randNumber;
   }
 
+  //Function for rectangle objects
   class Rectangle {
-    constructor(height, width) {
-      this.height = height;
-      this.width = width;
+    constructor (x=0, y=0, width = 0, height = 0, fillColor = '', strokeColor = '', strokeWidth = 2) {
+      this.x = Number(x);
+      this.y = Number(y);
+      this.width = Number(width);
+      this.height = Number(height);
+      this.fillColor = fillColor;
+      this.strokeColor = strokeColor;
+      this.strokeWidth = strokeWidth;
     }
 
-    //Getter function for class
+    //Get area
     get area() {
-      return this.calcArea();
+      return this.width * this.height;
     }
 
-    //Method
-    calcArea() {
-      return this.height * this.width;
+    //Left of rectangle
+    get area() {
+      return this.x;
     }
+
+    //Right of rectangle
+    get area() {
+      return this.x + this.width;
+    }
+
+    //Top of rectangle
+    get area() {
+      return this.y;
+    }
+
+    //Bottom of rectangle
+    get area() {
+      return this.y + this.height;
+    }
+
+    //Draw the rectangle
+    draw() {
+      const {x, y, width, height, fillColor, strokeColor, strokeWidth} = this;
+      brush.save();
+      brush.fillStyle = fillColor;
+      brush.lineWidth = strokeWidth;
+
+      //Create path
+      brush.beginPath();
+      brush.strokeStyle = strokeColor;
+      brush.rect(x, y, width, height);
+
+      //Draw path on screen
+      brush.fill();
+      brush.stroke();
+      brush.restore();
+    
   }
-
 
   //Circle as an object
   function Circle(x, y, dx, dy, radius) {
