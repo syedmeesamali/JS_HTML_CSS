@@ -24,7 +24,26 @@ document.addEventListener("DOMContentLoaded", () => {
     this._x = x;
     this._y = y;
   }
-}
+  get length() {        //Length of a vector
+    let x = this._x;    let y = this._y;
+    return Math.sqrt(x*x + y*y);
+  }
+
+  add(vec) {
+    let x = this._x;    let y = this._y;
+    let result = false;
+    try {
+      if (vec.constructor === Vector) {       //Check if we are adding vectors or not
+          result = new Vector(x + vec._x, y + vec._y);
+      } else if (vec.constructor === Array && vec.length === 2) {
+          result = new Vector(x + vec[0], y + vec[1]);
+      } 
+    } catch (error)  {
+      console.log(`ERROR: ${error}`);
+    } finally {
+      return result;
+    }
+  } //End of add method
 
 
 
