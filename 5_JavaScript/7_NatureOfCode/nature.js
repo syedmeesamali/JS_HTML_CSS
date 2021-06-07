@@ -23,6 +23,12 @@ document.addEventListener("DOMContentLoaded", () => {
   constructor(x,y) {
     this._x = x;
     this._y = y;
+    this.draw = function () {
+      brush.beginPath();
+      brush.moveTo(0, 0);              //Vectors start from origin
+      brush.lineTo(x, y);              //Our vector is from origin to defined point of vector
+      brush.stroke();
+    };
   }
   get length() {        //Length of a vector
     let x = this._x;    let y = this._y;
@@ -45,8 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   } //End of add method
 
-
-
+}
 
 //Function for rectangle objects
   class Rectangle {
@@ -123,11 +128,12 @@ document.addEventListener("DOMContentLoaded", () => {
     };
   } //End of circle Object with functions
 
+  
   //Main event listener
   canvas.addEventListener("click", function (event) {
-    circ_1 = new Circle(x, y, x_vel, y_vel, (radius = 40));
+    circ_1 = new Circle(x, y, x_vel, y_vel, (radius = 40));  
     rect_1 = new Rectangle(x=50, y=50, width=150, height=150, fillColor =rgbaColor(), strokeColor= rgbaColor(), strokeWidth=2)
-    console.log("Circle 1 = ", circ_1);
+    vect_1 = new Vector(200, 250);
   });
 
   //Main animate function
@@ -136,6 +142,7 @@ document.addEventListener("DOMContentLoaded", () => {
     brush.clearRect(0, 0, innerWidth, innerHeight);
     circ_1.update();
     rect_1.draw();
+    vect_1.draw();
   }
   animate();
 }); //End of main
