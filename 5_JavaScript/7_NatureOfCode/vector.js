@@ -56,13 +56,19 @@ document.addEventListener("DOMContentLoaded", () => {
     //Main event listener
     canvas.addEventListener("click", function (event) {
       vect_1 = new Vector(Math.floor(Math.random() * 250), Math.floor(Math.random() * 250));
+      vect_2 = new Vector(60, 60);
+      vect_loc = new Vector(150, 150);
+      vect_speed = new Vector(1, 1);
+      vect_2 = new Vector(60, 60);
     });
   
     //Main animate function
     function animate() {
       requestAnimationFrame(animate);
-      //brush.clearRect(0, 0, innerWidth, innerHeight);             //CLEAN canvas to make movement 
+      brush.clearRect(0, 0, innerWidth, innerHeight);             //CLEAN canvas to make movement 
       vect_1.draw();
+      vect_1.add(vect_2)
+      vect_2.draw();
     }
     animate();
   }); //End of main
