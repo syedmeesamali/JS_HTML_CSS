@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     const colors = [1, 2, 3, 4, 5, 6, 7, 8, 9, "A", "B", "C", "D", "E", "F"];
     const canvas = document.getElementById("canvas");
+    const startBtn = document.getElementById('natureBtn');
     var brush = canvas.getContext("2d");
     innerWidth = 400;
     innerHeight = 400;
@@ -61,7 +62,15 @@ document.addEventListener("DOMContentLoaded", () => {
       vect_speed = new Vector(1, 1);
       vect_2 = new Vector(60, 60);
     });
-  
+    
+    //Button event to start animation
+    startBtn.addEventListener("click", function (event) {
+      vect_1 = new Vector(Math.floor(Math.random() * 250), Math.floor(Math.random() * 250));
+      vect_2 = new Vector(60, 60);
+      vect_loc = new Vector(150, 150);
+      vect_speed = new Vector(1, 1);
+      vect_2 = new Vector(60, 60);
+    });
     //Main animate function
     function animate() {
       requestAnimationFrame(animate);
