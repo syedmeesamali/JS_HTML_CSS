@@ -80,6 +80,55 @@ document.addEventListener('DOMContentLoaded', () => {
         //console.log(mouse);
     })
 
+
+    //Function for rectangle objects
+  class Rectangle {
+    constructor (x=0, y=0, width = 0, height = 0, fillColor = '', strokeColor = '', strokeWidth = 2) {
+      this.x = Number(x);
+      this.y = Number(y);
+      this.width = Number(width);
+      this.height = Number(height);
+      this.fillColor = fillColor;
+      this.strokeColor = strokeColor;
+      this.strokeWidth = strokeWidth;
+    }
+    //Get area
+    get area() {
+      return this.width * this.height;
+    }
+    //Left of rectangle
+    get left() {
+      return this.x;
+    }
+    //Right of rectangle
+    get right() {
+      return this.x + this.width;
+    }
+    //Top of rectangle
+    get top() {
+      return this.y;
+    }
+    //Bottom of rectangle
+    get bottom() {
+      return this.y + this.height;
+    }
+    //Draw the rectangle
+    draw() {
+      const {x, y, width, height, fillColor, strokeColor, strokeWidth} = this;
+      brush.save();
+      brush.fillStyle = fillColor;
+      brush.lineWidth = strokeWidth;
+      //Create path
+      brush.beginPath();
+      brush.strokeStyle = strokeColor;
+      brush.rect(x, y, width, height);
+      //Draw path on screen
+      brush.fill();
+      brush.stroke();
+      brush.restore();
+      }
+  } //End of rectangle
+
     //Main animate function
     function animate() {
         requestAnimationFrame(animate);
