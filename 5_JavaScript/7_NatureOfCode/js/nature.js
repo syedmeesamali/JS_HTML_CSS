@@ -19,39 +19,11 @@ document.addEventListener("DOMContentLoaded", () => {
     return randNumber;
   }
 
-//VECTOR CLASS
-  class Vector {
-  constructor(x,y) {
-    this._x = x;
-    this._y = y;
-  }
-  get length() {        //Length of a vector
-    let x = this._x;    let y = this._y;
-    return Math.sqrt(x*x + y*y);
-  }
-  add(vec) {
-    let x = this._x;    let y = this._y;
-    let result = false;
-    try {
-      if (vec.constructor === Vector) {       //Check if we are adding vectors or not
-          result = new Vector(x + vec._x, y + vec._y);
-      } else if (vec.constructor === Array && vec.length === 2) {
-          result = new Vector(x + vec[0], y + vec[1]);
-      } 
-    } catch (error)  {
-      console.log(`ERROR: ${error}`);
-    } finally {
-      return result;
-    }
-  } //End of add method
-
-}
-
   //Circle as an object
   function Circle(x, y, dx, dy, radius) {
-    this.x = x;
+    this.x = x;           //Location
     this.y = y;
-    this.dx = dx;
+    this.dx = dx;         //Speed
     this.dy = dy;
     this.radius = radius;
     this.color = rgbaColor();
@@ -75,17 +47,16 @@ document.addEventListener("DOMContentLoaded", () => {
     };
   } //End of circle Object with functions
 
-  velocity = new Vector(1, 1);
-  location = new Vector(50, 50);
-
-  //Main event listener
+  
+  //Canvas event listener
   canvas.addEventListener("click", function (event) {
-    circ_1 = new Circle(0, 0, 1,1, (radius = 40));  
-    vect_1 = new Vector(200, 250);
+    circ_1 = new Circle(x, y, x_vel, y_vel, (radius = 40));  
+    
   });
 
+  //Button event listener
   startBtn.addEventListener("click", function (event) {
-    vect_1 = new Vector(200, 250);
+    circ_2 = new Circle(x, y, x_vel, y_vel, (radius = 25));  
   });
 
   //Main animate function
@@ -93,7 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
     requestAnimationFrame(animate);
     brush.clearRect(0, 0, innerWidth, innerHeight);
     circ_1.update();
-    vect_1.draw();
+    circ_2.update();
   }
   animate();
 }); //End of main
