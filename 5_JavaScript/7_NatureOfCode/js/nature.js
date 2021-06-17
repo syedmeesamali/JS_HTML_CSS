@@ -47,7 +47,17 @@ document.addEventListener("DOMContentLoaded", () => {
     };
   } //End of circle Object with functions
 
-  
+  function collision(obj1, obj2) {
+    var dist = Math.sqrt((obj2.x - obj1.x)**2 + (obj2.y - obj1.y)**2)
+    if (dist <= (obj1.radius + obj2.radius))
+      {
+        obj1.dx = -obj1.dx;
+        obj2.dx = -obj2.dx;
+        obj1.dy = -obj1.dy;
+        obj2.dy = -obj2.dy;
+      }  //End of collision
+      return obj1.x, obj1.y;
+  }
   //Canvas event listener
   canvas.addEventListener("click", function (event) {
     circ_1 = new Circle(x, y, x_vel, y_vel, (radius = 40));  
@@ -59,12 +69,14 @@ document.addEventListener("DOMContentLoaded", () => {
     circ_2 = new Circle(x, y, x_vel, y_vel, (radius = 25));  
   });
 
+  circ_3 = new Circle(x, y, x_vel, y_vel, (radius = 10));
   //Main animate function
   function animate() {
     requestAnimationFrame(animate);
     brush.clearRect(0, 0, innerWidth, innerHeight);
     circ_1.update();
     circ_2.update();
+    collision(circ_1, circ_2);      //Distance for collision checks
   }
   animate();
 }); //End of main
