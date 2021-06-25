@@ -15,7 +15,7 @@
 				<div class="navigation">
 					<ul class="first">
 						<li class="first"><a href="{{ url_for('home') }}">ON SALE</a></li>
-						<li><a href="{{ url_for('home') }}">BEST SELLERS</a></li>
+						<li><a href="{{ url_for('new_arrival') }}">BEST SELLERS</a></li>
 						<li><a href="{{ url_for('home') }}">THE BLOG</a></li>
 					</ul>
 					{% if current_user.is_authenticated %}
@@ -27,7 +27,7 @@
 					{% else %}
 						<ul>
 							<li><a href="{{ url_for('home') }}">About us</a></li>
-							<li><a href="{{ url_for('home') }}">My Collection</a></li>
+							<li><a href="{{ url_for('login_page') }}">My Collection</a></li>
 							<li><a href="{{ url_for('login_page') }}">Login</a></li>
 						</ul>
 					{% endif %}
@@ -43,7 +43,7 @@
 	
 	<main role="main" class="container">
 		<div class="row">
-			<div class="col-md-6">
+			<div class="col-md-6 col-md-offset-4">
 				{% with messages = get_flashed_messages(with_categories = true) %}
 				{% if messages %}
 					{% for category, message in messages %}
@@ -57,9 +57,7 @@
 				{% endif %}
 				{% endwith %}
 			</div> 
-				
 			<!--Main OTHER PAGE CONTENT WILL BE DISPLAYED HERE-->
-			
 					{% block content %} 
 					<div class="container">
 						{% block page_content %}
