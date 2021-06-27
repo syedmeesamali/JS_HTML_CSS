@@ -1,5 +1,12 @@
 document.addEventListener("DOMContentLoaded", () => {
   const colors = [1, 2, 3, 4, 5, 6, 7, 8, 9, "A", "B", "C", "D", "E", "F"];
+  const keyz = {ArrowRight: false, ArrowLeft: false, ArrowUp: false, ArrowDown: false};
+  document.addEventListener('keydown', keyDownEvent);
+  function keyDownEvent(event) {
+    if (event.code in keyz) { 
+      keyz[event.code] = true; 
+    }
+  }
   const canvas = document.getElementById("canvas");
   const startBtn = document.getElementById('natureBtn');
   var brush = canvas.getContext("2d");
@@ -58,10 +65,10 @@ document.addEventListener("DOMContentLoaded", () => {
       }  //End of collision
       return obj1.x, obj1.y;
   }
-  //Canvas event listener
+ 
+  //Click event
   canvas.addEventListener("click", function (event) {
     circ_1 = new Circle(x, y, x_vel, y_vel, (radius = 40));  
-    
   });
 
   //Button event listener
@@ -69,14 +76,19 @@ document.addEventListener("DOMContentLoaded", () => {
     circ_2 = new Circle(x, y, x_vel, y_vel, (radius = 25));  
   });
 
-  circ_3 = new Circle(x, y, x_vel, y_vel, (radius = 10));
   //Main animate function
   function animate() {
-    requestAnimationFrame(animate);
     brush.clearRect(0, 0, innerWidth, innerHeight);
     circ_1.update();
     circ_2.update();
     collision(circ_1, circ_2);      //Distance for collision checks
+    if (keyz == ArrowLeft) {
+      if(typeof circ_1 != "undefined") {
+        circ_1.x = circ_1.x - 10;
+      }
+    }
+    requestAnimationFrame(animate);
   }
+  
   animate();
 }); //End of main
