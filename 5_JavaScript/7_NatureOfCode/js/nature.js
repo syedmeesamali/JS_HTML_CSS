@@ -2,10 +2,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const colors = [1, 2, 3, 4, 5, 6, 7, 8, 9, "A", "B", "C", "D", "E", "F"];
   const keyz = {ArrowRight: false, ArrowLeft: false, ArrowUp: false, ArrowDown: false};
   document.addEventListener('keydown', keyDownEvent);
+  document.addEventListener('keyup', keyUpEvent);
   function keyDownEvent(event) {
-    if (event.code in keyz) { 
-      keyz[event.code] = true; 
-    }
+    if (event.code in keyz) { keyz[event.code] = true; }
+  }
+  function keyUpEvent(event) {
+    if (event.code in keyz) { keyz[event.code] = false; }
   }
   const canvas = document.getElementById("canvas");
   const startBtn = document.getElementById('natureBtn');
@@ -66,29 +68,24 @@ document.addEventListener("DOMContentLoaded", () => {
       return obj1.x, obj1.y;
   }
  
-  //Click event
-  canvas.addEventListener("click", function (event) {
-    circ_1 = new Circle(x, y, x_vel, y_vel, (radius = 40));  
-  });
-
-  //Button event listener
-  startBtn.addEventListener("click", function (event) {
-    circ_2 = new Circle(x, y, x_vel, y_vel, (radius = 25));  
-  });
-
+  circ_1 = new Circle(x, y, x_vel, y_vel, (radius = 40));
+  circ_2 = new Circle(x + 50, y + 50, x_vel, y_vel, (radius = 25));
+  
+  function move() {
+    if (keyz.ArrowRight) { circ_1.x = circ_1.x + 5;  }
+    if (keyz.ArrowLeft)  { circ_1.x = circ_1.x - 5;  }
+    if (keyz.ArrowUp)    { circ_1.y = circ_1.y - 5;  }
+    if (keyz.ArrowDown)  { circ_1.y = circ_1.y + 5;  }
+    circ_1.update();
+    circ_2.update();
+    collision(circ_1, circ_2);
+  }
   //Main animate function
   function animate() {
     brush.clearRect(0, 0, innerWidth, innerHeight);
-    circ_1.update();
-    circ_2.update();
-    collision(circ_1, circ_2);      //Distance for collision checks
-    if (keyz == ArrowLeft) {
-      if(typeof circ_1 != "undefined") {
-        circ_1.x = circ_1.x - 10;
-      }
-    }
+    move();
     requestAnimationFrame(animate);
   }
-  
   animate();
+
 }); //End of main

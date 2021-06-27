@@ -115,9 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
                            ball.ys = -speed;
                         }
                 }
-
-
-        }
+        }//End of the main move function
 
         //Check if the two rectangles are colliding with each other
         function checkCollision(obj1, obj2) {
