@@ -28,6 +28,13 @@ document.addEventListener("DOMContentLoaded", () => {
     return randNumber;
   }
 
+  //Function to generate random number between min and max limits
+  function random(min, max)
+  {
+    const num = Math.floor(Math.random() * (max - min + 1)) + min;
+    return num;
+  }
+
   //Circle as an object
   function Circle(x, y, dx, dy, radius) {
     this.x = x;           //Location
@@ -67,10 +74,12 @@ document.addEventListener("DOMContentLoaded", () => {
       }  //End of collision
       return obj1.x, obj1.y;
   }
- 
-  circ_1 = new Circle(x, y, x_vel, y_vel, (radius = 40));
-  circ_2 = new Circle(x + 50, y + 50, x_vel, y_vel, (radius = 25));
   
+  //Spawn the circles at some location to start the process
+  circ_1 = new Circle(x, y, x_vel, y_vel, (radius = 40));
+  circ_2 = new Circle(x + 50, y + 50, random(0.5, 1), random(0.5, 0.75), (radius = 25));
+  
+  //Main move function to be used within animations
   function move() {
     if (keyz.ArrowRight) { circ_1.x = circ_1.x + 5;  }
     if (keyz.ArrowLeft)  { circ_1.x = circ_1.x - 5;  }
