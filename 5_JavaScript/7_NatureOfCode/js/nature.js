@@ -65,6 +65,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function collision(obj1, obj2) {
     var dist = Math.sqrt((obj2.x - obj1.x)**2 + (obj2.y - obj1.y)**2)
+    var sFactor = obj1.radius / obj2.radius;
     if (dist <= (obj1.radius + obj2.radius))
       {
         obj1.dx = -obj1.dx;
@@ -75,7 +76,7 @@ document.addEventListener("DOMContentLoaded", () => {
       return obj1.x, obj1.y;
   }
   
-  //Spawn the circles at some location to start the process
+  //Spawn the circles at top defined location to start the simulation
   circ_1 = new Circle(x, y, x_vel, y_vel, (radius = 40));
   circ_2 = new Circle(x + 50, y + 50, random(0.5, 1), random(0.5, 0.75), (radius = 25));
   
