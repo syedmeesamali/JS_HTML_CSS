@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %} Index Page {% endblock %}
+{% block title %} Tasks {% endblock %}
 
 {% block page_content %}
 <div class="content">
@@ -16,6 +16,37 @@
             <th style="width: 35%">Edit Action</th>
         </tr>
         {% for task in tasks %}
+            <tr>
+                <td>{{ task.content }}</td>
+                <td>{{ task.date_created }}</td>
+                <td>
+                    <a class="btn btn-danger" href="/delete/{{ task.id }}" role="button">Delete</a>
+                    <a class="btn btn-success" href="/done/{{ task.id }}">Done</a>
+                    <a class="btn btn-primary" href="/current/{{ task.id }}">Ongoing</a>
+                </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+    {% endif %}
+    <form action="/add_task" method="POST">
+        <input type="text" name="content" id="content" size="150">
+        <input type="submit" value="Add Task">
+    </form>
+
+    <h1>Work Tasks</h1>
+    {% if tasks2|length < 1 %}
+    <h4>There are no tasks. Create one below!</h4>
+    {% else %}
+    <table class="table table-bordered">
+        <thead class="table-info"></thead>
+        <tbody>
+        <tr>
+            <th style="width: 50%">Task</th>
+            <th style="width: 15%">Added</th>
+            <th style="width: 35%">Edit Action</th>
+        </tr>
+        {% for task in tasks2 %}
             <tr>
                 <td>{{ task.content }}</td>
                 <td>{{ task.date_created }}</td>

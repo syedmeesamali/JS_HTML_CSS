@@ -45,6 +45,18 @@ class ToDo(db.Model):
     def __repr__(self):
         return '<Task %r>' % self.id
 
+#Class to define the model for TODO list
+class Comp_ToDo(db.Model):
+    id = db.Column(db.Integer, primary_key = True)
+    content = db.Column(db.String(200), nullable = False)
+    completed = db.Column(db.Boolean, default = False, nullable = False)
+    ongoing = db.Column(db.Boolean, default = False, nullable = False)
+    date_created = db.Column(db.Date, default = datetime.utcnow)
+    date_done = db.Column(db.Date, default = datetime.utcnow)
+
+    def __repr__(self):
+        return '<Task %r>' % self.id
+
 class LoginForm(FlaskForm):
     email = StringField('Email', validators = [DataRequired(), Email()])
     password = PasswordField('Password', validators = [DataRequired()])
@@ -87,15 +99,15 @@ def Logout():
 @login_required
 def index():
     tasks = ToDo.query.filter_by(ongoing = False, completed = False).all()
-    return render_template('tasks.html', tasks = tasks)
+    tasks2 = Comp_ToDo.query.filter_by(ongoing = False, completed = False).all()
+    return render_template('tasks.html', tasks = tasks, tasks2 = tasks2)
         
-
 #Main display page
 @app.route('/')
 def home():
     return render_template('index.html')
 
-#Add new tasks
+#Add new tasks - personal DB
 @app.route('/add_task', methods = ['POST', 'GET'])
 def add_task():
     if request.method == 'POST':
